@@ -32,6 +32,8 @@ jobs:
           mkdir -p $DEPLOY_DIR
           cp index.html $DEPLOY_DIR/
           cp ads.txt $DEPLOY_DIR/
+          # https://www.bing.com/webmasters
+          cp BingSiteAuth.xml $DEPLOY_DIR/
           cp -r public $DEPLOY_DIR/
 
       - name: Deploy 🚀
