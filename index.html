@@ -1,139 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CP2GH8VHCN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-CP2GH8VHCN');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romitagl.com - Web Development Resources</title>
-    <meta name="description" content="Explore a curated collection of web development tools and resources.  Free utilities to boost your productivity.">
-
+    <title>Romitagl.com</title>
+    <meta name="description" content="Explore a curated collection of web development tools and resources. Free utilities to boost your productivity.">
     <!-- AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4063137660162927" crossorigin="anonymous"></script>
-
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
+        :root {
+            --primary-color: #38A3A5;
+            --hover-color: #4BC7C9;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background: url('https://images.unsplash.com/photo-1519389950473-47a0f98d4a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            color: #fff;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: #f4f4f4;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 163, 165, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 163, 165, 0.05) 0%, transparent 40%);
+            position: relative;
             overflow-x: hidden;
         }
 
-        /* Container and Layout */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6' cy='6' r='1' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
+            animation: moveBackground 60s linear infinite;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        @keyframes moveBackground {
+            from { 
+                background-position: 0 0; 
+            }
+            to { 
+                background-position: 100% 100%; 
+            }
+        }
+
         .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 30px;
-            background: rgba(34, 34, 34, 0.9);
-            /* Slightly transparent background */
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            /* Stronger shadow for depth */
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
             position: relative;
         }
 
-        /* Header Styles */
         header {
             text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            /* Subtle border */
-            margin-bottom: 30px;
+            padding: 40px 0;
+            position: relative;
         }
 
         header h1 {
-            font-size: 3em;
-            /* Larger title */
-            font-weight: 600;
-            color: #eee;
-            /* Slightly softer white */
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(56, 163, 165, 0.2); }
+            to { text-shadow: 0 0 20px rgba(56, 163, 165, 0.4); }
         }
 
         header p {
-            font-size: 1.2em;
-            color: #ccc;
-            /* Subtitle color */
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Site List Grid */
         .site-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            padding: 20px;
         }
 
-        /* Site Card Styles */
         .site-card {
-            background: rgba(51, 51, 51, 0.7);
-            /* Card background */
-            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            /* Card shadow */
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            /* Ensure content stays within the rounded corners */
+            backdrop-filter: blur(5px);
+        }
+
+        .site-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(56, 163, 165, 0.1),
+                transparent,
+                rgba(56, 163, 165, 0.1));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .site-card:hover::before {
+            transform: translateX(100%);
         }
 
         .site-card:hover {
             transform: translateY(-5px);
-            /* Slight lift on hover */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            /* Enhanced shadow on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(56, 163, 165, 0.3);
         }
 
         .site-card h2 {
-            color: #fff;
-            font-size: 1.75em;
+            font-size: 1.8rem;
             margin-bottom: 15px;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: var(--primary-color);
         }
 
         .site-card p {
-            color: #ddd;
-            font-size: 1.1em;
-            line-height: 1.6;
+            color: #a0a0a0;
             margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .site-card a {
             display: inline-block;
-            padding: 12px 25px;
-            background-color: #38A3A5;
-            /* Button background */
+            padding: 12px 30px;
+            background: var(--primary-color);
             color: #fff;
-            border-radius: 7px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .site-card a:hover {
-            background-color: #16697A;
-            /* Darker shade on hover */
+            background: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .ad-container {
+            margin: 40px 0;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
         }
 
         /* Footer Styles */
@@ -146,53 +194,50 @@
             font-size: 0.9em;
         }
 
-        /* Responsive Design */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .container {
-                margin: 20px;
-                padding: 20px;
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 2rem;
             }
 
             .site-list {
-                grid-template-columns: 1fr;
-                /* Stack cards on smaller screens */
+                gap: 20px;
+                padding: 10px;
             }
 
             .site-card {
                 padding: 20px;
             }
-
-            header h1 {
-                font-size: 2.5em;
-            }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
             <h1>Welcome to romitagl.com!</h1>
-            <p>Explore a curated collection of web development tools and resources.</p>
+            <p>Discover powerful web development tools and resources designed to enhance your workflow</p>
         </header>
 
         <div class="site-list">
             <div class="site-card">
                 <h2>Web Tools</h2>
-                <p>Merge PDFs & Images | Free & Private</p>
-                <a href="https://web-tools.romitagl.com">Visit Web Tools</a>
+                <p>Seamlessly merge PDFs & Images with free and private tools.</p>
+                <a href="https://web-tools.romitagl.com">Explore Web Tools</a>
             </div>
+
             <div class="site-card">
                 <h2>GitHub Portfolio</h2>
                 <p>Explore my personal projects and contributions on GitHub.</p>
                 <a href="https://github.com/romitagl">View Portfolio</a>
             </div>
         </div>
-
         <footer>
             <p>&copy; 2025 romitagl.com. All rights reserved.</p>
         </footer>
     </div>
 </body>
-
 </html>
