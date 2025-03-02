@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400">
+  <!-- Background -->
+  <rect width="500" height="400" fill="#f9f9f9" rx="20" ry="20"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="80" cy="340" r="40" fill="#e6f7ff" opacity="0.7"/>
+  <circle cx="420" cy="60" r="35" fill="#e6f7ff" opacity="0.5"/>
+  <circle cx="460" cy="300" r="25" fill="#e6f7ff" opacity="0.6"/>
+  
+  <!-- Main email/message icon -->
+  <g transform="translate(100, 100)">
+    <!-- Message envelope base -->
+    <rect x="50" y="50" width="200" height="140" rx="8" ry="8" fill="#4a6cf7"/>
+    <rect x="50" y="50" width="200" height="140" rx="8" ry="8" fill="none" stroke="#3654d9" stroke-width="1.5"/>
+    
+    <!-- Envelope flap -->
+    <path d="M50,50 L150,120 L250,50" fill="none" stroke="#3654d9" stroke-width="2"/>
+    
+    <!-- Lines representing text -->
+    <rect x="85" y="100" width="130" height="5" rx="2" fill="#ffffff" opacity="0.8"/>
+    <rect x="85" y="115" width="130" height="5" rx="2" fill="#ffffff" opacity="0.8"/>
+    <rect x="85" y="130" width="90" height="5" rx="2" fill="#ffffff" opacity="0.8"/>
+    
+    <!-- Notification circle -->
+    <circle cx="235" cy="65" r="15" fill="#ff6b6b"/>
+    <text x="235" y="70" font-family="Arial" font-size="14" fill="white" text-anchor="middle">1</text>
+  </g>
+  
+  <!-- Laptop -->
+  <g transform="translate(260, 200)">
+    <!-- Laptop base -->
+    <rect x="0" y="0" width="120" height="80" rx="5" fill="#2d3748"/>
+    <!-- Laptop screen -->
+    <rect x="5" y="5" width="110" height="70" rx="2" fill="#4a6cf7"/>
+    <!-- Laptop keyboard base -->
+    <path d="M-10,80 L130,80 L140,100 L-20,100 Z" fill="#2d3748"/>
+  </g>
+  
+  <!-- GitHub icon -->
+  <g transform="translate(330, 130)">
+    <circle cx="0" cy="0" r="25" fill="#333"/>
+    <path d="M0,-15 C-10,-15 -15,-10 -15,0 C-15,15 -5,20 0,15 C5,20 15,15 15,0 C15,-10 10,-15 0,-15 Z" fill="#fff"/>
+    <circle cx="-6" cy="-3" r="2" fill="#333"/>
+    <circle cx="6" cy="-3" r="2" fill="#333"/>
+    <path d="M-8,5 C-8,10 8,10 8,5" stroke="#333" fill="none" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Send button -->
+  <g transform="translate(90, 230)">
+    <rect x="0" y="0" width="90" height="35" rx="17.5" fill="#4a6cf7"/>
+    <text x="45" y="22" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">SEND</text>
+    <path d="M78,17.5 L68,12 L68,23 Z" fill="white"/>
+  </g>
+</svg>
