@@ -30,11 +30,14 @@ jobs:
       - name: Create deployment directory 📁
         run: |
           mkdir -p $DEPLOY_DIR
-          cp index.html $DEPLOY_DIR/
+          cp *.html $DEPLOY_DIR/
+          cp *.css $DEPLOY_DIR/
+          cp -r assets $DEPLOY_DIR/
+          cp -r public $DEPLOY_DIR/
+          # advertising files
           cp ads.txt $DEPLOY_DIR/
           # https://www.bing.com/webmasters
           cp BingSiteAuth.xml $DEPLOY_DIR/
-          cp -r public $DEPLOY_DIR/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4

@@ -11,233 +11,177 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romitagl.com</title>
-    <meta name="description" content="Explore a curated collection of web development tools and resources. Free utilities to boost your productivity.">
-    <!-- AdSense Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4063137660162927" crossorigin="anonymous"></script>
-    <style>
-        :root {
-            --primary-color: #38A3A5;
-            --hover-color: #4BC7C9;
-            --bg-dark: #121212;
-            --card-bg: #1e1e1e;
-        }
+    <title>Web Development Resources & Tools | Romitagl.com</title>
+    <meta name="description" content="Explore a comprehensive collection of web development tools, tutorials, resources and utilities to boost your productivity and improve your development workflow.">
+    <meta name="keywords" content="web development tools, PDF merger, image tools, web utilities, developer resources">
+    <meta name="author" content="romitagl.com">
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Web Development Resources & Tools | Romitagl.com">
+    <meta property="og:description" content="Explore a comprehensive collection of web development tools, tutorials, resources and utilities to boost your productivity and improve your development workflow.">
+    <meta property="og:image" content="https://romitagl.com/images/og-image.jpg">
+    <meta property="og:url" content="https://romitagl.com">
+    <link rel="canonical" href="https://romitagl.com">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AdSense Script - Commented out until approval -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4063137660162927" crossorigin="anonymous"></script> -->
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: #f4f4f4;
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(56, 163, 165, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(56, 163, 165, 0.05) 0%, transparent 40%);
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6' cy='6' r='1' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E");
-            animation: moveBackground 60s linear infinite;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        @keyframes moveBackground {
-            from { 
-                background-position: 0 0; 
-            }
-            to { 
-                background-position: 100% 100%; 
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            position: relative;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-            position: relative;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(56, 163, 165, 0.2); }
-            to { text-shadow: 0 0 20px rgba(56, 163, 165, 0.4); }
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .site-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            padding: 20px;
-        }
-
-        .site-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-        }
-
-        .site-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(56, 163, 165, 0.1),
-                transparent,
-                rgba(56, 163, 165, 0.1));
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .site-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .site-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            border-color: rgba(56, 163, 165, 0.3);
-        }
-
-        .site-card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .site-card p {
-            color: #a0a0a0;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .site-card a {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .site-card a:hover {
-            background: transparent;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .ad-container {
-            margin: 40px 0;
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9em;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .site-list {
-                gap: 20px;
-                padding: 10px;
-            }
-
-            .site-card {
-                padding: 20px;
-            }
-        }
-    </style>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Welcome to romitagl.com!</h1>
-            <p>Discover powerful web development tools and resources designed to enhance your workflow</p>
-        </header>
-
-        <div class="site-list">
-            <div class="site-card">
-                <h2>Web Tools</h2>
-                <p>Seamlessly merge PDFs & Images with free and private tools.</p>
-                <a href="https://web-tools.romitagl.com">Explore Web Tools</a>
+        <!-- Navigation -->
+        <nav>
+            <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Powerful Web Development Tools & Resources</h1>
+                <p>Discover a collection of tools designed to enhance your workflow, boost productivity, and simplify complex tasks for developers of all levels.</p>
+                <div class="hero-buttons">
+                    <a href="#tools" class="btn btn-primary">Explore Tools</a>
+                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                </div>
             </div>
-
-            <div class="site-card">
-                <h2>GitHub Portfolio</h2>
-                <p>Explore my personal projects and contributions on GitHub.</p>
-                <a href="https://github.com/romitagl">View Portfolio</a>
+            <div class="hero-image">
+                <img src="assets/images/web-tools.webp" alt="Web Development Tools Illustration">
             </div>
-        </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-title">
+                <h2>Why Choose Our Tools</h2>
+                <p>Our web development tools are designed with developers in mind, offering a range of features to streamline your workflow.</p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>All file processing happens on your device, ensuring your data never leaves your computer. No uploads required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized algorithms ensure quick processing even with large files, saving you valuable development time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Developer Friendly</h3>
+                    <p>Built by developers for developers, with intuitive interfaces and powerful customization options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Cross-Platform</h3>
+                    <p>Works on any device with a modern browser, no installation or downloads required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>Constantly improving with new features and optimizations based on user feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>Completely Free</h3>
+                    <p>All tools are free to use without any hidden costs or premium features.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tools Section -->
+        <section id="tools" class="tools">
+            <div class="section-title">
+                <h2>Our Web Development Tools</h2>
+                <p>A comprehensive collection of tools to help you with everyday development tasks.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>PDF Merger</h3>
+                    <p>Quickly combine multiple PDF files into a single document. Perfect for merging documentation, reports, or reference materials.</p>
+                    <a href="https://web-tools.romitagl.com/pdf-merger">Merge PDF and images instantly</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Image Optimizer</h3>
+                    <p>Compress and optimize images for the web without sacrificing quality. Reduce load times and improve site performance.</p>
+                    <a href="https://web-tools.romitagl.com/image-optimizer">Try Image Optimizer</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Code Formatter</h3>
+                    <p>Instantly format and beautify your code with support for HTML, CSS, JavaScript, and more. Keep your code clean and readable.</p>
+                    <a href="https://web-tools.romitagl.com/code-formatter">Try Code Formatter</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Color Converter</h3>
+                    <p>Convert between color formats with ease. Transform HEX to RGB/RGBA, HSL, and more for seamless color management.</p>
+                    <a href="https://web-tools.romitagl.com/color-converter">Convert Colors Now</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Base64 Encoder/Decoder</h3>
+                    <p>Encode and decode text or binary data as Base64. Useful for encoding and decoding data for web applications.</p>
+                    <a href="https://web-tools.romitagl.com/base64-encoder-decoder">Try Base64 Encoder/Decoder</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2025 romitagl.com. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <!-- <li><a href="/terms-of-service">Terms of Service</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 romitagl.com. All rights reserved.</p>
+            </div>
         </footer>
     </div>
+
+    <!-- JavaScript for Lazy Loading and Mobile Menu -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Lazy Load Images
+            const lazyImages = document.querySelectorAll(".lazy-load");
+            lazyImages.forEach(img => {
+                img.src = img.dataset.src;
+                img.classList.add("loaded");
+            });
+
+            // Mobile Menu Toggle
+            document.querySelector(".mobile-menu-btn").addEventListener("click", function() {
+                const navLinks = document.querySelector(".nav-links");
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 </html>
