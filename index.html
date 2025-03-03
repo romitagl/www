@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Resources & Tools | Romitagl.com</title>
+    <title>Web Resources & Tools | Romitagl.com</title>
     <meta name="description" content="Explore a comprehensive collection of web development tools, tutorials, resources and utilities to boost your productivity and improve your development workflow.">
     <meta name="keywords" content="web development tools, PDF merger, image tools, web utilities, developer resources">
     <meta name="author" content="romitagl.com">
@@ -30,31 +30,22 @@
 
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Component Loader Script -->
+    <script src="components.js"></script>
 </head>
 <body>
     <div class="container">
-        <!-- Navigation -->
-        <nav>
-            <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
+        <!-- Navigation will be loaded here -->
+        <div data-component="navigation"></div>
         
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Powerful Web Development Tools & Resources</h1>
+                <h1>Powerful Web Tools & Resources</h1>
                 <p>Discover a collection of tools designed to enhance your workflow, boost productivity, and simplify complex tasks for developers of all levels.</p>
                 <div class="hero-buttons">
                     <a href="#tools" class="btn btn-primary">Explore Tools</a>
-                    <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                    <a href="wiki.html" class="btn btn-secondary">Wiki Knowledge Base</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -66,7 +57,7 @@
         <section id="features" class="features">
             <div class="section-title">
                 <h2>Why Choose Our Tools</h2>
-                <p>Our web development tools are designed with developers in mind, offering a range of features to streamline your workflow.</p>
+                <p>Our web tools are designed with developers in mind, offering a range of features to streamline your workflow.</p>
             </div>
             <div class="feature-list">
                 <div class="feature-card">
@@ -117,7 +108,7 @@
         <!-- Tools Section -->
         <section id="tools" class="tools">
             <div class="section-title">
-                <h2>Our Web Development Tools</h2>
+                <h2>Our Web Tools</h2>
                 <p>A comprehensive collection of tools to help you with everyday development tasks.</p>
             </div>
             <div class="tools-grid">
@@ -149,24 +140,11 @@
             </div>
         </section>
         
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <!-- <li><a href="/terms-of-service">Terms of Service</a></li> -->
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 romitagl.com. All rights reserved.</p>
-            </div>
-        </footer>
+        <!-- Footer will be loaded here -->
+        <div data-component="footer"></div>
     </div>
 
-    <!-- JavaScript for Lazy Loading and Mobile Menu -->
+    <!-- JavaScript for Lazy Loading -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Lazy Load Images
@@ -174,12 +152,6 @@
             lazyImages.forEach(img => {
                 img.src = img.dataset.src;
                 img.classList.add("loaded");
-            });
-
-            // Mobile Menu Toggle
-            document.querySelector(".mobile-menu-btn").addEventListener("click", function() {
-                const navLinks = document.querySelector(".nav-links");
-                navLinks.classList.toggle("active");
             });
         });
     </script>
