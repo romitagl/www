@@ -3,24 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Romitagl.com</title>
+    <title>About Me - romitagl.com</title>
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Component Loader Script -->
+    <script src="components.js"></script>
 </head>
 <body>
     <div class="container">
-        <!-- Hero section for "About Us" title -->
+        <!-- Navigation will be loaded here -->
+        <div data-component="navigation"></div>
+        
+        <!-- About Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1>About Us</h1>
-                <p>Romitagl.com is a platform dedicated to providing web development tools and resources. Our mission is to support developers by offering free utilities that simplify common tasks and enhance productivity. We believe in the power of open-source and community-driven projects, which is why we share our tools and projects openly.</p>
-                <p>Our team is passionate about coding and committed to delivering high-quality solutions. We continuously work on improving our tools and expanding our portfolio to meet the evolving needs of the web development community.</p>
+                <h1>About romitagl.com</h1>
+                <p>Romitagl.com is my personal website and platform dedicated to providing web tools and resources. My mission is to support developers by offering free utilities that simplify common tasks and enhance productivity. I believe in the power of open-source and community-driven projects, which is why I share our tools and projects openly.</p>
+                <p>I'm passionate about coding and committed to delivering high-quality solutions. I continuously work on improving our tools and expanding our portfolio to meet the evolving needs of the web development community.</p>
+            </div>
+            <!-- About content goes here -->
+        </section>
+        
+        <!-- Hero section for "Contact Us" title -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Contact Me</h1>
+                <p>For any inquiries, feedback, or issues, please open a GitHub issue on our repository.</p>
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" href="https://github.com/romitagl/www/issues" target="_blank">
+                        <i class="fab fa-github"></i> Open a GitHub Issue
+                    </a>
+                </div>
             </div>
             <div class="hero-image">
                 <!-- Placeholder image (you can replace this with your own image) -->
-                <img src="https://via.placeholder.com/500" alt="About Us Image">
+                <img src="assets/images/contact.svg" alt="Contact Us Image">
             </div>
         </section>
+
+        <!-- Footer will be loaded here -->
+        <div data-component="footer"></div>
     </div>
 </body>
 </html>
