@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121212" />
+      <stop offset="100%" stop-color="#1e1e1e" />
+    </linearGradient>
+    
+    <!-- Glow effect -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg-gradient)" />
+  
+  <!-- Grid pattern -->
+  <path d="M0 80 H800 M0 160 H800 M0 240 H800 M0 320 H800 M0 400 H800 M0 480 H800 M0 560 H800 M80 0 V600 M160 0 V600 M240 0 V600 M320 0 V600 M400 0 V600 M480 0 V600 M560 0 V600 M640 0 V600 M720 0 V600" stroke="rgba(56, 163, 165, 0.1)" stroke-width="1" />
+  
+  <!-- Code Editor Window -->
+  <g transform="translate(150, 140)">
+    <!-- Window frame -->
+    <rect x="0" y="0" width="500" height="320" rx="10" ry="10" fill="#1e1e1e" stroke="#333" stroke-width="2" />
+    
+    <!-- Window header -->
+    <rect x="0" y="0" width="500" height="30" rx="10" ry="10" fill="#2a2a2a" />
+    
+    <!-- Window controls -->
+    <circle cx="20" cy="15" r="6" fill="#ff5f57" />
+    <circle cx="40" cy="15" r="6" fill="#febc2e" />
+    <circle cx="60" cy="15" r="6" fill="#28c840" />
+    
+    <!-- Code content -->
+    <g transform="translate(20, 50)">
+      <!-- Function declaration -->
+      <text x="0" y="0" fill="#569cd6" font-family="monospace" font-size="14">function</text>
+      <text x="70" y="0" fill="#dcdcaa" font-family="monospace" font-size="14">createComponent</text>
+      <text x="188" y="0" fill="#d4d4d4" font-family="monospace" font-size="14">(</text>
+      <text x="195" y="0" fill="#9cdcfe" font-family="monospace" font-size="14">options</text>
+      <text x="245" y="0" fill="#d4d4d4" font-family="monospace" font-size="14">) {</text>
+      
+      <!-- Function body -->
+      <text x="20" y="25" fill="#c586c0" font-family="monospace" font-size="14">const</text>
+      <text x="70" y="25" fill="#9cdcfe" font-family="monospace" font-size="14">element</text>
+      <text x="130" y="25" fill="#d4d4d4" font-family="monospace" font-size="14">=</text>
+      <text x="145" y="25" fill="#4ec9b0" font-family="monospace" font-size="14">document</text>
+      <text x="210" y="25" fill="#d4d4d4" font-family="monospace" font-size="14">.</text>
+      <text x="220" y="25" fill="#dcdcaa" font-family="monospace" font-size="14">createElement</text>
+      <text x="315" y="25" fill="#d4d4d4" font-family="monospace" font-size="14">(</text>
+      <text x="322" y="25" fill="#ce9178" font-family="monospace" font-size="14">'div'</text>
+      <text x="350" y="25" fill="#d4d4d4" font-family="monospace" font-size="14">);</text>
+      
+      <text x="20" y="50" fill="#4ec9b0" font-family="monospace" font-size="14">element</text>
+      <text x="90" y="50" fill="#d4d4d4" font-family="monospace" font-size="14">.</text>
+      <text x="100" y="50" fill="#9cdcfe" font-family="monospace" font-size="14">className</text>
+      <text x="180" y="50" fill="#d4d4d4" font-family="monospace" font-size="14">=</text>
+      <text x="195" y="50" fill="#ce9178" font-family="monospace" font-size="14">'component'</text>
+      <text x="280" y="50" fill="#d4d4d4" font-family="monospace" font-size="14">;</text>
+      
+      <text x="20" y="75" fill="#c586c0" font-family="monospace" font-size="14">if</text>
+      <text x="40" y="75" fill="#d4d4d4" font-family="monospace" font-size="14">(</text>
+      <text x="50" y="75" fill="#9cdcfe" font-family="monospace" font-size="14">options</text>
+      <text x="100" y="75" fill="#d4d4d4" font-family="monospace" font-size="14">.</text>
+      <text x="110" y="75" fill="#9cdcfe" font-family="monospace" font-size="14">theme</text>
+      <text x="155" y="75" fill="#d4d4d4" font-family="monospace" font-size="14">===</text>
+      <text x="180" y="75" fill="#ce9178" font-family="monospace" font-size="14">'dark'</text>
+      <text x="215" y="75" fill="#d4d4d4" font-family="monospace" font-size="14">) {</text>
+      
+      <text x="40" y="100" fill="#4ec9b0" font-family="monospace" font-size="14">element</text>
+      <text x="110" y="100" fill="#d4d4d4" font-family="monospace" font-size="14">.</text>
+      <text x="120" y="100" fill="#9cdcfe" font-family="monospace" font-size="14">classList</text>
+      <text x="180" y="100" fill="#d4d4d4" font-family="monospace" font-size="14">.</text>
+      <text x="190" y="100" fill="#dcdcaa" font-family="monospace" font-size="14">add</text>
+      <text x="220" y="100" fill="#d4d4d4" font-family="monospace" font-size="14">(</text>
+      <text x="230" y="100" fill="#ce9178" font-family="monospace" font-size="14">'dark-theme'</text>
+      <text x="315" y="100" fill="#d4d4d4" font-family="monospace" font-size="14">);</text>
+      
+      <text x="20" y="125" fill="#d4d4d4" font-family="monospace" font-size="14">}</text>
+      
+      <text x="20" y="150" fill="#c586c0" font-family="monospace" font-size="14">return</text>
+      <text x="70" y="150" fill="#4ec9b0" font-family="monospace" font-size="14">element</text>
+      <text x="120" y="150" fill="#d4d4d4" font-family="monospace" font-size="14">;</text>
+      
+      <text x="0" y="175" fill="#d4d4d4" font-family="monospace" font-size="14">}</text>
+      
+      <!-- HTML/CSS code section -->
+      <text x="0" y="200" fill="#569cd6" font-family="monospace" font-size="14">// Web Components</text>
+      <text x="0" y="225" fill="#4ec9b0" font-family="monospace" font-size="14">&lt;style&gt;</text>
+      <text x="20" y="250" fill="#9cdcfe" font-family="monospace" font-size="14">.component</text>
+      <text x="110" y="250" fill="#d4d4d4" font-family="monospace" font-size="14">{</text>
+      <text x="40" y="275" fill="#9cdcfe" font-family="monospace" font-size="14">color</text>
+      <text x="80" y="275" fill="#d4d4d4" font-family="monospace" font-size="14">:</text>
+      <text x="90" y="275" fill="#ce9178" font-family="monospace" font-size="14">#38A3A5</text>
+      <text x="160" y="275" fill="#d4d4d4" font-family="monospace" font-size="14">;</text>
+      <text x="20" y="300" fill="#d4d4d4" font-family="monospace" font-size="14">}</text>
+    </g>
+  </g>
+  
+  <!-- Floating Icons -->
+  <!-- CSS icon -->
+  <g transform="translate(100, 100)" filter="url(#glow)">
+    <polygon points="0,0 50,0 45,50 25,55 5,50" fill="#264de4" />
+    <polygon points="25,5 42,5 38,45 25,50" fill="#2965f1" />
+    <text x="15" y="30" fill="white" font-family="Arial" font-weight="bold" font-size="24">CSS</text>
+  </g>
+  
+  <!-- HTML icon -->
+  <g transform="translate(660, 150)" filter="url(#glow)">
+    <polygon points="0,0 50,0 45,50 25,55 5,50" fill="#e34c26" />
+    <polygon points="25,5 42,5 38,45 25,50" fill="#f06529" />
+    <text x="5" y="30" fill="white" font-family="Arial" font-weight="bold" font-size="20">HTML</text>
+  </g>
+  
+  <!-- JS icon -->
+  <g transform="translate(80, 400)" filter="url(#glow)">
+    <rect x="0" y="0" width="50" height="50" fill="#f7df1e" />
+    <text x="10" y="30" fill="black" font-family="Arial" font-weight="bold" font-size="24">JS</text>
+  </g>
+  
+  <!-- React icon -->
+  <g transform="translate(680, 420)" filter="url(#glow)">
+    <circle cx="25" cy="25" r="25" fill="#61dafb" opacity="0.8" />
+    <circle cx="25" cy="25" r="5" fill="#61dafb" />
+    <ellipse cx="25" cy="25" rx="25" ry="10" fill="none" stroke="#61dafb" stroke-width="2" />
+    <ellipse cx="25" cy="25" rx="25" ry="10" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(60 25 25)" />
+    <ellipse cx="25" cy="25" rx="25" ry="10" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(120 25 25)" />
+  </g>
+  
+  <!-- Responsive design elements -->
+  <g transform="translate(550, 80)">
+    <!-- Desktop monitor -->
+    <rect x="0" y="0" width="60" height="40" rx="3" ry="3" fill="#444" />
+    <rect x="3" y="3" width="54" height="30" fill="#38A3A5" opacity="0.3" />
+    <rect x="20" y="40" width="20" height="5" fill="#444" />
+    <rect x="15" y="45" width="30" height="2" fill="#444" />
+  </g>
+  
+  <g transform="translate(640, 90)">
+    <!-- Tablet -->
+    <rect x="0" y="0" width="30" height="40" rx="3" ry="3" fill="#444" />
+    <rect x="2" y="2" width="26" height="36" fill="#38A3A5" opacity="0.3" />
+    <circle cx="15" cy="38" r="1" fill="#666" />
+  </g>
+  
+  <g transform="translate(680, 95)">
+    <!-- Mobile phone -->
+    <rect x="0" y="0" width="15" height="30" rx="2" ry="2" fill="#444" />
+    <rect x="1" y="2" width="13" height="26" fill="#38A3A5" opacity="0.3" />
+    <circle cx="7.5" cy="28" r="1" fill="#666" />
+  </g>
+  
+  <!-- Connecting lines -->
+  <path d="M150 190 C 120 180, 120 150, 130 120" stroke="#38A3A5" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+  <path d="M650 190 C 670 180, 670 150, 660 170" stroke="#38A3A5" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+  <path d="M150 390 C 120 380, 110 400, 120 410" stroke="#38A3A5" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+  <path d="M650 390 C 670 380, 680 410, 680 420" stroke="#38A3A5" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+  
+  <!-- Decorative elements -->
+  <circle cx="400" cy="50" r="20" fill="none" stroke="#38A3A5" stroke-width="2" />
+  <circle cx="400" cy="50" r="10" fill="none" stroke="#38A3A5" stroke-width="2" />
+  <circle cx="400" cy="50" r="5" fill="#38A3A5" />
+  
+  <circle cx="100" cy="500" r="30" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  <circle cx="100" cy="500" r="20" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  <circle cx="100" cy="500" r="10" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  
+  <circle cx="700" cy="520" r="30" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  <circle cx="700" cy="520" r="20" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  <circle cx="700" cy="520" r="10" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
+  
+  <!-- Title text at the bottom -->
+  <text x="400" y="550" text-anchor="middle" fill="#f4f4f4" font-family="Arial" font-size="24" font-weight="bold">Web Development Tools</text>
+  <text x="400" y="575" text-anchor="middle" fill="#a0a0a0" font-family="Arial" font-size="16">HTML • CSS • JavaScript • React</text>
+</svg>
