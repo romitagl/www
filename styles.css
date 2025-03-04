@@ -385,29 +385,32 @@ nav {
     transform: scale(1.05);
 }
 
-/* Footer */
+/* Improved Footer Styles */
 footer {
     background: rgba(0, 0, 0, 0.3);
     padding: 50px 0 20px;
     position: relative;
-}
-
-.footer-content {
+  }
+  
+  .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-column h3 {
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+  
+  .footer-links-section h3,
+  .footer-sponsor-section h3 {
     color: var(--text-light);
     margin-bottom: 20px;
     font-size: 1.3rem;
     position: relative;
     padding-bottom: 10px;
-}
-
-.footer-column h3::after {
+  }
+  
+  .footer-links-section h3::after,
+  .footer-sponsor-section h3::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -415,35 +418,80 @@ footer {
     width: 40px;
     height: 2px;
     background-color: var(--primary-color);
-}
-
-.footer-links {
+  }
+  
+  .footer-links {
     list-style: none;
-}
-
-.footer-links li {
+    padding: 0;
+  }
+  
+  .footer-links li {
     margin-bottom: 10px;
-}
-
-.footer-links a {
+  }
+  
+  .footer-links a {
     color: var(--text-muted);
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-block;
-}
-
-.footer-links a:hover {
+  }
+  
+  .footer-links a:hover {
     color: var(--primary-color);
     transform: translateX(5px);
-}
-
-.footer-bottom {
+  }
+  
+  .footer-support-text {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .footer-support-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-support-text a:hover {
+    text-decoration: underline;
+  }
+  
+  .sponsor-button-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-copyright {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
     font-size: 0.9rem;
-}
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    
+    .footer-sponsor-section {
+      text-align: left;
+    }
+    
+    .sponsor-button-wrapper {
+      justify-content: flex-start;
+    }
+    
+    .footer-copyright {
+      padding: 20px;
+    }
+  }
 
 /* Responsive Styles */
 @media (max-width: 992px) {

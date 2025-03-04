@@ -171,6 +171,6 @@
   <circle cx="700" cy="520" r="10" fill="none" stroke="#38A3A5" stroke-width="1" opacity="0.5" />
   
   <!-- Title text at the bottom -->
-  <text x="400" y="550" text-anchor="middle" fill="#f4f4f4" font-family="Arial" font-size="24" font-weight="bold">Web Development Tools</text>
-  <text x="400" y="575" text-anchor="middle" fill="#a0a0a0" font-family="Arial" font-size="16">HTML • CSS • JavaScript • React</text>
+  <text x="400" y="550" text-anchor="middle" fill="#f4f4f4" font-family="Arial" font-size="24" font-weight="bold">Open Source Web Tools</text>
+  <text x="400" y="575" text-anchor="middle" fill="#a0a0a0" font-family="Arial" font-size="16">Productivity • Knowledge • Resources</text>
 </svg>

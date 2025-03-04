@@ -41,12 +41,12 @@
         </button>
       </nav>
     `;
-    
+
     // Footer component
     const footerComponent = `
       <footer>
-        <div class="footer-content">
-          <div class="footer-column">
+        <div class="footer-grid">
+          <div class="footer-links-section">
             <h3>Quick Links</h3>
             <ul class="footer-links">
               <li><a href="about.html">Get In Touch</a></li>
@@ -54,8 +54,21 @@
               <!-- <li><a href="/terms-of-service">Terms of Service</a></li> -->
             </ul>
           </div>
+          
+          <div class="footer-sponsor-section">
+            <h3>Support</h3>
+            <p class="footer-support-text">
+              If you like this tool, please star the repository on
+              <a href="https://github.com/romitagl/www" target="_blank">GitHub</a>
+              and consider sponsoring me.
+            </p>
+            <div class="sponsor-button-wrapper">
+              <iframe src="https://github.com/sponsors/romitagl/button" title="Sponsor" width="116" height="35"></iframe>
+            </div>
+          </div>
         </div>
-        <div class="footer-bottom">
+        
+        <div class="footer-copyright">
           <p>&copy; 2025 romitagl.com. All rights reserved.</p>
         </div>
       </footer>
