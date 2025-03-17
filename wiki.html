@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiki - Romitagl.com</title>
-    <meta name="description" content="Personal knowledge wiki containing quotes, resources, and other useful information.">
+    <meta name="description"
+        content="Personal knowledge wiki containing quotes, resources, and other useful information.">
     <meta name="keywords" content="wiki, quotes, knowledge base, resources">
     <meta name="author" content="romitagl.com">
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Wiki - Romitagl.com">
-    <meta property="og:description" content="Personal knowledge wiki containing quotes, resources, and other useful information.">
+    <meta property="og:description"
+        content="Personal knowledge wiki containing quotes, resources, and other useful information.">
     <meta property="og:url" content="https://romitagl.com/wiki.html">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -22,22 +25,25 @@
     <!-- Component Loader Script -->
     <script src="components.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Navigation will be loaded here -->
         <div data-component="navigation"></div>
-        
+
         <!-- Hero section for Wiki -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Knowledge Wiki</h1>
-                <p>A collection of valuable information, quotes, and resources organized in a structured way to help you find what you need quickly.</p>
+                <p>A collection of valuable information, quotes, and resources organized in a structured way to help you
+                    find what you need quickly.</p>
             </div>
             <div class="hero-image">
-                <img src="assets/images/wiki.svg" alt="Wiki Knowledge Base" onerror="this.src='https://api.lorem.space/image/abstract?w=500&h=400'">
+                <img src="assets/images/wiki.svg" alt="Wiki Knowledge Base"
+                    onerror="this.src='https://api.lorem.space/image/abstract?w=500&h=400'">
             </div>
         </section>
-        
+
         <!-- Wiki Content Section -->
         <section class="wiki-section">
             <div class="wiki-container">
@@ -45,7 +51,7 @@
                     <h2>Browse Knowledge Base</h2>
                     <p>Explore different categories of information in the tabs below.</p>
                 </div>
-                
+
                 <!-- Tabs Navigation -->
                 <div class="tabs-container">
                     <ul class="tabs-nav">
@@ -53,13 +59,14 @@
                         <li class="tab-item" data-tab="resources">Resources</li>
                         <!-- <li class="tab-item" data-tab="tutorials">Tutorials</li> -->
                     </ul>
-                    
+
                     <!-- Tab Content -->
                     <div id="quotes" class="tab-content active">
                         <div class="quotes-container">
                             <div id="quotes-header">
                                 <h3>Inspirational and Thought-Provoking Quotes</h3>
-                                <p>A collection of quotes from various sources that provide insight, inspiration, and wisdom.</p>
+                                <p>A collection of quotes from various sources that provide insight, inspiration, and
+                                    wisdom.</p>
                                 <div class="last-updated" id="quotes-updated">
                                     Loading quotes...
                                     <button id="refresh-quotes" class="refresh-button" style="display: none;">
@@ -72,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Resources Tab -->
                     <div id="resources" class="tab-content">
                         <div class="resources-container">
@@ -91,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Tutorials Tab (Placeholder with structure for future implementation) -->
                     <!-- <div id="tutorials" class="tab-content">
                         <div class="tutorials-container">
@@ -113,238 +120,192 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Footer will be loaded here -->
         <div data-component="footer"></div>
     </div>
 
     <!-- Wiki Content Functionality Script -->
     <script>
-    /**
-     * Generic function to initialize a wiki content tab
-     * @param {Object} options - Configuration options
-     * @param {string} options.contentType - Type of content (e.g., 'quotes', 'resources')
-     * @param {string} options.markdownUrl - URL to the markdown content
-     * @param {string} options.contentElementId - ID of the element to render content into
-     * @param {string} options.updatedElementId - ID of the element to show last updated info
-     * @param {string} options.refreshButtonId - ID of the refresh button
-     */
-    function initWikiContent(options) {
-      const {
-        contentType,
-        markdownUrl,
-        contentElementId,
-        updatedElementId,
-        refreshButtonId
-      } = options;
-      
-      const contentElement = document.getElementById(contentElementId);
-      const updatedElement = document.getElementById(updatedElementId);
-      const refreshButton = document.getElementById(refreshButtonId);
-      
-      const storageKeyContent = `${contentType}Content`;
-      const storageKeyTimestamp = `${contentType}Timestamp`;
-      
-      // Function to format date in a readable format
-      function formatDate(timestamp) {
-        const date = new Date(parseInt(timestamp));
-        return date.toLocaleString('en-US', { 
-          year: 'numeric', 
-          month: 'short', 
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
+        // Tab initialization
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tab functionality
+            const tabItems = document.querySelectorAll('.tab-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // Remove active class from all tabs and contents
+                    tabItems.forEach(tab => tab.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+
+                    // Initialize content if needed
+                    if (tabId === 'quotes' && !window.quotesInitialized) {
+                        initQuotes();
+                        window.quotesInitialized = true;
+                    } else if (tabId === 'resources' && !window.resourcesInitialized) {
+                        initResources();
+                        window.resourcesInitialized = true;
+                    }
+                });
+            });
+
+            // Initialize the active tab on page load
+            const activeTab = document.querySelector('.tab-item.active');
+            if (activeTab) {
+                const tabId = activeTab.getAttribute('data-tab');
+                if (tabId === 'quotes') {
+                    initQuotes();
+                    window.quotesInitialized = true;
+                } else if (tabId === 'resources') {
+                    initResources();
+                    window.resourcesInitialized = true;
+                }
+            } else {
+                // Default to initializing quotes if no tab is active
+                document.querySelector('[data-tab="quotes"]').classList.add('active');
+                document.getElementById('quotes').classList.add('active');
+                initQuotes();
+                window.quotesInitialized = true;
+            }
         });
-      }
-      
-      // Function to load content
-      function loadContent(useCache = true) {
-        contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
-        
-        // Show the refresh button when content is loaded
-        if (refreshButton) {
-          refreshButton.style.display = 'inline-flex';
+
+        // Function for quotes tab
+        function initQuotes() {
+            loadMarkdownContent(
+                'quotes',
+                'https://raw.githubusercontent.com/wiki/romitagl/www/Quotes.md',
+                'quotes-content',
+                'quotes-updated',
+                'refresh-quotes'
+            );
         }
-        
-        // Check if content is cached and we want to use cache
-        const cachedContent = localStorage.getItem(storageKeyContent);
-        const cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
-        
-        if (useCache && cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
-          // Use cached content if it's less than 24 hours old
-          try {
-            contentElement.innerHTML = marked.parse(cachedContent);
-            updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp);
+
+        // Function for resources tab
+        function initResources() {
+            loadMarkdownContent(
+                'resources',
+                'https://raw.githubusercontent.com/wiki/romitagl/www/Resources.md',
+                'resources-content',
+                'resources-updated',
+                'refresh-resources'
+            );
+        }
+
+        // Simple function to load and render markdown content
+        function loadMarkdownContent(contentType, markdownUrl, contentElementId, updatedElementId, refreshButtonId) {
+            const contentElement = document.getElementById(contentElementId);
+            const updatedElement = document.getElementById(updatedElementId);
+            const refreshButton = document.getElementById(refreshButtonId);
+
+            const storageKeyContent = `${contentType}Content`;
+            const storageKeyTimestamp = `${contentType}Timestamp`;
+
+            contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
+
+            // Show the refresh button
             if (refreshButton) {
-              refreshButton.style.display = 'inline-flex';
-            }
-          } catch (error) {
-            console.error(`Error parsing cached Markdown for ${contentType}:`, error);
-            fetchFreshContent();
-          }
-        } else {
-          // Fetch fresh content
-          fetchFreshContent();
-        }
-      }
-      
-      // Function to fetch fresh content from GitHub
-      function fetchFreshContent() {
-        fetch(markdownUrl)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-          })
-          .then(markdown => {
-            try {
-              // Process and render the markdown
-              const htmlContent = marked.parse(markdown);
-              contentElement.innerHTML = htmlContent;
-              
-              // Cache the content and timestamp
-              localStorage.setItem(storageKeyContent, markdown);
-              const now = Date.now();
-              localStorage.setItem(storageKeyTimestamp, now);
-              
-              // Update the last updated text
-              updatedElement.innerHTML = 'Last updated: ' + formatDate(now);
-              if (refreshButton) {
                 refreshButton.style.display = 'inline-flex';
-              }
-            } catch (error) {
-              console.error(`Error parsing Markdown for ${contentType}:`, error);
-              contentElement.innerHTML = "<p>Error parsing content. Please try again later.</p>";
             }
-          })
-          .catch(error => {
-            console.error(`Error fetching Markdown content for ${contentType}:`, error);
-            
-            // If we have cached content, use it as a fallback
+
+            // Function to format date
+            function formatDate(timestamp) {
+                const date = new Date(parseInt(timestamp));
+                return date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            // Check cache first
             const cachedContent = localStorage.getItem(storageKeyContent);
             const cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
-            
-            if (cachedContent && cachedTimestamp) {
-              contentElement.innerHTML = marked.parse(cachedContent);
-              updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) + 
-                                        ' <span style="color: #e74c3c;">(Offline mode - using cached content)</span>';
+
+            if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
+                // Use cached content
+                try {
+                    // Just use basic marked parsing without custom renderers
+                    contentElement.innerHTML = marked.parse(cachedContent);
+                    updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp);
+                } catch (error) {
+                    console.error(`Error parsing cached content: ${error}`);
+                    // Fetch fresh on error
+                    fetchMarkdown();
+                }
             } else {
-              contentElement.innerHTML = `<p>Failed to load ${contentType}. Please check your internet connection and try again.</p>`;
+                // Fetch fresh content
+                fetchMarkdown();
             }
-            
+
+            // Function to fetch markdown from GitHub
+            function fetchMarkdown() {
+                fetch(markdownUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.text();
+                    })
+                    .then(markdown => {
+                        try {
+                            // Render markdown
+                            contentElement.innerHTML = marked.parse(markdown);
+
+                            // Cache the content
+                            localStorage.setItem(storageKeyContent, markdown);
+                            const now = Date.now();
+                            localStorage.setItem(storageKeyTimestamp, now);
+
+                            // Update timestamp
+                            updatedElement.innerHTML = 'Last updated: ' + formatDate(now);
+                        } catch (error) {
+                            console.error(`Error parsing markdown: ${error}`);
+                            contentElement.innerHTML = `<p>Error parsing content. Please try again later.</p>`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching markdown: ${error}`);
+
+                        // Try to use cached content as fallback
+                        if (cachedContent) {
+                            contentElement.innerHTML = marked.parse(cachedContent);
+                            updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                                ' <span style="color: #e74c3c;">(Offline mode)</span>';
+                        } else {
+                            contentElement.innerHTML = `<p>Failed to load content. Please check your connection.</p>`;
+                        }
+                    });
+            }
+
+            // Add refresh button functionality
             if (refreshButton) {
-              refreshButton.style.display = 'inline-flex';
+                refreshButton.addEventListener('click', function () {
+                    // Show loading state
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+                    this.disabled = true;
+
+                    // Fetch fresh content
+                    fetchMarkdown();
+
+                    // Reset button after delay
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+                        this.disabled = false;
+                    }, 1000);
+                });
             }
-          });
-      }
-      
-      // Initialize content loading
-      loadContent();
-      
-      // Refresh button functionality
-      if (refreshButton) {
-        refreshButton.addEventListener('click', function() {
-          // Force refresh (bypass cache)
-          loadContent(false);
-          
-          // Visual feedback for the refresh action
-          this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
-          this.disabled = true;
-          
-          setTimeout(() => {
-            this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
-            this.disabled = false;
-          }, 1000);
-        });
-      }
-      
-      // Return the loadContent function for potential external use
-      return { loadContent };
-    }
-
-    // Helper functions to initialize specific content types
-    function initQuotes() {
-      return initWikiContent({
-        contentType: 'quotes',
-        markdownUrl: 'https://raw.githubusercontent.com/wiki/romitagl/www/Quotes.md',
-        contentElementId: 'quotes-content',
-        updatedElementId: 'quotes-updated',
-        refreshButtonId: 'refresh-quotes'
-      });
-    }
-
-    function initResources() {
-      return initWikiContent({
-        contentType: 'resources',
-        markdownUrl: 'https://raw.githubusercontent.com/wiki/romitagl/www/Resources.md',
-        contentElementId: 'resources-content',
-        updatedElementId: 'resources-updated',
-        refreshButtonId: 'refresh-resources'
-      });
-    }
-
-    function initTutorials() {
-      // For future implementation - currently does nothing but maintains the structure
-      document.getElementById('tutorials-updated').innerHTML = 'Coming soon...';
-    }
-
-    // Tab initialization
-    document.addEventListener("DOMContentLoaded", function() {
-      // Track initialized tabs to avoid duplicate initializations
-      window.initializedTabs = {};
-      
-      // Tab functionality
-      const tabItems = document.querySelectorAll('.tab-item');
-      const tabContents = document.querySelectorAll('.tab-content');
-      
-      tabItems.forEach(item => {
-        item.addEventListener('click', function() {
-          // Remove active class from all tabs and contents
-          tabItems.forEach(tab => tab.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
-          
-          // Add active class to clicked tab
-          this.classList.add('active');
-          
-          // Show corresponding content
-          const tabId = this.getAttribute('data-tab');
-          document.getElementById(tabId).classList.add('active');
-          
-          // Initialize content if not already initialized
-          if (!window.initializedTabs[tabId]) {
-            if (tabId === 'quotes') {
-              initQuotes();
-            } else if (tabId === 'resources') {
-              initResources();
-            } else if (tabId === 'tutorials') {
-              initTutorials();
-            }
-            window.initializedTabs[tabId] = true;
-          }
-        });
-      });
-      
-      // Initialize the active tab on page load
-      const activeTab = document.querySelector('.tab-item.active');
-      if (activeTab) {
-        const tabId = activeTab.getAttribute('data-tab');
-        if (tabId === 'quotes') {
-          initQuotes();
-        } else if (tabId === 'resources') {
-          initResources();
-        } else if (tabId === 'tutorials') {
-          initTutorials();
         }
-        window.initializedTabs[tabId] = true;
-      } else {
-        // Default to initializing quotes if no tab is active
-        document.querySelector('[data-tab="quotes"]').classList.add('active');
-        document.getElementById('quotes').classList.add('active');
-        initQuotes();
-        window.initializedTabs['quotes'] = true;
-      }
-    });
     </script>
 </body>
+
 </html>
