@@ -114,6 +114,14 @@ nav {
     width: 100%;
 }
 
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
 /* Hide mobile menu button by default */
 .mobile-menu-btn {
     display: none;
@@ -385,32 +393,32 @@ nav {
     transform: scale(1.05);
 }
 
-/* Improved Footer Styles */
+/* Footer Styles */
 footer {
     background: rgba(0, 0, 0, 0.3);
     padding: 50px 0 20px;
     position: relative;
-  }
-  
-  .footer-grid {
+}
+
+.footer-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     max-width: 900px;
     margin: 0 auto 40px;
-  }
-  
-  .footer-links-section h3,
-  .footer-sponsor-section h3 {
+}
+
+.footer-links-section h3,
+.footer-sponsor-section h3 {
     color: var(--text-light);
     margin-bottom: 20px;
     font-size: 1.3rem;
     position: relative;
     padding-bottom: 10px;
-  }
-  
-  .footer-links-section h3::after,
-  .footer-sponsor-section h3::after {
+}
+
+.footer-links-section h3::after,
+.footer-sponsor-section h3::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -418,51 +426,51 @@ footer {
     width: 40px;
     height: 2px;
     background-color: var(--primary-color);
-  }
-  
-  .footer-links {
+}
+
+.footer-links {
     list-style: none;
     padding: 0;
-  }
-  
-  .footer-links li {
+}
+
+.footer-links li {
     margin-bottom: 10px;
-  }
-  
-  .footer-links a {
+}
+
+.footer-links a {
     color: var(--text-muted);
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-block;
-  }
-  
-  .footer-links a:hover {
+}
+
+.footer-links a:hover {
     color: var(--primary-color);
     transform: translateX(5px);
-  }
-  
-  .footer-support-text {
+}
+
+.footer-support-text {
     color: var(--text-muted);
     margin-bottom: 20px;
     line-height: 1.6;
-  }
-  
-  .footer-support-text a {
+}
+
+.footer-support-text a {
     color: var(--primary-color);
     text-decoration: none;
     transition: all 0.3s ease;
-  }
-  
-  .footer-support-text a:hover {
+}
+
+.footer-support-text a:hover {
     text-decoration: underline;
-  }
-  
-  .sponsor-button-wrapper {
+}
+
+.sponsor-button-wrapper {
     display: flex;
     align-items: center;
-  }
-  
-  .footer-copyright {
+}
+
+.footer-copyright {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
@@ -470,30 +478,269 @@ footer {
     font-size: 0.9rem;
     max-width: 900px;
     margin: 0 auto;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-      padding: 0 20px;
-    }
-    
-    .footer-sponsor-section {
-      text-align: left;
-    }
-    
-    .sponsor-button-wrapper {
-      justify-content: flex-start;
-    }
-    
-    .footer-copyright {
-      padding: 20px;
-    }
-  }
+}
 
-/* Responsive Styles */
+/* Wiki Styles */
+/* Tab styles */
+.tabs-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.tabs-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-item {
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    color: var(--text-light);
+}
+
+.tab-item:hover {
+    color: var(--primary-color);
+}
+
+.tab-item.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Wiki content styling */
+.wiki-section {
+    padding: 50px 0;
+    text-align: left;
+}
+
+.wiki-container {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.wiki-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.wiki-header h2 {
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.wiki-header p {
+    color: var(--text-muted);
+}
+
+.content-loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+/* Content container styles */
+.quotes-container, 
+.resources-container {
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Heading styles */
+.quotes-container h1, 
+.quotes-container h2, 
+.quotes-container h3,
+.resources-container h1, 
+.resources-container h2, 
+.resources-container h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    text-align: left;
+}
+
+.quotes-container h1, 
+.resources-container h1 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.quotes-container h2, 
+.resources-container h2 {
+    font-size: 1.5em;
+}
+
+.quotes-container h3, 
+.resources-container h3 {
+    font-size: 1.3em;
+    color: var(--primary-color);
+}
+
+/* Paragraph styles */
+.quotes-container p,
+.resources-container p {
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    text-align: left;
+}
+
+/* List styles */
+.quotes-container ul, 
+.quotes-container ol,
+.resources-container ul, 
+.resources-container ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    text-align: left;
+}
+
+.quotes-container li, 
+.resources-container li {
+    margin-bottom: 8px;
+}
+
+/* Link styles */
+.quotes-container a, 
+.resources-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.quotes-container a:hover, 
+.resources-container a:hover {
+    text-decoration: underline;
+}
+
+/* Image styles */
+.quotes-container img, 
+.resources-container img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin: 15px 0;
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
+    /* Add fallback for broken images */
+    background-color: rgba(0,0,0,0.1);
+    min-height: 200px;
+}
+
+/* Fallback for broken images */
+.quotes-container img:before, 
+.resources-container img:before {
+    content: 'Image not available';
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    color: var(--text-muted);
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Blockquote styles */
+.quotes-container blockquote, 
+.resources-container blockquote {
+    background-color: rgba(30, 30, 30, 0.6);
+    border-left: 4px solid var(--primary-color);
+    margin: 20px 0;
+    padding: 15px 20px;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+/* Code styles */
+.quotes-container code, 
+.resources-container code {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    color: var(--text-light);
+}
+
+.quotes-container pre, 
+.resources-container pre {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.quotes-container pre code, 
+.resources-container pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Last updated info */
+.last-updated {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 40px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Refresh button */
+.refresh-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: rgba(30, 30, 30, 0.6);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+}
+
+.refresh-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.refresh-button i {
+    margin-right: 6px;
+}
+
+/* Responsive styles */
 @media (max-width: 992px) {
     .hero {
         flex-direction: column;
@@ -558,6 +805,24 @@ footer {
     .section-title h2 {
         font-size: 1.8rem;
     }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .footer-sponsor-section {
+        text-align: left;
+    }
+    
+    .sponsor-button-wrapper {
+        justify-content: flex-start;
+    }
+    
+    .footer-copyright {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -567,207 +832,7 @@ footer {
     }
 }
 
-/* Wiki Styles */
-/* Tab styles */
-.tabs-container {
-    width: 100%;
-    margin: 20px 0;
-}
-
-.tabs-nav {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.tab-item {
-    padding: 12px 24px;
-    cursor: pointer;
-    font-weight: 500;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s ease;
-    color: var(--text-light);
-}
-
-.tab-item:hover {
-    color: var(--primary-color);
-}
-
-.tab-item.active {
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--primary-color);
-}
-
-.tab-content {
-    display: none;
-    padding: 20px 0;
-}
-
-.tab-content.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Wiki content styling */
-.wiki-section {
-    padding: 50px 0;
-}
-
-.wiki-container {
-    background-color: var(--card-bg);
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    margin-bottom: 40px;
-    border: 1px solid var(--border-color);
-}
-
-.wiki-header {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.wiki-header h2 {
-    color: var(--text-light);
-    margin-bottom: 10px;
-}
-
-.wiki-header p {
-    color: var(--text-muted);
-}
-
-.content-loading {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-muted);
-}
-
-/* Quote styling */
-.quotes-container blockquote {
-    background-color: rgba(30, 30, 30, 0.6);
-    border-left: 4px solid var(--primary-color);
-    margin: 20px 0;
-    padding: 15px 20px;
-    font-style: italic;
-    color: var(--text-light);
-}
-
-.quotes-container h1, 
-.quotes-container h2, 
-.quotes-container h3 {
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: var(--text-light);
-}
-
-.quotes-container h1 {
-    font-size: 1.8em;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-}
-
-.quotes-container h2 {
-    font-size: 1.5em;
-}
-
-.quotes-container h3 {
-    font-size: 1.3em;
-    color: var(--primary-color);
-}
-
-.quotes-container p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: var(--text-muted);
-}
-
-.quotes-container ul, 
-.quotes-container ol {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    color: var(--text-muted);
-}
-
-.quotes-container li {
-    margin-bottom: 8px;
-}
-
-.quotes-container code {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-family: monospace;
-    color: var(--text-light);
-}
-
-.quotes-container a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.quotes-container a:hover {
-    text-decoration: underline;
-}
-
-.quotes-container img {
-    max-width: 100%;
-    border-radius: 4px;
-    margin: 15px 0;
-}
-
-/* Last updated info */
-.last-updated {
-    font-size: 0.85em;
-    color: var(--text-muted);
-    margin-top: 40px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-}
-
-/* Refresh button */
-.refresh-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-    background-color: rgba(30, 30, 30, 0.6);
-    color: var(--text-light);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease;
-    margin-left: 10px;
-}
-
-.refresh-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.refresh-button i {
-    margin-right: 6px;
-}
-
-/* Add a subtle highlight to indicate which page/section is active */
-.nav-links a.active {
-    color: var(--primary-color);
-}
-
-.nav-links a.active::after {
-    width: 100%;
-}
-
-/* Mobile menu JavaScript functionality */
-/* Add this if you want the menu to toggle with JavaScript */
+/* Initialize mobile menu behavior */
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
