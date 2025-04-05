@@ -32,7 +32,7 @@ jobs:
           mkdir -p $DEPLOY_DIR
           cp *.html $DEPLOY_DIR/
           cp *.js $DEPLOY_DIR/
-          cp *.css $DEPLOY_DIR/
+          cp -r css $DEPLOY_DIR/
           cp -r assets $DEPLOY_DIR/
           cp -r public $DEPLOY_DIR/
           # advertising files
