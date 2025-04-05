@@ -33,6 +33,7 @@
         <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
         <ul class="nav-links">
           <li><a href="${isIndex ? '#tools' : 'index.html#tools'}" class="${isActive(null, '#tools') ? 'active' : ''}">Tools</a></li>
+          <li><a href="https://web-tools.romitagl.com/" target="_blank">Web Tools</a></li>
           <li><a href="wiki.html" class="${isActive('wiki.html') ? 'active' : ''}">Wiki</a></li>
           <li><a href="about.html" class="${isActive('about.html') ? 'active' : ''}">About</a></li>
         </ul>
@@ -49,6 +50,7 @@
           <div class="footer-links-section">
             <h3>Quick Links</h3>
             <ul class="footer-links">
+              <li><a href="https://web-tools.romitagl.com/">Web Tools</a></li>
               <li><a href="about.html">Get In Touch</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
               <!-- <li><a href="/terms-of-service">Terms of Service</a></li> -->
@@ -58,7 +60,7 @@
           <div class="footer-sponsor-section">
             <h3>Support</h3>
             <p class="footer-support-text">
-              If you like this tool, please star the repository on
+              If you like these tools, please star the repository on
               <a href="https://github.com/romitagl/www" target="_blank">GitHub</a>
               and consider sponsoring me.
             </p>
@@ -69,7 +71,7 @@
         </div>
         
         <div class="footer-copyright">
-          <p>&copy; 2025 romitagl.com. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} romitagl.com. All rights reserved.</p>
         </div>
       </footer>
     `;
@@ -78,7 +80,7 @@
     const simpleFooterComponent = `
       <footer>
         <div class="footer-bottom">
-          <p>&copy; 2025 romitagl.com. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} romitagl.com. All rights reserved.</p>
         </div>
       </footer>
     `;

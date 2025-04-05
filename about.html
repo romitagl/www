@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - romitagl.com</title>
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="styles.css">
+    <title>About romitagl.com - Free Web Tools & Resources</title>
+    <meta name="description" content="Learn more about romitagl.com and the privacy-focused web tools available for free. All tools run directly in your browser without server processing.">
+    <meta name="keywords" content="romitagl, web tools, privacy, client-side processing, browser-based tools">
+    <!-- Link to the external CSS files -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about-page.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="About romitagl.com - Free Web Tools & Resources">
+    <meta property="og:description" content="Learn more about romitagl.com and the privacy-focused web tools available for free. All tools run directly in your browser without server processing.">
+    <meta property="og:image" content="https://romitagl.com/images/og-image.jpg">
+    <meta property="og:url" content="https://romitagl.com/about.html">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://romitagl.com/about.html">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
     <div class="container">
@@ -20,26 +32,61 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>About romitagl.com</h1>
-                <p>Romitagl.com is my personal website and platform dedicated to providing web tools and resources. My mission is to support developers by offering free utilities that simplify common tasks and enhance productivity. I believe in the power of open-source and community-driven projects, which is why I share our tools and projects openly.</p>
-                <p>I'm passionate about coding and committed to delivering high-quality solutions. I continuously work on improving our tools and expanding our portfolio to meet the evolving needs of the web development community.</p>
-            </div>
-            <!-- About content goes here -->
-        </section>
-        
-        <!-- Hero section for "Contact Us" title -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Contact Me</h1>
-                <p>For any inquiries, feedback, or issues, please open a GitHub issue on our repository.</p>
-                <div class="hero-buttons">
-                    <a class="btn btn-primary" href="https://github.com/romitagl/www/issues" target="_blank">
-                        <i class="fab fa-github"></i> Open a GitHub Issue
-                    </a>
-                </div>
+                <p>Romitagl.com is my personal website and platform dedicated to providing free, privacy-focused web tools and resources. My mission is to support developers, businesses, and everyday users by offering utilities that simplify common tasks and enhance productivity - all without compromising privacy.</p>
+                <p>I believe in the power of open-source and community-driven projects, which is why I share my tools and projects openly on <a href="https://github.com/romitagl" target="_blank">GitHub</a>.</p>
             </div>
             <div class="hero-image">
-                <!-- Placeholder image (you can replace this with your own image) -->
-                <img src="assets/images/contact.svg" alt="Contact Us Image">
+                <img src="assets/images/contact.svg" alt="About illustration" onerror="this.src='https://api.lorem.space/image/abstract?w=400&h=300'">
+            </div>
+        </section>
+        
+        <!-- Tools Philosophy Section -->
+        <section class="content-section">
+            <h2>Our Tools Philosophy</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>All our tools perform processing directly in your browser. Your files and data never leave your device, ensuring maximum privacy and security.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Open Source</h3>
+                    <p>Our code is transparent and available for inspection on GitHub. You can verify exactly how your data is being processed or even contribute improvements.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Free Forever</h3>
+                    <p>All tools are completely free to use without any hidden costs, premium features, or usage limitations. No account required, no strings attached.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>Contact Me</h2>
+            <p>For bug reports, feature requests, or any other inquiries, please use one of the following channels:</p>
+            
+            <div class="contact-options">
+                <div class="contact-option">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub Issues</h3>
+                    <p>The best way to report bugs or request features is through GitHub Issues.</p>
+                    <a href="https://github.com/romitagl/www/issues" class="contact-link" target="_blank">Open an Issue</a>
+                </div>
+
+                <div class="contact-option">
+                    <i class="fas fa-heart"></i>
+                    <h3>Support</h3>
+                    <p>If you find these tools useful, consider supporting their development.</p>
+                    <a href="https://github.com/sponsors/romitagl" class="contact-link" target="_blank">Sponsor on GitHub</a>
+                </div>
             </div>
         </section>
 

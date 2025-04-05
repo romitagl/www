@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
           "url": "https://romitagl.com/",
           "name": "Essential Web Tools & Resources - romitagl.com",
-          "description": "Free, private web tools including PDF merging, QR code generation, subnet calculation, code formatting & more. All processing happens client-side for maximum privacy.",
+          "description": "Free, private web tools including PDF merging, QR code generation, video speed control, subnet calculation, code formatting & more. All processing happens client-side for maximum privacy.",
           "potentialAction": {
             "@type": "SearchAction",
             "target": "https://romitagl.com/?search={search_term_string}",
@@ -43,6 +44,14 @@
             },
             {
               "@type": "SoftwareApplication",
+              "name": "Video Speed Controller",
+              "applicationCategory": "UtilityApplication",
+              "operatingSystem": "Web browser",
+              "description": "Modify video playback speed to create slow-motion or time-lapse effects. Perfect for creating dramatic effects or speeding up tutorials.",
+              "url": "https://web-tools.romitagl.com/video-speed-controller"
+            },
+            {
+              "@type": "SoftwareApplication",
               "name": "CIDR Calculator",
               "applicationCategory": "DeveloperApplication",
               "operatingSystem": "Web browser",
@@ -64,11 +73,19 @@
               "operatingSystem": "Web browser",
               "description": "Convert text or binary data to and from Base64 encoding for web applications and data transfer.",
               "url": "https://web-tools.romitagl.com/base64-encoder-decoder"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "name": "Website Scraper",
+              "applicationCategory": "DeveloperApplication",
+              "operatingSystem": "Web browser",
+              "description": "Archive websites locally by saving HTML, CSS, JavaScript, and images into a downloadable ZIP file.",
+              "url": "https://web-tools.romitagl.com/website-scraper"
             }
           ]
         }
-        </script>
-    <!-- Google tag (gtag.js) -->
+    </script>
+    <!-- Google Analytics (Updated with Google tag) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CP2GH8VHCN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -78,16 +95,16 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Resources & Tools | romitagl.com</title>
+    <title>Free Web Tools & Resources | romitagl.com</title>
     <meta name="description"
-        content="100% free, private web tools for merging PDFs, generating QR codes for hospitality, subnet calculation, code formatting & more. No uploads, all processing happens in your browser.">
+        content="100% free, private web tools for merging PDFs, generating QR codes for hospitality, video speed control, subnet calculation, code formatting & more. No uploads, all processing happens in your browser.">
     <meta name="keywords"
-        content="PDF merger, QR code generator, hospitality QR codes, merge PDFs, image to PDF, Wi-Fi QR codes, CIDR calculator, code formatter, Base64 encoder, privacy-focused tools, no-upload tools, client-side processing">
+        content="PDF merger, QR code generator, hospitality QR codes, WiFi QR code, time-lapse maker, slow motion creator, merge PDFs, image to PDF, CIDR calculator, code formatter, Base64 encoder, website scraper, privacy-focused tools, no-upload tools, client-side processing">
     <meta name="author" content="romitagl.com">
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Web Resources & Tools | romitagl.com">
+    <meta property="og:title" content="Free Web Tools & Resources | romitagl.com">
     <meta property="og:description"
-        content="100% free, private web tools for merging PDFs, generating QR codes for hospitality, subnet calculation, code formatting & more. No uploads, all processing happens in your browser.">
+        content="100% free, private web tools for merging PDFs, generating QR codes for hospitality, video speed control, subnet calculation, code formatting & more. No uploads, all processing happens in your browser.">
     <meta property="og:image" content="https://romitagl.com/images/og-image.jpg">
     <meta property="og:url" content="https://romitagl.com">
     <link rel="canonical" href="https://romitagl.com">
@@ -95,11 +112,11 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AdSense Script - Commented out until approval -->
+    <!-- AdSense Script - Uncomment when approved -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4063137660162927" crossorigin="anonymous"></script> -->
 
     <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
 </head>
@@ -114,7 +131,7 @@
             <div class="hero-content">
                 <h1>Powerful Web Tools & Resources</h1>
                 <p>Discover our collection of 100% client-side web tools designed for maximum privacy. Merge PDFs,
-                    generate QR codes for hospitality, format code, and more - all without uploading your data anywhere.
+                    generate QR codes for hospitality, adjust video speeds, format code, and more - all without uploading your data anywhere.
                 </p>
                 <div class="hero-buttons">
                     <a href="#tools" class="btn btn-primary">Explore Tools</a>
@@ -147,8 +164,8 @@
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>Lightning Fast</h3>
-                    <p>Optimized algorithms ensure quick processing even with large PDF files and high-resolution QR
-                        codes, saving you valuable time.</p>
+                    <p>Optimized algorithms ensure quick processing even with large files and high-resolution media,
+                        saving you valuable time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -221,6 +238,22 @@
                 </div>
             </div>
 
+            <!-- Video Tools -->
+            <h3 style="text-align: center; margin: 50px 0 30px; color: #f4f4f4;">Video Tools</h3>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Video Speed Controller</h3>
+                    <p>Transform your videos by adjusting playback speed. Create dramatic slow-motion effects or speed up footage for time-lapse videos without uploading your content.</p>
+                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
+                        <li>Slow motion effects (0.25x - 0.5x speed)</li>
+                        <li>Fast motion & time-lapse (1.5x - 4x speed)</li>
+                        <li>Multiple output formats (WebM, MP4, GIF)</li>
+                        <li>Complete browser-based processing</li>
+                    </ul>
+                    <a href="https://web-tools.romitagl.com/video-speed-controller">Adjust Video Speed</a>
+                </div>
+            </div>
+
             <!-- QR Code Tools -->
             <h3 style="text-align: center; margin: 50px 0 30px; color: #f4f4f4;">QR Code Generator & Scanner</h3>
             <div class="tools-grid">
@@ -269,7 +302,12 @@
                     <h3>Base64 Encoder/Decoder</h3>
                     <p>Encode and decode text or binary data as Base64. Useful for encoding and decoding data for web
                         applications, APIs, and storage solutions.</p>
-                    <a href="https://web-tools.romitagl.com/base64-encoder-decoder">Try Base64 Encoder/Decoder</a>
+                    <a href="https://web-tools.romitagl.com/base64-encoder-decoder">Try Base64 Tool</a>
+                </div>
+                <div class="tool-card">
+                    <h3>Website Scraper</h3>
+                    <p>Archive websites by saving HTML, CSS, JavaScript, and images into a downloadable ZIP file. Perfect for creating local copies of important resources.</p>
+                    <a href="https://web-tools.romitagl.com/website-scraper">Try Website Scraper</a>
                 </div>
             </div>
         </section>
@@ -318,22 +356,22 @@
                 <div class="tool-card">
                     <h3>Hospitality & Restaurants</h3>
                     <p>Create QR codes for menus, Wi-Fi access, and contact information. Merge PDFs for information
-                        booklets and promotional materials.</p>
+                        booklets and promotional materials. Create slow-motion videos for promotional content.</p>
                 </div>
                 <div class="tool-card">
                     <h3>Educators & Students</h3>
                     <p>Combine multiple PDF documents for course materials. Generate QR codes for quick access to online
-                        resources.</p>
+                        resources. Create time-lapse videos of experiments or processes.</p>
                 </div>
                 <div class="tool-card">
                     <h3>IT Professionals</h3>
                     <p>Use the CIDR calculator for network planning. Format code and manage documentation with our
-                        developer tools.</p>
+                        developer tools. Archive important web resources with the Website Scraper.</p>
                 </div>
                 <div class="tool-card">
                     <h3>Small Businesses</h3>
                     <p>Create professional documentation by merging multiple PDFs. Generate QR codes for marketing
-                        materials and contact information.</p>
+                        materials and contact information. Create engaging speed-adjusted videos for social media.</p>
                 </div>
             </div>
         </section>

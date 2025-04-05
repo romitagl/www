@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://romitagl.com/public/sitemap.xml
+
+# Sitemap for main website
+Sitemap: https://romitagl.com/sitemap.xml
+
+# Reference to web-tools subdomain sitemap
+Sitemap: https://web-tools.romitagl.com/sitemap.xml
