@@ -1,32 +1,68 @@
 // Self-executing function to avoid polluting global namespace
-(function() {
+(function () {
+
+  // Initialize canonical tags
+  function initCanonical() {
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    const currentUrl = window.location.href;
+    const currentPath = window.location.pathname;
+
+    // Only run this in production
+    if (window.location.hostname === 'romitagl.com' && canonicalTag) {
+      // Handle special cases for index.html or root path
+      let correctPath = currentPath;
+      if (currentPath === '/' || currentPath === '/index.html') {
+        correctPath = '/';
+      }
+
+      // Ensure canonical URL has correct domain and path
+      if (!canonicalTag.href.includes('romitagl.com') ||
+        !canonicalTag.href.endsWith(correctPath === '/' ? '' : correctPath)) {
+        console.warn('Canonical URL mismatch. Fixing...');
+        canonicalTag.href = `https://romitagl.com${correctPath}`;
+      }
+
+      // Log for debugging
+      console.log(`Path: ${currentPath}, Canonical: ${canonicalTag.href}`);
+    }
+  }
+
+  // Modify your existing DOMContentLoaded event
+  document.addEventListener('DOMContentLoaded', function () {
+    // Your existing component loading code
+    loadComponents();
+
+    // Add canonical initialization
+    initCanonical();
+  });
+
   // Function to load HTML components
   function loadComponents() {
     // Get the current page filename and hash
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const currentHash = window.location.hash;
     const isIndex = currentPath === '' || currentPath === 'index.html';
-    
+
     // Helper function to determine if a link should be marked as active
     function isActive(linkPath, linkHash) {
       // For index page, check if hash matches
       if (isIndex && linkHash && currentHash === linkHash) {
         return true;
       }
-      
+
       // For other pages, check if path matches
       if (!isIndex && linkPath === currentPath) {
         return true;
       }
-      
+
       // Special case: if we're on index with no hash, highlight the first nav item
       if (isIndex && !currentHash && linkHash === '#features') {
         return true;
       }
-      
+
       return false;
     }
-    
+
     // Navigation component with conditional links based on current page
     const navComponent = `
       <nav>
@@ -75,7 +111,7 @@
         </div>
       </footer>
     `;
-    
+
     // Simple footer component (for pages that need less footer content)
     const simpleFooterComponent = `
       <footer>
@@ -84,12 +120,12 @@
         </div>
       </footer>
     `;
-    
+
     // Find all component placeholders and replace them
     document.querySelectorAll('[data-component]').forEach(element => {
       const componentName = element.getAttribute('data-component');
-      
-      switch(componentName) {
+
+      switch (componentName) {
         case 'navigation':
           element.innerHTML = navComponent;
           break;
@@ -101,36 +137,36 @@
           break;
       }
     });
-    
+
     // Initialize mobile menu toggle after components are loaded
     initMobileMenu();
-    
+
     // Add scroll event listener to update active state on index page
     if (isIndex) {
       window.addEventListener('scroll', updateActiveNavOnScroll);
     }
   }
-  
+
   // Function to update active nav item while scrolling on index page
   function updateActiveNavOnScroll() {
     // Only run this on the index page
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const isIndex = currentPath === '' || currentPath === 'index.html';
     if (!isIndex) return;
-    
+
     // Get all sections that have IDs matching our navigation
     const sections = document.querySelectorAll('#features, #tools');
     const navLinks = document.querySelectorAll('.nav-links a');
-    
+
     // Determine which section is currently most visible
     let currentSectionId = '';
     let maxVisibility = 0;
-    
+
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
       const sectionHeight = rect.height;
       const viewportHeight = window.innerHeight;
-      
+
       // Calculate how much of the section is visible
       let visibleHeight = 0;
       if (rect.top < 0) {
@@ -140,17 +176,17 @@
         // Section top is in viewport
         visibleHeight = Math.min(viewportHeight - rect.top, sectionHeight);
       }
-      
+
       // Convert to percentage of section height
       const visibilityPercentage = (visibleHeight / sectionHeight) * 100;
-      
+
       // Update current section if this one is more visible
       if (visibilityPercentage > maxVisibility) {
         maxVisibility = visibilityPercentage;
         currentSectionId = section.id;
       }
     });
-    
+
     // Update active state of navigation links
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
@@ -161,34 +197,34 @@
       }
     });
   }
-  
+
   // Function to initialize mobile menu functionality
   function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
+
     // Make sure nav-links are visible by default on desktop
     if (window.innerWidth > 768) {
       navLinks.style.display = 'flex';
     }
-    
+
     // Add window resize event listener to handle responsive changes
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       if (window.innerWidth > 768) {
         navLinks.style.display = 'flex';
       } else {
         navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
       }
     });
-    
+
     if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', function() {
+      mobileMenuBtn.addEventListener('click', function () {
         navLinks.classList.toggle('active');
         navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
       });
     }
   }
-  
+
   // Wait for DOM to be fully loaded
   document.addEventListener('DOMContentLoaded', loadComponents);
 })();
