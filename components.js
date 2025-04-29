@@ -1,7 +1,15 @@
 // Self-executing function to avoid polluting global namespace
 (function () {
+  // Initialize when DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    // Load components
+    loadComponents();
+    
+    // Initialize canonical URLs
+    initCanonical();
+  });
 
-  // Initialize canonical tags
+  // Function to set correct canonical URLs
   function initCanonical() {
     const canonicalTag = document.querySelector('link[rel="canonical"]');
     const currentUrl = window.location.href;
@@ -26,15 +34,6 @@
       console.log(`Path: ${currentPath}, Canonical: ${canonicalTag.href}`);
     }
   }
-
-  // Modify your existing DOMContentLoaded event
-  document.addEventListener('DOMContentLoaded', function () {
-    // Your existing component loading code
-    loadComponents();
-
-    // Add canonical initialization
-    initCanonical();
-  });
 
   // Function to load HTML components
   function loadComponents() {
@@ -89,7 +88,6 @@
               <li><a href="https://web-tools.romitagl.com/">Web Tools</a></li>
               <li><a href="about.html">Get In Touch</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
-              <!-- <li><a href="/terms-of-service">Terms of Service</a></li> -->
             </ul>
           </div>
           
@@ -112,15 +110,6 @@
       </footer>
     `;
 
-    // Simple footer component (for pages that need less footer content)
-    const simpleFooterComponent = `
-      <footer>
-        <div class="footer-bottom">
-          <p>&copy; ${new Date().getFullYear()} romitagl.com. All rights reserved.</p>
-        </div>
-      </footer>
-    `;
-
     // Find all component placeholders and replace them
     document.querySelectorAll('[data-component]').forEach(element => {
       const componentName = element.getAttribute('data-component');
@@ -131,9 +120,6 @@
           break;
         case 'footer':
           element.innerHTML = footerComponent;
-          break;
-        case 'simple-footer':
-          element.innerHTML = simpleFooterComponent;
           break;
       }
     });
@@ -224,7 +210,4 @@
       });
     }
   }
-
-  // Wait for DOM to be fully loaded
-  document.addEventListener('DOMContentLoaded', loadComponents);
 })();

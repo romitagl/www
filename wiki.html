@@ -18,12 +18,13 @@
     <link rel="canonical" href="https://romitagl.com/wiki.html" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Font Awesome -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Link to the external CSS file -->
+    <!-- Link to the external CSS files -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/wiki-styles.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
 </head>
@@ -59,7 +60,6 @@
                     <ul class="tabs-nav">
                         <li class="tab-item active" data-tab="quotes">Quotes</li>
                         <li class="tab-item" data-tab="resources">Resources</li>
-                        <!-- <li class="tab-item" data-tab="tutorials">Tutorials</li> -->
                     </ul>
 
                     <!-- Tab Content -->
@@ -100,25 +100,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tutorials Tab (Placeholder with structure for future implementation) -->
-                    <!-- <div id="tutorials" class="tab-content">
-                        <div class="tutorials-container">
-                            <div id="tutorials-header">
-                                <h3>Tutorials & Guides</h3>
-                                <p>Step-by-step tutorials and comprehensive guides on various topics.</p>
-                                <div class="last-updated" id="tutorials-updated">
-                                    Coming soon...
-                                    <button id="refresh-tutorials" class="refresh-button" style="display: none;">
-                                        <i class="fas fa-sync-alt"></i> Refresh
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="tutorials-content" class="content-coming-soon">
-                                <p>Tutorials will be available soon. Check back later!</p>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -131,7 +112,22 @@
     <script>
         // Tab initialization
         document.addEventListener("DOMContentLoaded", function () {
-            // Tab functionality
+            // Global storage for tags and categories
+            window.wikiData = {
+                currentTab: 'quotes',
+                tags: new Set(),
+                categories: new Set()
+            };
+
+            // Initialize tab functionality
+            initTabs();
+
+            // Load the active tab
+            loadActiveTab();
+        });
+
+        // Function to initialize tabs
+        function initTabs() {
             const tabItems = document.querySelectorAll('.tab-item');
             const tabContents = document.querySelectorAll('.tab-content');
 
@@ -148,67 +144,40 @@
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
 
-                    // Initialize content if needed
-                    if (tabId === 'quotes' && !window.quotesInitialized) {
-                        initQuotes();
-                        window.quotesInitialized = true;
-                    } else if (tabId === 'resources' && !window.resourcesInitialized) {
-                        initResources();
-                        window.resourcesInitialized = true;
-                    }
+                    // Update current tab in wikiData
+                    window.wikiData.currentTab = tabId;
+
+                    // Reset tags and categories when switching tabs
+                    window.wikiData.tags = new Set();
+                    window.wikiData.categories = new Set();
+
+                    // Load the tab content
+                    loadWikiContent(tabId);
                 });
             });
+        }
 
-            // Initialize the active tab on page load
+        // Load the active tab
+        function loadActiveTab() {
             const activeTab = document.querySelector('.tab-item.active');
             if (activeTab) {
                 const tabId = activeTab.getAttribute('data-tab');
-                if (tabId === 'quotes') {
-                    initQuotes();
-                    window.quotesInitialized = true;
-                } else if (tabId === 'resources') {
-                    initResources();
-                    window.resourcesInitialized = true;
-                }
+                window.wikiData.currentTab = tabId;
+                loadWikiContent(tabId);
             } else {
-                // Default to initializing quotes if no tab is active
+                // Default to quotes if no tab is active
                 document.querySelector('[data-tab="quotes"]').classList.add('active');
                 document.getElementById('quotes').classList.add('active');
-                initQuotes();
-                window.quotesInitialized = true;
+                window.wikiData.currentTab = 'quotes';
+                loadWikiContent('quotes');
             }
-        });
-
-        // Function for quotes tab
-        function initQuotes() {
-            loadMarkdownContent(
-                'quotes',
-                'https://raw.githubusercontent.com/wiki/romitagl/www/Quotes.md',
-                'quotes-content',
-                'quotes-updated',
-                'refresh-quotes'
-            );
         }
 
-        // Function for resources tab
-        function initResources() {
-            loadMarkdownContent(
-                'resources',
-                'https://raw.githubusercontent.com/wiki/romitagl/www/Resources.md',
-                'resources-content',
-                'resources-updated',
-                'refresh-resources'
-            );
-        }
-
-        // Simple function to load and render markdown content
-        function loadMarkdownContent(contentType, markdownUrl, contentElementId, updatedElementId, refreshButtonId) {
-            const contentElement = document.getElementById(contentElementId);
-            const updatedElement = document.getElementById(updatedElementId);
-            const refreshButton = document.getElementById(refreshButtonId);
-
-            const storageKeyContent = `${contentType}Content`;
-            const storageKeyTimestamp = `${contentType}Timestamp`;
+        // Function to load wiki content
+        function loadWikiContent(contentType) {
+            const contentElement = document.getElementById(`${contentType}-content`);
+            const updatedElement = document.getElementById(`${contentType}-updated`);
+            const refreshButton = document.getElementById(`refresh-${contentType}`);
 
             contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
 
@@ -216,6 +185,10 @@
             if (refreshButton) {
                 refreshButton.style.display = 'inline-flex';
             }
+
+            // Storage key names
+            const storageKeyContent = `${contentType}Content`;
+            const storageKeyTimestamp = `${contentType}Timestamp`;
 
             // Function to format date
             function formatDate(timestamp) {
@@ -236,22 +209,35 @@
             if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
                 // Use cached content
                 try {
-                    // Just use basic marked parsing without custom renderers
-                    contentElement.innerHTML = marked.parse(cachedContent);
-                    updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp);
+                    // Process the cached markdown content
+                    processMarkdownContent(cachedContent, contentType, contentElement);
+
+                    // Update timestamp display
+                    updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                        ` <button id="refresh-${contentType}" class="refresh-button">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>`;
+
+                    // Add event listener to refresh button
+                    document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                        fetchMarkdown(contentType);
+                    });
                 } catch (error) {
                     console.error(`Error parsing cached content: ${error}`);
-                    // Fetch fresh on error
-                    fetchMarkdown();
+                    // Fetch fresh content on error
+                    fetchMarkdown(contentType);
                 }
             } else {
                 // Fetch fresh content
-                fetchMarkdown();
+                fetchMarkdown(contentType);
             }
 
             // Function to fetch markdown from GitHub
-            function fetchMarkdown() {
-                fetch(markdownUrl)
+            function fetchMarkdown(contentType) {
+                // GitHub wiki URL - capitalize first letter of content type for correct file name
+                const githubWikiUrl = `https://raw.githubusercontent.com/wiki/romitagl/www/${contentType.charAt(0).toUpperCase() + contentType.slice(1)}.md`;
+
+                fetch(githubWikiUrl)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -260,8 +246,8 @@
                     })
                     .then(markdown => {
                         try {
-                            // Render markdown
-                            contentElement.innerHTML = marked.parse(markdown);
+                            // Process the markdown content
+                            processMarkdownContent(markdown, contentType, contentElement);
 
                             // Cache the content
                             localStorage.setItem(storageKeyContent, markdown);
@@ -269,9 +255,17 @@
                             localStorage.setItem(storageKeyTimestamp, now);
 
                             // Update timestamp
-                            updatedElement.innerHTML = 'Last updated: ' + formatDate(now);
+                            updatedElement.innerHTML = 'Last updated: ' + formatDate(now) +
+                                ` <button id="refresh-${contentType}" class="refresh-button">
+                                    <i class="fas fa-sync-alt"></i> Refresh
+                                </button>`;
+
+                            // Add event listener to refresh button
+                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                                fetchMarkdown(contentType);
+                            });
                         } catch (error) {
-                            console.error(`Error parsing markdown: ${error}`);
+                            console.error(`Error processing markdown: ${error}`);
                             contentElement.innerHTML = `<p>Error parsing content. Please try again later.</p>`;
                         }
                     })
@@ -280,31 +274,228 @@
 
                         // Try to use cached content as fallback
                         if (cachedContent) {
-                            contentElement.innerHTML = marked.parse(cachedContent);
+                            processMarkdownContent(cachedContent, contentType, contentElement);
                             updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
-                                ' <span style="color: #e74c3c;">(Offline mode)</span>';
+                                ' <span style="color: #e74c3c;">(Offline mode)</span>' +
+                                ` <button id="refresh-${contentType}" class="refresh-button">
+                                    <i class="fas fa-sync-alt"></i> Retry
+                                </button>`;
+
+                            // Add event listener to refresh button
+                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                                fetchMarkdown(contentType);
+                            });
                         } else {
                             contentElement.innerHTML = `<p>Failed to load content. Please check your connection.</p>`;
                         }
                     });
             }
+        }
 
-            // Add refresh button functionality
-            if (refreshButton) {
-                refreshButton.addEventListener('click', function () {
-                    // Show loading state
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
-                    this.disabled = true;
+        // Process markdown content
+        function processMarkdownContent(markdown, contentType, contentElement) {
+            // Parse the markdown into sections
+            const sections = parseMarkdownToSections(markdown);
 
-                    // Fetch fresh content
-                    fetchMarkdown();
+            // Reset tags and categories for this content type
+            window.wikiData.tags = new Set();
+            window.wikiData.categories = new Set();
 
-                    // Reset button after delay
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
-                        this.disabled = false;
-                    }, 1000);
+            // Create HTML for sections
+            let contentHtml = '';
+
+            sections.forEach((section, index) => {
+                // Add section title to categories
+                if (section.title) {
+                    window.wikiData.categories.add(section.title);
+                }
+
+                // Extract tags from content
+                extractTags(section.content);
+
+                // Format content with proper HTML and image handling
+                const formattedContent = formatContentWithImagesAndTags(section.content);
+
+                // Create collapsible section
+                const isFirstSection = index === 0;
+                contentHtml += `
+                <div class="content-section">
+                    <div class="section-header" data-section="${index}">
+                        <h3>
+                            <span class="category-icon">${section.title ? section.title.charAt(0) : 'X'}</span>
+                            ${section.title || 'Uncategorized'}
+                        </h3>
+                        <button class="toggle-section"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
+                    </div>
+                    <div class="section-content ${isFirstSection ? 'expanded' : ''}" id="section-${contentType}-${index}">
+                        <div class="content-block">
+                            ${formattedContent}
+                        </div>
+                    </div>
+                </div>`;
+            });
+
+            // Update content element
+            contentElement.innerHTML = contentHtml || `<p>No ${contentType} content available.</p>`;
+
+            // Initialize section toggles after content is loaded
+            initSectionToggles();
+        }
+
+        // Parse markdown into sections based on ## headings
+        function parseMarkdownToSections(markdown) {
+            const sections = [];
+            let currentSectionTitle = '';
+            let currentSectionContent = '';
+            let inFirstSection = true;
+
+            const lines = markdown.split('\n');
+
+            // Process line by line
+            lines.forEach(line => {
+                // Check for section headings (## heading)
+                if (line.startsWith('## ')) {
+                    // If we have content already, push it as a section
+                    if (inFirstSection) {
+                        inFirstSection = false;
+                    } else if (currentSectionContent.trim()) {
+                        sections.push({
+                            title: currentSectionTitle || 'Uncategorized',
+                            content: currentSectionContent.trim()
+                        });
+                    }
+
+                    // Start a new section
+                    currentSectionTitle = line.substring(3).trim();
+                    currentSectionContent = '';
+                } else {
+                    // Add to current section content
+                    currentSectionContent += line + '\n';
+                }
+            });
+
+            // Add the last section
+            if (currentSectionContent.trim()) {
+                sections.push({
+                    title: currentSectionTitle || 'Uncategorized',
+                    content: currentSectionContent.trim()
                 });
+            }
+
+            return sections;
+        }
+
+        // Extract tags from content and add to global tags set
+        function extractTags(content) {
+            const tagRegex = /#([a-zA-Z0-9]+)/g;
+            let match;
+            while ((match = tagRegex.exec(content)) !== null) {
+                if (match[1]) {
+                    window.wikiData.tags.add(match[1].toLowerCase());
+                }
+            }
+        }
+
+        // Function to format content with proper HTML, handling images and tags
+        function formatContentWithImagesAndTags(content) {
+            // Handle GitHub hosted images first
+            content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
+                '<img src="$2" alt="$1" class="wiki-image">$3');
+
+            // Handle subsection headers (###)
+            content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+
+            // Format lists
+            content = content.replace(/^\*\s+(.+)$/gm, '<li>$1</li>');
+            content = content.replace(/^-\s+(.+)$/gm, '<li>$1</li>');
+
+            // Group list items
+            content = content.replace(/(<li>.*<\/li>[\n\r]*)+/g, function (match) {
+                return '<ul>' + match + '</ul>';
+            });
+
+            // Format sublists (indented by spaces or tab)
+            content = content.replace(/^(\s{2,4}|\t)-\s+(.+)$/gm, '<li class="sublist">$2</li>');
+
+            // Format blockquotes
+            content = content.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
+
+            // Format links
+            content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // Format inline code
+            content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // Format bold text
+            content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+            // Format italic text
+            content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+            // Convert hashtags to styled tags
+            content = content.replace(/#([a-zA-Z0-9]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
+
+            // Convert paragraphs (empty lines)
+            content = content.replace(/\n\n/g, '</p><p>');
+
+            // Wrap with paragraph tags if not already wrapped
+            if (!content.startsWith('<p>')) {
+                content = '<p>' + content + '</p>';
+            }
+
+            // Fix any doubled paragraph tags
+            content = content.replace(/<\/p><p><\/p><p>/g, '</p><p>');
+
+            return content;
+        }
+
+        // Initialize section toggle functionality
+        function initSectionToggles() {
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.addEventListener('click', function (e) {
+                    // Skip if toggle button was clicked directly (it has its own handler)
+                    if (e.target.closest('.toggle-section')) {
+                        return;
+                    }
+
+                    toggleSection(this);
+                });
+
+                // Add toggle button handler
+                const toggleButton = header.querySelector('.toggle-section');
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', function (e) {
+                        e.stopPropagation(); // Prevent triggering parent click event
+                        toggleSection(header);
+                    });
+                }
+            });
+
+            // Add click handlers to content tags
+            document.querySelectorAll('.content-tag').forEach(tag => {
+                tag.addEventListener('click', function () {
+                    const tagName = this.getAttribute('data-tag');
+                    console.log('Tag clicked:', tagName);
+                    // Here you would implement your tag filtering functionality
+                });
+            });
+        }
+
+        // Toggle section expanded/collapsed state
+        function toggleSection(header) {
+            const sectionId = header.getAttribute('data-section');
+            const tabId = window.wikiData.currentTab;
+            const contentDiv = document.getElementById(`section-${tabId}-${sectionId}`);
+            const toggleIcon = header.querySelector('.toggle-section i');
+
+            if (contentDiv) {
+                contentDiv.classList.toggle('expanded');
+
+                if (contentDiv.classList.contains('expanded')) {
+                    toggleIcon.className = 'fas fa-chevron-up';
+                } else {
+                    toggleIcon.className = 'fas fa-chevron-down';
+                }
             }
         }
     </script>
