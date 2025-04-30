@@ -63,6 +63,8 @@
                     </ul>
 
                     <!-- Tab Content -->
+
+                    <!-- Tab Content -->
                     <div id="quotes" class="tab-content active">
                         <div class="quotes-container">
                             <div id="quotes-header">
@@ -116,11 +118,22 @@
             window.wikiData = {
                 currentTab: 'quotes',
                 tags: new Set(),
-                categories: new Set()
+                categories: new Set(),
+                activeFilters: {
+                    quotes: new Set(),
+                    resources: new Set()
+                },
+                tagCounts: {
+                    quotes: {},
+                    resources: {}
+                }
             };
 
             // Initialize tab functionality
             initTabs();
+
+            // Initialize tag filter
+            initTagFilter();
 
             // Load the active tab
             loadActiveTab();
@@ -147,7 +160,7 @@
                     // Update current tab in wikiData
                     window.wikiData.currentTab = tabId;
 
-                    // Reset tags and categories when switching tabs
+                    // Reset tags for new tab
                     window.wikiData.tags = new Set();
                     window.wikiData.categories = new Set();
 
@@ -340,6 +353,15 @@
 
             // Initialize section toggles after content is loaded
             initSectionToggles();
+
+            // Count tag occurrences and update tag filter
+            countTagOccurrences();
+            renderTagFilter();
+
+            // Apply any existing filters for this tab
+            if (window.wikiData.activeFilters[contentType].size > 0) {
+                applyTagFilters();
+            }
         }
 
         // Parse markdown into sections based on ## headings
@@ -475,8 +497,7 @@
             document.querySelectorAll('.content-tag').forEach(tag => {
                 tag.addEventListener('click', function () {
                     const tagName = this.getAttribute('data-tag');
-                    console.log('Tag clicked:', tagName);
-                    // Here you would implement your tag filtering functionality
+                    toggleTagFilter(tagName);
                 });
             });
         }
@@ -497,6 +518,279 @@
                     toggleIcon.className = 'fas fa-chevron-down';
                 }
             }
+        }
+
+        // -- Tag Filter Functionality -- //
+
+        // Function to initialize the tag filter
+        function initTagFilter() {
+            // Make sure tag container exists
+            const containerExists = document.getElementById('tag-filter-container');
+            if (!containerExists) {
+                // Insert tag filter container after the tab navigation but before the tab content
+                const tabsContainer = document.querySelector('.tabs-container');
+                const tabContent = document.querySelector('.tab-content');
+
+                if (tabsContainer && tabContent) {
+                    const filterContainer = document.createElement('div');
+                    filterContainer.innerHTML = `
+<div class="tag-filter-container" id="tag-filter-container" style="display:none;">
+    <div class="tag-filter-header" id="tag-filter-header">
+        <h4>Filter by Tags <span class="tag-filter-collapse">(<span id="filter-tag-count">0</span> tags)</span></h4>
+        <div class="tag-filter-actions">
+            <button class="tag-filter-action" id="clear-tag-filters">Clear Filters</button>
+            <i class="fas fa-chevron-down" id="filter-toggle-icon" style="color: var(--primary-color);"></i>
+        </div>
+    </div>
+    <div class="tag-filter-content">
+        <div class="tag-list" id="tag-list">
+            <!-- Tags will be dynamically inserted here -->
+        </div>
+        <div class="filter-info" id="filter-info"></div>
+    </div>
+</div>`;
+
+                    // Insert before the first tab content
+                    tabContent.parentNode.insertBefore(filterContainer.firstElementChild, tabContent);
+
+                    // Add event listener for the clear filters button
+                    document.getElementById('clear-tag-filters').addEventListener('click', function (e) {
+                        e.stopPropagation(); // Prevent toggling the container
+                        clearTagFilters();
+                    });
+
+                    // Add event listener for toggling the filter container
+                    document.getElementById('tag-filter-header').addEventListener('click', toggleTagFilterContainer);
+                }
+            }
+        }
+
+        // Toggle the tag filter container visibility
+        function toggleTagFilterContainer() {
+            const container = document.getElementById('tag-filter-container');
+            const toggleIcon = document.getElementById('filter-toggle-icon');
+
+            if (container) {
+                container.classList.toggle('expanded');
+
+                // Update the icon
+                if (container.classList.contains('expanded')) {
+                    toggleIcon.className = 'fas fa-chevron-up';
+                } else {
+                    toggleIcon.className = 'fas fa-chevron-down';
+                }
+            }
+        }
+
+        // Function to clear all active tag filters
+        function clearTagFilters() {
+            const currentTab = window.wikiData.currentTab;
+            window.wikiData.activeFilters[currentTab].clear();
+            renderTagFilter();
+            applyTagFilters();
+        }
+
+        // Function to build and display tag filter
+        function renderTagFilter() {
+            const currentTab = window.wikiData.currentTab;
+            const tagList = document.getElementById('tag-list');
+            const filterContainer = document.getElementById('tag-filter-container');
+            const filterInfo = document.getElementById('filter-info');
+            const tagCountElement = document.getElementById('filter-tag-count');
+            const tagFilterCollapse = document.querySelector('.tag-filter-collapse');
+
+            // No tags to show
+            if (!window.wikiData.tags || window.wikiData.tags.size === 0) {
+                filterContainer.style.display = 'none';
+                return;
+            }
+
+            // Show the filter container
+            filterContainer.style.display = 'block';
+
+            // Clear existing tags
+            tagList.innerHTML = '';
+
+            // Get the active filters for the current tab
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+
+            // Sort tags alphabetically
+            const sortedTags = Array.from(window.wikiData.tags).sort();
+
+            // Count valid tags (those with occurrences)
+            let validTagCount = 0;
+
+            // Create tag pills
+            sortedTags.forEach(tag => {
+                // Get tag count
+                const count = window.wikiData.tagCounts[currentTab][tag] || 0;
+                if (count === 0) return; // Skip tags with no occurrences
+
+                validTagCount++;
+
+                const tagPill = document.createElement('div');
+                tagPill.className = 'tag-pill';
+                if (activeFilters.has(tag)) {
+                    tagPill.classList.add('active');
+                }
+
+                tagPill.innerHTML = `#${tag} <span class="tag-count">${count}</span>`;
+                tagPill.setAttribute('data-tag', tag);
+
+                // Add click event for filtering
+                tagPill.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent event bubbling up to container toggle
+                    toggleTagFilter(tag);
+                });
+
+                tagList.appendChild(tagPill);
+            });
+
+            // Update tag count
+            if (tagCountElement) {
+                tagCountElement.textContent = validTagCount;
+
+                // Show the tag count and collapse indicator
+                if (validTagCount > 0) {
+                    tagFilterCollapse.style.display = 'inline';
+                } else {
+                    tagFilterCollapse.style.display = 'none';
+                }
+            }
+
+            // Update filter info text
+            if (activeFilters.size > 0) {
+                filterInfo.textContent = `Showing content with tags: ${Array.from(activeFilters).map(t => '#' + t).join(', ')}`;
+
+                // Auto-expand the container when filters are active
+                const filterContainer = document.getElementById('tag-filter-container');
+                if (filterContainer && !filterContainer.classList.contains('expanded')) {
+                    toggleTagFilterContainer();
+                }
+            } else {
+                filterInfo.textContent = 'Click on tags to filter content';
+            }
+        }
+
+        // Toggle a tag in the filter
+        function toggleTagFilter(tag) {
+            const currentTab = window.wikiData.currentTab;
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+
+            if (activeFilters.has(tag)) {
+                activeFilters.delete(tag);
+            } else {
+                activeFilters.add(tag);
+            }
+
+            renderTagFilter();
+            applyTagFilters();
+        }
+
+        // Apply the active filters to the content
+        function applyTagFilters() {
+            const currentTab = window.wikiData.currentTab;
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+            const contentSections = document.querySelectorAll(`#${currentTab} .content-section`);
+
+            // If no active filters, show all sections
+            if (activeFilters.size === 0) {
+                contentSections.forEach(section => {
+                    section.classList.remove('filtered-out');
+
+                    // Remove any highlight styling
+                    const highlightedTags = section.querySelectorAll('.highlighted-tag');
+                    highlightedTags.forEach(el => {
+                        // Replace with the original tag content
+                        el.outerHTML = el.innerHTML;
+                    });
+                });
+                return;
+            }
+
+            // Check each section for matches
+            let matchFound = false;
+
+            contentSections.forEach(section => {
+                const sectionContent = section.querySelector('.section-content');
+                const contentText = sectionContent.textContent.toLowerCase();
+                let keepSection = false;
+
+                // Check if section contains any active tags
+                for (let tag of activeFilters) {
+                    if (contentText.includes('#' + tag.toLowerCase())) {
+                        keepSection = true;
+                        break; // One match is enough to keep the section
+                    }
+                }
+
+                // Set visibility based on filter match
+                if (keepSection) {
+                    section.classList.remove('filtered-out');
+                    matchFound = true;
+
+                    // Highlight the matching tags
+                    highlightMatchingTags(sectionContent, activeFilters);
+                } else {
+                    section.classList.add('filtered-out');
+                }
+            });
+
+            // Show "no results" message if needed
+            const noResultsEl = document.getElementById(`no-results-${currentTab}`);
+
+            if (!matchFound) {
+                if (!noResultsEl) {
+                    const contentElement = document.getElementById(`${currentTab}-content`);
+                    const noResults = document.createElement('div');
+                    noResults.id = `no-results-${currentTab}`;
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No content matches the selected tags. Try selecting different tags or clearing filters.';
+                    contentElement.appendChild(noResults);
+                } else {
+                    noResultsEl.style.display = 'block';
+                }
+            } else if (noResultsEl) {
+                noResultsEl.style.display = 'none';
+            }
+        }
+
+        // Highlight matching tags in the content
+        function highlightMatchingTags(container, activeFilters) {
+            // First, remove any existing highlights
+            container.querySelectorAll('.content-tag').forEach(link => {
+                // Remove highlight class from all tag links
+                link.classList.remove('tag-highlighted');
+            });
+
+            // Find and highlight tags in the content
+            const tagLinks = container.querySelectorAll('a.content-tag');
+            tagLinks.forEach(link => {
+                const tagName = link.getAttribute('data-tag');
+                if (activeFilters.has(tagName)) {
+                    // Add a class to the link itself
+                    link.classList.add('tag-highlighted');
+                }
+            });
+        }
+
+        // Count occurrences of each tag in the content
+        function countTagOccurrences() {
+            const currentTab = window.wikiData.currentTab;
+            const tagCounts = {};
+
+            // Find all tag links in the current tab content
+            const tagLinks = document.querySelectorAll(`#${currentTab} a.content-tag`);
+
+            tagLinks.forEach(link => {
+                const tag = link.getAttribute('data-tag');
+                if (tag) {
+                    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+                }
+            });
+
+            // Store the counts
+            window.wikiData.tagCounts[currentTab] = tagCounts;
         }
     </script>
 </body>
