@@ -4,7 +4,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     // Load components
     loadComponents();
-    
+
     // Initialize canonical URLs
     initCanonical();
   });
@@ -189,17 +189,15 @@
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
-    // Make sure nav-links are visible by default on desktop
-    if (window.innerWidth > 768) {
-      navLinks.style.display = 'flex';
-    }
-
-    // Add window resize event listener to handle responsive changes
+    // Reset display on window resize
     window.addEventListener('resize', function () {
       if (window.innerWidth > 768) {
         navLinks.style.display = 'flex';
       } else {
-        navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
+        // Only hide if not active
+        if (!navLinks.classList.contains('active')) {
+          navLinks.style.display = 'none';
+        }
       }
     });
 
