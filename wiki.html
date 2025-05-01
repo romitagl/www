@@ -20,8 +20,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Marked.js for Markdown parsing - locally hosted -->
+    <script src="assets/js/lib/marked.min.js"></script>
     <!-- Link to the external CSS files -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/wiki-styles.css">
@@ -111,688 +111,689 @@
     </div>
 
     <!-- Wiki Content Functionality Script -->
-    <script>
-        // Tab initialization
-        document.addEventListener("DOMContentLoaded", function () {
-            // Global storage for tags and categories
-            window.wikiData = {
-                currentTab: 'quotes',
-                tags: new Set(),
-                categories: new Set(),
-                activeFilters: {
-                    quotes: new Set(),
-                    resources: new Set()
-                },
-                tagCounts: {
-                    quotes: {},
-                    resources: {}
-                }
-            };
+<!-- Wiki Content Functionality Script -->
+<script>
+    // Tab initialization
+    document.addEventListener("DOMContentLoaded", function () {
+        // Global storage for tags and categories
+        window.wikiData = {
+            currentTab: 'quotes',
+            tags: new Set(),
+            categories: new Set(),
+            activeFilters: {
+                quotes: new Set(),
+                resources: new Set()
+            },
+            tagCounts: {
+                quotes: {},
+                resources: {}
+            }
+        };
 
-            // Initialize tab functionality
-            initTabs();
+        // Initialize tab functionality
+        initTabs();
 
-            // Initialize tag filter
-            initTagFilter();
-
-            // Load the active tab
-            loadActiveTab();
-        });
-
-        // Function to initialize tabs
-        function initTabs() {
-            const tabItems = document.querySelectorAll('.tab-item');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    // Remove active class from all tabs and contents
-                    tabItems.forEach(tab => tab.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-
-                    // Show corresponding content
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-
-                    // Update current tab in wikiData
-                    window.wikiData.currentTab = tabId;
-
-                    // Reset tags for new tab
-                    window.wikiData.tags = new Set();
-                    window.wikiData.categories = new Set();
-
-                    // Load the tab content
-                    loadWikiContent(tabId);
-                });
-            });
-        }
+        // Initialize tag filter
+        initTagFilter();
 
         // Load the active tab
-        function loadActiveTab() {
-            const activeTab = document.querySelector('.tab-item.active');
-            if (activeTab) {
-                const tabId = activeTab.getAttribute('data-tab');
+        loadActiveTab();
+    });
+
+    // Function to initialize tabs
+    function initTabs() {
+        const tabItems = document.querySelectorAll('.tab-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // Remove active class from all tabs and contents
+                tabItems.forEach(tab => tab.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked tab
+                this.classList.add('active');
+
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+
+                // Update current tab in wikiData
                 window.wikiData.currentTab = tabId;
+
+                // Reset tags for new tab
+                window.wikiData.tags = new Set();
+                window.wikiData.categories = new Set();
+
+                // Load the tab content
                 loadWikiContent(tabId);
-            } else {
-                // Default to quotes if no tab is active
-                document.querySelector('[data-tab="quotes"]').classList.add('active');
-                document.getElementById('quotes').classList.add('active');
-                window.wikiData.currentTab = 'quotes';
-                loadWikiContent('quotes');
-            }
+            });
+        });
+    }
+
+    // Load the active tab
+    function loadActiveTab() {
+        const activeTab = document.querySelector('.tab-item.active');
+        if (activeTab) {
+            const tabId = activeTab.getAttribute('data-tab');
+            window.wikiData.currentTab = tabId;
+            loadWikiContent(tabId);
+        } else {
+            // Default to quotes if no tab is active
+            document.querySelector('[data-tab="quotes"]').classList.add('active');
+            document.getElementById('quotes').classList.add('active');
+            window.wikiData.currentTab = 'quotes';
+            loadWikiContent('quotes');
+        }
+    }
+
+    // Function to load wiki content
+    function loadWikiContent(contentType) {
+        const contentElement = document.getElementById(`${contentType}-content`);
+        const updatedElement = document.getElementById(`${contentType}-updated`);
+        const refreshButton = document.getElementById(`refresh-${contentType}`);
+
+        contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
+
+        // Show the refresh button
+        if (refreshButton) {
+            refreshButton.style.display = 'inline-flex';
         }
 
-        // Function to load wiki content
-        function loadWikiContent(contentType) {
-            const contentElement = document.getElementById(`${contentType}-content`);
-            const updatedElement = document.getElementById(`${contentType}-updated`);
-            const refreshButton = document.getElementById(`refresh-${contentType}`);
+        // Storage key names
+        const storageKeyContent = `${contentType}Content`;
+        const storageKeyTimestamp = `${contentType}Timestamp`;
 
-            contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
+        // Function to format date
+        function formatDate(timestamp) {
+            const date = new Date(parseInt(timestamp));
+            return date.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
 
-            // Show the refresh button
-            if (refreshButton) {
-                refreshButton.style.display = 'inline-flex';
-            }
+        // Check cache first
+        const cachedContent = localStorage.getItem(storageKeyContent);
+        const cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
 
-            // Storage key names
-            const storageKeyContent = `${contentType}Content`;
-            const storageKeyTimestamp = `${contentType}Timestamp`;
+        if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
+            // Use cached content
+            try {
+                // Process the cached markdown content
+                processMarkdownContent(cachedContent, contentType, contentElement);
 
-            // Function to format date
-            function formatDate(timestamp) {
-                const date = new Date(parseInt(timestamp));
-                return date.toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-            }
+                // Update timestamp display
+                updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                    ` <button id="refresh-${contentType}" class="refresh-button">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>`;
 
-            // Check cache first
-            const cachedContent = localStorage.getItem(storageKeyContent);
-            const cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
-
-            if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
-                // Use cached content
-                try {
-                    // Process the cached markdown content
-                    processMarkdownContent(cachedContent, contentType, contentElement);
-
-                    // Update timestamp display
-                    updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
-                        ` <button id="refresh-${contentType}" class="refresh-button">
-                            <i class="fas fa-sync-alt"></i> Refresh
-                        </button>`;
-
-                    // Add event listener to refresh button
-                    document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
-                        fetchMarkdown(contentType);
-                    });
-                } catch (error) {
-                    console.error(`Error parsing cached content: ${error}`);
-                    // Fetch fresh content on error
+                // Add event listener to refresh button
+                document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
                     fetchMarkdown(contentType);
-                }
-            } else {
-                // Fetch fresh content
+                });
+            } catch (error) {
+                console.error(`Error parsing cached content: ${error}`);
+                // Fetch fresh content on error
                 fetchMarkdown(contentType);
             }
-
-            // Function to fetch markdown from GitHub
-            function fetchMarkdown(contentType) {
-                // GitHub wiki URL - capitalize first letter of content type for correct file name
-                const githubWikiUrl = `https://raw.githubusercontent.com/wiki/romitagl/www/${contentType.charAt(0).toUpperCase() + contentType.slice(1)}.md`;
-
-                fetch(githubWikiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(markdown => {
-                        try {
-                            // Process the markdown content
-                            processMarkdownContent(markdown, contentType, contentElement);
-
-                            // Cache the content
-                            localStorage.setItem(storageKeyContent, markdown);
-                            const now = Date.now();
-                            localStorage.setItem(storageKeyTimestamp, now);
-
-                            // Update timestamp
-                            updatedElement.innerHTML = 'Last updated: ' + formatDate(now) +
-                                ` <button id="refresh-${contentType}" class="refresh-button">
-                                    <i class="fas fa-sync-alt"></i> Refresh
-                                </button>`;
-
-                            // Add event listener to refresh button
-                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
-                                fetchMarkdown(contentType);
-                            });
-                        } catch (error) {
-                            console.error(`Error processing markdown: ${error}`);
-                            contentElement.innerHTML = `<p>Error parsing content. Please try again later.</p>`;
-                        }
-                    })
-                    .catch(error => {
-                        console.error(`Error fetching markdown: ${error}`);
-
-                        // Try to use cached content as fallback
-                        if (cachedContent) {
-                            processMarkdownContent(cachedContent, contentType, contentElement);
-                            updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
-                                ' <span style="color: #e74c3c;">(Offline mode)</span>' +
-                                ` <button id="refresh-${contentType}" class="refresh-button">
-                                    <i class="fas fa-sync-alt"></i> Retry
-                                </button>`;
-
-                            // Add event listener to refresh button
-                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
-                                fetchMarkdown(contentType);
-                            });
-                        } else {
-                            contentElement.innerHTML = `<p>Failed to load content. Please check your connection.</p>`;
-                        }
-                    });
-            }
+        } else {
+            // Fetch fresh content
+            fetchMarkdown(contentType);
         }
 
-        // Process markdown content
-        function processMarkdownContent(markdown, contentType, contentElement) {
-            // Parse the markdown into sections
-            const sections = parseMarkdownToSections(markdown);
+        // Function to fetch markdown from GitHub
+        function fetchMarkdown(contentType) {
+            // GitHub wiki URL - capitalize first letter of content type for correct file name
+            const githubWikiUrl = `https://raw.githubusercontent.com/wiki/romitagl/www/${contentType.charAt(0).toUpperCase() + contentType.slice(1)}.md`;
 
-            // Reset tags and categories for this content type
-            window.wikiData.tags = new Set();
-            window.wikiData.categories = new Set();
+            fetch(githubWikiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(markdown => {
+                    try {
+                        // Process the markdown content
+                        processMarkdownContent(markdown, contentType, contentElement);
 
-            // Create HTML for sections
-            let contentHtml = '';
+                        // Cache the content
+                        localStorage.setItem(storageKeyContent, markdown);
+                        const now = Date.now();
+                        localStorage.setItem(storageKeyTimestamp, now);
 
-            sections.forEach((section, index) => {
-                // Add section title to categories
-                if (section.title) {
-                    window.wikiData.categories.add(section.title);
-                }
+                        // Update timestamp
+                        updatedElement.innerHTML = 'Last updated: ' + formatDate(now) +
+                            ` <button id="refresh-${contentType}" class="refresh-button">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>`;
 
-                // Extract tags from content
-                extractTags(section.content);
-
-                // Format content with proper HTML and image handling
-                const formattedContent = formatContentWithImagesAndTags(section.content);
-
-                // Create collapsible section
-                const isFirstSection = index === 0;
-                contentHtml += `
-                <div class="content-section">
-                    <div class="section-header" data-section="${index}">
-                        <h3>
-                            <span class="category-icon">${section.title ? section.title.charAt(0) : 'X'}</span>
-                            ${section.title || 'Uncategorized'}
-                        </h3>
-                        <button class="toggle-section"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
-                    </div>
-                    <div class="section-content ${isFirstSection ? 'expanded' : ''}" id="section-${contentType}-${index}">
-                        <div class="content-block">
-                            ${formattedContent}
-                        </div>
-                    </div>
-                </div>`;
-            });
-
-            // Update content element
-            contentElement.innerHTML = contentHtml || `<p>No ${contentType} content available.</p>`;
-
-            // Initialize section toggles after content is loaded
-            initSectionToggles();
-
-            // Count tag occurrences and update tag filter
-            countTagOccurrences();
-            renderTagFilter();
-
-            // Apply any existing filters for this tab
-            if (window.wikiData.activeFilters[contentType].size > 0) {
-                applyTagFilters();
-            }
-        }
-
-        // Parse markdown into sections based on ## headings
-        function parseMarkdownToSections(markdown) {
-            const sections = [];
-            let currentSectionTitle = '';
-            let currentSectionContent = '';
-            let inFirstSection = true;
-
-            const lines = markdown.split('\n');
-
-            // Process line by line
-            lines.forEach(line => {
-                // Check for section headings (## heading)
-                if (line.startsWith('## ')) {
-                    // If we have content already, push it as a section
-                    if (inFirstSection) {
-                        inFirstSection = false;
-                    } else if (currentSectionContent.trim()) {
-                        sections.push({
-                            title: currentSectionTitle || 'Uncategorized',
-                            content: currentSectionContent.trim()
+                        // Add event listener to refresh button
+                        document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                            fetchMarkdown(contentType);
                         });
+                    } catch (error) {
+                        console.error(`Error processing markdown: ${error}`);
+                        contentElement.innerHTML = `<p>Error parsing content. Please try again later.</p>`;
                     }
+                })
+                .catch(error => {
+                    console.error(`Error fetching markdown: ${error}`);
 
-                    // Start a new section
-                    currentSectionTitle = line.substring(3).trim();
-                    currentSectionContent = '';
-                } else {
-                    // Add to current section content
-                    currentSectionContent += line + '\n';
-                }
-            });
+                    // Try to use cached content as fallback
+                    if (cachedContent) {
+                        processMarkdownContent(cachedContent, contentType, contentElement);
+                        updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                            ' <span style="color: #e74c3c;">(Offline mode)</span>' +
+                            ` <button id="refresh-${contentType}" class="refresh-button">
+                                <i class="fas fa-sync-alt"></i> Retry
+                            </button>`;
 
-            // Add the last section
-            if (currentSectionContent.trim()) {
-                sections.push({
-                    title: currentSectionTitle || 'Uncategorized',
-                    content: currentSectionContent.trim()
-                });
-            }
-
-            return sections;
-        }
-
-        // Extract tags from content and add to global tags set
-        function extractTags(content) {
-            const tagRegex = /#([a-zA-Z0-9]+)/g;
-            let match;
-            while ((match = tagRegex.exec(content)) !== null) {
-                if (match[1]) {
-                    window.wikiData.tags.add(match[1].toLowerCase());
-                }
-            }
-        }
-
-        // Function to format content with proper HTML, handling images and tags
-        function formatContentWithImagesAndTags(content) {
-            // Handle GitHub hosted images first
-            content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
-                '<img src="$2" alt="$1" class="wiki-image">$3');
-
-            // Handle subsection headers (###)
-            content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
-
-            // Format lists
-            content = content.replace(/^\*\s+(.+)$/gm, '<li>$1</li>');
-            content = content.replace(/^-\s+(.+)$/gm, '<li>$1</li>');
-
-            // Group list items
-            content = content.replace(/(<li>.*<\/li>[\n\r]*)+/g, function (match) {
-                return '<ul>' + match + '</ul>';
-            });
-
-            // Format sublists (indented by spaces or tab)
-            content = content.replace(/^(\s{2,4}|\t)-\s+(.+)$/gm, '<li class="sublist">$2</li>');
-
-            // Format blockquotes
-            content = content.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
-
-            // Format links
-            content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-            // Format inline code
-            content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-            // Format bold text
-            content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-            // Format italic text
-            content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-            // Convert hashtags to styled tags
-            content = content.replace(/#([a-zA-Z0-9]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
-
-            // Convert paragraphs (empty lines)
-            content = content.replace(/\n\n/g, '</p><p>');
-
-            // Wrap with paragraph tags if not already wrapped
-            if (!content.startsWith('<p>')) {
-                content = '<p>' + content + '</p>';
-            }
-
-            // Fix any doubled paragraph tags
-            content = content.replace(/<\/p><p><\/p><p>/g, '</p><p>');
-
-            return content;
-        }
-
-        // Initialize section toggle functionality
-        function initSectionToggles() {
-            document.querySelectorAll('.section-header').forEach(header => {
-                header.addEventListener('click', function (e) {
-                    // Skip if toggle button was clicked directly (it has its own handler)
-                    if (e.target.closest('.toggle-section')) {
-                        return;
+                        // Add event listener to refresh button
+                        document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                            fetchMarkdown(contentType);
+                        });
+                    } else {
+                        contentElement.innerHTML = `<p>Failed to load content. Please check your connection.</p>`;
                     }
-
-                    toggleSection(this);
                 });
+        }
+    }
 
-                // Add toggle button handler
-                const toggleButton = header.querySelector('.toggle-section');
-                if (toggleButton) {
-                    toggleButton.addEventListener('click', function (e) {
-                        e.stopPropagation(); // Prevent triggering parent click event
-                        toggleSection(header);
+    // Process markdown content
+    function processMarkdownContent(markdown, contentType, contentElement) {
+        // Parse the markdown into sections
+        const sections = parseMarkdownToSections(markdown);
+
+        // Reset tags and categories for this content type
+        window.wikiData.tags = new Set();
+        window.wikiData.categories = new Set();
+
+        // Create HTML for sections
+        let contentHtml = '';
+
+        sections.forEach((section, index) => {
+            // Add section title to categories
+            if (section.title) {
+                window.wikiData.categories.add(section.title);
+            }
+
+            // Extract tags from content
+            extractTags(section.content);
+
+            // Format content with proper HTML and image handling
+            const formattedContent = formatContentWithImagesAndTags(section.content);
+
+            // Create collapsible section
+            const isFirstSection = index === 0;
+            contentHtml += `
+            <div class="content-section">
+                <div class="section-header" data-section="${index}">
+                    <h3>
+                        <span class="category-icon">${section.title ? section.title.charAt(0) : 'X'}</span>
+                        ${section.title || 'Uncategorized'}
+                    </h3>
+                    <button class="toggle-section"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
+                </div>
+                <div class="section-content ${isFirstSection ? 'expanded' : ''}" id="section-${contentType}-${index}">
+                    <div class="content-block">
+                        ${formattedContent}
+                    </div>
+                </div>
+            </div>`;
+        });
+
+        // Update content element
+        contentElement.innerHTML = contentHtml || `<p>No ${contentType} content available.</p>`;
+
+        // Initialize section toggles after content is loaded
+        initSectionToggles();
+
+        // Count tag occurrences and update tag filter
+        countTagOccurrences();
+        renderTagFilter();
+
+        // Apply any existing filters for this tab
+        if (window.wikiData.activeFilters[contentType].size > 0) {
+            applyTagFilters();
+        }
+    }
+
+    // Parse markdown into sections based on ## headings
+    function parseMarkdownToSections(markdown) {
+        const sections = [];
+        let currentSectionTitle = '';
+        let currentSectionContent = '';
+        let inFirstSection = true;
+
+        const lines = markdown.split('\n');
+
+        // Process line by line
+        lines.forEach(line => {
+            // Check for section headings (## heading)
+            if (line.startsWith('## ')) {
+                // If we have content already, push it as a section
+                if (inFirstSection) {
+                    inFirstSection = false;
+                } else if (currentSectionContent.trim()) {
+                    sections.push({
+                        title: currentSectionTitle || 'Uncategorized',
+                        content: currentSectionContent.trim()
                     });
                 }
-            });
 
-            // Add click handlers to content tags
-            document.querySelectorAll('.content-tag').forEach(tag => {
-                tag.addEventListener('click', function () {
-                    const tagName = this.getAttribute('data-tag');
-                    toggleTagFilter(tagName);
-                });
+                // Start a new section
+                currentSectionTitle = line.substring(3).trim();
+                currentSectionContent = '';
+            } else {
+                // Add to current section content
+                currentSectionContent += line + '\n';
+            }
+        });
+
+        // Add the last section
+        if (currentSectionContent.trim()) {
+            sections.push({
+                title: currentSectionTitle || 'Uncategorized',
+                content: currentSectionContent.trim()
             });
         }
 
-        // Toggle section expanded/collapsed state
-        function toggleSection(header) {
-            const sectionId = header.getAttribute('data-section');
-            const tabId = window.wikiData.currentTab;
-            const contentDiv = document.getElementById(`section-${tabId}-${sectionId}`);
-            const toggleIcon = header.querySelector('.toggle-section i');
+        return sections;
+    }
 
-            if (contentDiv) {
-                contentDiv.classList.toggle('expanded');
-
-                if (contentDiv.classList.contains('expanded')) {
-                    toggleIcon.className = 'fas fa-chevron-up';
-                } else {
-                    toggleIcon.className = 'fas fa-chevron-down';
-                }
+    // Extract tags from content and add to global tags set
+    function extractTags(content) {
+        const tagRegex = /#([a-zA-Z0-9]+)/g;
+        let match;
+        while ((match = tagRegex.exec(content)) !== null) {
+            if (match[1]) {
+                window.wikiData.tags.add(match[1].toLowerCase());
             }
         }
+    }
 
-        // -- Tag Filter Functionality -- //
+    // Function to format content with proper HTML, handling images and tags
+    function formatContentWithImagesAndTags(content) {
+        // Handle GitHub hosted images first
+        content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
+            '<img src="$2" alt="$1" class="wiki-image">$3');
 
-        // Function to initialize the tag filter
-        function initTagFilter() {
-            // Make sure tag container exists
-            const containerExists = document.getElementById('tag-filter-container');
-            if (!containerExists) {
-                // Insert tag filter container after the tab navigation but before the tab content
-                const tabsContainer = document.querySelector('.tabs-container');
-                const tabContent = document.querySelector('.tab-content');
+        // Handle subsection headers (###)
+        content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
 
-                if (tabsContainer && tabContent) {
-                    const filterContainer = document.createElement('div');
-                    filterContainer.innerHTML = `
+        // Format lists
+        content = content.replace(/^\*\s+(.+)$/gm, '<li>$1</li>');
+        content = content.replace(/^-\s+(.+)$/gm, '<li>$1</li>');
+
+        // Group list items
+        content = content.replace(/(<li>.*<\/li>[\n\r]*)+/g, function (match) {
+            return '<ul>' + match + '</ul>';
+        });
+
+        // Format sublists (indented by spaces or tab)
+        content = content.replace(/^(\s{2,4}|\t)-\s+(.+)$/gm, '<li class="sublist">$2</li>');
+
+        // Format blockquotes
+        content = content.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
+
+        // Format links
+        content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+        // Format inline code
+        content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        // Format bold text
+        content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+        // Format italic text
+        content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+        // Convert hashtags to styled tags
+        content = content.replace(/#([a-zA-Z0-9]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
+
+        // Convert paragraphs (empty lines)
+        content = content.replace(/\n\n/g, '</p><p>');
+
+        // Wrap with paragraph tags if not already wrapped
+        if (!content.startsWith('<p>')) {
+            content = '<p>' + content + '</p>';
+        }
+
+        // Fix any doubled paragraph tags
+        content = content.replace(/<\/p><p><\/p><p>/g, '</p><p>');
+
+        return content;
+    }
+
+    // Initialize section toggle functionality
+    function initSectionToggles() {
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', function (e) {
+                // Skip if toggle button was clicked directly (it has its own handler)
+                if (e.target.closest('.toggle-section')) {
+                    return;
+                }
+
+                toggleSection(this);
+            });
+
+            // Add toggle button handler
+            const toggleButton = header.querySelector('.toggle-section');
+            if (toggleButton) {
+                toggleButton.addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevent triggering parent click event
+                    toggleSection(header);
+                });
+            }
+        });
+
+        // Add click handlers to content tags
+        document.querySelectorAll('.content-tag').forEach(tag => {
+            tag.addEventListener('click', function () {
+                const tagName = this.getAttribute('data-tag');
+                toggleTagFilter(tagName);
+            });
+        });
+    }
+
+    // Toggle section expanded/collapsed state
+    function toggleSection(header) {
+        const sectionId = header.getAttribute('data-section');
+        const tabId = window.wikiData.currentTab;
+        const contentDiv = document.getElementById(`section-${tabId}-${sectionId}`);
+        const toggleIcon = header.querySelector('.toggle-section i');
+
+        if (contentDiv) {
+            contentDiv.classList.toggle('expanded');
+
+            if (contentDiv.classList.contains('expanded')) {
+                toggleIcon.className = 'fas fa-chevron-up';
+            } else {
+                toggleIcon.className = 'fas fa-chevron-down';
+            }
+        }
+    }
+
+    // -- Tag Filter Functionality -- //
+
+    // Function to initialize the tag filter
+    function initTagFilter() {
+        // Make sure tag container exists
+        const containerExists = document.getElementById('tag-filter-container');
+        if (!containerExists) {
+            // Insert tag filter container after the tab navigation but before the tab content
+            const tabsContainer = document.querySelector('.tabs-container');
+            const tabContent = document.querySelector('.tab-content');
+
+            if (tabsContainer && tabContent) {
+                const filterContainer = document.createElement('div');
+                filterContainer.innerHTML = `
 <div class="tag-filter-container" id="tag-filter-container" style="display:none;">
-    <div class="tag-filter-header" id="tag-filter-header">
-        <h4>Filter by Tags <span class="tag-filter-collapse">(<span id="filter-tag-count">0</span> tags)</span></h4>
-        <div class="tag-filter-actions">
-            <button class="tag-filter-action" id="clear-tag-filters">Clear Filters</button>
-            <i class="fas fa-chevron-down" id="filter-toggle-icon" style="color: var(--primary-color);"></i>
-        </div>
+<div class="tag-filter-header" id="tag-filter-header">
+    <h4>Filter by Tags <span class="tag-filter-collapse">(<span id="filter-tag-count">0</span> tags)</span></h4>
+    <div class="tag-filter-actions">
+        <button class="tag-filter-action" id="clear-tag-filters">Clear Filters</button>
+        <i class="fas fa-chevron-down" id="filter-toggle-icon" style="color: var(--primary-color);"></i>
     </div>
-    <div class="tag-filter-content">
-        <div class="tag-list" id="tag-list">
-            <!-- Tags will be dynamically inserted here -->
-        </div>
-        <div class="filter-info" id="filter-info"></div>
+</div>
+<div class="tag-filter-content">
+    <div class="tag-list" id="tag-list">
+        <!-- Tags will be dynamically inserted here -->
     </div>
+    <div class="filter-info" id="filter-info"></div>
+</div>
 </div>`;
 
-                    // Insert before the first tab content
-                    tabContent.parentNode.insertBefore(filterContainer.firstElementChild, tabContent);
+                // Insert before the first tab content
+                tabContent.parentNode.insertBefore(filterContainer.firstElementChild, tabContent);
 
-                    // Add event listener for the clear filters button
-                    document.getElementById('clear-tag-filters').addEventListener('click', function (e) {
-                        e.stopPropagation(); // Prevent toggling the container
-                        clearTagFilters();
-                    });
-
-                    // Add event listener for toggling the filter container
-                    document.getElementById('tag-filter-header').addEventListener('click', toggleTagFilterContainer);
-                }
-            }
-        }
-
-        // Toggle the tag filter container visibility
-        function toggleTagFilterContainer() {
-            const container = document.getElementById('tag-filter-container');
-            const toggleIcon = document.getElementById('filter-toggle-icon');
-
-            if (container) {
-                container.classList.toggle('expanded');
-
-                // Update the icon
-                if (container.classList.contains('expanded')) {
-                    toggleIcon.className = 'fas fa-chevron-up';
-                } else {
-                    toggleIcon.className = 'fas fa-chevron-down';
-                }
-            }
-        }
-
-        // Function to clear all active tag filters
-        function clearTagFilters() {
-            const currentTab = window.wikiData.currentTab;
-            window.wikiData.activeFilters[currentTab].clear();
-            renderTagFilter();
-            applyTagFilters();
-        }
-
-        // Function to build and display tag filter
-        function renderTagFilter() {
-            const currentTab = window.wikiData.currentTab;
-            const tagList = document.getElementById('tag-list');
-            const filterContainer = document.getElementById('tag-filter-container');
-            const filterInfo = document.getElementById('filter-info');
-            const tagCountElement = document.getElementById('filter-tag-count');
-            const tagFilterCollapse = document.querySelector('.tag-filter-collapse');
-
-            // No tags to show
-            if (!window.wikiData.tags || window.wikiData.tags.size === 0) {
-                filterContainer.style.display = 'none';
-                return;
-            }
-
-            // Show the filter container
-            filterContainer.style.display = 'block';
-
-            // Clear existing tags
-            tagList.innerHTML = '';
-
-            // Get the active filters for the current tab
-            const activeFilters = window.wikiData.activeFilters[currentTab];
-
-            // Sort tags alphabetically
-            const sortedTags = Array.from(window.wikiData.tags).sort();
-
-            // Count valid tags (those with occurrences)
-            let validTagCount = 0;
-
-            // Create tag pills
-            sortedTags.forEach(tag => {
-                // Get tag count
-                const count = window.wikiData.tagCounts[currentTab][tag] || 0;
-                if (count === 0) return; // Skip tags with no occurrences
-
-                validTagCount++;
-
-                const tagPill = document.createElement('div');
-                tagPill.className = 'tag-pill';
-                if (activeFilters.has(tag)) {
-                    tagPill.classList.add('active');
-                }
-
-                tagPill.innerHTML = `#${tag} <span class="tag-count">${count}</span>`;
-                tagPill.setAttribute('data-tag', tag);
-
-                // Add click event for filtering
-                tagPill.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent event bubbling up to container toggle
-                    toggleTagFilter(tag);
+                // Add event listener for the clear filters button
+                document.getElementById('clear-tag-filters').addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevent toggling the container
+                    clearTagFilters();
                 });
 
-                tagList.appendChild(tagPill);
-            });
-
-            // Update tag count
-            if (tagCountElement) {
-                tagCountElement.textContent = validTagCount;
-
-                // Show the tag count and collapse indicator
-                if (validTagCount > 0) {
-                    tagFilterCollapse.style.display = 'inline';
-                } else {
-                    tagFilterCollapse.style.display = 'none';
-                }
-            }
-
-            // Update filter info text
-            if (activeFilters.size > 0) {
-                filterInfo.textContent = `Showing content with tags: ${Array.from(activeFilters).map(t => '#' + t).join(', ')}`;
-
-                // Auto-expand the container when filters are active
-                const filterContainer = document.getElementById('tag-filter-container');
-                if (filterContainer && !filterContainer.classList.contains('expanded')) {
-                    toggleTagFilterContainer();
-                }
-            } else {
-                filterInfo.textContent = 'Click on tags to filter content';
+                // Add event listener for toggling the filter container
+                document.getElementById('tag-filter-header').addEventListener('click', toggleTagFilterContainer);
             }
         }
+    }
 
-        // Toggle a tag in the filter
-        function toggleTagFilter(tag) {
-            const currentTab = window.wikiData.currentTab;
-            const activeFilters = window.wikiData.activeFilters[currentTab];
+    // Toggle the tag filter container visibility
+    function toggleTagFilterContainer() {
+        const container = document.getElementById('tag-filter-container');
+        const toggleIcon = document.getElementById('filter-toggle-icon');
 
+        if (container) {
+            container.classList.toggle('expanded');
+
+            // Update the icon
+            if (container.classList.contains('expanded')) {
+                toggleIcon.className = 'fas fa-chevron-up';
+            } else {
+                toggleIcon.className = 'fas fa-chevron-down';
+            }
+        }
+    }
+
+    // Function to clear all active tag filters
+    function clearTagFilters() {
+        const currentTab = window.wikiData.currentTab;
+        window.wikiData.activeFilters[currentTab].clear();
+        renderTagFilter();
+        applyTagFilters();
+    }
+
+    // Function to build and display tag filter
+    function renderTagFilter() {
+        const currentTab = window.wikiData.currentTab;
+        const tagList = document.getElementById('tag-list');
+        const filterContainer = document.getElementById('tag-filter-container');
+        const filterInfo = document.getElementById('filter-info');
+        const tagCountElement = document.getElementById('filter-tag-count');
+        const tagFilterCollapse = document.querySelector('.tag-filter-collapse');
+
+        // No tags to show
+        if (!window.wikiData.tags || window.wikiData.tags.size === 0) {
+            filterContainer.style.display = 'none';
+            return;
+        }
+
+        // Show the filter container
+        filterContainer.style.display = 'block';
+
+        // Clear existing tags
+        tagList.innerHTML = '';
+
+        // Get the active filters for the current tab
+        const activeFilters = window.wikiData.activeFilters[currentTab];
+
+        // Sort tags alphabetically
+        const sortedTags = Array.from(window.wikiData.tags).sort();
+
+        // Count valid tags (those with occurrences)
+        let validTagCount = 0;
+
+        // Create tag pills
+        sortedTags.forEach(tag => {
+            // Get tag count
+            const count = window.wikiData.tagCounts[currentTab][tag] || 0;
+            if (count === 0) return; // Skip tags with no occurrences
+
+            validTagCount++;
+
+            const tagPill = document.createElement('div');
+            tagPill.className = 'tag-pill';
             if (activeFilters.has(tag)) {
-                activeFilters.delete(tag);
+                tagPill.classList.add('active');
+            }
+
+            tagPill.innerHTML = `#${tag} <span class="tag-count">${count}</span>`;
+            tagPill.setAttribute('data-tag', tag);
+
+            // Add click event for filtering
+            tagPill.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling up to container toggle
+                toggleTagFilter(tag);
+            });
+
+            tagList.appendChild(tagPill);
+        });
+
+        // Update tag count
+        if (tagCountElement) {
+            tagCountElement.textContent = validTagCount;
+
+            // Show the tag count and collapse indicator
+            if (validTagCount > 0) {
+                tagFilterCollapse.style.display = 'inline';
             } else {
-                activeFilters.add(tag);
+                tagFilterCollapse.style.display = 'none';
             }
-
-            renderTagFilter();
-            applyTagFilters();
         }
 
-        // Apply the active filters to the content
-        function applyTagFilters() {
-            const currentTab = window.wikiData.currentTab;
-            const activeFilters = window.wikiData.activeFilters[currentTab];
-            const contentSections = document.querySelectorAll(`#${currentTab} .content-section`);
+        // Update filter info text
+        if (activeFilters.size > 0) {
+            filterInfo.textContent = `Showing content with tags: ${Array.from(activeFilters).map(t => '#' + t).join(', ')}`;
 
-            // If no active filters, show all sections
-            if (activeFilters.size === 0) {
-                contentSections.forEach(section => {
-                    section.classList.remove('filtered-out');
-
-                    // Remove any highlight styling
-                    const highlightedTags = section.querySelectorAll('.highlighted-tag');
-                    highlightedTags.forEach(el => {
-                        // Replace with the original tag content
-                        el.outerHTML = el.innerHTML;
-                    });
-                });
-                return;
+            // Auto-expand the container when filters are active
+            const filterContainer = document.getElementById('tag-filter-container');
+            if (filterContainer && !filterContainer.classList.contains('expanded')) {
+                toggleTagFilterContainer();
             }
+        } else {
+            filterInfo.textContent = 'Click on tags to filter content';
+        }
+    }
 
-            // Check each section for matches
-            let matchFound = false;
+    // Toggle a tag in the filter
+    function toggleTagFilter(tag) {
+        const currentTab = window.wikiData.currentTab;
+        const activeFilters = window.wikiData.activeFilters[currentTab];
 
+        if (activeFilters.has(tag)) {
+            activeFilters.delete(tag);
+        } else {
+            activeFilters.add(tag);
+        }
+
+        renderTagFilter();
+        applyTagFilters();
+    }
+
+    // Apply the active filters to the content
+    function applyTagFilters() {
+        const currentTab = window.wikiData.currentTab;
+        const activeFilters = window.wikiData.activeFilters[currentTab];
+        const contentSections = document.querySelectorAll(`#${currentTab} .content-section`);
+
+        // If no active filters, show all sections
+        if (activeFilters.size === 0) {
             contentSections.forEach(section => {
-                const sectionContent = section.querySelector('.section-content');
-                const contentText = sectionContent.textContent.toLowerCase();
-                let keepSection = false;
+                section.classList.remove('filtered-out');
 
-                // Check if section contains any active tags
-                for (let tag of activeFilters) {
-                    if (contentText.includes('#' + tag.toLowerCase())) {
-                        keepSection = true;
-                        break; // One match is enough to keep the section
-                    }
-                }
-
-                // Set visibility based on filter match
-                if (keepSection) {
-                    section.classList.remove('filtered-out');
-                    matchFound = true;
-
-                    // Highlight the matching tags
-                    highlightMatchingTags(sectionContent, activeFilters);
-                } else {
-                    section.classList.add('filtered-out');
-                }
+                // Remove any highlight styling
+                const highlightedTags = section.querySelectorAll('.highlighted-tag');
+                highlightedTags.forEach(el => {
+                    // Replace with the original tag content
+                    el.outerHTML = el.innerHTML;
+                });
             });
+            return;
+        }
 
-            // Show "no results" message if needed
-            const noResultsEl = document.getElementById(`no-results-${currentTab}`);
+        // Check each section for matches
+        let matchFound = false;
 
-            if (!matchFound) {
-                if (!noResultsEl) {
-                    const contentElement = document.getElementById(`${currentTab}-content`);
-                    const noResults = document.createElement('div');
-                    noResults.id = `no-results-${currentTab}`;
-                    noResults.className = 'no-results';
-                    noResults.textContent = 'No content matches the selected tags. Try selecting different tags or clearing filters.';
-                    contentElement.appendChild(noResults);
-                } else {
-                    noResultsEl.style.display = 'block';
+        contentSections.forEach(section => {
+            const sectionContent = section.querySelector('.section-content');
+            const contentText = sectionContent.textContent.toLowerCase();
+            let keepSection = false;
+
+            // Check if section contains any active tags
+            for (let tag of activeFilters) {
+                if (contentText.includes('#' + tag.toLowerCase())) {
+                    keepSection = true;
+                    break; // One match is enough to keep the section
                 }
-            } else if (noResultsEl) {
-                noResultsEl.style.display = 'none';
             }
+
+            // Set visibility based on filter match
+            if (keepSection) {
+                section.classList.remove('filtered-out');
+                matchFound = true;
+
+                // Highlight the matching tags
+                highlightMatchingTags(sectionContent, activeFilters);
+            } else {
+                section.classList.add('filtered-out');
+            }
+        });
+
+        // Show "no results" message if needed
+        const noResultsEl = document.getElementById(`no-results-${currentTab}`);
+
+        if (!matchFound) {
+            if (!noResultsEl) {
+                const contentElement = document.getElementById(`${currentTab}-content`);
+                const noResults = document.createElement('div');
+                noResults.id = `no-results-${currentTab}`;
+                noResults.className = 'no-results';
+                noResults.textContent = 'No content matches the selected tags. Try selecting different tags or clearing filters.';
+                contentElement.appendChild(noResults);
+            } else {
+                noResultsEl.style.display = 'block';
+            }
+        } else if (noResultsEl) {
+            noResultsEl.style.display = 'none';
         }
+    }
 
-        // Highlight matching tags in the content
-        function highlightMatchingTags(container, activeFilters) {
-            // First, remove any existing highlights
-            container.querySelectorAll('.content-tag').forEach(link => {
-                // Remove highlight class from all tag links
-                link.classList.remove('tag-highlighted');
-            });
+    // Highlight matching tags in the content
+    function highlightMatchingTags(container, activeFilters) {
+        // First, remove any existing highlights
+        container.querySelectorAll('.content-tag').forEach(link => {
+            // Remove highlight class from all tag links
+            link.classList.remove('tag-highlighted');
+        });
 
-            // Find and highlight tags in the content
-            const tagLinks = container.querySelectorAll('a.content-tag');
-            tagLinks.forEach(link => {
-                const tagName = link.getAttribute('data-tag');
-                if (activeFilters.has(tagName)) {
-                    // Add a class to the link itself
-                    link.classList.add('tag-highlighted');
-                }
-            });
-        }
+        // Find and highlight tags in the content
+        const tagLinks = container.querySelectorAll('a.content-tag');
+        tagLinks.forEach(link => {
+            const tagName = link.getAttribute('data-tag');
+            if (activeFilters.has(tagName)) {
+                // Add a class to the link itself
+                link.classList.add('tag-highlighted');
+            }
+        });
+    }
 
-        // Count occurrences of each tag in the content
-        function countTagOccurrences() {
-            const currentTab = window.wikiData.currentTab;
-            const tagCounts = {};
+    // Count occurrences of each tag in the content
+    function countTagOccurrences() {
+        const currentTab = window.wikiData.currentTab;
+        const tagCounts = {};
 
-            // Find all tag links in the current tab content
-            const tagLinks = document.querySelectorAll(`#${currentTab} a.content-tag`);
+        // Find all tag links in the current tab content
+        const tagLinks = document.querySelectorAll(`#${currentTab} a.content-tag`);
 
-            tagLinks.forEach(link => {
-                const tag = link.getAttribute('data-tag');
-                if (tag) {
-                    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-                }
-            });
+        tagLinks.forEach(link => {
+            const tag = link.getAttribute('data-tag');
+            if (tag) {
+                tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+            }
+        });
 
-            // Store the counts
-            window.wikiData.tagCounts[currentTab] = tagCounts;
-        }
-    </script>
+        // Store the counts
+        window.wikiData.tagCounts[currentTab] = tagCounts;
+    }
+</script>
 </body>
 
 </html>
