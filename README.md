@@ -1,13 +1,12 @@
 # 🌐 Romitagl.com - Central Landing Page
 
-This repository hosts the central landing page for **romitagl.com**, serving as the main hub for all subdomains. It is deployed via GitHub Pages and configured with Google AdSense for monetization.
+This repository hosts the central landing page for **romitagl.com**, serving as the main hub for all subdomains. It is deployed via GitHub Pages.
 
 ## 🚀 Project Overview
 
 - **Domain:** [romitagl.com](https://romitagl.com)
 - **Purpose:** Acts as a landing page linking to all subdomain websites.
 - **Hosting:** GitHub Pages
-- **Monetization:** Google AdSense enabled
 
 ## 📌 Setup Instructions
 
@@ -57,19 +56,6 @@ For each GitHub repository (e.g., `web-tools`), repeat the following steps:
    TTL: Auto
    ```
 
-### 4️⃣ Google AdSense Integration
-
-1. **Verify your domain with AdSense:**
-   - Sign in to [Google AdSense](https://www.google.com/adsense/).
-   - Add `romitagl.com` as the main site.
-   - Place the required `<meta>` tag in `<head>` of `index.html`:
-
-     ```html
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
-     ```
-
-2. **Ensure all subdomains also include this AdSense snippet** if they will serve ads.
-
 ### 5️⃣ Sitemap for SEO
 
 Create a `sitemap.xml` in `public/sitemap.xml` to help search engines index all subdomains:
@@ -98,11 +84,10 @@ Sitemap: https://romitagl.com/sitemap.xml
 
 - Use [dnschecker.org](https://www.dnschecker.org/) to verify DNS changes.
 - Ensure `romitagl.com` and all subdomains load correctly.
-- Check if Google AdSense is displaying ads on `romitagl.com`.
 
 ## 🎯 Final Structure
 
-```
+```plaintext
 romitagl.com (Landing Page - GitHub Pages, AdSense)
 ├── web-tools.romitagl.com (GitHub Pages for Web Tools)
 ├── blog.romitagl.com (GitHub Pages for Blog)
@@ -117,3 +102,4 @@ With this setup:
 - Each subdomain is a separate GitHub repository using GitHub Pages.
 - AdSense ads can be displayed across `romitagl.com` and its subdomains.
 - A `sitemap.xml` ensures search engine visibility.
+- Free Website Analytics: <https://www.cloudflare.com/en-gb/web-analytics/>

@@ -36,7 +36,6 @@ jobs:
           cp -r assets $DEPLOY_DIR/
           cp -r public $DEPLOY_DIR/
           # advertising files
-          cp ads.txt $DEPLOY_DIR/
           # https://www.bing.com/webmasters
           cp BingSiteAuth.xml $DEPLOY_DIR/
 
