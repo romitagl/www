@@ -420,9 +420,6 @@
             }
         }
 
-        // Also update the tag formatting in formatContentWithImagesAndTags
-        content = content.replace(/#([a-zA-Z0-9_\-]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
-
         // Function to format content with proper HTML, handling images and tags
         function formatContentWithImagesAndTags(content) {
             // Handle GitHub hosted images first
@@ -460,7 +457,7 @@
             content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
             // Convert hashtags to styled tags
-            content = content.replace(/#([a-zA-Z0-9]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
+            content = content.replace(/#([a-zA-Z0-9_\-]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
 
             // Convert paragraphs (empty lines)
             content = content.replace(/\n\n/g, '</p><p>');
