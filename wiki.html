@@ -58,28 +58,28 @@
                 <!-- Tabs Navigation -->
                 <div class="tabs-container">
                     <ul class="tabs-nav">
-                        <li class="tab-item active" data-tab="quotes">Quotes</li>
+                        <li class="tab-item active" data-tab="wisdom">Wisdom</li>
                         <li class="tab-item" data-tab="resources">Resources</li>
                     </ul>
 
                     <!-- Tab Content -->
 
                     <!-- Tab Content -->
-                    <div id="quotes" class="tab-content active">
-                        <div class="quotes-container">
-                            <div id="quotes-header">
-                                <h3>Inspirational and Thought-Provoking Quotes</h3>
+                    <div id="wisdom" class="tab-content active">
+                        <div class="wisdom-container">
+                            <div id="wisdom-header">
+                                <h3>Inspirational and Thought-Provoking Quotes and Wisdom Sentences</h3>
                                 <p>A collection of quotes from various sources that provide insight, inspiration, and
                                     wisdom.</p>
-                                <div class="last-updated" id="quotes-updated">
-                                    Loading quotes...
+                                <div class="last-updated" id="wisdom-updated">
+                                    Loading wisdom...
                                     <button id="refresh-quotes" class="refresh-button" style="display: none;">
                                         <i class="fas fa-sync-alt"></i> Refresh
                                     </button>
                                 </div>
                             </div>
-                            <div id="quotes-content" class="content-loading">
-                                <i class="fas fa-spinner fa-spin"></i> Loading quotes...
+                            <div id="wisdom-content" class="content-loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading wisdom...
                             </div>
                         </div>
                     </div>
@@ -117,15 +117,15 @@
         document.addEventListener("DOMContentLoaded", function () {
             // Global storage for tags and categories
             window.wikiData = {
-                currentTab: 'quotes',
+                currentTab: 'wisdom',
                 tags: new Set(),
                 categories: new Set(),
                 activeFilters: {
-                    quotes: new Set(),
+                    wisdom: new Set(),
                     resources: new Set()
                 },
                 tagCounts: {
-                    quotes: {},
+                    wisdom: {},
                     resources: {}
                 }
             };
@@ -180,10 +180,10 @@
                 loadWikiContent(tabId);
             } else {
                 // Default to quotes if no tab is active
-                document.querySelector('[data-tab="quotes"]').classList.add('active');
-                document.getElementById('quotes').classList.add('active');
-                window.wikiData.currentTab = 'quotes';
-                loadWikiContent('quotes');
+                document.querySelector('[data-tab="wisdom"]').classList.add('active');
+                document.getElementById('wisdom').classList.add('active');
+                window.wikiData.currentTab = 'wisdom';
+                loadWikiContent('wisdom');
             }
         }
 
