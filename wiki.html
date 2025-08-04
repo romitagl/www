@@ -60,11 +60,12 @@
                     <ul class="tabs-nav">
                         <li class="tab-item active" data-tab="wisdom">Wisdom</li>
                         <li class="tab-item" data-tab="resources">Resources</li>
+                        <li class="tab-item" data-tab="motors">Motors</li>
                     </ul>
 
                     <!-- Tab Content -->
 
-                    <!-- Tab Content -->
+                    <!-- Wisdom Tab -->
                     <div id="wisdom" class="tab-content active">
                         <div class="wisdom-container">
                             <div id="wisdom-header">
@@ -102,6 +103,25 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Motors Tab -->
+                    <div id="motors" class="tab-content">
+                        <div class="motors-container">
+                            <div id="motors-header">
+                                <h3>Motorsport & Vehicle Resources</h3>
+                                <p>Everything related to cars, bikes, tracks, events, and automotive maintenance.</p>
+                                <div class="last-updated" id="motors-updated">
+                                    Loading motors...
+                                    <button id="refresh-motors" class="refresh-button" style="display: none;">
+                                        <i class="fas fa-sync-alt"></i> Refresh
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="motors-content" class="content-loading">
+                                <i class="fas fa-spinner fa-spin"></i> Loading motors...
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -110,7 +130,6 @@
         <div data-component="footer"></div>
     </div>
 
-    <!-- Wiki Content Functionality Script -->
     <!-- Wiki Content Functionality Script -->
     <script>
         // Tab initialization
@@ -122,11 +141,13 @@
                 categories: new Set(),
                 activeFilters: {
                     wisdom: new Set(),
-                    resources: new Set()
+                    resources: new Set(),
+                    motors: new Set()
                 },
                 tagCounts: {
                     wisdom: {},
-                    resources: {}
+                    resources: {},
+                    motors: {}
                 }
             };
 
@@ -179,7 +200,7 @@
                 window.wikiData.currentTab = tabId;
                 loadWikiContent(tabId);
             } else {
-                // Default to quotes if no tab is active
+                // Default to wisdom if no tab is active
                 document.querySelector('[data-tab="wisdom"]').classList.add('active');
                 document.getElementById('wisdom').classList.add('active');
                 window.wikiData.currentTab = 'wisdom';
@@ -420,11 +441,26 @@
             }
         }
 
-        // Function to format content with proper HTML, handling images and tags
+        // Function to format content with proper HTML, handling images, calendars and tags
         function formatContentWithImagesAndTags(content) {
             // Handle GitHub hosted images first
             content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
                 '<img src="$2" alt="$1" class="wiki-image">$3');
+
+            // Handle Google Calendar embeds - detect calendar.google.com/calendar/embed URLs
+            content = content.replace(/\[([^\]]+)\]\((https:\/\/calendar\.google\.com\/calendar\/embed[^)]+)\)/g, function(match, linkText, url) {
+                return `<div class="calendar-container">
+                    <div class="calendar-header">
+                        <h4>${linkText}</h4>
+                        <a href="${url}" target="_blank" rel="noopener" class="calendar-link">
+                            <i class="fas fa-external-link-alt"></i> Open in Google Calendar
+                        </a>
+                    </div>
+                    <div class="calendar-embed">
+                        <iframe src="${url}" frameborder="0" scrolling="no" class="google-calendar"></iframe>
+                    </div>
+                </div>`;
+            });
 
             // Handle subsection headers (###)
             content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');

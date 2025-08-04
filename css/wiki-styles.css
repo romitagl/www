@@ -744,6 +744,90 @@
   text-decoration: none !important;
 }
 
+/* Calendar embed styling */
+.calendar-container {
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(30, 30, 30, 0.6);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-header h4 {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.calendar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.calendar-link:hover {
+    color: var(--text-light);
+    text-decoration: underline;
+}
+
+.calendar-embed {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.google-calendar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* Responsive calendar adjustments */
+@media (max-width: 768px) {
+    .calendar-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .calendar-embed {
+        padding-bottom: 75%; /* Taller aspect ratio for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-header {
+        padding: 12px 15px;
+    }
+    
+    .calendar-header h4 {
+        font-size: 1rem;
+    }
+    
+    .calendar-embed {
+        padding-bottom: 100%; /* Square aspect ratio for small screens */
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .tag-filter-container {
