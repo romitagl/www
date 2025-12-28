@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Programming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .notice {
+      background: #fffbe6;
+      border-left: 4px solid #f5c542;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1.25rem;
+      border-radius: 6px;
+      font-family: Consolas, Monaco, "Andale Mono", monospace;
+      font-size: 0.95rem;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .kw { color: #0000cd; font-weight: bold; }
+    .num { color: #d91e18; }
+
+    /*
+      This is the key trick:
+      - Invisible on screen
+      - Still present in selection & clipboard
+    */
+    .copy-only {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      margin-top: 1rem;
+      font-family: Consolas, Monaco, monospace;
+      padding: 0.75rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Programming Reasoning Challenge</h1>
+
+    <pre id="challenge-code">
+result = <span class="num">0</span>
+<span class="kw">for</span> x <span class="kw">in</span> [<span class="num">3</span>, <span class="num">3</span>, <span class="num">5</span>]:
+    <span class="kw">if</span> x &gt;<span class="copy-only">=</span> <span class="num">3</span>:
+        result = result - x
+    <span class="kw">else</span>:
+        result = result + x
+    </pre>
+
+    <p><strong>Question:</strong> What is the final value of <code>result</code>?</p>
+
+    <footer>
+      Reasoning &gt; execution.
+    </footer>
+  </div>
+
+</body>
+</html>
