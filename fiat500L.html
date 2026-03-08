@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Noleggio Fiat 500 L storica del 1971 per matrimoni, servizi fotografici ed eventi speciali. Vintage italiana autentica.">
+  <meta name="description" lang="en" content="Rent a historic 1971 Fiat 500 L for weddings, photo shoots and special events. Authentic Italian vintage.">
+  <title>La Cinquecento — Noleggio Auto d'Epoca 1971</title>
+
+  <!-- Google Fonts: Italian 70s feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&family=Lora:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════
+       ROOT & VARIABLES — Palette anni '70 italiano
+    ═══════════════════════════════════════════ */
+    :root {
+      --rosso:       #C0392B;
+      --verde:       #27623A;
+      --bianco:      #F5EFE0;
+      --crema:       #EDE0C4;
+      --ocra:        #C9972A;
+      --marrone:     #6B3A2A;
+      --seppia:      #8B6F5E;
+      --grigio-caldo:#3D3530;
+      --inchiostro:  #1A120E;
+      --ombra:       rgba(26,18,14,0.18);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--crema);
+      color: var(--inchiostro);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+      /* Paper texture overlay */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ═══════════════════════════════════════════
+       DECORATIVE BORDER FRAME (top & bottom)
+    ═══════════════════════════════════════════ */
+    .border-tape {
+      height: 10px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--verde) 0px, var(--verde) 33.33%,
+        #fff       33.33%, #fff       66.66%,
+        var(--rosso) 66.66%, var(--rosso) 100%
+      );
+    }
+
+    /* ═══════════════════════════════════════════
+       LANGUAGE TOGGLE
+    ═══════════════════════════════════════════ */
+    .lang-bar {
+      background: var(--grigio-caldo);
+      color: var(--crema);
+      text-align: right;
+      padding: 6px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .lang-bar button {
+      background: none; border: 1px solid var(--crema);
+      color: var(--crema); cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 0.1em;
+      padding: 2px 10px; margin-left: 8px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .lang-bar button:hover,
+    .lang-bar button.active {
+      background: var(--ocra); border-color: var(--ocra); color: var(--inchiostro);
+    }
+
+    /* ═══════════════════════════════════════════
+       MASTHEAD / HEADER
+    ═══════════════════════════════════════════ */
+    header {
+      background: var(--bianco);
+      border-bottom: 3px solid var(--ocra);
+      padding: 28px 40px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .masthead-brand {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    /* Italian flag — vintage distressed */
+    .flag-it {
+      width: 52px;
+      height: 34px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.15);
+      box-shadow: 2px 2px 6px var(--ombra);
+      border-radius: 2px;
+      /* Distressed overlay */
+      filter: sepia(20%) contrast(0.9);
+    }
+    .flag-it::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        90deg,
+        #009246 0% 33.33%,
+        #fff    33.33% 66.66%,
+        #CE2B37 66.66% 100%
+      );
+      z-index: 0;
+    }
+    .flag-it::after {
+      /* aged vignette */
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(90,60,20,0.25) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100' height='60' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .masthead-text {}
+    .masthead-text .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--seppia);
+    }
+    .masthead-text h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--inchiostro);
+      letter-spacing: -0.01em;
+    }
+    .masthead-text h1 em {
+      font-style: italic;
+      color: var(--rosso);
+    }
+    .masthead-text .anno {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--seppia);
+      margin-top: 4px;
+    }
+
+    .masthead-tagline {
+      max-width: 320px;
+      text-align: right;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--marrone);
+      line-height: 1.5;
+      border-left: 3px solid var(--ocra);
+      padding-left: 16px;
+    }
+    @media (max-width: 680px) {
+      .masthead-tagline { display: none; }
+      header { padding: 20px 20px 16px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    nav {
+      background: var(--grigio-caldo);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    nav ul li a {
+      display: block;
+      padding: 14px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crema);
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--ocra);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    nav ul li a:hover { color: var(--ocra); }
+    nav ul li a:hover::after { transform: scaleX(1); }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      max-height: 640px;
+    }
+    .hero img {
+      width: 100%;
+      height: 640px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      filter: sepia(12%) contrast(0.97) brightness(1.02);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(26,18,14,0.08) 0%,
+          rgba(26,18,14,0.0) 50%,
+          rgba(26,18,14,0.55) 100%);
+    }
+    .hero-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      right: 48px;
+    }
+    .hero-caption .badge {
+      display: inline-block;
+      background: var(--rosso);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      margin-bottom: 10px;
+    }
+    .hero-caption h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      max-width: 700px;
+    }
+    .hero-caption h2 em {
+      font-style: italic;
+      color: var(--crema);
+    }
+    @media (max-width: 600px) {
+      .hero img { height: 420px; }
+      .hero-caption { left: 20px; right: 20px; bottom: 24px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       ORNAMENTAL DIVIDER
+    ═══════════════════════════════════════════ */
+    .divider {
+      text-align: center;
+      padding: 24px 0;
+      color: var(--ocra);
+      font-size: 22px;
+      letter-spacing: 12px;
+      line-height: 1;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: clamp(30px, 12vw, 120px);
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--ocra), transparent);
+      margin: 0 16px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTIONS WRAPPER
+    ═══════════════════════════════════════════ */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 32px;
+    }
+    @media (max-width: 600px) {
+      section { padding: 40px 18px; }
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rosso);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--inchiostro);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; color: var(--rosso); }
+
+    /* ═══════════════════════════════════════════
+       ABOUT / LA STORIA
+    ═══════════════════════════════════════════ */
+    #storia .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    #storia .testo p { margin-bottom: 18px; color: var(--grigio-caldo); }
+    #storia .testo .firma {
+      font-style: italic;
+      font-size: 15px;
+      color: var(--seppia);
+      border-top: 1px solid var(--crema);
+      padding-top: 14px;
+      margin-top: 24px;
+    }
+    #storia .scheda {
+      background: var(--bianco);
+      border: 1px solid var(--ocra);
+      padding: 32px;
+      box-shadow: 4px 4px 0 var(--ocra);
+    }
+    #storia .scheda h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--seppia);
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--crema);
+      padding-bottom: 10px;
+    }
+    #storia .scheda dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px 16px;
+    }
+    #storia .scheda dt {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--seppia);
+      padding-top: 2px;
+    }
+    #storia .scheda dd {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--inchiostro);
+      font-weight: bold;
+    }
+    @media (max-width: 780px) {
+      #storia .inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       SERVICES / SERVIZI
+    ═══════════════════════════════════════════ */
+    #servizi {
+      background: var(--grigio-caldo);
+      max-width: 100%;
+      padding: 70px 32px;
+    }
+    #servizi .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    #servizi .section-label { color: var(--ocra); }
+    #servizi .section-title { color: var(--bianco); }
+
+    .servizi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .servizio-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 32px 24px;
+      transition: transform 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .servizio-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--ocra);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .servizio-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+    .servizio-card:hover::before { transform: scaleX(1); }
+
+    .servizio-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .servizio-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--bianco);
+      margin-bottom: 10px;
+    }
+    .servizio-card p {
+      font-size: 14px;
+      color: rgba(245,239,224,0.7);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════
+       GALLERY / GALLERIA
+    ═══════════════════════════════════════════ */
+    #galleria {
+      background: var(--bianco);
+      max-width: 100%;
+      padding: 70px 32px;
+    }
+    #galleria .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    .gallery-grid .g1 { grid-column: 1 / 3; }
+    .gallery-grid .g3 { grid-column: 3 / 4; grid-row: 1 / 3; }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      filter: sepia(8%) contrast(0.96) brightness(1.01);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      display: block;
+    }
+    .gallery-grid .g3 img { height: 100%; min-height: 320px; }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: sepia(0%) contrast(1.0) brightness(1.03);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(201,151,42,0.3);
+      pointer-events: none;
+      transition: border-color 0.3s;
+    }
+    .gallery-item:hover::after { border-color: var(--ocra); }
+
+    @media (max-width: 700px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid .g1 { grid-column: 1 / 3; }
+      .gallery-grid .g3 { grid-column: 1 / 2; grid-row: auto; }
+      .gallery-item img { height: 220px; }
+      .gallery-grid .g3 img { height: 220px; }
+    }
+    @media (max-width: 460px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid .g1,
+      .gallery-grid .g3 { grid-column: 1; grid-row: auto; }
+    }
+
+    /* ═══════════════════════════════════════════
+       QUOTE / VIRGOLETTE
+    ═══════════════════════════════════════════ */
+    .pullquote-block {
+      background: var(--crema);
+      border-left: 5px solid var(--rosso);
+      padding: 40px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .pullquote-block::before {
+      content: '❝';
+      position: absolute;
+      top: 10px; left: 18px;
+      font-size: 4rem;
+      color: var(--rosso);
+      opacity: 0.15;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+    .pullquote-block blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      color: var(--inchiostro);
+      line-height: 1.5;
+    }
+    .pullquote-block .lang-it,
+    .pullquote-block .lang-en { display: none; }
+    @media (max-width: 600px) {
+      .pullquote-block { padding: 28px 24px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       CONTACT / CONTATTI
+    ═══════════════════════════════════════════ */
+    #contatti {
+      background: var(--crema);
+      max-width: 100%;
+      padding: 70px 32px 80px;
+      border-top: 1px solid rgba(201,151,42,0.3);
+    }
+    #contatti .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    #contatti .section-title { margin-bottom: 8px; }
+    #contatti .intro {
+      font-size: 15px;
+      color: var(--seppia);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-icon {
+      width: 46px; height: 46px;
+      background: var(--grigio-caldo);
+      color: var(--crema);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-item .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--seppia);
+      margin-bottom: 2px;
+    }
+    .contact-item .value {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--inchiostro);
+    }
+    .contact-item .value a {
+      color: var(--rosso);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .contact-item .value a:hover { border-bottom-color: var(--rosso); }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25D366;
+      color: #fff;
+      padding: 16px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    }
+    .btn-whatsapp:hover {
+      background: #128C5B;
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
+    }
+    .btn-whatsapp svg { width: 20px; height: 20px; fill: #fff; }
+
+    .contact-form-area {
+      background: var(--bianco);
+      border: 1px solid rgba(201,151,42,0.4);
+      padding: 36px;
+      box-shadow: 5px 5px 0 rgba(201,151,42,0.2);
+    }
+    .contact-form-area h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--seppia);
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--crema);
+      padding-bottom: 12px;
+    }
+    .form-row { margin-bottom: 18px; }
+    .form-row label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--seppia);
+      margin-bottom: 6px;
+    }
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      background: var(--crema);
+      border: 1px solid rgba(139,111,94,0.35);
+      color: var(--inchiostro);
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus,
+    .form-row select:focus {
+      border-color: var(--ocra);
+    }
+    .form-row textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%;
+      background: var(--rosso);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 3px 3px 0 var(--marrone);
+    }
+    .btn-submit:hover {
+      background: var(--marrone);
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--inchiostro);
+    }
+
+    @media (max-width: 780px) {
+      #contatti .inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--inchiostro);
+      color: rgba(245,239,224,0.55);
+      text-align: center;
+      padding: 28px 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    footer span { color: var(--ocra); }
+
+    /* ═══════════════════════════════════════════
+       I18N — LANGUAGE SWITCHING
+    ═══════════════════════════════════════════ */
+    .lang-it { display: block; }
+    .lang-en { display: none; }
+    .inline-it { display: inline; }
+    .inline-en { display: none; }
+
+    body.en .lang-it  { display: none !important; }
+    body.en .lang-en  { display: block !important; }
+    body.en .inline-it { display: none !important; }
+    body.en .inline-en { display: inline !important; }
+
+    /* ═══════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── TRICOLORE TAPE ─────────────────────────── -->
+  <div class="border-tape"></div>
+
+  <!-- ── LANG TOGGLE ───────────────────────────── -->
+  <div class="lang-bar">
+    <button class="active" id="btnIT" onclick="setLang('it')">🇮🇹 Italiano</button>
+    <button id="btnEN" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+
+  <!-- ── HEADER ────────────────────────────────── -->
+  <header>
+    <div class="masthead-brand">
+      <div class="flag-it" role="img" aria-label="Bandiera italiana"></div>
+      <div class="masthead-text">
+        <p class="label lang-it">Noleggio Auto d'Epoca</p>
+        <p class="label lang-en">Vintage Car Hire</p>
+        <h1>La <em>Cinquecento</em></h1>
+        <p class="anno">Fiat 500 L &nbsp;·&nbsp; Anno 1971</p>
+      </div>
+    </div>
+    <p class="masthead-tagline">
+      <span class="lang-it">Un pezzo di storia italiana — pronto a raccontare la tua storia.</span>
+      <span class="lang-en">A piece of Italian history — ready to tell your story.</span>
+    </p>
+  </header>
+
+  <!-- ── NAV ───────────────────────────────────── -->
+  <nav>
+    <ul>
+      <li><a href="#storia">
+        <span class="inline-it">La Storia</span>
+        <span class="inline-en">The Story</span>
+      </a></li>
+      <li><a href="#servizi">
+        <span class="inline-it">Servizi</span>
+        <span class="inline-en">Services</span>
+      </a></li>
+      <li><a href="#galleria">
+        <span class="inline-it">Galleria</span>
+        <span class="inline-en">Gallery</span>
+      </a></li>
+      <li><a href="#contatti">
+        <span class="inline-it">Contatti</span>
+        <span class="inline-en">Contact</span>
+      </a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────── -->
+  <div class="hero">
+    <img src="fiat500L-photos/hero.jpg" alt="Fiat 500 L 1971 — vista laterale su pavé italiano">
+    <div class="hero-overlay"></div>
+    <div class="hero-caption">
+      <div class="badge lang-it">Autentica · Restaurata · 1971</div>
+      <div class="badge lang-en">Authentic · Restored · 1971</div>
+      <h2 class="lang-it">Stile italiano<br><em>che non passa mai.</em></h2>
+      <h2 class="lang-en">Italian style<br><em>that never fades.</em></h2>
+    </div>
+  </div>
+
+  <!-- ── DIVIDER ────────────────────────────────── -->
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ── LA STORIA ─────────────────────────────── -->
+  <section id="storia">
+    <div class="inner">
+      <div class="testo reveal">
+        <p class="section-label lang-it">La Nostra Storia</p>
+        <p class="section-label lang-en">Our Story</p>
+        <h2 class="section-title lang-it">Un'icona<br><em>senza tempo.</em></h2>
+        <h2 class="section-title lang-en">A timeless<br><em>icon.</em></h2>
+
+        <p class="lang-it">
+          Nata nel 1971 a Torino, la nostra Fiat 500 L è uno dei simboli più amati del miracolo economico italiano. 
+          Con il suo tetto apribile, l'interno in pelle tabacco e la carrozzeria bianco perla, questa piccola 
+          meraviglia è stata accuratamente restaurata per essere al centro della vostra giornata speciale.
+        </p>
+        <p class="lang-en">
+          Born in 1971 in Turin, our Fiat 500 L is one of the most beloved symbols of the Italian economic miracle. 
+          With its folding sunroof, tobacco leather interior and pearl white bodywork, this little marvel has been 
+          carefully restored to be at the centre of your special day.
+        </p>
+
+        <p class="lang-it">
+          La Cinquecento porta con sé il profumo delle strade in sanpietrino, delle piazze assolate e di 
+          un'Italia che sapeva fare le cose belle. Disponibile per noleggi privati, set cinematografici, 
+          matrimoni e qualsiasi occasione che meriti qualcosa di unico.
+        </p>
+        <p class="lang-en">
+          The Cinquecento carries the scent of cobblestone streets, sun-drenched piazzas and an Italy 
+          that knew how to make beautiful things. Available for private hire, film sets, weddings and any 
+          occasion that deserves something truly unique.
+        </p>
+
+        <p class="firma lang-it">— Con amore per le cose autentiche.</p>
+        <p class="firma lang-en">— With love for authentic things.</p>
+      </div>
+
+      <div class="scheda reveal">
+        <h3>
+          <span class="inline-it">Scheda Tecnica</span>
+          <span class="inline-en">Specifications</span>
+        </h3>
+        <dl>
+          <dt>Marca</dt>         <dd>Fiat</dd>
+          <dt>Modello</dt>       <dd>500 L</dd>
+          <dt>Anno</dt>          <dd>1971</dd>
+          <dt>Colore</dt>        <dd>
+            <span class="inline-it">Bianco Perla</span>
+            <span class="inline-en">Pearl White</span>
+          </dd>
+          <dt>Interno</dt>       <dd>
+            <span class="inline-it">Pelle Tabacco</span>
+            <span class="inline-en">Tobacco Leather</span>
+          </dd>
+          <dt>Tetto</dt>         <dd>
+            <span class="inline-it">Apribile</span>
+            <span class="inline-en">Sunroof</span>
+          </dd>
+          <dt>
+            <span class="inline-it">Stato</span>
+            <span class="inline-en">Condition</span>
+          </dt>
+          <dd>
+            <span class="inline-it">Restaurata</span>
+            <span class="inline-en">Fully Restored</span>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVIZI ────────────────────────────────── -->
+  <div id="servizi">
+    <div class="inner">
+      <p class="section-label lang-it">Cosa Offriamo</p>
+      <p class="section-label lang-en">What We Offer</p>
+      <h2 class="section-title lang-it">La perfetta <em>protagonista</em><br>per ogni occasione.</h2>
+      <h2 class="section-title lang-en">The perfect <em>star</em><br>for every occasion.</h2>
+
+      <div class="servizi-grid">
+        <div class="servizio-card reveal">
+          <div class="servizio-icon">💍</div>
+          <h3 class="lang-it">Matrimoni</h3>
+          <h3 class="lang-en">Weddings</h3>
+          <p class="lang-it">Un arrivo indimenticabile per gli sposi. La 500 L decorata con fiori bianchi è l'immagine romantica per eccellenza del matrimonio italiano.</p>
+          <p class="lang-en">An unforgettable arrival for the newlyweds. The 500 L decorated with white flowers is the quintessential romantic image of an Italian wedding.</p>
+        </div>
+        <div class="servizio-card reveal">
+          <div class="servizio-icon">📸</div>
+          <h3 class="lang-it">Servizi Fotografici</h3>
+          <h3 class="lang-en">Photo &amp; Film Shoots</h3>
+          <p class="lang-it">Set fotografici, campagne pubblicitarie, video musicali e produzioni cinematografiche. Un'auto con carattere autentico che si nota.</p>
+          <p class="lang-en">Photo shoots, advertising campaigns, music videos and film productions. A car with genuine character that stands out on screen.</p>
+        </div>
+        <div class="servizio-card reveal">
+          <div class="servizio-icon">🎉</div>
+          <h3 class="lang-it">Feste &amp; Eventi</h3>
+          <h3 class="lang-en">Parties &amp; Events</h3>
+          <p class="lang-it">Compleanni, anniversari, feste a tema anni '70. La Cinquecento trasforma ogni evento in un ricordo che rimane nel tempo.</p>
+          <p class="lang-en">Birthdays, anniversaries, 70s themed parties. The Cinquecento turns any event into a memory that lasts.</p>
+        </div>
+        <div class="servizio-card reveal">
+          <div class="servizio-icon">🎬</div>
+          <h3 class="lang-it">Cinema &amp; Pubblicità</h3>
+          <h3 class="lang-en">Cinema &amp; Advertising</h3>
+          <p class="lang-it">Produzioni televisive, spot pubblicitari, cortometraggi. La 500 è il simbolo dell'italianità nel mondo.</p>
+          <p class="lang-en">TV productions, commercials, short films. The 500 is the global symbol of Italian identity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PULLQUOTE ─────────────────────────────── -->
+  <div class="pullquote-block reveal">
+    <blockquote>
+      <span class="lang-it">«La bellezza italiana non tramonta mai. Questa Cinquecento è la prova.»</span>
+      <span class="lang-en">«Italian beauty never fades. This Cinquecento is the proof.»</span>
+    </blockquote>
+  </div>
+
+  <!-- ── GALLERIA ───────────────────────────────── -->
+  <div id="galleria">
+    <div class="inner">
+      <p class="section-label lang-it">Le Fotografie</p>
+      <p class="section-label lang-en">The Gallery</p>
+      <h2 class="section-title lang-it">Ogni angolo racconta<br><em>una storia.</em></h2>
+      <h2 class="section-title lang-en">Every angle tells<br><em>a story.</em></h2>
+
+      <div class="gallery-grid">
+        <div class="gallery-item g1 reveal">
+          <img src="fiat500L-photos/foto1.jpg" alt="Fiat 500 L 1971 — vista frontale su piazza con chiesa">
+        </div>
+        <div class="gallery-item g2 reveal">
+          <img src="fiat500L-photos/foto2.jpg" alt="Fiat 500 L 1971 — vista frontale ampia sul pavé">
+        </div>
+        <div class="gallery-item g3 reveal">
+          <img src="fiat500L-photos/foto3.jpg" alt="Fiat 500 L 1971 — dettaglio specchietto e finestrino">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTATTI ───────────────────────────────── -->
+  <div id="contatti">
+    <div class="inner">
+      <div class="reveal">
+        <p class="section-label lang-it">Prenotazioni e Info</p>
+        <p class="section-label lang-en">Bookings &amp; Info</p>
+        <h2 class="section-title lang-it">Scriveteci.<br><em>Restiamo in ascolto.</em></h2>
+        <h2 class="section-title lang-en">Get in touch.<br><em>We are listening.</em></h2>
+
+        <p class="intro lang-it">Per informazioni sul noleggio, disponibilità e preventivi non esitate a contattarci via WhatsApp o email.</p>
+        <p class="intro lang-en">For rental information, availability and quotes do not hesitate to contact us via WhatsApp or email.</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="label">WhatsApp</div>
+            <div class="value"><a href="https://wa.me/393202237462" target="_blank" rel="noopener">+39 320 223 7462</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:romitagl@gmail.com">romitagl@gmail.com</a></div>
+          </div>
+        </div>
+
+        <a class="btn-whatsapp" href="https://wa.me/393202237462" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span class="lang-it">Scrivi su WhatsApp</span>
+          <span class="lang-en">Message on WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="contact-form-area reveal">
+        <h3>
+          <span class="inline-it">Richiesta Informazioni</span>
+          <span class="inline-en">Enquiry Form</span>
+        </h3>
+        <div class="form-row">
+          <label class="lang-it">Nome e Cognome</label>
+          <label class="lang-en">Full Name</label>
+          <input type="text" placeholder="Mario Rossi">
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" placeholder="mario@email.it">
+        </div>
+        <div class="form-row">
+          <label class="lang-it">Tipo di Evento</label>
+          <label class="lang-en">Type of Event</label>
+          <select>
+            <option class="lang-it" value="">-- Seleziona --</option>
+            <option class="lang-en" value="">-- Select --</option>
+            <option value="matrimonio">
+              Matrimonio / Wedding
+            </option>
+            <option value="foto">
+              Servizio Fotografico / Photo Shoot
+            </option>
+            <option value="cinema">
+              Cinema / Pubblicità
+            </option>
+            <option value="evento">
+              Evento Privato / Private Event
+            </option>
+            <option value="altro">
+              Altro / Other
+            </option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="lang-it">Messaggio</label>
+          <label class="lang-en">Message</label>
+          <textarea placeholder="Data, luogo, tipo di evento... / Date, location, event type..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">
+          <span class="inline-it">Invia Richiesta</span>
+          <span class="inline-en">Send Enquiry</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────────── -->
+  <footer>
+    <span>La Cinquecento</span> — Fiat 500 L 1971 &nbsp;·&nbsp;
+    <span class="inline-it">Noleggio Auto d'Epoca</span>
+    <span class="inline-en">Vintage Car Hire</span>
+    &nbsp;·&nbsp;
+    <a href="mailto:romitagl@gmail.com" style="color: var(--ocra)">romitagl@gmail.com</a>
+  </footer>
+
+  <!-- ── BORDER TAPE BOTTOM ──────────────────────── -->
+  <div class="border-tape"></div>
+
+  <!-- ── SCRIPTS ────────────────────────────────── -->
+  <script>
+    /* Language toggle */
+    function setLang(lang) {
+      if (lang === 'en') {
+        document.body.classList.add('en');
+        document.getElementById('btnIT').classList.remove('active');
+        document.getElementById('btnEN').classList.add('active');
+      } else {
+        document.body.classList.remove('en');
+        document.getElementById('btnIT').classList.add('active');
+        document.getElementById('btnEN').classList.remove('active');
+      }
+    }
+
+    /* Scroll reveal */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+
+    /* Contact form — opens WhatsApp with message */
+    function handleSubmit() {
+      const name    = document.querySelectorAll('.form-row input')[0].value.trim();
+      const email   = document.querySelectorAll('.form-row input')[1].value.trim();
+      const event   = document.querySelector('.form-row select').value;
+      const message = document.querySelector('.form-row textarea').value.trim();
+
+      if (!name || !message) {
+        alert(document.body.classList.contains('en')
+          ? 'Please fill in your name and message.'
+          : 'Per favore inserisci nome e messaggio.');
+        return;
+      }
+
+      const text = encodeURIComponent(
+        `Ciao! Mi chiamo ${name}.\nEvento: ${event}\nEmail: ${email}\n\n${message}`
+      );
+      window.open(`https://wa.me/393202237462?text=${text}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
