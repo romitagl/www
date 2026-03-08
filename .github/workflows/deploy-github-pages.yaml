@@ -35,6 +35,7 @@ jobs:
           cp -r css $DEPLOY_DIR/
           cp -r assets $DEPLOY_DIR/
           cp -r public $DEPLOY_DIR/
+          cp -r fiat500L-photos $DEPLOY_DIR/
           # advertising files
           # https://www.bing.com/webmasters
           cp BingSiteAuth.xml $DEPLOY_DIR/
