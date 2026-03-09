@@ -725,8 +725,14 @@
     .inline-it { display: inline; }
     .inline-en { display: none; }
 
-    body.en .lang-it  { display: none !important; }
-    body.en .lang-en  { display: block !important; }
+    /* Badge uses inline-block — must not be overridden to block */
+    .badge.lang-it { display: inline-block; }
+    .badge.lang-en { display: none; }
+
+    body.en .lang-it   { display: none !important; }
+    body.en .lang-en   { display: block !important; }
+    body.en .badge.lang-it { display: none !important; }
+    body.en .badge.lang-en { display: inline-block !important; }
     body.en .inline-it { display: none !important; }
     body.en .inline-en { display: inline !important; }
 
