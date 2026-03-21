@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIAT 500 L Wiki - Romitagl.com</title>
+  <meta name="description" content="Dynamic owner wiki for the historical FIAT 500 L with maintenance, troubleshooting, preservation, and workshop notes sourced from the GitHub wiki markdown.">
+  <meta property="og:title" content="FIAT 500 L Wiki - Romitagl.com">
+  <meta property="og:description" content="Dynamic owner wiki for the historical FIAT 500 L with maintenance, troubleshooting, preservation, and workshop notes.">
+  <meta property="og:url" content="https://romitagl.com/fiat500l-wiki.html">
+  <link rel="canonical" href="https://romitagl.com/fiat500l-wiki.html">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="assets/js/lib/marked.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/wiki-styles.css">
+  <script src="components.js"></script>
+  <style>
+    .vehicle-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 72px 0 36px;
+    }
+
+    .vehicle-hero-copy,
+    .vehicle-hero-media,
+    .vehicle-subnav,
+    .vehicle-content-shell {
+      background: linear-gradient(180deg, rgba(56, 163, 165, 0.08), rgba(30, 30, 30, 0.94));
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+    }
+
+    .vehicle-hero-copy,
+    .vehicle-subnav,
+    .vehicle-content-shell {
+      padding: 28px;
+    }
+
+    .vehicle-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    .vehicle-kicker::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: rgba(56, 163, 165, 0.5);
+    }
+
+    .vehicle-hero-copy h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    .vehicle-hero-copy p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 1.03rem;
+    }
+
+    .vehicle-chip-row,
+    .vehicle-actions,
+    .vehicle-anchor-links,
+    .vehicle-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .vehicle-chip,
+    .vehicle-anchor-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .vehicle-anchor-links a:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: rgba(56, 163, 165, 0.12);
+    }
+
+    .vehicle-actions {
+      margin-top: 24px;
+    }
+
+    .vehicle-hero-media {
+      overflow: hidden;
+      position: relative;
+      min-height: 100%;
+    }
+
+    .vehicle-hero-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .vehicle-hero-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(18, 18, 18, 0.78);
+      color: var(--text-light);
+      backdrop-filter: blur(8px);
+    }
+
+    .vehicle-hero-caption span {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 4px;
+    }
+
+    .vehicle-subnav {
+      margin-bottom: 24px;
+    }
+
+    .vehicle-subnav-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .vehicle-language-toggle {
+      display: inline-flex;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.18);
+      gap: 4px;
+    }
+
+    .vehicle-language-toggle button {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .vehicle-language-toggle button.active {
+      background: rgba(56, 163, 165, 0.14);
+      color: var(--primary-color);
+    }
+
+    .vehicle-language-status {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .vehicle-content-shell .content-block {
+      max-width: 920px;
+    }
+
+    .vehicle-content-shell .content-block h2,
+    .vehicle-content-shell .content-block h3,
+    .vehicle-content-shell .content-block h4 {
+      scroll-margin-top: 90px;
+    }
+
+    .vehicle-content-shell .content-block h2 {
+      color: var(--text-light);
+      font-size: 1.8rem;
+      margin-top: 28px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(56, 163, 165, 0.24);
+    }
+
+    .vehicle-content-shell .content-block h3 {
+      color: var(--primary-color);
+    }
+
+    .vehicle-content-shell .content-block h4 {
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .vehicle-content-shell .content-block p,
+    .vehicle-content-shell .content-block li {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .vehicle-content-shell .content-block ul,
+    .vehicle-content-shell .content-block ol {
+      margin: 14px 0 18px;
+      padding-left: 22px;
+    }
+
+    .vehicle-content-shell .content-block strong {
+      color: var(--text-light);
+    }
+
+    .vehicle-content-shell .lang-block {
+      margin-top: 8px;
+    }
+
+    .vehicle-content-shell .lang-block-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(56, 163, 165, 0.12);
+      color: var(--primary-color);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .vehicle-content-shell .lang-block[data-lang="it"] .lang-block-title::before {
+      content: "IT";
+    }
+
+    .vehicle-content-shell .lang-block[data-lang="en"] .lang-block-title::before {
+      content: "EN";
+    }
+
+    .vehicle-content-shell .lang-block.is-hidden {
+      display: none;
+    }
+
+    .vehicle-loading,
+    .vehicle-error {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 42px 24px;
+    }
+
+    .vehicle-error {
+      color: #ff8e8e;
+    }
+
+    @media (max-width: 980px) {
+      .vehicle-hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .vehicle-hero {
+        padding-top: 48px;
+        gap: 20px;
+      }
+
+      .vehicle-hero-copy,
+      .vehicle-subnav,
+      .vehicle-content-shell {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div data-component="navigation"></div>
+
+    <section class="vehicle-hero">
+      <div class="vehicle-hero-copy">
+        <div class="vehicle-kicker" id="vehicle-kicker">Motors / Historical Cars / FIAT 500 L</div>
+        <h1 id="vehicle-title">FIAT 500 L Wiki</h1>
+        <p id="vehicle-description">
+          Practical owner notes for the historical FIAT 500 L, with maintenance guidance, troubleshooting help, preservation advice, and workshop reminders.
+        </p>
+        <div class="vehicle-chip-row">
+          <span class="vehicle-chip" id="vehicle-chip-1"><i class="fas fa-book-open"></i> Structured owner guide</span>
+          <span class="vehicle-chip" id="vehicle-chip-2"><i class="fas fa-language"></i> Italian and English view</span>
+          <span class="vehicle-chip" id="vehicle-chip-3"><i class="fas fa-wrench"></i> Maintenance and workshop focus</span>
+        </div>
+        <div class="vehicle-actions">
+          <a class="btn btn-primary" href="wiki.html#motors" id="vehicle-back-link">Back to Motors</a>
+          <a class="btn btn-secondary" href="https://github.com/romitagl/www/wiki/FIAT-500-L" target="_blank" rel="noopener" id="vehicle-source-link">View source page</a>
+        </div>
+      </div>
+
+      <div class="vehicle-hero-media">
+        <img src="fiat500L-photos/hero.jpg" alt="Historic FIAT 500 L parked on an Italian street">
+        <div class="vehicle-hero-caption">
+          <span id="vehicle-caption-title">FIAT 500 L</span>
+          <span id="vehicle-caption-text">Owner notes, maintenance, troubleshooting, preservation, and workshop reminders.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="vehicle-subnav">
+      <div class="vehicle-subnav-top">
+        <div class="vehicle-language-toggle" aria-label="Language selector">
+          <button type="button" data-lang="en" class="active">English</button>
+          <button type="button" data-lang="it">Italiano</button>
+        </div>
+        <div class="vehicle-language-status" id="vehicle-language-status">Showing English content</div>
+      </div>
+      <div class="vehicle-anchor-links" id="vehicle-anchor-links">
+        <a href="#vehicle-content"><i class="fas fa-spinner fa-spin"></i> Loading sections...</a>
+      </div>
+    </section>
+
+    <section class="vehicle-content-shell">
+      <div id="vehicle-content" class="content-block">
+        <div class="vehicle-loading"><i class="fas fa-spinner fa-spin"></i> Loading FIAT 500 L wiki...</div>
+      </div>
+    </section>
+
+    <div data-component="footer"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const contentElement = document.getElementById('vehicle-content');
+      const anchorElement = document.getElementById('vehicle-anchor-links');
+      const languageButtons = document.querySelectorAll('.vehicle-language-toggle button');
+      const languageStatus = document.getElementById('vehicle-language-status');
+      const uiElements = {
+        kicker: document.getElementById('vehicle-kicker'),
+        title: document.getElementById('vehicle-title'),
+        description: document.getElementById('vehicle-description'),
+        chip1: document.getElementById('vehicle-chip-1'),
+        chip2: document.getElementById('vehicle-chip-2'),
+        chip3: document.getElementById('vehicle-chip-3'),
+        backLink: document.getElementById('vehicle-back-link'),
+        sourceLink: document.getElementById('vehicle-source-link'),
+        captionTitle: document.getElementById('vehicle-caption-title'),
+        captionText: document.getElementById('vehicle-caption-text')
+      };
+      const sourceUrl = 'https://raw.githubusercontent.com/wiki/romitagl/www/FIAT-500-L.md';
+      const cacheKey = 'fiat500lWikiContent';
+      const cacheTimeKey = 'fiat500lWikiTimestamp';
+      const languageKey = 'fiat500lWikiLanguage';
+      let currentLanguage = localStorage.getItem(languageKey) || 'en';
+
+      const uiCopy = {
+        en: {
+          kicker: 'Motors / Historical Cars / FIAT 500 L',
+          title: 'FIAT 500 L Wiki',
+          description: 'Practical owner notes for the historical FIAT 500 L, with maintenance guidance, troubleshooting help, preservation advice, and workshop reminders.',
+          chip1: 'Structured owner guide',
+          chip2: 'Italian and English view',
+          chip3: 'Maintenance and workshop focus',
+          backLink: 'Back to Motors',
+          sourceLink: 'View source page',
+          captionTitle: 'FIAT 500 L',
+          captionText: 'Owner notes, maintenance, troubleshooting, preservation, and workshop reminders.',
+          status: 'Showing English content',
+          loadingAnchors: 'Loading sections...',
+          fallbackAnchor: 'Content'
+        },
+        it: {
+          kicker: 'Motors / Auto Storiche / FIAT 500 L',
+          title: 'Wiki FIAT 500 L',
+          description: 'Note pratiche per i proprietari della FIAT 500 L storica, con indicazioni su manutenzione, diagnosi dei problemi, conservazione e buone abitudini di officina.',
+          chip1: 'Guida pratica per il proprietario',
+          chip2: 'Vista in italiano o inglese',
+          chip3: 'Focus su manutenzione e officina',
+          backLink: 'Torna a Motors',
+          sourceLink: 'Vedi la pagina sorgente',
+          captionTitle: 'FIAT 500 L',
+          captionText: 'Note per il proprietario, manutenzione, diagnosi, conservazione e promemoria di officina.',
+          status: 'Contenuto visualizzato in italiano',
+          loadingAnchors: 'Caricamento sezioni...',
+          fallbackAnchor: 'Contenuto'
+        }
+      };
+
+      const headingTranslations = {
+        it: {
+          'Overview': 'Panoramica',
+          'Quick checks before every drive': 'Controlli rapidi prima di ogni uscita',
+          'Maintenance Rhythm': 'Ritmo di manutenzione',
+          'Workshop basics': 'Fondamenti di officina',
+          'Basic carburetor adjustment': 'Regolazione base del carburatore',
+          'Quick diagnostic checks': 'Controlli diagnostici rapidi',
+          'Fuel dripping inside the carburetor': 'Benzina che cola nel carburatore',
+          'Spark plug reading': 'Lettura della candela',
+          'Common Issues': 'Problemi comuni',
+          'Hard starting': 'Avviamento difficile',
+          'Rough idle or hesitation': 'Minimo irregolare o esitazione in accelerazione',
+          'Black smoke from exhaust': 'Fumo nero allo scarico',
+          'Strong fuel smell': 'Forte odore di benzina',
+          'Weak charging': 'Ricarica debole',
+          'Overheating or hot smell': 'Surriscaldamento o odore di caldo',
+          'Engine feels weak': 'Motore poco brillante',
+          'Brake pull or long pedal travel': 'Frenata irregolare o corsa lunga del pedale',
+          'Preservation': 'Conservazione',
+          'Workshop habits': 'Abitudini utili in officina',
+          'Parts to leave alone unless necessary': 'Parti da non toccare se non necessario',
+          'Reliability-minded upgrades': 'Aggiornamenti orientati all affidabilita',
+          'Useful on-board kit': 'Kit utile da tenere a bordo',
+          'Notes': 'Note'
+        },
+        en: {}
+      };
+
+      function preprocessMarkdown(markdown) {
+        return markdown.replace(/\[\[([^\]]+)\]\]/g, function (match, target) {
+          const linkMap = {
+            'FIAT-500-L': 'fiat500l-wiki.html'
+          };
+          const href = linkMap[target] || `https://github.com/romitagl/www/wiki/${target}`;
+          const label = target.replace(/-/g, ' ');
+          return `[${label}](${href})`;
+        });
+      }
+
+      function slugify(text) {
+        return text
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .trim()
+          .replace(/\s+/g, '-');
+      }
+
+      function renderAnchors() {
+        const headings = contentElement.querySelectorAll('h2');
+        if (!headings.length) {
+          anchorElement.innerHTML = `<a href="#vehicle-content">${uiCopy[currentLanguage].fallbackAnchor}</a>`;
+          return;
+        }
+
+        anchorElement.innerHTML = '';
+        headings.forEach((heading) => {
+          if (!heading.id) {
+            heading.id = slugify(heading.textContent);
+          }
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.textContent = heading.textContent;
+          anchorElement.appendChild(link);
+        });
+      }
+
+      function buildLanguageBlocks() {
+        const headings = Array.from(contentElement.querySelectorAll('h3, h4'));
+
+        headings.forEach((heading) => {
+          const label = heading.textContent.trim().toLowerCase();
+          if (label !== 'italiano' && label !== 'english') {
+            return;
+          }
+
+          const level = Number(heading.tagName.substring(1));
+          const lang = label === 'italiano' ? 'it' : 'en';
+          const wrapper = document.createElement('section');
+          wrapper.className = 'lang-block';
+          wrapper.dataset.lang = lang;
+
+          const title = document.createElement('div');
+          title.className = 'lang-block-title';
+          title.textContent = lang === 'it' ? 'Italiano' : 'English';
+          wrapper.appendChild(title);
+
+          heading.parentNode.insertBefore(wrapper, heading);
+          heading.remove();
+
+          let next = wrapper.nextSibling;
+          while (next) {
+            if (next.nodeType === Node.ELEMENT_NODE) {
+              const tag = next.tagName;
+              if (/^H[1-6]$/.test(tag)) {
+                const nextLevel = Number(tag.substring(1));
+                if (nextLevel <= level) {
+                  break;
+                }
+              }
+            }
+
+            const current = next;
+            next = next.nextSibling;
+            wrapper.appendChild(current);
+          }
+        });
+      }
+
+      function updateLanguageUI(lang) {
+        currentLanguage = lang;
+        localStorage.setItem(languageKey, lang);
+
+        languageButtons.forEach((button) => {
+          button.classList.toggle('active', button.dataset.lang === lang);
+        });
+
+        document.documentElement.lang = lang;
+        languageStatus.textContent = uiCopy[lang].status;
+
+        uiElements.kicker.textContent = uiCopy[lang].kicker;
+        uiElements.title.textContent = uiCopy[lang].title;
+        uiElements.description.textContent = uiCopy[lang].description;
+        uiElements.backLink.textContent = uiCopy[lang].backLink;
+        uiElements.sourceLink.textContent = uiCopy[lang].sourceLink;
+        uiElements.captionTitle.textContent = uiCopy[lang].captionTitle;
+        uiElements.captionText.textContent = uiCopy[lang].captionText;
+        uiElements.chip1.innerHTML = `<i class="fas fa-book-open"></i> ${uiCopy[lang].chip1}`;
+        uiElements.chip2.innerHTML = `<i class="fas fa-language"></i> ${uiCopy[lang].chip2}`;
+        uiElements.chip3.innerHTML = `<i class="fas fa-wrench"></i> ${uiCopy[lang].chip3}`;
+
+        contentElement.querySelectorAll('.lang-block').forEach((block) => {
+          block.classList.toggle('is-hidden', block.dataset.lang !== lang);
+        });
+
+        contentElement.querySelectorAll('h2, h3, h4').forEach((heading) => {
+          if (!heading.dataset.originalText) {
+            heading.dataset.originalText = heading.textContent.trim();
+          }
+          const original = heading.dataset.originalText;
+          heading.textContent = headingTranslations[lang][original] || original;
+          heading.id = slugify(heading.textContent);
+        });
+
+        renderAnchors();
+      }
+
+      function renderMarkdown(markdown) {
+        const processed = preprocessMarkdown(markdown);
+        const html = marked.parse(processed, {
+          headerIds: false,
+          mangle: false
+        });
+        contentElement.innerHTML = html;
+
+        contentElement.querySelectorAll('h2, h3, h4').forEach((heading) => {
+          heading.id = slugify(heading.textContent);
+        });
+
+        contentElement.querySelectorAll('a').forEach((link) => {
+          if (link.getAttribute('href') && link.getAttribute('href').startsWith('http')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
+          }
+        });
+
+        buildLanguageBlocks();
+        renderAnchors();
+        updateLanguageUI(currentLanguage);
+      }
+
+      function renderError(message) {
+        contentElement.innerHTML = `<div class="vehicle-error">${message}</div>`;
+      }
+
+      const cachedContent = localStorage.getItem(cacheKey);
+      const cachedTimestamp = localStorage.getItem(cacheTimeKey);
+      const isCacheFresh = cachedContent && cachedTimestamp && (Date.now() - parseInt(cachedTimestamp, 10) < 24 * 60 * 60 * 1000);
+
+      languageButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          updateLanguageUI(this.dataset.lang);
+        });
+      });
+
+      if (isCacheFresh) {
+        renderMarkdown(cachedContent);
+      } else {
+        anchorElement.innerHTML = `<a href="#vehicle-content"><i class="fas fa-spinner fa-spin"></i> ${uiCopy[currentLanguage].loadingAnchors}</a>`;
+        updateLanguageUI(currentLanguage);
+      }
+
+      fetch(sourceUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((markdown) => {
+          localStorage.setItem(cacheKey, markdown);
+          localStorage.setItem(cacheTimeKey, Date.now().toString());
+          renderMarkdown(markdown);
+        })
+        .catch(() => {
+          if (!cachedContent) {
+            renderError('Failed to load the FIAT 500 L wiki content. Please try again later.');
+          }
+        });
+    });
+  </script>
+</body>
+</html>

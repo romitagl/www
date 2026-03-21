@@ -49,6 +49,11 @@
         return true;
       }
 
+      // Treat dedicated wiki child pages as part of the Wiki section
+      if (linkPath === 'wiki.html' && currentPath.startsWith('fiat500')) {
+        return true;
+      }
+
       // For other pages, check if path matches
       if (!isIndex && linkPath === currentPath) {
         return true;

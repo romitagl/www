@@ -108,13 +108,26 @@
                     <div id="motors" class="tab-content">
                         <div class="motors-container">
                             <div id="motors-header">
-                                <h3>Motorsport & Vehicle Resources</h3>
-                                <p>Everything related to cars, bikes, tracks, events, and automotive maintenance.</p>
+                                <h3>Motors Wiki</h3>
+                                <p>Historical vehicles, maintenance notes, events, tracks, and practical owner resources.</p>
                                 <div class="last-updated" id="motors-updated">
                                     Loading motors...
                                     <button id="refresh-motors" class="refresh-button" style="display: none;">
                                         <i class="fas fa-sync-alt"></i> Refresh
                                     </button>
+                                </div>
+                            </div>
+                            <div class="motors-featured-entry">
+                                <div class="motors-featured-copy">
+                                    <span class="motors-featured-kicker">Featured Vehicle Guide</span>
+                                    <h4>FIAT 500 L Owner Wiki</h4>
+                                    <p>
+                                        Open the dedicated FIAT 500 L page for maintenance notes, common issues,
+                                        workshop basics, and bilingual owner guidance.
+                                    </p>
+                                </div>
+                                <div class="motors-featured-actions">
+                                    <a class="btn btn-primary" href="fiat500l-wiki.html">Open FIAT 500 L Wiki</a>
                                 </div>
                             </div>
                             <div id="motors-content" class="content-loading">
@@ -178,6 +191,7 @@
                     // Show corresponding content
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
+                    window.location.hash = tabId;
 
                     // Update current tab in wikiData
                     window.wikiData.currentTab = tabId;
@@ -194,6 +208,22 @@
 
         // Load the active tab
         function loadActiveTab() {
+            const hashTab = window.location.hash ? window.location.hash.substring(1) : '';
+            const validTabs = ['wisdom', 'resources', 'motors'];
+
+            if (validTabs.includes(hashTab)) {
+                document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                const hashTabButton = document.querySelector(`[data-tab="${hashTab}"]`);
+                const hashTabContent = document.getElementById(hashTab);
+
+                if (hashTabButton && hashTabContent) {
+                    hashTabButton.classList.add('active');
+                    hashTabContent.classList.add('active');
+                }
+            }
+
             const activeTab = document.querySelector('.tab-item.active');
             if (activeTab) {
                 const tabId = activeTab.getAttribute('data-tab');
@@ -443,6 +473,16 @@
 
         // Function to format content with proper HTML, handling images, calendars and tags
         function formatContentWithImagesAndTags(content) {
+            // Handle GitHub wiki links
+            content = content.replace(/\[\[([^\]]+)\]\]/g, function (match, target) {
+                const linkMap = {
+                    'FIAT-500-L': 'fiat500l-wiki.html'
+                };
+                const href = linkMap[target] || `https://github.com/romitagl/www/wiki/${target}`;
+                const label = target.replace(/-/g, ' ');
+                return `<a href="${href}"${href.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+            });
+
             // Handle GitHub hosted images first
             content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
                 '<img src="$2" alt="$1" class="wiki-image">$3');
@@ -464,6 +504,7 @@
 
             // Handle subsection headers (###)
             content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
 
             // Format lists
             content = content.replace(/^\*\s+(.+)$/gm, '<li>$1</li>');
@@ -480,8 +521,25 @@
             // Format blockquotes
             content = content.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
 
+            // Turn "Label: https://example.com" into cleaner linked lines
+            content = content.replace(
+                /^([^<\n]+?):\s+(https?:\/\/[^\s<]+)$/gm,
+                '<p><strong>$1:</strong> <a href="$2" target="_blank" rel="noopener">$2</a></p>'
+            );
+
             // Format links
             content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // Auto-link bare URLs that appear on their own line
+            content = content.replace(
+                /(^|>|\s)(https?:\/\/[^\s<]+)/gm,
+                function (match, prefix, url) {
+                    if (prefix && prefix.includes('href=')) {
+                        return match;
+                    }
+                    return `${prefix}<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+                }
+            );
 
             // Format inline code
             content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
