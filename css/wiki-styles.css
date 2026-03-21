@@ -444,17 +444,20 @@
 
 /* Quotes and Resources container styling */
 .wisdom-container,
-.resources-container {
+.resources-container,
+.motors-container {
   padding: 10px 0;
 }
 
 #wisdom-header,
-#resources-header {
+#resources-header,
+#motors-header {
   margin-bottom: 30px;
 }
 
 #wisdom-header h3,
-#resources-header h3 {
+#resources-header h3,
+#motors-header h3 {
   margin-bottom: 10px;
   color: var(--text-light);
   font-size: 1.4rem;
@@ -463,7 +466,8 @@
 }
 
 #wisdom-header h3::after,
-#resources-header h3::after {
+#resources-header h3::after,
+#motors-header h3::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -474,9 +478,49 @@
 }
 
 #wisdom-header p,
-#resources-header p {
+#resources-header p,
+#motors-header p {
   color: var(--text-muted);
   margin-bottom: 15px;
+}
+
+.motors-featured-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(56, 163, 165, 0.28);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(56, 163, 165, 0.14), rgba(0, 0, 0, 0.12)),
+    rgba(0, 0, 0, 0.14);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.motors-featured-copy h4 {
+  color: var(--text-light);
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.motors-featured-copy p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.motors-featured-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+}
+
+.motors-featured-actions {
+  flex-shrink: 0;
 }
 
 /* Error message styling */
@@ -830,6 +874,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .motors-featured-entry {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
   .tag-filter-container {
     padding: 15px;
   }
@@ -879,6 +929,11 @@
 }
 
 @media (max-width: 480px) {
+  .motors-featured-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
   .wiki-container {
     padding: 20px 15px;
   }
