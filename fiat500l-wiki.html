@@ -154,6 +154,102 @@
       margin-bottom: 24px;
     }
 
+    .vehicle-manual-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .vehicle-sidebar {
+      display: grid;
+      gap: 18px;
+      position: sticky;
+      top: 92px;
+    }
+
+    .vehicle-sidebar-panel {
+      background: linear-gradient(180deg, rgba(56, 163, 165, 0.08), rgba(20, 20, 20, 0.94));
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+      padding: 20px;
+    }
+
+    .vehicle-sidebar-panel h3 {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .vehicle-sidebar-panel p,
+    .vehicle-sidebar-panel li,
+    .vehicle-sidebar-panel span {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .vehicle-summary-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .vehicle-summary-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .vehicle-summary-item strong {
+      display: block;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .vehicle-section-list,
+    .vehicle-next-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .vehicle-section-list a,
+    .vehicle-next-links a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.16);
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .vehicle-section-list a:hover,
+    .vehicle-next-links a:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: rgba(56, 163, 165, 0.1);
+    }
+
+    .vehicle-next-links strong,
+    .vehicle-next-links span {
+      display: block;
+    }
+
+    .vehicle-next-links strong {
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
+
+    .vehicle-next-links span {
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
     .vehicle-library-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -297,6 +393,40 @@
       color: var(--text-light);
     }
 
+    .vehicle-content-shell .content-block table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0 24px;
+      min-width: 560px;
+    }
+
+    .vehicle-content-shell .content-block th,
+    .vehicle-content-shell .content-block td {
+      padding: 12px 14px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+    }
+
+    .vehicle-content-shell .content-block th {
+      color: var(--text-light);
+      background: rgba(56, 163, 165, 0.12);
+      font-weight: 700;
+    }
+
+    .vehicle-content-shell .content-block td {
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.14);
+    }
+
+    .vehicle-table-wrap {
+      overflow-x: auto;
+      margin: 0 0 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
     .vehicle-content-shell .lang-block {
       margin-top: 8px;
     }
@@ -346,6 +476,14 @@
       .vehicle-library-grid {
         grid-template-columns: 1fr;
       }
+
+      .vehicle-manual-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .vehicle-sidebar {
+        position: static;
+      }
     }
 
     @media (max-width: 640px) {
@@ -356,7 +494,8 @@
 
       .vehicle-hero-copy,
       .vehicle-subnav,
-      .vehicle-content-shell {
+      .vehicle-content-shell,
+      .vehicle-sidebar-panel {
         padding: 20px;
       }
     }
@@ -399,6 +538,7 @@
         <div class="vehicle-language-toggle" aria-label="Language selector">
           <button type="button" data-lang="en" class="active">English</button>
           <button type="button" data-lang="it">Italiano</button>
+          <button type="button" data-lang="both">Both</button>
         </div>
         <div class="vehicle-language-status" id="vehicle-language-status">Showing English content</div>
       </div>
@@ -422,10 +562,46 @@
       </div>
     </section>
 
-    <section class="vehicle-content-shell">
-      <div id="vehicle-content" class="content-block">
-        <div class="vehicle-loading"><i class="fas fa-spinner fa-spin"></i> Loading FIAT 500 L resource...</div>
-      </div>
+    <section class="vehicle-manual-layout">
+      <section class="vehicle-content-shell">
+        <div id="vehicle-content" class="content-block">
+          <div class="vehicle-loading"><i class="fas fa-spinner fa-spin"></i> Loading FIAT 500 L resource...</div>
+        </div>
+      </section>
+
+      <aside class="vehicle-sidebar">
+        <section class="vehicle-sidebar-panel">
+          <h3 id="vehicle-summary-title">Page Snapshot</h3>
+          <div class="vehicle-summary-grid">
+            <div class="vehicle-summary-item">
+              <strong id="vehicle-summary-track-label">Track</strong>
+              <span id="vehicle-summary-track-value">Loading...</span>
+            </div>
+            <div class="vehicle-summary-item">
+              <strong id="vehicle-summary-bestfor-label">Best For</strong>
+              <span id="vehicle-summary-bestfor-value">Loading...</span>
+            </div>
+            <div class="vehicle-summary-item">
+              <strong id="vehicle-summary-language-label">Reading Mode</strong>
+              <span id="vehicle-summary-language-value">English only</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="vehicle-sidebar-panel">
+          <h3 id="vehicle-sections-title">On This Page</h3>
+          <div class="vehicle-section-list" id="vehicle-section-list">
+            <a href="#vehicle-content">Loading sections...</a>
+          </div>
+        </section>
+
+        <section class="vehicle-sidebar-panel">
+          <h3 id="vehicle-next-title">Recommended Next</h3>
+          <div class="vehicle-next-links" id="vehicle-next-links">
+            <a href="fiat500l-wiki.html">Loading recommendations...</a>
+          </div>
+        </section>
+      </aside>
     </section>
 
     <div data-component="footer"></div>
@@ -438,6 +614,8 @@
       const pageLinksElement = document.getElementById('vehicle-page-links');
       const pageCardGridElement = document.getElementById('vehicle-page-card-grid');
       const resourceGridElement = document.getElementById('vehicle-resource-grid');
+      const sectionListElement = document.getElementById('vehicle-section-list');
+      const nextLinksElement = document.getElementById('vehicle-next-links');
       const languageButtons = document.querySelectorAll('.vehicle-language-toggle button');
       const languageStatus = document.getElementById('vehicle-language-status');
       const uiElements = {
@@ -454,7 +632,16 @@
         libraryTitle: document.getElementById('vehicle-library-title'),
         libraryCopy: document.getElementById('vehicle-library-copy'),
         resourceTitle: document.getElementById('vehicle-resource-title'),
-        resourceCopy: document.getElementById('vehicle-resource-copy')
+        resourceCopy: document.getElementById('vehicle-resource-copy'),
+        summaryTitle: document.getElementById('vehicle-summary-title'),
+        summaryTrackLabel: document.getElementById('vehicle-summary-track-label'),
+        summaryTrackValue: document.getElementById('vehicle-summary-track-value'),
+        summaryBestforLabel: document.getElementById('vehicle-summary-bestfor-label'),
+        summaryBestforValue: document.getElementById('vehicle-summary-bestfor-value'),
+        summaryLanguageLabel: document.getElementById('vehicle-summary-language-label'),
+        summaryLanguageValue: document.getElementById('vehicle-summary-language-value'),
+        sectionsTitle: document.getElementById('vehicle-sections-title'),
+        nextTitle: document.getElementById('vehicle-next-title')
       };
 
       const pageKey = new URLSearchParams(window.location.search).get('page') || 'overview';
@@ -467,6 +654,15 @@
             en: 'Start here for the big picture, ownership ladder, and the best next page to open.',
             it: 'Inizia qui per visione generale, livelli di proprieta e scelta della prossima pagina da aprire.'
           },
+          trackText: {
+            en: 'Manual hub',
+            it: 'Hub del manuale'
+          },
+          bestForText: {
+            en: 'Choosing the right next page and understanding the overall structure.',
+            it: 'Scegliere la pagina giusta e capire la struttura generale della risorsa.'
+          },
+          nextPages: ['maintenance', 'diagnostics', 'buying'],
           kicker: 'FIAT 500 L Resource Hub',
           chip1: 'Hub and guide map',
           chip2: 'Italian and English view',
@@ -496,6 +692,15 @@
             en: 'Service rhythm, tune-up order, and practical habits that keep the car ready to use.',
             it: 'Ritmo di manutenzione, ordine di messa a punto e abitudini pratiche per tenere l auto pronta.'
           },
+          trackText: {
+            en: 'Workshop foundations',
+            it: 'Fondamenti di officina'
+          },
+          bestForText: {
+            en: 'Routine service, recommissioning, and the correct order before deeper diagnosis.',
+            it: 'Manutenzione ordinaria, rientro in uso e ordine corretto prima di una diagnosi piu profonda.'
+          },
+          nextPages: ['diagnostics', 'carburetion', 'ignition'],
           kicker: 'FIAT 500 L / Maintenance',
           chip1: 'Service rhythm',
           chip2: 'Workshop basics',
@@ -517,6 +722,44 @@
             it: 'Manutenzione'
           }
         },
+        manual: {
+          label: 'Workshop Manual',
+          title: 'FIAT 500 L Workshop Manual',
+          description: 'Step-by-step workshop procedures for common problems, parts involved, and stop/go decisions.',
+          cardDescriptionText: {
+            en: 'Open this when you need hands-on procedures, not just topic summaries.',
+            it: 'Apri questa pagina quando ti servono procedure pratiche, non solo panoramiche per argomento.'
+          },
+          trackText: {
+            en: 'Hands-on repair procedures',
+            it: 'Procedure pratiche di riparazione'
+          },
+          bestForText: {
+            en: 'Working through common faults step by step with parts awareness and stop/go judgment.',
+            it: 'Affrontare i difetti comuni passo passo con attenzione a ricambi, sicurezza e scelte stop/go.'
+          },
+          nextPages: ['diagnostics', 'carburetion', 'ignition'],
+          kicker: 'FIAT 500 L / Workshop Manual',
+          chip1: 'Step by step',
+          chip2: 'Common faults',
+          chip3: 'Parts involved',
+          captionText: 'Hands-on repair sequences, parts awareness, and stop/go workshop logic.',
+          sourcePath: 'FIAT-500-L-Workshop-Manual.md',
+          sourceLabelText: {
+            en: 'View manual source',
+            it: 'Vedi la fonte manuale'
+          },
+          sourceHref: 'https://github.com/romitagl/www/wiki/FIAT-500-L-Workshop-Manual',
+          backLinkText: {
+            en: 'Back to Hub',
+            it: 'Torna all hub'
+          },
+          backLinkHref: 'fiat500l-wiki.html',
+          pageText: {
+            en: 'Workshop Manual',
+            it: 'Manuale Officina'
+          }
+        },
         diagnostics: {
           label: 'Diagnostics',
           title: 'FIAT 500 L Diagnostics',
@@ -525,6 +768,15 @@
             en: 'Use this when the car is showing a symptom and you want a calm first-pass diagnosis.',
             it: 'Apri questa pagina quando l auto mostra un sintomo e vuoi una prima diagnosi ordinata.'
           },
+          trackText: {
+            en: 'Fault finding',
+            it: 'Diagnosi guasti'
+          },
+          bestForText: {
+            en: 'Common symptoms, first checks, and deciding whether to move into carburetion or ignition.',
+            it: 'Sintomi comuni, prime verifiche e scelta tra approfondimento carburazione o accensione.'
+          },
+          nextPages: ['carburetion', 'ignition', 'maintenance'],
           kicker: 'FIAT 500 L / Diagnostics',
           chip1: 'Symptom based',
           chip2: 'Quick checks',
@@ -554,6 +806,15 @@
             en: 'Focus on originality, storage, buying judgment, and long-term ownership discipline.',
             it: 'Focus su originalita, rimessaggio, valutazione acquisto e disciplina di proprieta nel lungo periodo.'
           },
+          trackText: {
+            en: 'Long-term stewardship',
+            it: 'Gestione a lungo termine'
+          },
+          bestForText: {
+            en: 'Storage, originality, and keeping the car coherent over years rather than weeks.',
+            it: 'Rimessaggio, originalita e gestione coerente della vettura nel lungo periodo.'
+          },
+          nextPages: ['originality', 'buying', 'tooling'],
           kicker: 'FIAT 500 L / Preservation',
           chip1: 'Originality first',
           chip2: 'Storage strategy',
@@ -583,6 +844,15 @@
             en: 'Open this for mixture symptoms, Weber basics, and the quickest way to avoid tuning mistakes.',
             it: 'Apri questa pagina per sintomi miscela, basi Weber e metodo rapido per evitare errori di regolazione.'
           },
+          trackText: {
+            en: 'Fueling and Weber setup',
+            it: 'Alimentazione e setup Weber'
+          },
+          bestForText: {
+            en: 'Understanding Weber 26 versus 28, baseline logic, and mixture-related fault patterns.',
+            it: 'Capire Weber 26 contro 28, logica di base e sintomi legati alla miscela.'
+          },
+          nextPages: ['ignition', 'diagnostics', 'tooling'],
           kicker: 'FIAT 500 L / Carburetion',
           chip1: 'Weber focus',
           chip2: 'Mixture symptoms',
@@ -612,6 +882,15 @@
             en: 'Use this for points, timing workflow, spark quality, and no-nonsense starting reliability.',
             it: 'Usa questa pagina per puntine, ordine dell anticipo, qualita scintilla e affidabilita di avviamento.'
           },
+          trackText: {
+            en: 'Ignition and starting',
+            it: 'Accensione e avviamento'
+          },
+          bestForText: {
+            en: 'Points, timing, spark quality, and faults that look like carburetor problems.',
+            it: 'Puntine, anticipo, qualita della scintilla e difetti che sembrano carburazione.'
+          },
+          nextPages: ['diagnostics', 'carburetion', 'maintenance'],
           kicker: 'FIAT 500 L / Ignition',
           chip1: 'Points and timing',
           chip2: 'Spark quality',
@@ -641,6 +920,15 @@
             en: 'Check this before restoring, correcting modifications, or trying to understand what is period-correct.',
             it: 'Consulta questa pagina prima di restaurare, correggere modifiche o capire cosa e coerente con il periodo.'
           },
+          trackText: {
+            en: 'Identity and originality',
+            it: 'Identita e originalita'
+          },
+          bestForText: {
+            en: 'Reading trim, engine-bay coherence, and what belongs on a period-correct car.',
+            it: 'Leggere allestimento, coerenza del vano motore e dettagli da vettura corretta per periodo.'
+          },
+          nextPages: ['buying', 'preservation', 'tooling'],
           kicker: 'FIAT 500 L / Originality',
           chip1: 'Identity first',
           chip2: 'Period logic',
@@ -670,6 +958,15 @@
             en: 'Open this before a viewing so rust, paperwork, and engine-bay clues do not get lost in the excitement.',
             it: 'Apri questa pagina prima di una visita per non perdere ruggine, documenti e dettagli del vano motore.'
           },
+          trackText: {
+            en: 'Pre-purchase inspection',
+            it: 'Ispezione pre-acquisto'
+          },
+          bestForText: {
+            en: 'Serious viewings, red flags, and making a decision before sentiment takes over.',
+            it: 'Visite serie, campanelli di allarme e decisioni prima che subentri l entusiasmo.'
+          },
+          nextPages: ['originality', 'preservation', 'diagnostics'],
           kicker: 'FIAT 500 L / Buying Inspection',
           chip1: 'Viewing checklist',
           chip2: 'Road test logic',
@@ -699,6 +996,15 @@
             en: 'Use this for parts strategy, supplier categories, bench setup, and the roadside kit that saves time.',
             it: 'Usa questa pagina per strategia ricambi, categorie fornitori, banco lavoro e kit di emergenza.'
           },
+          trackText: {
+            en: 'Parts, tools, and records',
+            it: 'Ricambi, attrezzi e documentazione'
+          },
+          bestForText: {
+            en: 'Setting up the workshop side of ownership so jobs go better before you even turn a spanner.',
+            it: 'Organizzare il lato officina della proprieta prima ancora di mettere mano alla chiave.'
+          },
+          nextPages: ['maintenance', 'preservation', 'carburetion'],
           kicker: 'FIAT 500 L / Parts and Tooling',
           chip1: 'Parts strategy',
           chip2: 'Bench tools',
@@ -724,6 +1030,17 @@
 
       const currentPage = pageMap[pageKey] || pageMap.overview;
       const trustedResources = [
+        {
+          href: 'assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf',
+          title: {
+            en: 'Original FIAT 500 F/L PDF Manual',
+            it: 'Manuale Originale FIAT 500 F/L PDF'
+          },
+          description: {
+            en: 'Direct PDF access to the original Italian owner and maintenance manual now hosted with the site.',
+            it: 'Accesso diretto al PDF del manuale originale d uso e manutenzione, ora ospitato direttamente nel sito.'
+          }
+        },
         {
           href: 'https://www.500clubitalia.it/',
           title: {
@@ -800,11 +1117,13 @@
       const uiCopy = {
         en: {
           status: 'Showing English content',
+          statusBoth: 'Showing Italian and English together',
           loadingAnchors: 'Loading sections...',
           fallbackAnchor: 'Content'
         },
         it: {
           status: 'Contenuto visualizzato in italiano',
+          statusBoth: 'Contenuto visualizzato in italiano e inglese',
           loadingAnchors: 'Caricamento sezioni...',
           fallbackAnchor: 'Contenuto'
         }
@@ -813,6 +1132,17 @@
       const headingTranslations = {
         it: {
           'Start Here': 'Inizia Da Qui',
+          'How To Use This Manual': 'Come Usare Questo Manuale',
+          'No-Start Procedure': 'Procedura Mancato Avviamento',
+          'Fuel Smell Or Carburetor Drip Procedure': 'Procedura Odore Benzina O Gocciolamento Carburatore',
+          'Weak Charging Procedure': 'Procedura Ricarica Debole',
+          'Hot Running Procedure': 'Procedura Surriscaldamento',
+          'Brake Pull Or Long Pedal Procedure': 'Procedura Frenata Irregolare O Pedale Lungo',
+          'Workshop Documentation Habit': 'Abitudine Di Documentazione In Officina',
+          'Symptom': 'Sintomo',
+          'Steps': 'Passi',
+          'Parts often involved': 'Parti spesso coinvolte',
+          'When to stop': 'Quando fermarsi',
           'Ownership Ladder': 'Livelli Di Proprieta',
           'Overview': 'Panoramica',
           'Why this resource exists': 'Perche esiste questa risorsa',
@@ -835,6 +1165,14 @@
           'Keep A Setup Record': 'Tieni Un Registro Del Setup',
           'Notes': 'Note',
           'Routine Checks': 'Controlli Di Routine',
+          'How To Use This Manual': 'Come Usare Questo Manuale',
+          'No-Start Procedure': 'Procedura Mancato Avviamento',
+          'Rough Idle Or Hesitation Procedure': 'Procedura Minimo Irregolare O Esitazione',
+          'Fuel Smell Or Carburetor Drip Procedure': 'Procedura Odore Benzina O Gocciolamento Carburatore',
+          'Weak Charging Procedure': 'Procedura Ricarica Debole',
+          'Hot Running Procedure': 'Procedura Surriscaldamento',
+          'Brake Pull Or Long Pedal Procedure': 'Procedura Frenata Irregolare O Pedale Lungo',
+          'Workshop Documentation Habit': 'Abitudine Di Documentazione In Officina',
           'Maintenance': 'Manutenzione',
           'Maintenance Rhythm': 'Ritmo Di Manutenzione',
           'Maintenance rhythm': 'Ritmo di manutenzione',
@@ -914,6 +1252,7 @@
           const linkMap = {
             'FIAT-500-L': 'fiat500l-wiki.html',
             'FIAT-500-L-Maintenance': 'fiat500l-wiki.html?page=maintenance',
+            'FIAT-500-L-Workshop-Manual': 'fiat500l-wiki.html?page=manual',
             'FIAT-500-L-Diagnostics': 'fiat500l-wiki.html?page=diagnostics',
             'FIAT-500-L-Preservation': 'fiat500l-wiki.html?page=preservation',
             'FIAT-500-L-Carburetion': 'fiat500l-wiki.html?page=carburetion',
@@ -978,13 +1317,16 @@
       }
 
       function renderAnchors() {
+        const effectiveLang = currentLanguage === 'both' ? 'en' : currentLanguage;
         const headings = contentElement.querySelectorAll('h2');
         if (!headings.length) {
-          anchorElement.innerHTML = `<a href="#vehicle-content">${uiCopy[currentLanguage].fallbackAnchor}</a>`;
+          anchorElement.innerHTML = `<a href="#vehicle-content">${uiCopy[effectiveLang].fallbackAnchor}</a>`;
+          sectionListElement.innerHTML = `<a href="#vehicle-content">${uiCopy[effectiveLang].fallbackAnchor}</a>`;
           return;
         }
 
         anchorElement.innerHTML = '';
+        sectionListElement.innerHTML = '';
         headings.forEach((heading) => {
           if (!heading.id) {
             heading.id = slugify(heading.textContent);
@@ -993,6 +1335,11 @@
           link.href = `#${heading.id}`;
           link.textContent = heading.textContent;
           anchorElement.appendChild(link);
+
+          const sideLink = document.createElement('a');
+          sideLink.href = `#${heading.id}`;
+          sideLink.textContent = heading.textContent;
+          sectionListElement.appendChild(sideLink);
         });
       }
 
@@ -1047,8 +1394,11 @@
           button.classList.toggle('active', button.dataset.lang === lang);
         });
 
-        document.documentElement.lang = lang;
-        languageStatus.textContent = uiCopy[lang].status;
+        document.documentElement.lang = lang === 'both' ? 'en' : lang;
+        const statusCopy = lang === 'both'
+          ? 'Showing Italian and English together'
+          : (uiCopy[lang] ? uiCopy[lang].status : uiCopy.en.status);
+        languageStatus.textContent = statusCopy;
         document.title = `${currentPage.title} - Romitagl.com`;
 
         uiElements.kicker.textContent = currentPage.kicker;
@@ -1065,17 +1415,34 @@
         uiElements.chip3.innerHTML = `<i class="fas fa-wrench"></i> ${currentPage.chip3}`;
         uiElements.libraryTitle.textContent = lang === 'it' ? 'Percorso di Proprieta' : 'Ownership Path';
         uiElements.libraryCopy.textContent = lang === 'it'
-          ? 'Apri la pagina giusta in base a cio che stai facendo oggi con l auto: manutenzione, diagnosi o conservazione.'
-          : 'Open the right page for what you are doing with the car today: maintenance, diagnosis, or preservation.';
+          ? 'Apri la pagina giusta in base a cio che stai facendo oggi con l auto: manutenzione, procedura pratica, diagnosi o conservazione.'
+          : 'Open the right page for what you are doing with the car today: maintenance, hands-on repair, diagnosis, or preservation.';
         uiElements.resourceTitle.textContent = lang === 'it' ? 'Risorse Web Affidabili' : 'Trusted Web Resources';
         uiElements.resourceCopy.textContent = lang === 'it'
           ? 'Una selezione di manuali, storia del modello e riferimenti di officina da tenere tra i preferiti.'
           : 'A short list of manuals, model history, and workshop references worth bookmarking.';
+        uiElements.summaryTitle.textContent = lang === 'it' ? 'Scheda Pagina' : 'Page Snapshot';
+        uiElements.summaryTrackLabel.textContent = lang === 'it' ? 'Percorso' : 'Track';
+        uiElements.summaryTrackValue.textContent = currentPage.trackText && currentPage.trackText[lang === 'both' ? 'en' : lang]
+          ? currentPage.trackText[lang === 'both' ? 'en' : lang]
+          : (currentPage.trackText ? currentPage.trackText.en : '');
+        uiElements.summaryBestforLabel.textContent = lang === 'it' ? 'Ideale Per' : 'Best For';
+        uiElements.summaryBestforValue.textContent = currentPage.bestForText && currentPage.bestForText[lang === 'both' ? 'en' : lang]
+          ? currentPage.bestForText[lang === 'both' ? 'en' : lang]
+          : (currentPage.bestForText ? currentPage.bestForText.en : '');
+        uiElements.summaryLanguageLabel.textContent = lang === 'it' ? 'Modo Lettura' : 'Reading Mode';
+        uiElements.summaryLanguageValue.textContent = lang === 'it'
+          ? (lang === 'both' ? 'Italiano e inglese' : (lang === 'it' ? 'Solo italiano' : 'Solo inglese'))
+          : (lang === 'both' ? 'Italian and English' : (lang === 'it' ? 'Italian only' : 'English only'));
+        uiElements.sectionsTitle.textContent = lang === 'it' ? 'In Questa Pagina' : 'On This Page';
+        uiElements.nextTitle.textContent = lang === 'it' ? 'Passi Successivi' : 'Recommended Next';
         renderPageCards(lang);
         renderTrustedResources(lang);
+        renderNextLinks(lang);
 
         contentElement.querySelectorAll('.lang-block').forEach((block) => {
-          block.classList.toggle('is-hidden', block.dataset.lang !== lang);
+          const hideBlock = lang !== 'both' && block.dataset.lang !== lang;
+          block.classList.toggle('is-hidden', hideBlock);
         });
 
         contentElement.querySelectorAll('h2, h3, h4').forEach((heading) => {
@@ -1088,6 +1455,25 @@
         });
 
         renderAnchors();
+      }
+
+      function renderNextLinks(lang = currentLanguage) {
+        const effectiveLang = lang === 'both' ? 'en' : lang;
+        nextLinksElement.innerHTML = '';
+        (currentPage.nextPages || []).forEach((pageKey) => {
+          const page = pageMap[pageKey];
+          if (!page) {
+            return;
+          }
+          const link = document.createElement('a');
+          link.href = pageKey === 'overview' ? 'fiat500l-wiki.html' : `fiat500l-wiki.html?page=${pageKey}`;
+          const title = page.pageText && page.pageText[effectiveLang] ? page.pageText[effectiveLang] : page.label;
+          const detail = page.cardDescriptionText && page.cardDescriptionText[effectiveLang]
+            ? page.cardDescriptionText[effectiveLang]
+            : page.description;
+          link.innerHTML = `<strong>${title}</strong><span>${detail}</span>`;
+          nextLinksElement.appendChild(link);
+        });
       }
 
       function renderMarkdown(markdown) {
@@ -1107,6 +1493,13 @@
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener');
           }
+        });
+
+        contentElement.querySelectorAll('table').forEach((table) => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'vehicle-table-wrap';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
         });
 
         buildLanguageBlocks();
@@ -1135,7 +1528,8 @@
       if (isCacheFresh) {
         renderMarkdown(cachedContent);
       } else {
-        anchorElement.innerHTML = `<a href="#vehicle-content"><i class="fas fa-spinner fa-spin"></i> ${uiCopy[currentLanguage].loadingAnchors}</a>`;
+        const effectiveLang = currentLanguage === 'both' ? 'en' : currentLanguage;
+        anchorElement.innerHTML = `<a href="#vehicle-content"><i class="fas fa-spinner fa-spin"></i> ${uiCopy[effectiveLang].loadingAnchors}</a>`;
         updateLanguageUI(currentLanguage);
       }
 
