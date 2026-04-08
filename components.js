@@ -49,8 +49,13 @@
         return true;
       }
 
-      // Treat dedicated wiki child pages as part of the Wiki section
-      if (linkPath === 'wiki.html' && currentPath.startsWith('fiat500')) {
+      // Treat FIAT experience page as part of the Local section
+      if (linkPath === 'local-services' && currentPath === 'fiat500L.html') {
+        return true;
+      }
+
+      // Treat FIAT wiki child pages as part of the Wiki section
+      if (linkPath === 'wiki.html' && currentPath.startsWith('fiat500l-wiki')) {
         return true;
       }
 
@@ -60,7 +65,7 @@
       }
 
       // Special case: if we're on index with no hash, highlight the first nav item
-      if (isIndex && !currentHash && linkHash === '#features') {
+      if (isIndex && !currentHash && linkHash === '#digital-services') {
         return true;
       }
 
@@ -72,8 +77,18 @@
       <nav>
         <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
         <ul class="nav-links">
-          <li><a href="${isIndex ? '#tools' : 'index.html#tools'}" class="${isActive(null, '#tools') ? 'active' : ''}">Tools</a></li>
-          <li><a href="https://web-tools.romitagl.com/" target="_blank">Web Tools</a></li>
+          <li class="nav-item-with-submenu">
+            <a href="${isIndex ? '#digital-services' : 'index.html#digital-services'}" class="${isActive(null, '#digital-services') ? 'active' : ''}">Digital</a>
+            <ul class="nav-submenu">
+              <li><a href="https://web-tools.romitagl.com/" target="_blank" rel="noopener">Web Tools</a></li>
+            </ul>
+          </li>
+          <li class="nav-item-with-submenu">
+            <a href="${isIndex ? '#local-services' : 'index.html#local-services'}" class="${isActive('local-services', '#local-services') ? 'active' : ''}">Local</a>
+            <ul class="nav-submenu">
+              <li><a href="fiat500L.html" class="${isActive('fiat500L.html') ? 'active' : ''}">FIAT 500 Experience</a></li>
+            </ul>
+          </li>
           <li><a href="wiki.html" class="${isActive('wiki.html') ? 'active' : ''}">Wiki</a></li>
           <li><a href="about.html" class="${isActive('about.html') ? 'active' : ''}">About</a></li>
         </ul>
@@ -91,6 +106,8 @@
             <h3>Quick Links</h3>
             <ul class="footer-links">
               <li><a href="https://web-tools.romitagl.com/">Web Tools</a></li>
+              <li><a href="fiat500L.html">Iconic Local Experience</a></li>
+              <li><a href="fiat500l-wiki.html">FIAT 500 L Wiki</a></li>
               <li><a href="about.html">Get In Touch</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
@@ -101,7 +118,8 @@
             <p class="footer-support-text">
               If you like these tools, please star the repository on
               <a href="https://github.com/romitagl/www" target="_blank">GitHub</a>
-              and consider sponsoring me.
+              and consider sponsoring me. You can also follow the FIAT 500 project on
+              <a href="https://www.instagram.com/experiencefiat500/" target="_blank" rel="noopener">Instagram</a>.
             </p>
             <div class="sponsor-button-wrapper">
               <iframe src="https://github.com/sponsors/romitagl/button" title="Sponsor" width="116" height="35"></iframe>
@@ -146,7 +164,7 @@
     if (!isIndex) return;
 
     // Get all sections that have IDs matching our navigation
-    const sections = document.querySelectorAll('#features, #tools');
+    const sections = document.querySelectorAll('#digital-services, #local-services, #knowledge-base');
     const navLinks = document.querySelectorAll('.nav-links a');
 
     // Determine which section is currently most visible
