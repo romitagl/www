@@ -119,89 +119,60 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Digital Services, Iconic Local Experiences, and Useful Resources</h1>
-                <p>romitagl.com is organized as a growing set of digital services, iconic local experiences, and practical wiki resources. Explore privacy-first web tools, a personal utility knowledge base, and location-based experiences in the Italian city of Alessandria and across Monferrato.
+                <h1>Digital Services, Local Icons, and Useful Resources</h1>
+                <p>Explore privacy-first web tools, iconic experiences in Alessandria and Monferrato, and a practical wiki of manuals, notes, and curated resources.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#digital-services" class="btn btn-primary">Digital Services</a>
-                    <a href="#local-services" class="btn btn-secondary">Iconic Local Experiences</a>
-                    <a href="#knowledge-base" class="btn btn-secondary">Wiki & Resources</a>
-                </div>
             </div>
             <div class="hero-image">
-                <img src="assets/images/web-tools.svg" alt="Web Development Tools Illustration">
+                <img src="assets/images/web-tools.svg" alt="Illustration connecting digital services, local experiences, and wiki resources">
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="features">
-            <div class="section-title">
-                <h2>Why Choose Our Tools</h2>
-                <p>Our privacy-focused tools are designed with both businesses and developers in mind, processing
-                    everything right in your browser.</p>
+        <section class="showcase-strip" aria-label="Main website sections">
+            <div class="showcase-strip-header">
+                <p>Browse the website by lane</p>
             </div>
-            <div class="feature-list">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>100% Private & Secure</h3>
-                    <p>All file processing happens directly in your browser, ensuring your sensitive data never leaves
-                        your device. No uploads to any server.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized algorithms ensure quick processing even with large files and high-resolution media,
-                        saving you valuable time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Developer Friendly</h3>
-                    <p>Built by developers for developers, with intuitive interfaces and powerful customization options
-                        for all your digital workflow needs.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3>Cross-Platform</h3>
-                    <p>Works on any device with a modern browser, no installation or downloads required. Perfect for
-                        both personal and business use.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Regular Updates</h3>
-                    <p>Constantly improving with new features and optimizations based on user feedback. Our tools evolve
-                        with your needs.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-thumbs-up"></i>
-                    </div>
-                    <h3>Completely Free</h3>
-                    <p>All tools are 100% free to use without any hidden costs, premium features, or usage limitations.
-                        No account required.</p>
-                </div>
+            <div class="showcase-scroll">
+                <a class="showcase-card showcase-card-digital" href="#digital-services">
+                    <h2>Digital Services</h2>
+                    <p>Privacy-first browser tools for PDFs, QR codes, media workflows, and developer utilities.</p>
+                    <strong>Open digital services</strong>
+                </a>
+                <a class="showcase-card showcase-card-local" href="#local-services">
+                    <h2>Local Icons</h2>
+                    <p>Iconic local experiences rooted in Alessandria and Monferrato, starting with the restored FIAT 500 L.</p>
+                    <strong>Explore local icons</strong>
+                </a>
+                <a class="showcase-card showcase-card-resources" href="#knowledge-base">
+                    <h2>Resources</h2>
+                    <p>Wiki pages, manuals, curated notes, and personal utility resources collected in one place.</p>
+                    <strong>Browse resources</strong>
+                </a>
             </div>
         </section>
 
         <!-- Tools Section -->
-        <section id="digital-services" class="tools">
+        <section id="digital-services" class="tools lane-section">
             <div class="section-title">
                 <h2>Digital Services</h2>
                 <p>A growing collection of private, browser-based digital services for hospitality, productivity, media, and developer workflows.</p>
             </div>
+            <div class="lane-feature lane-feature-digital">
+                <div>
+                    <p class="lane-eyebrow">Featured Direction</p>
+                    <h3>Fast, private tools that solve everyday digital tasks</h3>
+                    <p>Use browser-based services for documents, QR workflows, video utilities, and developer tasks without sending files to a server.</p>
+                </div>
+                <div class="lane-meta">
+                    <span>Client-side first</span>
+                    <span>No upload required</span>
+                    <span>Built for practical use</span>
+                </div>
+            </div>
 
-            <!-- PDF & Image Tools -->
-            <h3 style="text-align: center; margin-bottom: 30px; color: #f4f4f4;">PDF & Image Tools</h3>
-            <div class="tools-grid">
+            <div class="lane-group">
+                <h3 class="lane-group-title">PDF & Image Tools</h3>
+                <div class="tools-grid lane-grid">
                 <div class="tool-card">
                     <h3>PDF Merger</h3>
                     <p>Quickly combine multiple PDF files into a single document. Perfect for merging documentation,
@@ -237,11 +208,12 @@
                     </ul>
                     <a href="https://web-tools.romitagl.com/pdf-merger#images">Convert Images to PDF</a>
                 </div>
+                </div>
             </div>
 
-            <!-- Video Tools -->
-            <h3 style="text-align: center; margin: 50px 0 30px; color: #f4f4f4;">Video Tools</h3>
-            <div class="tools-grid">
+            <div class="lane-group">
+                <h3 class="lane-group-title">Video Tools</h3>
+                <div class="tools-grid lane-grid lane-grid-compact">
                 <div class="tool-card">
                     <h3>Video Speed Controller</h3>
                     <p>Transform your videos by adjusting playback speed. Create dramatic slow-motion effects or speed
@@ -254,11 +226,12 @@
                     </ul>
                     <a href="https://web-tools.romitagl.com/video-speed-controller">Adjust Video Speed</a>
                 </div>
+                </div>
             </div>
 
-            <!-- QR Code Tools -->
-            <h3 style="text-align: center; margin: 50px 0 30px; color: #f4f4f4;">QR Code Generator & Scanner</h3>
-            <div class="tools-grid">
+            <div class="lane-group">
+                <h3 class="lane-group-title">QR Code Generator & Scanner</h3>
+                <div class="tools-grid lane-grid">
                 <div class="tool-card">
                     <h3>QR Code Generator</h3>
                     <p>Create customizable QR codes for URLs, text, Wi-Fi networks, and contact information. Perfect for
@@ -283,11 +256,12 @@
                     </ul>
                     <a href="https://web-tools.romitagl.com/qr-code-tool#scan">Scan QR Codes</a>
                 </div>
+                </div>
             </div>
 
-            <!-- Developer Tools -->
-            <h3 style="text-align: center; margin: 50px 0 30px; color: #f4f4f4;">Developer Tools</h3>
-            <div class="tools-grid">
+            <div class="lane-group">
+                <h3 class="lane-group-title">Developer Tools</h3>
+                <div class="tools-grid lane-grid">
                 <div class="tool-card">
                     <h3>CIDR Subnet Calculator</h3>
                     <p>Fast and simple subnet calculator for network engineers and administrators. Calculate network
@@ -312,15 +286,28 @@
                         Perfect for creating local copies of important resources.</p>
                     <a href="https://web-tools.romitagl.com/website-scraper">Try Website Scraper</a>
                 </div>
+                </div>
             </div>
         </section>
 
-        <section id="local-services" class="tools" style="margin-top: 80px;">
+        <section id="local-services" class="tools lane-section" style="margin-top: 80px;">
             <div class="section-title">
                 <h2>Iconic Local Experiences in Alessandria & Monferrato</h2>
                 <p>Experiences rooted in the Italian city of Alessandria and the Monferrato area, designed to grow over time under one umbrella. The restored 1971 FIAT 500 L is the first iconic experience in this collection.</p>
             </div>
-            <div class="tools-grid">
+            <div class="lane-feature lane-feature-local">
+                <div>
+                    <p class="lane-eyebrow">Featured Direction</p>
+                    <h3>Italian icons, rooted in place</h3>
+                    <p>Local experiences are positioned as memorable, visual, and story-driven services tied to Alessandria city and the wider Monferrato landscape.</p>
+                </div>
+                <div class="lane-meta">
+                    <span>Alessandria, Italy</span>
+                    <span>Monferrato</span>
+                    <span>Expandable to new icons</span>
+                </div>
+            </div>
+            <div class="tools-grid lane-grid lane-grid-compact">
                 <div class="tool-card">
                     <h3>Italian Iconic Experience: FIAT 500 L</h3>
                     <p>An authentic restored FIAT 500 L available for weddings, anniversaries, celebrations, tourism experiences, and memorable arrivals in Alessandria, Monferrato, and selected Piedmont locations.</p>
@@ -335,12 +322,24 @@
             </div>
         </section>
 
-        <section id="knowledge-base" class="tools" style="margin-top: 80px;">
+        <section id="knowledge-base" class="tools lane-section" style="margin-top: 80px;">
             <div class="section-title">
                 <h2>Wiki, Utility & Personal Resources</h2>
                 <p>A separate lane for knowledge, documentation, utility pages, and curated personal resources, so the site can grow without mixing service pages and reference pages together.</p>
             </div>
-            <div class="tools-grid">
+            <div class="lane-feature lane-feature-resources">
+                <div>
+                    <p class="lane-eyebrow">Featured Direction</p>
+                    <h3>Reference material with a more personal utility layer</h3>
+                    <p>This lane collects technical guides, notes, manuals, and structured pages that support both search discovery and repeat visits.</p>
+                </div>
+                <div class="lane-meta">
+                    <span>Wiki pages</span>
+                    <span>Manuals and notes</span>
+                    <span>Curated personal resources</span>
+                </div>
+            </div>
+            <div class="tools-grid lane-grid">
                 <div class="tool-card">
                     <h3>Knowledge Wiki</h3>
                     <p>Explore a structured wiki with quotes, curated resources, and practical notes that are useful beyond the service pages themselves.</p>
