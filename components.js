@@ -78,13 +78,13 @@
         <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
         <ul class="nav-links">
           <li class="nav-item-with-submenu">
-            <a href="${isIndex ? '#digital-services' : 'index.html#digital-services'}" class="${isActive(null, '#digital-services') ? 'active' : ''}">Digital</a>
+            <a href="${isIndex ? '#digital-services' : '/#digital-services'}" class="${isActive(null, '#digital-services') ? 'active' : ''}">Digital</a>
             <ul class="nav-submenu">
               <li><a href="https://web-tools.romitagl.com/" target="_blank" rel="noopener">Web Tools</a></li>
             </ul>
           </li>
           <li class="nav-item-with-submenu">
-            <a href="${isIndex ? '#local-services' : 'index.html#local-services'}" class="${isActive('local-services', '#local-services') ? 'active' : ''}">Local</a>
+            <a href="${isIndex ? '#local-services' : '/#local-services'}" class="${isActive('local-services', '#local-services') ? 'active' : ''}">Local</a>
             <ul class="nav-submenu">
               <li><a href="fiat500L.html" class="${isActive('fiat500L.html') ? 'active' : ''}">FIAT 500 Experience</a></li>
             </ul>
