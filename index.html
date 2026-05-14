@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+    <script>
+        (function () {
+            if (
+                window.location.hostname === 'romitagl.com' &&
+                window.location.pathname === '/index.html'
+            ) {
+                window.location.replace('https://romitagl.com/' + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
         {
