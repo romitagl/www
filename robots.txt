@@ -3,6 +3,3 @@ Allow: /
 
 # Sitemap for main website
 Sitemap: https://romitagl.com/sitemap.xml
-
-# Reference to web-tools subdomain sitemap
-Sitemap: https://web-tools.romitagl.com/sitemap.xml
