@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://romitagl.com/</loc>
   </url>
@@ -14,6 +14,15 @@
   </url>
   <url>
     <loc>https://romitagl.com/fiat500l-wiki.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://romitagl.com/fiat500l-wiki.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://romitagl.com/fiat500l-wiki-it.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://romitagl.com/fiat500l-wiki.html" />
+  </url>
+  <url>
+    <loc>https://romitagl.com/fiat500l-wiki-it.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://romitagl.com/fiat500l-wiki.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://romitagl.com/fiat500l-wiki-it.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://romitagl.com/fiat500l-wiki.html" />
   </url>
   <url>
     <loc>https://romitagl.com/privacy.html</loc>

@@ -27,6 +27,12 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Validate Fiat guide language pages and SEO
+        run: |
+          node scripts/build-fiat500l-locales.mjs --check
+          node scripts/check-fiat500l-seo.mjs
+          node --check assets/js/fiat500l-guide.js
+
       - name: Create deployment directory 📁
         run: |
           mkdir -p $DEPLOY_DIR
