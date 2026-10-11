@@ -484,43 +484,58 @@
   margin-bottom: 15px;
 }
 
-.motors-featured-entry {
+.motors-guide-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 22px 24px;
+  gap: 16px 24px;
+  padding: 18px 20px;
   margin-bottom: 24px;
-  border: 1px solid rgba(56, 163, 165, 0.28);
-  border-radius: 16px;
-  background:
-    linear-gradient(135deg, rgba(56, 163, 165, 0.14), rgba(0, 0, 0, 0.12)),
-    rgba(0, 0, 0, 0.14);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-}
-
-.motors-featured-copy h4 {
+  border: 1px solid rgba(56, 163, 165, 0.35);
+  border-radius: 12px;
+  background: rgba(56, 163, 165, 0.08);
   color: var(--text-light);
-  font-size: 1.35rem;
-  margin-bottom: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-.motors-featured-copy p {
+.motors-guide-link:hover {
+  background: rgba(56, 163, 165, 0.16);
+  border-color: var(--primary-color);
+  text-decoration: none;
+}
+
+.motors-guide-link:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
+.motors-guide-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.motors-guide-label {
   color: var(--text-muted);
-  margin: 0;
+  font-size: 0.8rem;
 }
 
-.motors-featured-kicker {
-  display: inline-block;
-  margin-bottom: 10px;
+.motors-guide-title {
+  color: var(--text-light);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.motors-guide-description {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.motors-guide-action {
   color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.78rem;
-}
-
-.motors-featured-actions {
-  flex-shrink: 0;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Error message styling */
@@ -874,10 +889,11 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .motors-featured-entry {
+  .motors-guide-link {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 16px;
+    gap: 12px;
   }
 
   .tag-filter-container {
@@ -929,11 +945,6 @@
 }
 
 @media (max-width: 480px) {
-  .motors-featured-actions .btn {
-    width: 100%;
-    text-align: center;
-  }
-
   .wiki-container {
     padding: 20px 15px;
   }

@@ -107,7 +107,7 @@
             <ul class="footer-links">
               <li><a href="https://web-tools.romitagl.com/">Web Tools</a></li>
               <li><a href="fiat500L.html">Iconic Local Experience</a></li>
-              <li><a href="fiat500l-wiki.html">FIAT 500 L Wiki</a></li>
+              <li><a href="fiat500l-wiki.html">FIAT 500 L Owner Guide</a></li>
               <li><a href="about.html">Get In Touch</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
