@@ -54,8 +54,8 @@
         return true;
       }
 
-      // Treat FIAT wiki child pages as part of the Wiki section
-      if (linkPath === 'wiki.html' && currentPath.startsWith('fiat500l-wiki')) {
+      // Keep Wiki active on its guide and fitness child pages
+      if (linkPath === 'wiki.html' && (currentPath.startsWith('fiat500l-wiki') || currentPath === 'fitness.html')) {
         return true;
       }
 
@@ -76,7 +76,7 @@
     const navComponent = `
       <nav>
         <a href="/" class="logo"><i class="fas fa-code"></i>romitagl.com</a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="site-nav-links">
           <li class="nav-item-with-submenu">
             <a href="${isIndex ? '#digital-services' : '/#digital-services'}" class="${isActive(null, '#digital-services') ? 'active' : ''}">Digital</a>
             <ul class="nav-submenu">
@@ -92,8 +92,8 @@
           <li><a href="wiki.html" class="${isActive('wiki.html') ? 'active' : ''}">Wiki</a></li>
           <li><a href="about.html" class="${isActive('about.html') ? 'active' : ''}">About</a></li>
         </ul>
-        <button class="mobile-menu-btn" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation" aria-controls="site-nav-links" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
       </nav>
     `;
@@ -108,6 +108,7 @@
               <li><a href="https://web-tools.romitagl.com/">Web Tools</a></li>
               <li><a href="fiat500L.html">Iconic Local Experience</a></li>
               <li><a href="fiat500l-wiki.html">FIAT 500 L Owner Guide</a></li>
+              <li><a href="wiki.html#fitness">Fitness Wiki</a></li>
               <li><a href="about.html">Get In Touch</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
@@ -227,7 +228,9 @@
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener('click', function () {
         navLinks.classList.toggle('active');
-        navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
+        const expanded = navLinks.classList.contains('active');
+        navLinks.style.display = expanded ? 'flex' : 'none';
+        mobileMenuBtn.setAttribute('aria-expanded', String(expanded));
       });
     }
   }

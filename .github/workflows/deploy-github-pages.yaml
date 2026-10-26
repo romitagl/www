@@ -33,6 +33,11 @@ jobs:
           node scripts/check-fiat500l-seo.mjs
           node --check assets/js/fiat500l-guide.js
 
+      - name: Validate fitness section
+        run: |
+          node --test tests/fitness/*.test.mjs
+          node scripts/check-fitness.mjs
+
       - name: Create deployment directory 📁
         run: |
           mkdir -p $DEPLOY_DIR
@@ -40,6 +45,8 @@ jobs:
           cp *.js $DEPLOY_DIR/
           cp -r css $DEPLOY_DIR/
           cp -r assets $DEPLOY_DIR/
+          mkdir -p $DEPLOY_DIR/docs
+          cp docs/fitness.md docs/fitness-media.md docs/fitness-video-sources.md $DEPLOY_DIR/docs/
           cp -r public/. $DEPLOY_DIR/
           cp -r fiat500L-photos $DEPLOY_DIR/
           # advertising files
