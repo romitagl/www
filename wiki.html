@@ -56,16 +56,30 @@
 
                 <!-- Tabs Navigation -->
                 <div class="tabs-container">
-                    <ul class="tabs-nav">
-                        <li class="tab-item active" data-tab="wisdom">Wisdom</li>
-                        <li class="tab-item" data-tab="resources">Resources</li>
-                        <li class="tab-item" data-tab="motors">Motors</li>
+                    <ul class="tabs-nav" role="tablist" aria-label="Wiki categories">
+                        <li role="presentation"><button type="button" class="tab-item active" id="tab-wisdom" role="tab" data-tab="wisdom" aria-controls="wisdom" aria-selected="true" tabindex="0">Wisdom</button></li>
+                        <li role="presentation"><button type="button" class="tab-item" id="tab-resources" role="tab" data-tab="resources" aria-controls="resources" aria-selected="false" tabindex="-1">Resources</button></li>
+                        <li role="presentation"><button type="button" class="tab-item" id="tab-motors" role="tab" data-tab="motors" aria-controls="motors" aria-selected="false" tabindex="-1">Motors</button></li>
+                        <li role="presentation"><button type="button" class="tab-item" id="tab-fitness" role="tab" data-tab="fitness" aria-controls="fitness" aria-selected="false" tabindex="-1">Fitness</button></li>
                     </ul>
 
                     <!-- Tab Content -->
 
+                    <!-- Fitness is a Wiki category; its tools remain independently addressable. -->
+                    <div id="fitness" class="tab-content" role="tabpanel" aria-labelledby="tab-fitness">
+                        <div class="wiki-fitness-intro">
+                            <h3>Fitness Wiki</h3>
+                            <p>Full-body home training inspired by motorcycle rider preparation. Learn the movements, choose your rounds and build a routine with bodyweight and small dumbbells.</p>
+                        </div>
+                        <div class="wiki-fitness-links">
+                            <a href="fitness.html#circuits"><strong>Workout circuits</strong><span>Choose a strength, stability or conditioning circuit, or try the 20-minute challenge.</span><span class="wiki-fitness-action">Choose a workout →</span></a>
+                            <a href="fitness.html#library"><strong>Exercise wiki</strong><span>Explore movement demos, technique cues and easier variations.</span><span class="wiki-fitness-action">Learn the exercises →</span></a>
+                            <a href="fitness.html#progress"><strong>My progress</strong><span>Review completed workouts in your private journal, stored in this browser.</span><span class="wiki-fitness-action">Open your journal →</span></a>
+                        </div>
+                    </div>
+
                     <!-- Wisdom Tab -->
-                    <div id="wisdom" class="tab-content active">
+                    <div id="wisdom" role="tabpanel" aria-labelledby="tab-wisdom" class="tab-content active">
                         <div class="wisdom-container">
                             <div id="wisdom-header">
                                 <h3>Inspirational and Thought-Provoking Quotes and Wisdom Sentences</h3>
@@ -85,7 +99,7 @@
                     </div>
 
                     <!-- Resources Tab -->
-                    <div id="resources" class="tab-content">
+                    <div id="resources" role="tabpanel" aria-labelledby="tab-resources" class="tab-content">
                         <div class="resources-container">
                             <div id="resources-header">
                                 <h3>Useful Resources & Links</h3>
@@ -104,7 +118,7 @@
                     </div>
 
                     <!-- Motors Tab -->
-                    <div id="motors" class="tab-content">
+                    <div id="motors" role="tabpanel" aria-labelledby="tab-motors" class="tab-content">
                         <div class="motors-container">
                             <div id="motors-header">
                                 <h3>Motors Wiki</h3>
@@ -168,72 +182,57 @@
             loadActiveTab();
         });
 
-        // Function to initialize tabs
+        // Shared tab activation handles direct links, keyboard input and browser history.
         function initTabs() {
-            const tabItems = document.querySelectorAll('.tab-item');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    // Remove active class from all tabs and contents
-                    tabItems.forEach(tab => tab.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-
-                    // Show corresponding content
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                    window.location.hash = tabId;
-
-                    // Update current tab in wikiData
-                    window.wikiData.currentTab = tabId;
-
-                    // Reset tags for new tab
-                    window.wikiData.tags = new Set();
-                    window.wikiData.categories = new Set();
-
-                    // Load the tab content
-                    loadWikiContent(tabId);
+            const tabs = [...document.querySelectorAll('.tab-item')];
+            for (const [index, tab] of tabs.entries()) {
+                tab.addEventListener('click', () => {
+                    const hash = '#' + tab.dataset.tab;
+                    if (window.location.hash === hash) loadActiveTab();
+                    else window.location.hash = hash;
                 });
-            });
+                tab.addEventListener('keydown', event => {
+                    let next;
+                    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+                    else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = tabs.length - 1;
+                    else return;
+                    event.preventDefault();
+                    tabs[next].focus();
+                    tabs[next].click();
+                });
+            }
+            window.addEventListener('hashchange', loadActiveTab);
         }
 
-        // Load the active tab
         function loadActiveTab() {
-            const hashTab = window.location.hash ? window.location.hash.substring(1) : '';
-            const validTabs = ['wisdom', 'resources', 'motors'];
-
-            if (validTabs.includes(hashTab)) {
-                document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-                const hashTabButton = document.querySelector(`[data-tab="${hashTab}"]`);
-                const hashTabContent = document.getElementById(hashTab);
-
-                if (hashTabButton && hashTabContent) {
-                    hashTabButton.classList.add('active');
-                    hashTabContent.classList.add('active');
-                }
-            }
-
-            const activeTab = document.querySelector('.tab-item.active');
-            if (activeTab) {
-                const tabId = activeTab.getAttribute('data-tab');
-                window.wikiData.currentTab = tabId;
-                loadWikiContent(tabId);
-            } else {
-                // Default to wisdom if no tab is active
-                document.querySelector('[data-tab="wisdom"]').classList.add('active');
-                document.getElementById('wisdom').classList.add('active');
-                window.wikiData.currentTab = 'wisdom';
-                loadWikiContent('wisdom');
-            }
+            const requested = window.location.hash.slice(1);
+            const validTabs = ['wisdom', 'resources', 'motors', 'fitness'];
+            const tabId = validTabs.includes(requested) ? requested : 'wisdom';
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                const active = tab.dataset.tab === tabId;
+                tab.classList.toggle('active', active);
+                tab.setAttribute('aria-selected', String(active));
+                tab.tabIndex = active ? 0 : -1;
+            });
+            document.querySelectorAll('.tab-content').forEach(panel => {
+                panel.classList.toggle('active', panel.id === tabId);
+            });
+            window.wikiData.currentTab = tabId;
+            window.wikiData.tags = new Set();
+            window.wikiData.categories = new Set();
+            loadWikiContent(tabId);
         }
 
         // Function to load wiki content
         function loadWikiContent(contentType) {
+            // Fitness is local content, so it needs no markdown request or cache.
+            if (contentType === 'fitness') {
+                const filters = document.getElementById('tag-filter-container');
+                if (filters) filters.style.display = 'none';
+                return;
+            }
             const contentElement = document.getElementById(`${contentType}-content`);
             const updatedElement = document.getElementById(`${contentType}-updated`);
             const refreshButton = document.getElementById(`refresh-${contentType}`);
@@ -353,6 +352,8 @@
 
         // Process markdown content
         function processMarkdownContent(markdown, contentType, contentElement) {
+            // A slow response from a previous tab must not replace the active tab's filters.
+            if (window.wikiData.currentTab !== contentType) return;
             // Parse the markdown into sections
             const sections = parseMarkdownToSections(markdown);
 

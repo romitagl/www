@@ -7,6 +7,7 @@
 
 .tabs-nav {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -14,6 +15,9 @@
 }
 
 .tab-item {
+  background: transparent;
+  border: 0;
+  font: inherit;
   padding: 12px 24px;
   cursor: pointer;
   font-weight: 500;
@@ -21,6 +25,20 @@
   transition: all 0.3s ease;
   color: var(--text-light);
 }
+
+.tab-item:focus-visible, .wiki-fitness-links a:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.wiki-fitness-intro { margin-bottom: 24px; }
+.wiki-fitness-intro h3 { color: var(--text-light); margin-bottom: 12px; }
+.wiki-fitness-intro p { color: var(--text-muted); max-width: 760px; }
+.wiki-fitness-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 18px; }
+.wiki-fitness-links a { display: flex; flex-direction: column; gap: 14px; padding: 22px; border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-muted); text-decoration: none; }
+.wiki-fitness-links a:hover { border-color: var(--primary-color); }
+.wiki-fitness-links strong { color: var(--text-light); font-size: 1.15rem; }
+.wiki-fitness-action { margin-top: auto; color: var(--primary-color); font-weight: 600; }
 
 .tab-item:hover {
   color: var(--primary-color);
@@ -41,6 +59,8 @@
   display: block;
   animation: fadeIn 0.5s ease;
 }
+
+#fitness.tab-content.active { animation: none; }
 
 @keyframes fadeIn {
   from {
