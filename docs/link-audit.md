@@ -17,6 +17,8 @@ At this audit: **834 local references passed; 38 external destinations returned 
 
 The Gates fuel-hose reference returns HTTP 403 to curl. The official page was retrieved through the web browsing tool and confirmed as “4219BG Barricade™ Carbureted Engines Fuel Hose | Gates Corporation.” The exact URL, blocked status, verification method, and short expiry are recorded in `docs/link-verifications.json`. This does not waive other errors or other URLs. After 9 November 2026, that exception requires a fresh review. Do not automatically extend it.
 
+The Instagram profile returned HTTP 200 with the matching Fiat 500 Experience profile title in the live release audit, but GitHub Actions run 41722594436 received HTTP 429 from its Azure runner. An exact-URL verification for that rate-limit response is recorded until 6 November 2026. It does not cover HTTP 404, other errors, or other profiles.
+
 ## Repeat before deployment
 
 ```sh

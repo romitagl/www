@@ -5,5 +5,12 @@
     "expires_on": "2026-11-09",
     "method": "Official page retrieved through the web browsing tool; title and product content confirmed. Direct curl requests receive HTTP 403.",
     "title": "4219BG Barricade\u2122 Carbureted Engines Fuel Hose | Gates Corporation"
+  },
+  "https://www.instagram.com/experiencefiat500/": {
+    "status": 429,
+    "checked_on": "2026-11-03",
+    "expires_on": "2026-11-06",
+    "method": "Live release audit from the local machine returned HTTP 200 with the exact Fiat 500 Experience profile title on 3 November 2026. GitHub Actions run 41722594436 returned HTTP 429 from its Azure runner for the same URL. The successful response is recorded in docs/link-audit.json. This verification covers only that URL and HTTP 429, not missing pages or other errors.",
+    "title": "Fiat 500 Experience (@experiencefiat500) \u2022 Instagram photos and videos"
   }
 }
