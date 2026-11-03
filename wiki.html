@@ -25,15 +25,18 @@
     <!-- Link to the external CSS files -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/wiki-styles.css">
+  <link rel="stylesheet" href="css/studio.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
 </head>
 
-<body>
+<body class="studio-page wiki-page">
+    <a class="studio-skip" href="#main-content">Skip to content</a>
     <div class="container">
         <!-- Navigation will be loaded here -->
         <div data-component="navigation"></div>
 
+        <main id="main-content">
         <!-- Hero section for Wiki -->
         <section class="hero">
             <div class="hero-content">
@@ -41,8 +44,8 @@
                 <p>A collection of valuable information, curated resources, and structured FIAT 500 knowledge designed to help visitors quickly find practical answers and deeper context.</p>
             </div>
             <div class="hero-image">
-                <img src="assets/images/wiki.svg" alt="Wiki Knowledge Base"
-                    onerror="this.src='https://api.lorem.space/image/abstract?w=500&h=400'">
+                <img src="assets/images/wiki-studio.svg" alt="Wiki Knowledge Base"
+>
             </div>
         </section>
 
@@ -60,23 +63,9 @@
                         <li role="presentation"><button type="button" class="tab-item active" id="tab-wisdom" role="tab" data-tab="wisdom" aria-controls="wisdom" aria-selected="true" tabindex="0">Wisdom</button></li>
                         <li role="presentation"><button type="button" class="tab-item" id="tab-resources" role="tab" data-tab="resources" aria-controls="resources" aria-selected="false" tabindex="-1">Resources</button></li>
                         <li role="presentation"><button type="button" class="tab-item" id="tab-motors" role="tab" data-tab="motors" aria-controls="motors" aria-selected="false" tabindex="-1">Motors</button></li>
-                        <li role="presentation"><button type="button" class="tab-item" id="tab-fitness" role="tab" data-tab="fitness" aria-controls="fitness" aria-selected="false" tabindex="-1">Fitness</button></li>
                     </ul>
 
                     <!-- Tab Content -->
-
-                    <!-- Fitness is a Wiki category; its tools remain independently addressable. -->
-                    <div id="fitness" class="tab-content" role="tabpanel" aria-labelledby="tab-fitness">
-                        <div class="wiki-fitness-intro">
-                            <h3>Fitness Wiki</h3>
-                            <p>Full-body home training inspired by motorcycle rider preparation. Learn the movements, choose your rounds and build a routine with bodyweight and small dumbbells.</p>
-                        </div>
-                        <div class="wiki-fitness-links">
-                            <a href="fitness.html#circuits"><strong>Workout circuits</strong><span>Choose a strength, stability or conditioning circuit, or try the 20-minute challenge.</span><span class="wiki-fitness-action">Choose a workout →</span></a>
-                            <a href="fitness.html#library"><strong>Exercise wiki</strong><span>Explore movement demos, technique cues and easier variations.</span><span class="wiki-fitness-action">Learn the exercises →</span></a>
-                            <a href="fitness.html#progress"><strong>My progress</strong><span>Review completed workouts in your private journal, stored in this browser.</span><span class="wiki-fitness-action">Open your journal →</span></a>
-                        </div>
-                    </div>
 
                     <!-- Wisdom Tab -->
                     <div id="wisdom" role="tabpanel" aria-labelledby="tab-wisdom" class="tab-content active">
@@ -147,6 +136,8 @@
             </div>
         </section>
 
+        <noscript><p id="fitness">Rider Fit now has a dedicated Fitness section. <a href="fitness.html">Open Rider Fit →</a></p></noscript>
+        </main>
         <!-- Footer will be loaded here -->
         <div data-component="footer"></div>
     </div>
@@ -155,6 +146,8 @@
     <script>
         // Tab initialization
         document.addEventListener("DOMContentLoaded", function () {
+            // Preserve published bookmarks while Fitness has its own destination.
+            if (window.location.hash === "#fitness") { window.location.replace("fitness.html"); return; }
             // Global storage for tags and categories
             window.wikiData = {
                 currentTab: 'wisdom',
@@ -208,7 +201,8 @@
 
         function loadActiveTab() {
             const requested = window.location.hash.slice(1);
-            const validTabs = ['wisdom', 'resources', 'motors', 'fitness'];
+            if (requested === 'fitness') { window.location.replace('fitness.html'); return; }
+            const validTabs = ['wisdom', 'resources', 'motors'];
             const tabId = validTabs.includes(requested) ? requested : 'wisdom';
             document.querySelectorAll('.tab-item').forEach(tab => {
                 const active = tab.dataset.tab === tabId;
@@ -227,12 +221,6 @@
 
         // Function to load wiki content
         function loadWikiContent(contentType) {
-            // Fitness is local content, so it needs no markdown request or cache.
-            if (contentType === 'fitness') {
-                const filters = document.getElementById('tag-filter-container');
-                if (filters) filters.style.display = 'none';
-                return;
-            }
             const contentElement = document.getElementById(`${contentType}-content`);
             const updatedElement = document.getElementById(`${contentType}-updated`);
             const refreshButton = document.getElementById(`refresh-${contentType}`);

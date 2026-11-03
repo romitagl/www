@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/privacy.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/studio.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
     <!-- Open Graph / Social Media Meta Tags -->
@@ -21,11 +22,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
-<body>
+<body class="studio-page privacy-page">
+    <a class="studio-skip" href="#main-content">Skip to content</a>
     <div class="container">
         <!-- Navigation will be loaded here -->
         <div data-component="navigation"></div>
         
+        <main id="main-content">
         <!-- Privacy Policy Content -->
         <section class="content-section privacy-section">
             <h1>Privacy Policy</h1>
@@ -41,6 +44,7 @@
             <p>Exercise illustrations, 3D animations and approved video demos are served with the website. No external video player is loaded. Source and license links open external websites only when selected.</p>
         </section>
 
+        </main>
         <!-- Footer will be loaded here -->
         <div data-component="footer"></div>
     </div>

@@ -13,13 +13,41 @@ for (const [, attributes, source] of read('wiki.html').matchAll(/<script\b([^>]*
   if (!/\bsrc\s*=/.test(attributes)) new Script(source, { filename: 'wiki.html' });
 }
 assert.match(read('fitness.html'), /<link rel="canonical" href="https:\/\/romitagl.com\/fitness.html">/);
-assert.match(read('components.js'), /href="wiki.html#fitness"/);
-assert.doesNotMatch(read('components.js'), /<a href="fitness.html"/);
-assert.match(read('index.html'), /href="wiki.html#fitness"/);
-assert.match(read('wiki.html'), /role="tab" data-tab="fitness"/);
-assert.match(read('wiki.html'), /href="fitness.html#circuits"/);
-assert.match(read('wiki.html'), /href="fitness.html#library"/);
-assert.match(read('fitness.html'), /href="wiki.html#fitness"/);
+// Validate the rendered shared links; navigation is generated from a directory.
+const placeholders = ['navigation', 'footer'].map(component => ({ dataset: { component }, innerHTML: '' }));
+new Script(read('components.js')).runInNewContext({
+  location: { pathname: '/index.html', hash: '', hostname: 'localhost' },
+  document: {
+    addEventListener: (event, callback) => { if (event === 'DOMContentLoaded') callback(); },
+    querySelectorAll: () => placeholders,
+    querySelector: () => null,
+  },
+});
+for (const placeholder of placeholders) {
+  assert.match(placeholder.innerHTML, /href="fitness.html"/);
+  assert.match(placeholder.innerHTML, /href="fitness.html#library"/);
+  assert.doesNotMatch(placeholder.innerHTML, /wiki.html#fitness/);
+}
+assert.match(read('index.html'), /id="fitness" aria-labelledby="fitness-title"/);
+assert.match(read('index.html'), /href="fitness.html"/);
+assert.doesNotMatch(read('wiki.html'), /role="tab" data-tab="fitness"/);
+assert.match(read('fitness.html'), /href="index.html#fitness"/);
+assert.doesNotMatch(read('fitness.html'), /wiki.html#fitness/);
+// Exercise the real legacy redirect on initial load and later hash changes.
+const callbacks = [];
+const redirects = [];
+const context = {
+  window: { location: { hash: '#fitness', replace: target => redirects.push(target) } },
+  document: { addEventListener: (event, callback) => callbacks.push(callback) },
+};
+for (const [, attributes, source] of read('wiki.html').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+  if (!/\bsrc\s*=/.test(attributes)) new Script(source).runInNewContext(context);
+}
+callbacks[0]();
+assert.deepEqual(redirects, ['fitness.html']);
+redirects.length = 0;
+context.loadActiveTab();
+assert.deepEqual(redirects, ['fitness.html']);
 assert.match(read('public/sitemap.xml'), /https:\/\/romitagl.com\/fitness.html/);
 assert.ok(!read('fitness.html').includes('codex-preview'));
 console.log('Fitness modules and website integration checks passed.');

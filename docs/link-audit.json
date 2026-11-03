@@ -1,0 +1,5559 @@
+{
+  "checked_at": "2026-11-03T21:30:58.752170+00:00",
+  "scope": "All root HTML pages, generated shared navigation/footer, referenced CSS assets, configured fitness demo media and attribution links",
+  "local_references": [
+    {
+      "source": "about.html",
+      "reference": "css/styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "css/about-page.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "https://romitagl.com/about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "favicon.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "#main-content",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "assets/images/contact-studio.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "about.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "https://romitagl.com/fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "#storia",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "#servizi",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "#galleria",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "#contatti",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/hero.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto2.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto4.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto1.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto6.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto3.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto5.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500L-photos/foto7.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500L.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "https://romitagl.com/fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/images/wiki.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "css/fiat500l-guide.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/js/fiat500l-guide.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "https://romitagl.com/fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "https://romitagl.com/fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "https://romitagl.com/fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#guide",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "index.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "wiki.html#motors",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/images/fiat500l-classic-illustration.png",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-quick-checks-before-every-drive",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-no-start-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-recommissioning-after-storage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#page-title",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-driving-the-original-gearbox",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-know-your-500-l",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-start-here",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-ownership-ladder",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-quick-checks-before-every-drive",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-historical-context",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-ownership-path",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-use-this-library-by-job",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-specialist-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-trusted-web-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#start-notes",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-factory-reference-values",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-routine-checks",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-maintenance-rhythm",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-workshop-basics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-tune-up-order",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-step-by-step-tune-up-session",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-recommissioning-after-storage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-practical-reminders",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-worked-examples",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-no-start-logic",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-hard-starting",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-rough-idle-or-hesitation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-black-smoke-from-exhaust",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-weak-charging",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-overheating-or-hot-smell",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-brake-pull-or-long-pedal-travel",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-reading-the-spark-plug",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-diagnostic-discipline",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-fast-workshop-triage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-before-you-touch-the-car",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-engine-bay-orientation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-basic-tool-kit-for-these-jobs",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-how-to-read-each-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-no-start-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-rough-idle-or-hesitation-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-fuel-smell-or-carburetor-drip-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-weak-charging-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-hot-running-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-brake-pull-or-long-pedal-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-after-every-job",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-workshop-documentation-habit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual-manual-and-diagram-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-ignition-first",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-core-checks",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-timing-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-step-by-step-points-service",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-engine-and-ignition-matrix",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-symptom-reading",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-hot-failure-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-reliability-upgrades",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-points-versus-electronic-ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-roadside-ignition-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-first-principles",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-before-touching-the-weber",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-carburetor-parts-identification",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-where-the-carburetor-parts-are",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-baseline-method",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-weber-26-imb-in-practice",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-before-you-open-a-weber-26",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-step-by-step-idle-adjustment",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-step-by-step-weber-26-inspection-without-full-rebuild",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-engine-and-carb-matrix",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-weber-26-versus-weber-28",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-symptom-map",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-fuel-smell-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-when-not-to-rebuild-yet",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-when-a-rebuild-is-worth-it",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-what-not-to-touch-without-reason",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-common-mistakes",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-factory-style-versus-driver-style-setup",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion-useful-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-service-record-example",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-preservation-mindset",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-storage-and-recommissioning",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-buying-checklist",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-parts-strategy",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-reliability-minded-upgrades",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-useful-on-board-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-ownership-log",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-why-originality-matters",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-identity-first",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-what-to-inspect",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-version-specific-originality-table",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-quick-originality-reference",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-red-flags",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-preserve-or-correct",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-before-you-visit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-inspection-sheet",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-first-walkaround",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-engine-bay-and-underside",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-cold-start-and-road-test",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-seller-questions",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-walk-away-triggers",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-serious-buyer-red-flags",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-scoring-method",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-order-parts-with-evidence",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-parts-strategy",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-useful-supplier-types",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-keep-a-setup-record",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-bench-tool-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-roadside-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-records-matter",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-common-parts-families",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling-useful-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "wiki.html#motors",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki-it.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "https://romitagl.com/fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/images/wiki.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "css/fiat500l-guide.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/js/fiat500l-guide.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "https://romitagl.com/fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "https://romitagl.com/fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "https://romitagl.com/fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#guide",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "index.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "wiki.html#motors",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/images/fiat500l-classic-illustration.png",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-quick-checks-before-every-drive",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-no-start-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-recommissioning-after-storage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#page-title",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-driving-the-original-gearbox",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-know-your-500-l",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-start-here",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-ownership-ladder",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-quick-checks-before-every-drive",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-historical-context",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-ownership-path",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-use-this-library-by-job",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-specialist-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-trusted-web-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#start-notes",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-factory-reference-values",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-routine-checks",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-maintenance-rhythm",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-workshop-basics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-tune-up-order",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-step-by-step-tune-up-session",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-recommissioning-after-storage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-practical-reminders",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-worked-examples",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-no-start-logic",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-hard-starting",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-rough-idle-or-hesitation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-black-smoke-from-exhaust",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-weak-charging",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-overheating-or-hot-smell",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-brake-pull-or-long-pedal-travel",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-reading-the-spark-plug",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-diagnostic-discipline",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-fast-workshop-triage",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-before-you-touch-the-car",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-engine-bay-orientation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-basic-tool-kit-for-these-jobs",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-how-to-read-each-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-no-start-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-rough-idle-or-hesitation-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-fuel-smell-or-carburetor-drip-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-weak-charging-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-hot-running-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-brake-pull-or-long-pedal-procedure",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-after-every-job",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-workshop-documentation-habit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual-manual-and-diagram-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-ignition-first",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-core-checks",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-timing-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-step-by-step-points-service",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-engine-and-ignition-matrix",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-symptom-reading",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-hot-failure-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-reliability-upgrades",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-points-versus-electronic-ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-roadside-ignition-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-first-principles",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-before-touching-the-weber",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-carburetor-parts-identification",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-where-the-carburetor-parts-are",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-baseline-method",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-weber-26-imb-in-practice",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-before-you-open-a-weber-26",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-step-by-step-idle-adjustment",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-step-by-step-weber-26-inspection-without-full-rebuild",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-engine-and-carb-matrix",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-weber-26-versus-weber-28",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-symptom-map",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-fuel-smell-workflow",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-when-not-to-rebuild-yet",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-when-a-rebuild-is-worth-it",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-what-not-to-touch-without-reason",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-common-mistakes",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-factory-style-versus-driver-style-setup",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion-useful-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-service-record-example",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-preservation-mindset",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-storage-and-recommissioning",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-buying-checklist",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-parts-strategy",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-reliability-minded-upgrades",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-useful-on-board-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-ownership-log",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-why-originality-matters",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-identity-first",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-what-to-inspect",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-version-specific-originality-table",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-quick-originality-reference",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-red-flags",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-preserve-or-correct",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-before-you-visit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-inspection-sheet",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-first-walkaround",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-engine-bay-and-underside",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-cold-start-and-road-test",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-seller-questions",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-walk-away-triggers",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-serious-buyer-red-flags",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-scoring-method",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying-related-pages",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-order-parts-with-evidence",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-parts-strategy",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-useful-supplier-types",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-keep-a-setup-record",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-bench-tool-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-roadside-kit",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-records-matter",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-common-parts-families",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling-useful-references",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#manual",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#maintenance-cooling-system",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#ignition",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#diagnostics",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#carburetion",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "assets/pdf/Manuale_Originale_Fiat_500_F_e_L_Guida_all_Uso_e_alla_Manutenzione_Fornito_da_500line.pdf",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#buying",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#tooling",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#originality",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "#preservation",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "wiki.html#motors",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fiat500l-wiki.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "https://romitagl.com/fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "favicon.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "css/styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "css/fitness.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "assets/js/fitness/app.mjs",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "#fitness-content",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "index.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "index.html#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "https://romitagl.com/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "favicon.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "css/styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "css/home.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#main-content",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#explore",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "assets/images/fitness/squat.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "assets/images/fiat500l-catalog-studio.jpg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "index.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "css/styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "css/privacy.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "https://romitagl.com/privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "favicon.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "#main-content",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "privacy.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "programming.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "https://romitagl.com/wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "favicon.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "assets/js/lib/marked.min.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "css/styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "css/wiki-styles.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "css/studio.css",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "components.js",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "#main-content",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "assets/images/wiki-studio.svg",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/#digital-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/#fitness",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/#learn-play",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/#local-services",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "/#knowledge-base",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#circuits",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#library",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fitness.html#progress",
+      "state": "pass",
+      "note": "Application hash route (checked by fitness integration checks)"
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500L.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500l-wiki.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "fiat500l-wiki-it.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "about.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "wiki.html",
+      "reference": "privacy.html",
+      "state": "pass",
+      "note": ""
+    },
+    {
+      "source": "fitness.html",
+      "reference": "assets/models/fitness/push-up.glb",
+      "state": "pass",
+      "note": ""
+    }
+  ],
+  "external_checks": [
+    {
+      "url": "https://autobellaparts.com/products/classic-fiat-500-complete-overhaul-restoration-repair-kit-weber-26-imb-brand-new",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://autobellaparts.com/products/classic-fiat-500-complete-overhaul-restoration-repair-kit-weber-26-imb-brand-new",
+      "title": "Classic Fiat 500 Uprated Complete Overhaul Restoration Repair Kit Webe &ndash; AutoBella Classic Italian Car Parts",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      "title": "",
+      "error": "",
+      "sources": [
+        "about.html",
+        "privacy.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "title": "Deed - CC0 1.0 Universal - Creative Commons",
+      "error": "",
+      "sources": [
+        "fitness.html"
+      ]
+    },
+    {
+      "url": "https://euroitalia500-commerce.it/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://euroitalia500-commerce.it/",
+      "title": "Sito in chiusura \u2014 Julcar 500 S.r.l.",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&family=Lora:ital,wght@0,400;1,400;1,600&display=swap",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700&family=Lora:ital,wght@0,400;1,400;1,600&display=swap",
+      "title": "",
+      "error": "",
+      "sources": [
+        "fiat500L.html"
+      ]
+    },
+    {
+      "url": "https://github.com/AssiamahS/opengym3d",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://github.com/AssiamahS/opengym3d",
+      "title": "GitHub - AssiamahS/opengym3d: Open-source 3D exercise animation library \u2014 Blender renders in CI, Three.js viewer on Pages \u00b7 GitHub",
+      "error": "",
+      "sources": [
+        "fitness.html"
+      ]
+    },
+    {
+      "url": "https://github.com/romitagl",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://github.com/romitagl",
+      "title": "romitagl (Gian Luigi Romita) \u00b7 GitHub",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://github.com/romitagl/www/issues",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://github.com/romitagl/www/issues",
+      "title": "Issues \u00b7 romitagl/www \u00b7 GitHub",
+      "error": "",
+      "sources": [
+        "about.html"
+      ]
+    },
+    {
+      "url": "https://github.com/sponsors/romitagl",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://github.com/sponsors/romitagl",
+      "title": "Sponsor @romitagl on GitHub Sponsors \u00b7 GitHub",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://static.cloudflareinsights.com/beacon.min.js",
+      "title": "",
+      "error": "",
+      "sources": [
+        "index.html"
+      ]
+    },
+    {
+      "url": "https://wa.me/393202237462",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://api.whatsapp.com/send/?phone=393202237462&text&type=phone_number&app_absent=0",
+      "title": "Share on WhatsApp",
+      "error": "",
+      "sources": [
+        "fiat500L.html"
+      ]
+    },
+    {
+      "url": "https://web-games.romitagl.com/word-association-challenge/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-games.romitagl.com/word-association-challenge/",
+      "title": "Word Association Challenge - Interactive Vocabulary Game",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/",
+      "title": "Free Web Tools: PDF Merger, PDF Compressor, QR Code Generator &amp; More",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/base64-encoder-decoder/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/base64-encoder-decoder/",
+      "title": "Base64 Encoder and Decoder Online",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/cidr-calculator/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/cidr-calculator/",
+      "title": "CIDR Calculator Online for Subnetting and IP Ranges",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/code-formatter/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/code-formatter/",
+      "title": "Code Formatter Online for HTML, CSS, JavaScript and JSON",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/gif-maker/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/gif-maker/",
+      "title": "Animated GIF Maker Online Free, Private, No Upload",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/pdf-compressor/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/pdf-compressor/",
+      "title": "Compress PDF Online Free, Private, No Upload",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/pdf-merger/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/pdf-merger/",
+      "title": "Merge PDFs and Images Online Free, Private, No Upload",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/qr-code-tool/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/qr-code-tool/",
+      "title": "QR Code Generator for WiFi, URLs and Contact Info",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/video-speed-controller/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/video-speed-controller/",
+      "title": "Video Speed Controller Online for Slow Motion and Time-Lapse",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://web-tools.romitagl.com/website-scraper/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://web-tools.romitagl.com/website-scraper/",
+      "title": "Website Scraper and Offline Archive Tool",
+      "error": "",
+      "sources": [
+        "about.html",
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html",
+        "fitness.html",
+        "index.html",
+        "privacy.html",
+        "programming.html",
+        "wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500clubitalia.it/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500clubitalia.it/",
+      "title": "Fiat Club 500 Italia - Sito ufficiale",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500clubitalia.it/museo/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500clubitalia.it/museo/",
+      "title": "Museo - Fiat 500 Club Italia - sito ufficiale",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/en/pages/modelli-fiat",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/en/pages/modelli-fiat",
+      "title": "Fiat 500 Vintage (1957-1977): Models, History and Spare Parts | 500line.it",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/en/pages/schema-elettrico-fiat-500-l",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/en/pages/schema-elettrico-fiat-500-l",
+      "title": "Fiat 500 L wiring diagram \u2014 500line",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/pages/manuali-d-uso-e-manutenzione-fiat-500",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/pages/manuali-d-uso-e-manutenzione-fiat-500",
+      "title": "Manuali d&#39;Uso e Manutenzione Fiat 500 | Download e Guida 500line",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/pages/modelli-fiat",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/pages/modelli-fiat",
+      "title": "Fiat 500 d&#39;Epoca (1957-1977): Modelli, Storia e Ricambi | 500line.it",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/pages/schema-elettrico-fiat-500-l",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/pages/schema-elettrico-fiat-500-l",
+      "title": "Schema elettrico Fiat 500 L \u2014 500line",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/pages/schemi-elettrici-per-fiat-500",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/pages/schemi-elettrici-per-fiat-500",
+      "title": "Schemi Elettrici Fiat 500 D F L N R - Download Gratuiti \u2014 500line",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.500line.it/products/kit-revisione-carburatore-fiat-500-f-l-26-imb-10-epoca-alta-qualita-asi",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.500line.it/products/kit-revisione-carburatore-fiat-500-f-l-26-imb-10-epoca-alta-qualita-asi",
+      "title": "Kit Revisione Carburatore Fiat 500 F L 26 IMB 10 - ASI Alta Qualit\u00e0 | 500line",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.dangelomotori.it",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.dangelomotori.it/",
+      "title": "Home &raquo; D&#039;ANGELO MOTORI S.R.L",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.denso-am.eu/products/ignition/spark-plug",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.denso-am.eu/products/ignition/spark-plug",
+      "title": "How DENSO spark plugs work | DENSO",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.gates.com/us/en/fluid-power/engine-hose/fuel-line-hose.p.4219-000000-000001.html",
+      "state": "reviewed",
+      "status": 403,
+      "effective_url": "https://www.gates.com/us/en/fluid-power/engine-hose/fuel-line-hose.p.4219-000000-000001.html",
+      "title": "Attention Required! | Cloudflare",
+      "error": "",
+      "review": {
+        "status": 403,
+        "checked_on": "2026-11-02",
+        "expires_on": "2026-11-09",
+        "method": "Official page retrieved through the web browsing tool; title and product content confirmed. Direct curl requests receive HTTP 403.",
+        "title": "4219BG Barricade\u2122 Carbureted Engines Fuel Hose | Gates Corporation"
+      },
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/experiencefiat500/",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.instagram.com/experiencefiat500/",
+      "title": "Fiat 500 Experience (&#064;experiencefiat500) \u2022 Instagram photos and videos",
+      "error": "",
+      "sources": [
+        "fiat500L.html"
+      ]
+    },
+    {
+      "url": "https://www.media.stellantis.com/em-en/heritage-hub-italy/press/heritage-hub-hosts-the-exhibition-the-italy-we-love-welcome-to-the-home-of-the-fiat-500",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.media.stellantis.com/em-en/heritage-hub-italy/press/heritage-hub-hosts-the-exhibition-the-italy-we-love-welcome-to-the-home-of-the-fiat-500",
+      "title": "HERITAGE HUB HOSTS THE EXHIBITION \u201cTHE ITALY WE LOVE: WELCOME TO THE HOME OF THE FIAT 500\u201d | Heritage HUB Italy | Stellantis Media",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.media.stellantis.com/uk-en/fiat/press/preview-the-new-fiat-500",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.media.stellantis.com/uk-en/fiat/press/preview-the-new-fiat-500",
+      "title": "PREVIEW: THE NEW FIAT 500 | FIAT | Stellantis Media",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    },
+    {
+      "url": "https://www.motogp.com/pt/news/2025/06/02/how-do-motogp-riders-trainx/751295",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.motogp.com/pt/news/2025/06/02/how-do-motogp-riders-trainx/751295",
+      "title": "How Do MotoGP\u2122 Riders Train?",
+      "error": "",
+      "sources": [
+        "fitness.html"
+      ]
+    },
+    {
+      "url": "https://www.stile500.it",
+      "state": "pass",
+      "status": 200,
+      "effective_url": "https://www.stile500.it/",
+      "title": "home - STILE500 | Ricambi Fiat 500 d&#039;epoca - Gadget Fiat 500 d&#039;epoca - Ricambi Auto - Stampaggio e Assemblaggio Lamierati - Pi\u00e8ces Fiat 500, Parts Fiat 500 - Torino",
+      "error": "",
+      "sources": [
+        "fiat500l-wiki-it.html",
+        "fiat500l-wiki.html"
+      ]
+    }
+  ],
+  "external_not_checked": []
+}

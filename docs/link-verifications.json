@@ -1,0 +1,9 @@
+{
+  "https://www.gates.com/us/en/fluid-power/engine-hose/fuel-line-hose.p.4219-000000-000001.html": {
+    "status": 403,
+    "checked_on": "2026-11-02",
+    "expires_on": "2026-11-09",
+    "method": "Official page retrieved through the web browsing tool; title and product content confirmed. Direct curl requests receive HTTP 403.",
+    "title": "4219BG Barricade\u2122 Carbureted Engines Fuel Hose | Gates Corporation"
+  }
+}

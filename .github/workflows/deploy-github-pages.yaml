@@ -38,6 +38,9 @@ jobs:
           node --test tests/fitness/*.test.mjs
           node scripts/check-fitness.mjs
 
+      - name: Verify site links before deployment
+        run: python3 scripts/check-site-links.py --external --report /tmp/site-link-audit.json
+
       - name: Create deployment directory 📁
         run: |
           mkdir -p $DEPLOY_DIR
