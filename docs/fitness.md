@@ -1,6 +1,6 @@
 # Rider Fit
 
-Fitness is a tab within the Knowledge Wiki at `wiki.html#fitness`. Its circuits, exercise library and journal open in `fitness.html`, which stays within the Wiki navigation hierarchy and links back to the Fitness tab. Homepage and footer entry points go through the Wiki tab; Fitness is not a top-level navigation item. Existing workout URLs and saved progress remain valid. The normal GitHub Pages copy step includes its modules, styles and assets. No bundler or application server is required.
+Fitness is a dedicated top-level section at `fitness.html`, with its own homepage feature (`index.html#fitness`), header menu, and footer directory. The menu links directly to Rider Fit, workout circuits, the exercise library, and progress. Wiki no longer contains a Fitness tab. Existing `wiki.html#fitness` bookmarks redirect to `fitness.html`; workout URLs and saved progress remain valid. The normal GitHub Pages copy step includes its modules, styles and assets. No bundler or application server is required.
 
 ## Run locally
 

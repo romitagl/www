@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/about-page.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/studio.css">
     <!-- Component Loader Script -->
     <script src="components.js"></script>
     <!-- Open Graph / Social Media Meta Tags -->
@@ -23,11 +24,13 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
-<body>
+<body class="studio-page about-page">
+    <a class="studio-skip" href="#main-content">Skip to content</a>
     <div class="container">
         <!-- Navigation will be loaded here -->
         <div data-component="navigation"></div>
         
+        <main id="main-content">
         <!-- About Section -->
         <section class="hero">
             <div class="hero-content">
@@ -36,7 +39,7 @@
                 <p>I believe in the power of open-source and community-driven projects, which is why I share my tools and projects openly on <a href="https://github.com/romitagl" target="_blank">GitHub</a>.</p>
             </div>
             <div class="hero-image">
-                <img src="assets/images/contact.svg" alt="About illustration" onerror="this.src='https://api.lorem.space/image/abstract?w=400&h=300'">
+                <img src="assets/images/contact-studio.svg" alt="About illustration">
             </div>
         </section>
         
@@ -90,6 +93,7 @@
             </div>
         </section>
 
+        </main>
         <!-- Footer will be loaded here -->
         <div data-component="footer"></div>
     </div>

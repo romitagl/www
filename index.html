@@ -1,444 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "url": "https://romitagl.com/",
-          "name": "Digital Services, Iconic Local Experiences & FIAT 500 Resources - romitagl.com",
-          "description": "Privacy-first digital tools, a personal utility wiki, and iconic local experiences in Alessandria and Monferrato including a restored vintage FIAT 500 L.",
-          "author": {
-            "@type": "Person",
-            "name": "romitagl"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "applicationCategory": "WebApplication",
-          "hasPart": [
-            {
-              "@type": "SoftwareApplication",
-              "name": "PDF & Image Merger",
-              "applicationCategory": "UtilityApplication",
-              "operatingSystem": "Web browser",
-              "description": "Combine multiple PDFs and images into a single document. Perfect for creating comprehensive documentation and presentations.",
-              "url": "https://web-tools.romitagl.com/pdf-merger/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "QR Code Generator",
-              "applicationCategory": "UtilityApplication",
-              "operatingSystem": "Web browser",
-              "description": "Create scannable QR codes for WiFi, contact info, URLs, and text. Perfect for Airbnb hosts, hotels, and vacation rentals.",
-              "url": "https://web-tools.romitagl.com/qr-code-tool/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "Video Speed Controller",
-              "applicationCategory": "UtilityApplication",
-              "operatingSystem": "Web browser",
-              "description": "Modify video playback speed to create slow-motion or time-lapse effects. Perfect for creating dramatic effects or speeding up tutorials.",
-              "url": "https://web-tools.romitagl.com/video-speed-controller/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "CIDR Calculator",
-              "applicationCategory": "DeveloperApplication",
-              "operatingSystem": "Web browser",
-              "description": "Calculate network addresses, broadcast addresses, and IP ranges for network planning and troubleshooting.",
-              "url": "https://web-tools.romitagl.com/cidr-calculator/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "Code Formatter",
-              "applicationCategory": "DeveloperApplication",
-              "operatingSystem": "Web browser",
-              "description": "Format and beautify your code with support for HTML, CSS, JavaScript, and other popular languages.",
-              "url": "https://web-tools.romitagl.com/code-formatter/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "Base64 Encoder/Decoder",
-              "applicationCategory": "DeveloperApplication",
-              "operatingSystem": "Web browser",
-              "description": "Convert text or binary data to and from Base64 encoding for web applications and data transfer.",
-              "url": "https://web-tools.romitagl.com/base64-encoder-decoder/"
-            },
-            {
-              "@type": "SoftwareApplication",
-              "name": "Website Scraper",
-              "applicationCategory": "DeveloperApplication",
-              "operatingSystem": "Web browser",
-              "description": "Archive websites locally by saving HTML, CSS, JavaScript, and images into a downloadable ZIP file.",
-              "url": "https://web-tools.romitagl.com/website-scraper/"
-            }
-          ]
-        }
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Services, Iconic Local Experiences & FIAT 500 Resources | romitagl.com</title>
-    <meta name="description"
-        content="Privacy-first digital services, a utility and personal wiki, and iconic local experiences in the Italian city of Alessandria and Monferrato, including a restored vintage FIAT 500 L.">
-    <meta name="keywords"
-        content="digital services, iconic local experiences, Alessandria Italy, Monferrato experiences, PDF merger, QR code generator, FIAT 500 Alessandria, Fiat 500 matrimonio Alessandria, classic Fiat 500 resources, personal utility wiki">
-    <meta name="author" content="romitagl.com">
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Digital Services, Iconic Local Experiences & FIAT 500 Resources | romitagl.com">
-    <meta property="og:description"
-        content="Privacy-first digital services, a utility and personal wiki, and iconic local experiences in the Italian city of Alessandria and Monferrato, including a restored vintage FIAT 500 L.">
-    <meta property="og:image" content="https://romitagl.com/assets/images/og-image.png">
-    <meta property="og:url" content="https://romitagl.com">
-    <link rel="canonical" href="https://romitagl.com/" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Component Loader Script -->
-    <script src="components.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tools, Experiments & Local Stories | romitagl.com</title>
+  <meta name="description" content="Explore free browser tools, interactive learning and games, practical guides, and a vintage FIAT 500 experience in Alessandria and Monferrato.">
+  <meta property="og:title" content="Tools, Experiments & Local Stories | romitagl.com">
+  <meta property="og:description" content="Useful things for the screen. Memorable things beyond it. Browser tools, experiments, guides, and a classic FIAT 500.">
+  <meta property="og:image" content="https://romitagl.com/assets/images/og-image.png">
+  <meta property="og:url" content="https://romitagl.com/">
+  <link rel="canonical" href="https://romitagl.com/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script src="components.js" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "url": "https://romitagl.com/", "name": "romitagl.com \u2014 Tools, experiments & local stories", "description": "Free browser tools, interactive learning, practical guides, and a vintage FIAT 500 experience in Alessandria and Monferrato.", "hasPart": [{"@type": "WebApplication", "name": "PDF & Image Merger", "url": "https://web-tools.romitagl.com/pdf-merger/"}, {"@type": "WebApplication", "name": "PDF Compressor", "url": "https://web-tools.romitagl.com/pdf-compressor/"}, {"@type": "WebApplication", "name": "Animated GIF Maker", "url": "https://web-tools.romitagl.com/gif-maker/"}, {"@type": "WebApplication", "name": "Video Speed Controller", "url": "https://web-tools.romitagl.com/video-speed-controller/"}, {"@type": "WebApplication", "name": "QR Code Generator & Scanner", "url": "https://web-tools.romitagl.com/qr-code-tool/"}, {"@type": "WebApplication", "name": "Code Formatter", "url": "https://web-tools.romitagl.com/code-formatter/"}, {"@type": "WebApplication", "name": "Base64 Encoder/Decoder", "url": "https://web-tools.romitagl.com/base64-encoder-decoder/"}, {"@type": "WebApplication", "name": "CIDR Subnet Calculator", "url": "https://web-tools.romitagl.com/cidr-calculator/"}, {"@type": "WebApplication", "name": "Website Scraper", "url": "https://web-tools.romitagl.com/website-scraper/"}]}</script>
 </head>
-
-<body>
-    <div class="container">
-        <!-- Navigation will be loaded here -->
-        <div data-component="navigation"></div>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Digital Services, Local Icons, and Useful Resources</h1>
-                <p>Explore privacy-first web tools, iconic experiences in Alessandria and Monferrato, and a practical wiki of manuals, notes, and curated resources.
-                </p>
-            </div>
-            <div class="hero-image">
-                <img src="assets/images/web-tools.svg" alt="Illustration connecting digital services, local experiences, and wiki resources">
-            </div>
-        </section>
-
-        <section class="showcase-strip" aria-label="Main website sections">
-            <div class="showcase-strip-header">
-                <p>Browse the website by lane</p>
-            </div>
-            <div class="showcase-scroll">
-                <a class="showcase-card showcase-card-digital" href="#digital-services">
-                    <h2>Digital Services</h2>
-                    <p>Privacy-first browser tools for PDFs, QR codes, media workflows, and developer utilities.</p>
-                    <strong>Open digital services</strong>
-                </a>
-                <a class="showcase-card showcase-card-local" href="#local-services">
-                    <h2>Local Icons</h2>
-                    <p>Iconic local experiences rooted in Alessandria and Monferrato, starting with the restored FIAT 500 L.</p>
-                    <strong>Explore local icons</strong>
-                </a>
-                <a class="showcase-card showcase-card-resources" href="#knowledge-base">
-                    <h2>Resources</h2>
-                    <p>Wiki pages, manuals, curated notes, and personal utility resources collected in one place.</p>
-                    <strong>Browse resources</strong>
-                </a>
-            </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section id="digital-services" class="tools lane-section">
-            <div class="section-title">
-                <h2>Digital Services</h2>
-                <p>A growing collection of private, browser-based digital services for hospitality, productivity, media, and developer workflows.</p>
-            </div>
-            <div class="lane-feature lane-feature-digital">
-                <div>
-                    <p class="lane-eyebrow">Featured Direction</p>
-                    <h3>Fast, private tools that solve everyday digital tasks</h3>
-                    <p>Use browser-based services for documents, QR workflows, video utilities, and developer tasks without sending files to a server.</p>
-                </div>
-                <div class="lane-meta">
-                    <span>Client-side first</span>
-                    <span>No upload required</span>
-                    <span>Built for practical use</span>
-                </div>
-            </div>
-
-            <div class="lane-group">
-                <h3 class="lane-group-title">PDF & Image Tools</h3>
-                <div class="tools-grid lane-grid">
-                <div class="tool-card">
-                    <h3>PDF Merger</h3>
-                    <p>Quickly combine multiple PDF files into a single document. Perfect for merging documentation,
-                        reports, receipts, or manuals with complete privacy.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Drag & drop interface for easy file handling</li>
-                        <li>Combine PDFs in your preferred order</li>
-                        <li>Files never leave your device</li>
-                        <li>Downloaded instantly after processing</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/pdf-merger/#pdfs">Merge PDFs Securely</a>
-                </div>
-                <div class="tool-card">
-                    <h3>PDF Compressor</h3>
-                    <p>Reduce PDF file size directly in your browser with privacy-first compression designed for sharing scanned documents and lighter file delivery.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Works locally in the browser</li>
-                        <li>Ideal for scanned and image-heavy PDFs</li>
-                        <li>Multiple compression levels</li>
-                        <li>No upload required</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/pdf-compressor/">Compress PDFs Privately</a>
-                </div>
-                <div class="tool-card">
-                    <h3>Image to PDF Converter</h3>
-                    <p>Convert JPG, PNG and other image formats to PDF. Combine multiple images into a single document
-                        with our client-side processing technology.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Convert single or multiple images</li>
-                        <li>Maintain image quality in PDF format</li>
-                        <li>Combine with existing PDFs</li>
-                        <li>Process high-resolution images</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/pdf-merger/#images">Convert Images to PDF</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="lane-group">
-                <h3 class="lane-group-title">Video Tools</h3>
-                <div class="tools-grid lane-grid lane-grid-compact">
-                <div class="tool-card">
-                    <h3>Video Speed Controller</h3>
-                    <p>Transform your videos by adjusting playback speed. Create dramatic slow-motion effects or speed
-                        up footage for time-lapse videos without uploading your content.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Slow motion effects (0.25x - 0.5x speed)</li>
-                        <li>Fast motion & time-lapse (1.5x - 4x speed)</li>
-                        <li>Multiple output formats (WebM, MP4, GIF)</li>
-                        <li>Complete browser-based processing</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/video-speed-controller/">Adjust Video Speed</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="lane-group">
-                <h3 class="lane-group-title">QR Code Generator & Scanner</h3>
-                <div class="tools-grid lane-grid">
-                <div class="tool-card">
-                    <h3>QR Code Generator</h3>
-                    <p>Create customizable QR codes for URLs, text, Wi-Fi networks, and contact information. Perfect for
-                        hospitality businesses, restaurants, and events.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Generate Wi-Fi access QR codes for guests</li>
-                        <li>Create menu QR codes for restaurants</li>
-                        <li>Customizable colors and designs</li>
-                        <li>Download as PNG, SVG, or PDF</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/qr-code-tool/#generate">Generate QR Codes</a>
-                </div>
-                <div class="tool-card">
-                    <h3>QR Code Scanner</h3>
-                    <p>Scan and decode QR codes using your device's camera or by uploading images containing QR codes.
-                        Fast and private QR code reading.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Camera-based QR scanning</li>
-                        <li>Upload and decode QR code images</li>
-                        <li>No data sharing or storage</li>
-                        <li>Works offline after page load</li>
-                    </ul>
-                    <a href="https://web-tools.romitagl.com/qr-code-tool/#scan">Scan QR Codes</a>
-                </div>
-                </div>
-            </div>
-
-            <div class="lane-group">
-                <h3 class="lane-group-title">Developer Tools</h3>
-                <div class="tools-grid lane-grid">
-                <div class="tool-card">
-                    <h3>CIDR Subnet Calculator</h3>
-                    <p>Fast and simple subnet calculator for network engineers and administrators. Calculate network
-                        addresses, broadcast addresses, and IP ranges effortlessly.</p>
-                    <a href="https://web-tools.romitagl.com/cidr-calculator/">Try CIDR Calculator</a>
-                </div>
-                <div class="tool-card">
-                    <h3>Code Formatter</h3>
-                    <p>Instantly format and beautify your code with support for HTML, CSS, JavaScript, and more. Keep
-                        your code clean and readable with our browser-based formatter.</p>
-                    <a href="https://web-tools.romitagl.com/code-formatter/">Format Your Code</a>
-                </div>
-                <div class="tool-card">
-                    <h3>Base64 Encoder/Decoder</h3>
-                    <p>Encode and decode text or binary data as Base64. Useful for encoding and decoding data for web
-                        applications, APIs, and storage solutions.</p>
-                    <a href="https://web-tools.romitagl.com/base64-encoder-decoder/">Try Base64 Tool</a>
-                </div>
-                <div class="tool-card">
-                    <h3>Website Scraper</h3>
-                    <p>Archive websites by saving HTML, CSS, JavaScript, and images into a downloadable ZIP file.
-                        Perfect for creating local copies of important resources.</p>
-                    <a href="https://web-tools.romitagl.com/website-scraper/">Try Website Scraper</a>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="local-services" class="tools lane-section" style="margin-top: 80px;">
-            <div class="section-title">
-                <h2>Iconic Local Experiences in Alessandria & Monferrato</h2>
-                <p>Experiences rooted in the Italian city of Alessandria and the Monferrato area, designed to grow over time under one umbrella. The restored 1971 FIAT 500 L is the first iconic experience in this collection.</p>
-            </div>
-            <div class="lane-feature lane-feature-local">
-                <div>
-                    <p class="lane-eyebrow">Featured Direction</p>
-                    <h3>Italian icons, rooted in place</h3>
-                    <p>Local experiences are positioned as memorable, visual, and story-driven services tied to Alessandria city and the wider Monferrato landscape.</p>
-                </div>
-                <div class="lane-meta">
-                    <span>Alessandria, Italy</span>
-                    <span>Monferrato</span>
-                    <span>Expandable to new icons</span>
-                </div>
-            </div>
-            <div class="tools-grid lane-grid lane-grid-compact">
-                <div class="tool-card">
-                    <h3>Italian Iconic Experience: FIAT 500 L</h3>
-                    <p>An authentic restored FIAT 500 L available for weddings, anniversaries, celebrations, tourism experiences, and memorable arrivals in Alessandria, Monferrato, and selected Piedmont locations.</p>
-                    <ul style="text-align: left; margin-bottom: 20px; padding-left: 20px; color: #a0a0a0;">
-                        <li>Vintage FIAT 500 L from 1971</li>
-                        <li>Perfect for weddings, events, and storytelling moments</li>
-                        <li>Focused on Alessandria city, Monferrato, and surrounding areas</li>
-                        <li>Direct WhatsApp, email, and Instagram contact</li>
-                    </ul>
-                    <a href="fiat500L.html">Explore the FIAT 500 Experience</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="knowledge-base" class="tools lane-section" style="margin-top: 80px;">
-            <div class="section-title">
-                <h2>Wiki, Utility & Personal Resources</h2>
-                <p>A separate lane for knowledge, documentation, utility pages, and curated personal resources, so the site can grow without mixing service pages and reference pages together.</p>
-            </div>
-            <div class="lane-feature lane-feature-resources">
-                <div>
-                    <p class="lane-eyebrow">Featured Direction</p>
-                    <h3>Reference material with a more personal utility layer</h3>
-                    <p>This lane collects technical guides, notes, manuals, and structured pages that support both search discovery and repeat visits.</p>
-                </div>
-                <div class="lane-meta">
-                    <span>Wiki pages</span>
-                    <span>Manuals and notes</span>
-                    <span>Curated personal resources</span>
-                </div>
-            </div>
-            <div class="tools-grid lane-grid">
-                <div class="tool-card">
-                    <h3>Knowledge Wiki</h3>
-                    <p>Explore a structured wiki with quotes, curated resources, and practical notes that are useful beyond the service pages themselves.</p>
-                    <a href="wiki.html">Open the Knowledge Wiki</a>
-                </div>
-                <div class="tool-card">
-                    <h3>Rider Fit Home Workouts</h3>
-                    <p>Choose your circuit and rounds, learn movements with realistic pose sequences, and track completed workouts in your browser.</p>
-                    <a href="wiki.html#fitness">Open Fitness Wiki</a>
-                </div>
-                <div class="tool-card">
-                    <h3>FIAT 500 L Resource Hub</h3>
-                    <p>Technical and historical material for owners and enthusiasts, including maintenance, diagnostics, originality checks, and buying guidance.</p>
-                    <a href="fiat500l-wiki.html">Browse FIAT 500 Resources</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Privacy Section -->
-        <section class="features" style="margin-top: 80px;">
-            <div class="section-title">
-                <h2>100% Privacy Guaranteed</h2>
-                <p>We take your privacy seriously. Here's why our tools are different:</p>
-            </div>
-            <div class="feature-list">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Client-Side Processing</h3>
-                    <p>All computations happen directly in your browser. Your files and data never leave your device.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>No Server Storage</h3>
-                    <p>Files and tool inputs are processed locally. Rider Fit keeps your workout settings and journal
-                        only in this browser, where you can clear them at any time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <h3>Open Source</h3>
-                    <p>Our code is transparent and available for inspection. You can verify exactly how your data is
-                        being processed.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Usage Examples Section -->
-        <section class="tools" style="margin-top: 80px;">
-            <div class="section-title">
-                <h2>Who Uses These Services?</h2>
-                <p>The site is designed to support different audiences across both digital and local service areas:</p>
-            </div>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <h3>Hospitality & Restaurants</h3>
-                    <p>Create QR codes for menus, Wi-Fi access, and contact information. Merge PDFs for information
-                        booklets and promotional materials. Create slow-motion videos for promotional content.</p>
-                </div>
-                <div class="tool-card">
-                    <h3>Educators & Students</h3>
-                    <p>Combine multiple PDF documents for course materials. Generate QR codes for quick access to online
-                        resources. Create time-lapse videos of experiments or processes.</p>
-                </div>
-                <div class="tool-card">
-                    <h3>IT Professionals</h3>
-                    <p>Use the CIDR calculator for network planning. Format code and manage documentation with our
-                        developer tools. Archive important web resources with the Website Scraper.</p>
-                </div>
-                <div class="tool-card">
-                    <h3>Small Businesses</h3>
-                    <p>Create professional documentation by merging multiple PDFs. Generate QR codes for marketing
-                        materials and contact information. Create engaging speed-adjusted videos for social media.</p>
-                </div>
-                <div class="tool-card">
-                    <h3>Couples, Photographers & Event Planners</h3>
-                    <p>Use the local FIAT 500 service for weddings, editorial shoots, tourism storytelling, and memorable vintage experiences in Alessandria and Monferrato.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer will be loaded here -->
-        <div data-component="footer"></div>
-    </div>
-
-    <!-- JavaScript for Lazy Loading -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Lazy Load Images
-            const lazyImages = document.querySelectorAll(".lazy-load");
-            lazyImages.forEach(img => {
-                img.src = img.dataset.src;
-                img.classList.add("loaded");
-            });
-        });
-    </script>
-    <!-- Cloudflare Web Analytics -->
-     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "95af5eb7b8d04c7194d784a49ad3cb31"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+<body class="studio-page hub-page">
+  <a class="hub-skip" href="#main-content">Skip to content</a>
+  <div class="container">
+    <div data-component="navigation"></div>
+    <main id="main-content">
+      <section class="hub-hero" aria-labelledby="hub-title">
+        <div class="hub-hero-copy"><p class="hub-eyebrow">BUILT, COLLECTED, SHARED.</p><h1 id="hub-title">Useful things.<br><span>Curious ideas.</span> Local stories.</h1><p class="hub-intro">Browser tools, playful projects, and a little Italian character.</p><div class="hub-actions"><a class="hub-button" href="#digital-services">Find a tool <span aria-hidden="true">↗</span></a><a class="hub-text-link" href="#explore">Explore the collection <span aria-hidden="true">↓</span></a></div></div>
+      </section>
+      <section class="hub-explore" id="explore" aria-label="Explore the collection"><a href="#digital-services"><span>01 / DO</span><strong>Tools <span aria-hidden="true">↘</span></strong><p>Documents, media & development</p></a><a href="#fitness"><span>02 / MOVE</span><strong>Fitness <span aria-hidden="true">↘</span></strong><p>Home circuits, exercises & progress</p></a><a href="#local-services"><span>03 / EXPERIENCE</span><strong>Local stories <span aria-hidden="true">↘</span></strong><p>A classic FIAT in Monferrato</p></a><a href="#learn-play"><span>04 / DISCOVER</span><strong>Learn & play <span aria-hidden="true">↘</span></strong><p>Word games & creative challenges</p></a><a href="#knowledge-base"><span>05 / KEEP</span><strong>Wiki & guides <span aria-hidden="true">↘</span></strong><p>Notes, references & owner resources</p></a></section>
+      <section class="hub-section" id="digital-services" aria-labelledby="tools-title">
+        <div class="hub-section-heading"><div><p class="hub-eyebrow">01 / EVERYDAY UTILITIES</p><h2 id="tools-title">Small tools. Everyday wins.</h2><p>Nine tools for documents, media, QR codes, and development. File processing happens in your browser.</p></div><a class="hub-text-link" href="https://web-tools.romitagl.com/">Open Web Tools ↗</a></div>
+        <div class="hub-tools"><a class="hub-tool" href="https://web-tools.romitagl.com/pdf-merger/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6z"/><path d="M14 2v4h4M8 10h4M8 14h5M9 22h11a2 2 0 0 0 2-2V9"/></svg></span><span class="hub-label">Documents</span></div><h3>PDF & Image Merger <span aria-hidden="true">↗</span></h3><p>Combine PDFs and images into one document.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/pdf-compressor/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 11l3 3 3-3M12 9v5M9 19l3-3 3 3"/></svg></span><span class="hub-label">Documents</span></div><h3>PDF Compressor <span aria-hidden="true">↗</span></h3><p>Reduce scanned and image-heavy PDFs locally.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/gif-maker/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m10 8 6 4-6 4zM3 7h3M3 12h3M3 17h3M18 7h3M18 12h3M18 17h3"/></svg></span><span class="hub-label">Media</span></div><h3>Animated GIF Maker <span aria-hidden="true">↗</span></h3><p>Turn images or a video clip into a GIF.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/video-speed-controller/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18a9 9 0 1 1 16 0M5 8l2 2M12 3v3M19 8l-2 2M12 16l5-5"/><circle cx="12" cy="16" r="2"/></svg></span><span class="hub-label">Media</span></div><h3>Video Speed Controller <span aria-hidden="true">↗</span></h3><p>Preview slow-motion and fast-forward effects.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/qr-code-tool/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM15 15h3v3h-3zM21 15v3M18 21h3M12 3v3M3 12h3M12 12h3M12 18v3"/></svg></span><span class="hub-label">QR codes</span></div><h3>QR Code Generator & Scanner <span aria-hidden="true">↗</span></h3><p>Create Wi-Fi, URL, and contact codes. Scan with a camera or image.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/code-formatter/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 3l-4 18"/></svg></span><span class="hub-label">Developer</span></div><h3>Code Formatter <span aria-hidden="true">↗</span></h3><p>Beautify and highlight code in your browser.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/base64-encoder-decoder/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M16 3l4 4-4 4M20 17H4M8 13l-4 4 4 4"/></svg></span><span class="hub-label">Developer</span></div><h3>Base64 Encoder/Decoder <span aria-hidden="true">↗</span></h3><p>Convert text to and from Base64.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/cidr-calculator/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="6" rx="1"/><rect x="2" y="16" width="7" height="6" rx="1"/><rect x="15" y="16" width="7" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span><span class="hub-label">Network</span></div><h3>CIDR Subnet Calculator <span aria-hidden="true">↗</span></h3><p>Calculate subnet masks, addresses, and IP ranges.</p></a><a class="hub-tool" href="https://web-tools.romitagl.com/website-scraper/"><div class="hub-tool-top"><span class="hub-tool-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20M4 6h16M4 18h16"/></svg></span><span class="hub-label">Experimental · Beta</span></div><h3>Website Scraper <span aria-hidden="true">↗</span></h3><p>Archive website resources as a ZIP. Network and proxy restrictions apply.</p></a></div><p class="hub-footnote">Free to use, with no account needed. Website Scraper is experimental and makes network requests, which may use third-party proxies.</p>
+      </section>
+      <section class="hub-section" id="fitness" aria-labelledby="fitness-title">
+        <div class="hub-fitness"><div><p class="hub-eyebrow">02 / MAKE TIME TO MOVE</p><h2 id="fitness-title">Your next workout.<br>Right here.</h2><p>Choose a home circuit, learn each movement, and keep your training journal on this device. Rider Fit brings the workout, exercise library, and progress together.</p><div class="hub-actions"><a class="hub-button" href="fitness.html">Open Rider Fit <span aria-hidden="true">→</span></a><a class="hub-text-link" href="fitness.html#library">Explore the exercises →</a></div><div class="hub-fitness-tags"><span>Home circuits</span><span>Movement demos</span><span>Private journal</span></div></div><img src="assets/images/fitness/squat.jpg" alt="Illustrated instructor demonstrating the standing and lowered squat positions" width="1536" height="1024" loading="lazy"></div>
+      </section>
+      <section class="hub-section" id="local-services" aria-labelledby="local-title">
+        <div class="hub-local"><figure class="hub-local-media"><img src="assets/images/fiat500l-catalog-studio.jpg" alt="Catalog-style illustration of a white vintage FIAT 500 L against a slate-blue studio background" width="1448" height="1086" loading="lazy"><figcaption>AI-styled catalog illustration · Original car photos on the experience page</figcaption></figure><div><p class="hub-eyebrow">03 / ALESSANDRIA & MONFERRATO, ITALY</p><h2 id="local-title">Small car.<br>Quite a story.</h2><p>A restored 1971 FIAT 500 L, a love of local places, and a different pace. Discover the project for weddings, photo shoots, and vintage experiences.</p><a class="hub-button" href="fiat500L.html">Explore the FIAT 500 Experience <span aria-hidden="true">→</span></a><a class="hub-text-link" href="fiat500l-wiki.html">Already an owner? Open the guide →</a></div></div>
+      </section>
+      <section class="hub-section" id="learn-play" aria-labelledby="learn-title">
+        <div class="hub-section-heading"><div><p class="hub-eyebrow">04 / FOLLOW YOUR CURIOSITY</p><h2 id="learn-title">Try it. See what happens.</h2><p>Interactive projects that make room for learning and a little play.</p></div></div>
+        <div class="hub-projects">
+          <a class="hub-project hub-game" href="https://web-games.romitagl.com/word-association-challenge/"><div class="hub-project-art hub-word-art" aria-hidden="true"><span>THINK</span><span>LINK</span><span>PLAY</span></div><div class="hub-game-copy"><span class="hub-label">A QUICK MENTAL DETOUR</span><h3>Make a connection.</h3><p>Find links between words and give your pattern recognition a workout with Word Association Challenge.</p><span class="hub-game-action">Play Word Association <span aria-hidden="true">↗</span></span></div></a>
+        </div>
+      </section>
+      <section class="hub-section" id="knowledge-base" aria-labelledby="resources-title">
+        <div class="hub-section-heading"><div><p class="hub-eyebrow">05 / WORTH KEEPING CLOSE</p><h2 id="resources-title">A place for useful knowledge.</h2><p>Practical references to come back to, from the workshop to your living room.</p></div><a class="hub-text-link" href="wiki.html">Browse the Wiki →</a></div>
+        <div class="hub-resources"><a href="wiki.html"><span class="hub-resource-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5C9 3 5 3 2 4v15c3-1 7-1 10 1 3-2 7-2 10-1V4c-3-1-7-1-10 1zM12 5v15"/></svg></span><span class="hub-label">NOTES & REFERENCES</span><h3>Knowledge Wiki <span aria-hidden="true">→</span></h3><p>Curated links, quotes, practical notes, and resources collected in one place.</p></a><a href="fiat500l-wiki.html"><span class="hub-resource-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7 2-4h10l2 4M3 9h18v9H3zM6 18v3M18 18v3M3 13h18"/><circle cx="7" cy="14" r="1"/><circle cx="17" cy="14" r="1"/></svg></span><span class="hub-label">OWNER GUIDE / EN + IT</span><h3>FIAT 500 L Resources <span aria-hidden="true">→</span></h3><p>Maintenance, diagnostics, originality checks, and buying guidance for a classic.</p></a></div>
+      </section>
+      <aside class="hub-about"><p class="hub-eyebrow">BUILT, COLLECTED, SHARED.</p><h2>Different interests. One home.</h2><p>I build useful software and collect things worth learning. This site brings those projects together with a personal connection to Alessandria and Monferrato.</p><a class="hub-text-link" href="about.html">About me & get in touch →</a></aside>
+    </main>
+    <div data-component="footer"></div>
+  </div>
+  <noscript><p class="hub-noscript">Browse <a href="#digital-services">tools</a>, <a href="#learn-play">learning projects</a>, <a href="wiki.html">the Wiki</a>, <a href="fiat500L.html">the FIAT experience</a>, <a href="about.html">About</a>, or <a href="privacy.html">Privacy</a>. JavaScript adds the shared menus.</p></noscript>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"95af5eb7b8d04c7194d784a49ad3cb31"}'></script>
 </body>
-
 </html>

@@ -67,10 +67,14 @@
       color: #666;
     }
   </style>
+  <link rel="stylesheet" href="css/studio.css">
+  <script src="components.js" defer></script>
 </head>
 
-<body>
+<body class="studio-page programming-page">
   <div class="container">
+    <div data-component="navigation"></div>
+    <main class="studio-challenge" id="main-content">
     <h1>Programming Reasoning Challenge</h1>
 
     <pre id="challenge-code">
@@ -84,9 +88,9 @@ result = <span class="num">0</span>
 
     <p><strong>Question:</strong> What is the final value of <code>result</code>?</p>
 
-    <footer>
-      Reasoning &gt; execution.
-    </footer>
+    <p class="challenge-note">Reasoning &gt; execution.</p>
+    </main>
+    <div data-component="footer"></div>
   </div>
 
 </body>
