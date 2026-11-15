@@ -40,13 +40,10 @@
         <!-- Hero section for Wiki -->
         <section class="hero">
             <div class="hero-content">
-                <h1>Knowledge Wiki</h1>
-                <p>A collection of valuable information, curated resources, and structured FIAT 500 knowledge designed to help visitors quickly find practical answers and deeper context.</p>
+                <p class="wiki-eyebrow">THE NOTEBOOK / IDEAS, REFERENCES &amp; THE OPEN ROAD</p><h1>Good knowledge.<br>Worth keeping.</h1>
+                <p>From a useful idea to a classic engine: notes, discoveries, and practical guides to return to. Pick a collection and follow your curiosity.</p>
             </div>
-            <div class="hero-image">
-                <img src="assets/images/wiki-studio.svg" alt="Wiki Knowledge Base"
->
-            </div>
+            <aside class="wiki-cover" aria-label="Inside the notebook"><span>ROMITAGL / FIELD NOTES</span><div><strong>Ideas.<br>Machines.<br>Discoveries.</strong></div><p>A personal collection.<br>Made to be used and shared.</p><span>WISDOM · RESOURCES · MOTORS ↘</span></aside>
         </section>
 
         <!-- Wiki Content Section -->
@@ -54,7 +51,7 @@
             <div class="wiki-container">
                 <div class="wiki-header">
                     <h2>Browse Knowledge Base</h2>
-                    <p>Explore different categories of information in the tabs below.</p>
+                    <p>Choose a collection, then jump straight to a topic or open a section to explore.</p>
                 </div>
 
                 <!-- Tabs Navigation -->
@@ -233,8 +230,8 @@
             }
 
             // Storage key names
-            const storageKeyContent = `${contentType}Content`;
-            const storageKeyTimestamp = `${contentType}Timestamp`;
+            const storageKeyContent = `wiki-v2-${contentType}Content`;
+            const storageKeyTimestamp = `wiki-v2-${contentType}Timestamp`;
 
             // Function to format date
             function formatDate(timestamp) {
@@ -249,8 +246,11 @@
             }
 
             // Check cache first
-            const cachedContent = localStorage.getItem(storageKeyContent);
-            const cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
+            let cachedContent, cachedTimestamp;
+            try {
+                cachedContent = localStorage.getItem(storageKeyContent);
+                cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
+            } catch { /* Rendering remains available when browser storage is disabled. */ }
 
             if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
                 // Use cached content
@@ -283,7 +283,7 @@
                 // GitHub wiki URL - capitalize first letter of content type for correct file name
                 const githubWikiUrl = `https://raw.githubusercontent.com/wiki/romitagl/www/${contentType.charAt(0).toUpperCase() + contentType.slice(1)}.md`;
 
-                fetch(githubWikiUrl)
+                fetch(githubWikiUrl, {cache: 'no-cache'})
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -296,9 +296,11 @@
                             processMarkdownContent(markdown, contentType, contentElement);
 
                             // Cache the content
-                            localStorage.setItem(storageKeyContent, markdown);
                             const now = Date.now();
-                            localStorage.setItem(storageKeyTimestamp, now);
+                            try {
+                                localStorage.setItem(storageKeyContent, markdown);
+                                localStorage.setItem(storageKeyTimestamp, now);
+                            } catch { /* Storage is optional. */ }
 
                             // Update timestamp
                             updatedElement.innerHTML = 'Last updated: ' + formatDate(now) +
@@ -358,9 +360,6 @@
                     window.wikiData.categories.add(section.title);
                 }
 
-                // Extract tags from content
-                extractTags(section.content);
-
                 // Format content with proper HTML and image handling
                 const formattedContent = formatContentWithImagesAndTags(section.content);
 
@@ -370,10 +369,10 @@
             <div class="content-section">
                 <div class="section-header" data-section="${index}">
                     <h3>
-                        <span class="category-icon">${section.title ? section.title.charAt(0) : 'X'}</span>
-                        ${section.title || 'Uncategorized'}
+                        <span class="category-icon">${escapeWikiText(section.title ? section.title.charAt(0) : 'X')}</span>
+                        ${escapeWikiText(section.title || 'Uncategorized')}
                     </h3>
-                    <button class="toggle-section"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
+                    <button class="toggle-section" aria-expanded="${isFirstSection}" aria-controls="section-${contentType}-${index}" aria-label="Toggle ${escapeWikiText(section.title)}"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
                 </div>
                 <div class="section-content ${isFirstSection ? 'expanded' : ''}" id="section-${contentType}-${index}">
                     <div class="content-block">
@@ -384,10 +383,25 @@
             });
 
             // Update content element
+            contentElement.classList.remove('content-loading');
+            const topics = sections.flatMap((section, index) => {
+                const headings = marked.lexer(section.content).filter(token => token.type === 'heading');
+                return [{label: section.title, index}, ...headings.map(token => ({label: token.text, index}))];
+            });
+            contentHtml = `<nav class="wiki-topics" aria-label="Topics in ${contentType}"><strong>In this collection</strong><div>${topics.map(topic => `<button type="button" data-topic-section="${topic.index}">${escapeWikiText(topic.label)}</button>`).join('')}</div><button type="button" data-expand-all>Expand all</button><button type="button" data-collapse-all>Collapse all</button></nav>` + contentHtml;
             contentElement.innerHTML = contentHtml || `<p>No ${contentType} content available.</p>`;
 
             // Initialize section toggles after content is loaded
-            initSectionToggles();
+            initSectionToggles(contentElement);
+            contentElement.querySelectorAll('[data-topic-section]').forEach(button => button.addEventListener('click', () => {
+                const panel = document.getElementById(`section-${contentType}-${button.dataset.topicSection}`);
+                setSectionExpanded(panel, true);
+                const heading = [...panel.querySelectorAll('h1,h2,h3,h4,h5,h6')].find(item => item.textContent === button.textContent);
+                (heading || panel.parentElement).scrollIntoView({block: 'start'});
+            }));
+            for (const [selector, expanded] of [['[data-expand-all]', true], ['[data-collapse-all]', false]]) {
+                contentElement.querySelector(selector).addEventListener('click', () => contentElement.querySelectorAll('.section-content').forEach(panel => setSectionExpanded(panel, expanded)));
+            }
 
             // Count tag occurrences and update tag filter
             countTagOccurrences();
@@ -399,169 +413,85 @@
             }
         }
 
-        // Parse markdown into sections based on ## headings
+        // Split only real level-two Markdown headings, preserving the introduction.
         function parseMarkdownToSections(markdown) {
             const sections = [];
-            let currentSectionTitle = '';
-            let currentSectionContent = '';
-            let inFirstSection = true;
-
-            const lines = markdown.split('\n');
-
-            // Process line by line
-            lines.forEach(line => {
-                // Check for section headings (## heading)
-                if (line.startsWith('## ')) {
-                    // If we have content already, push it as a section
-                    if (inFirstSection) {
-                        inFirstSection = false;
-                    } else if (currentSectionContent.trim()) {
-                        sections.push({
-                            title: currentSectionTitle || 'Uncategorized',
-                            content: currentSectionContent.trim()
-                        });
-                    }
-
-                    // Start a new section
-                    currentSectionTitle = line.substring(3).trim();
-                    currentSectionContent = '';
-                } else {
-                    // Add to current section content
-                    currentSectionContent += line + '\n';
-                }
-            });
-
-            // Add the last section
-            if (currentSectionContent.trim()) {
-                sections.push({
-                    title: currentSectionTitle || 'Uncategorized',
-                    content: currentSectionContent.trim()
-                });
+            let title = 'Introduction';
+            let content = '';
+            for (const token of marked.lexer(markdown)) {
+                if (token.type === 'heading' && token.depth === 2) {
+                    if (content.trim()) sections.push({ title, content: content.trim() });
+                    title = token.text;
+                    content = '';
+                } else content += token.raw;
             }
-
+            if (content.trim()) sections.push({ title, content: content.trim() });
             return sections;
         }
 
-        // Update tag extraction regex
-        function extractTags(content) {
-            // Improved regex that handles more special characters
-            const tagRegex = /#([a-zA-Z0-9_\-]+)/g;
-            let match;
-            while ((match = tagRegex.exec(content)) !== null) {
-                if (match[1]) {
-                    window.wikiData.tags.add(match[1].toLowerCase());
-                }
-            }
+        function escapeWikiText(text) {
+            return text.replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
         }
 
-        // Function to format content with proper HTML, handling images, calendars and tags
         function formatContentWithImagesAndTags(content) {
-            // Handle GitHub wiki links
-            content = content.replace(/\[\[([^\]]+)\]\]/g, function (match, target) {
-                const linkMap = {
-                    'FIAT-500-L': 'fiat500l-wiki.html',
-                    'FIAT-500-L-Maintenance': 'fiat500l-wiki.html#maintenance',
-                    'FIAT-500-L-Workshop-Manual': 'fiat500l-wiki.html#manual',
-                    'FIAT-500-L-Diagnostics': 'fiat500l-wiki.html#diagnostics',
-                    'FIAT-500-L-Preservation': 'fiat500l-wiki.html#preservation',
-                    'FIAT-500-L-Carburetion': 'fiat500l-wiki.html#carburetion',
-                    'FIAT-500-L-Ignition': 'fiat500l-wiki.html#ignition',
-                    'FIAT-500-L-Originality-Checks': 'fiat500l-wiki.html#originality',
-                    'FIAT-500-L-Buying-Inspection': 'fiat500l-wiki.html#buying',
-                    'FIAT-500-L-Parts-and-Tooling': 'fiat500l-wiki.html#tooling'
-                };
-                const href = linkMap[target] || `https://github.com/romitagl/www/wiki/${target}`;
-                const label = target.replace(/-/g, ' ');
-                return `<a href="${href}"${href.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${label}</a>`;
+            content = content.replace(/\[\[([^\]]+)\]\]/g, (_, target) => {
+                const anchors = {'Maintenance':'maintenance', 'Workshop-Manual':'manual', 'Diagnostics':'diagnostics', 'Preservation':'preservation', 'Carburetion':'carburetion', 'Ignition':'ignition', 'Originality-Checks':'originality', 'Buying-Inspection':'buying', 'Parts-and-Tooling':'tooling'};
+                const suffix = target.replace(/^FIAT-500-L-?/, '');
+                const href = target === 'FIAT-500-L' ? 'fiat500l-wiki.html' : anchors[suffix] ? `fiat500l-wiki.html#${anchors[suffix]}` : `https://github.com/romitagl/www/wiki/${encodeURIComponent(target)}`;
+                return `[${target.replace(/-/g, ' ')}](${href})`;
             });
-
-            // Handle GitHub hosted images first
-            content = content.replace(/!\[([^\]]*)\]\((https:\/\/github\.com\/[^)]+)\)(\s+#[a-zA-Z0-9\s#]+)?/g,
-                '<img src="$2" alt="$1" class="wiki-image">$3');
-
-            // Handle Google Calendar embeds - detect calendar.google.com/calendar/embed URLs
-            content = content.replace(/\[([^\]]+)\]\((https:\/\/calendar\.google\.com\/calendar\/embed[^)]+)\)/g, function(match, linkText, url) {
-                return `<div class="calendar-container">
-                    <div class="calendar-header">
-                        <h4>${linkText}</h4>
-                        <a href="${url}" target="_blank" rel="noopener" class="calendar-link">
-                            <i class="fas fa-external-link-alt"></i> Open in Google Calendar
-                        </a>
-                    </div>
-                    <div class="calendar-embed">
-                        <iframe src="${url}" frameborder="0" scrolling="no" class="google-calendar"></iframe>
-                    </div>
-                </div>`;
-            });
-
-            // Handle subsection headers (###)
-            content = content.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
-            content = content.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
-
-            // Format lists
-            content = content.replace(/^\*\s+(.+)$/gm, '<li>$1</li>');
-            content = content.replace(/^-\s+(.+)$/gm, '<li>$1</li>');
-
-            // Group list items
-            content = content.replace(/(<li>.*<\/li>[\n\r]*)+/g, function (match) {
-                return '<ul>' + match + '</ul>';
-            });
-
-            // Format sublists (indented by spaces or tab)
-            content = content.replace(/^(\s{2,4}|\t)-\s+(.+)$/gm, '<li class="sublist">$2</li>');
-
-            // Format blockquotes
-            content = content.replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>');
-
-            // Turn "Label: https://example.com" into cleaner linked lines
-            content = content.replace(
-                /^([^<\n]+?):\s+(https?:\/\/[^\s<]+)$/gm,
-                '<p><strong>$1:</strong> <a href="$2" target="_blank" rel="noopener">$2</a></p>'
-            );
-
-            // Format links
-            content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-            // Auto-link bare URLs that appear on their own line
-            content = content.replace(
-                /(^|>|\s)(https?:\/\/[^\s<]+)/gm,
-                function (match, prefix, url) {
-                    if (prefix && prefix.includes('href=')) {
-                        return match;
-                    }
-                    return `${prefix}<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+            const template = document.createElement('template');
+            template.innerHTML = marked.parse(content, { gfm: true });
+            const allowed = new Set('P BR HR H1 H2 H3 H4 H5 H6 UL OL LI BLOCKQUOTE PRE CODE STRONG EM DEL A IMG TABLE THEAD TBODY TR TH TD INPUT'.split(' '));
+            for (const element of [...template.content.querySelectorAll('*')]) {
+                if (!allowed.has(element.tagName)) { element.remove(); continue; }
+                for (const attribute of [...element.attributes]) {
+                    if (!['href','src','alt','title','start','colspan','rowspan','align','type','checked','disabled'].includes(attribute.name)) element.removeAttribute(attribute.name);
                 }
-            );
-
-            // Format inline code
-            content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-            // Format bold text
-            content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-            // Format italic text
-            content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-            // Convert hashtags to styled tags
-            content = content.replace(/#([a-zA-Z0-9_\-]+)/g, '<a href="javascript:void(0)" class="content-tag" data-tag="$1">#$1</a>');
-
-            // Convert paragraphs (empty lines)
-            content = content.replace(/\n\n/g, '</p><p>');
-
-            // Wrap with paragraph tags if not already wrapped
-            if (!content.startsWith('<p>')) {
-                content = '<p>' + content + '</p>';
+                for (const name of ['href', 'src']) {
+                    if (!element.hasAttribute(name)) continue;
+                    try {
+                        const url = new URL(element.getAttribute(name), 'https://romitagl.com/wiki.html');
+                        if (!['https:', 'http:', 'mailto:'].includes(url.protocol)) element.removeAttribute(name);
+                    } catch { element.removeAttribute(name); }
+                }
+                if (element.tagName === 'INPUT') { element.type = 'checkbox'; element.disabled = true; }
+                if (element.tagName === 'IMG') { element.className = 'wiki-image'; element.loading = 'lazy'; }
+                if (element.tagName === 'A' && element.href.startsWith('http')) { element.target = '_blank'; element.rel = 'noopener noreferrer'; }
             }
-
-            // Fix any doubled paragraph tags
-            content = content.replace(/<\/p><p><\/p><p>/g, '</p><p>');
-
-            return content;
+            // Work only on text nodes so #anchors, image URLs and code remain untouched.
+            const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_TEXT);
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            for (const node of nodes) {
+                if (node.parentElement?.closest('a,code,pre')) continue;
+                const text = node.textContent;
+                const pattern = /(^|\s)#([a-zA-Z0-9_-]+)/g;
+                let match, offset = 0;
+                const fragment = document.createDocumentFragment();
+                while ((match = pattern.exec(text))) {
+                    fragment.append(text.slice(offset, match.index) + match[1]);
+                    const tag = match[2].toLowerCase();
+                    const link = document.createElement('a');
+                    link.className = 'content-tag'; link.href = '#'; link.dataset.tag = tag; link.textContent = '#' + match[2];
+                    window.wikiData.tags.add(tag); fragment.append(link); offset = pattern.lastIndex;
+                }
+                if (offset) { fragment.append(text.slice(offset)); node.replaceWith(fragment); }
+            }
+            for (const link of [...template.content.querySelectorAll('a[href]')]) {
+                const url = new URL(link.getAttribute('href'), 'https://romitagl.com');
+                if (url.hostname !== 'calendar.google.com' || url.pathname !== '/calendar/embed') continue;
+                const calendar = document.createElement('div'); calendar.className = 'calendar-container';
+                const frame = document.createElement('iframe'); frame.src = url.href; frame.title = link.textContent; frame.loading = 'lazy'; frame.className = 'google-calendar';
+                const header = document.createElement('div'); header.className = 'calendar-header'; header.append(link.cloneNode(true));
+                calendar.append(header, frame); link.replaceWith(calendar);
+            }
+            return template.innerHTML;
         }
 
         // Initialize section toggle functionality
-        function initSectionToggles() {
-            document.querySelectorAll('.section-header').forEach(header => {
+        function initSectionToggles(root) {
+            root.querySelectorAll('.section-header').forEach(header => {
                 header.addEventListener('click', function (e) {
                     // Skip if toggle button was clicked directly (it has its own handler)
                     if (e.target.closest('.toggle-section')) {
@@ -582,8 +512,9 @@
             });
 
             // Add click handlers to content tags
-            document.querySelectorAll('.content-tag').forEach(tag => {
-                tag.addEventListener('click', function () {
+            root.querySelectorAll('.content-tag').forEach(tag => {
+                tag.addEventListener('click', function (event) {
+                    event.preventDefault();
                     const tagName = this.getAttribute('data-tag');
                     toggleTagFilter(tagName);
                 });
@@ -595,17 +526,14 @@
             const sectionId = header.getAttribute('data-section');
             const tabId = window.wikiData.currentTab;
             const contentDiv = document.getElementById(`section-${tabId}-${sectionId}`);
-            const toggleIcon = header.querySelector('.toggle-section i');
+            if (contentDiv) setSectionExpanded(contentDiv, !contentDiv.classList.contains('expanded'));
+        }
 
-            if (contentDiv) {
-                contentDiv.classList.toggle('expanded');
-
-                if (contentDiv.classList.contains('expanded')) {
-                    toggleIcon.className = 'fas fa-chevron-up';
-                } else {
-                    toggleIcon.className = 'fas fa-chevron-down';
-                }
-            }
+        function setSectionExpanded(panel, expanded) {
+            panel.classList.toggle('expanded', expanded);
+            const button = panel.previousElementSibling.querySelector('.toggle-section');
+            button.setAttribute('aria-expanded', String(expanded));
+            button.querySelector('i').className = `fas fa-chevron-${expanded ? 'up' : 'down'}`;
         }
 
         // -- Tag Filter Functionality -- //
@@ -783,6 +711,7 @@
 
             // If no active filters, show all sections
             if (activeFilters.size === 0) {
+                document.getElementById(`no-results-${currentTab}`)?.remove();
                 contentSections.forEach(section => {
                     section.classList.remove('filtered-out');
 
@@ -816,6 +745,7 @@
                 if (keepSection) {
                     section.classList.remove('filtered-out');
                     matchFound = true;
+                    setSectionExpanded(sectionContent, true);
 
                     // Highlight the matching tags
                     highlightMatchingTags(sectionContent, activeFilters);

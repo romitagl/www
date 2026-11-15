@@ -320,12 +320,11 @@
 .section-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: none;
 }
 
 .section-content.expanded {
-  max-height: 5000px;
-  /* Arbitrary large value */
+  max-height: none;
   padding: 20px;
 }
 
