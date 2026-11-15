@@ -1,0 +1,97 @@
+/* Feature adapters: translate shared tokens without changing feature behavior. */
+.studio-page.about-page .hero, .studio-page.wiki-page .hero { align-items: center; padding: 40px 0 28px; gap: 32px; }
+.studio-page.about-page .hero-content, .studio-page.wiki-page .hero-content { padding-right: 0; flex: 1.2; }
+.studio-page.about-page .hero h1, .studio-page.wiki-page .hero h1 { font-size: clamp(2.5rem,4.4vw,3.7rem); line-height: 1.08; margin: 14px 0 22px; }
+.studio-page.about-page .hero p, .studio-page.wiki-page .hero p { color: var(--site-muted); font-size: 1rem; line-height: 1.8; }
+.studio-page .hero-image { transform: none; max-width: 360px; }
+.studio-page .hero-image img { border: 1px solid var(--site-line); border-radius: 16px; box-shadow: none; background: var(--site-raised); }
+.studio-page.about-page .content-section { margin: 32px 0; padding: 0; }
+.studio-page.about-page .content-section h2::after { content: none; }
+.studio-page.about-page :is(.philosophy-grid,.contact-options) { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.studio-page.about-page :is(.philosophy-card,.contact-option) { text-align: left; padding: 24px; box-shadow: none; background: var(--site-surface); border-color: var(--site-line); }
+.studio-page.about-page :is(.philosophy-card,.contact-option):hover { transform: none; box-shadow: none; border-color: var(--site-accent); }
+.studio-page.about-page .card-icon { color: var(--site-teal); font-size: 1.5rem; }
+.studio-page.about-page .contact-section { margin: 36px 0; padding: 28px; background: var(--site-raised); border-color: var(--site-line); }
+.studio-page.about-page :is(.contact-link,.tool-link) { background: var(--site-accent); color: var(--site-on-accent); border-radius: 8px; }
+.studio-page.privacy-page .privacy-section { margin: 38px auto; padding: 28px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: 16px; }
+.studio-page.privacy-page h1 { font-size: clamp(2rem,4vw,3rem); }
+.studio-page.privacy-page .privacy-intro { background: var(--site-green-surface); border-left-color: var(--site-accent); }
+.studio-page.privacy-page .privacy-section h2 { font-size: 1.4rem; margin: 28px 0 14px; }
+.studio-page.privacy-page .privacy-section p { color: var(--site-muted); margin-bottom: 16px; }
+/* Wiki: no fixed cap on long sections. */
+.wiki-cover { flex: .8; min-width: 0; padding: 26px; background: var(--site-green-surface); border: 1px solid #3b4d30; border-radius: 18px; color: var(--site-text); }
+.wiki-cover > span { font-size: .65rem; letter-spacing: .09em; }
+.wiki-cover strong { display: block; padding: 24px 0; font: 750 clamp(1.8rem,3vw,2.8rem)/1.1 var(--site-font); letter-spacing: -.05em; color: var(--site-accent); }
+.wiki-cover p { font-size: .8rem; padding-bottom: 24px; color: var(--site-muted); }
+.studio-page.wiki-page .wiki-eyebrow { font-size: .65rem; color: var(--site-accent); font-weight: 700; letter-spacing: .1em; }
+.studio-page.wiki-page .wiki-section { padding: 16px 0; }
+.studio-page.wiki-page .wiki-container { padding: 24px; border: 1px solid var(--site-line); border-radius: 16px; box-shadow: none; }
+.studio-page.wiki-page .tabs-nav { border: 0; gap: 8px; }
+.studio-page.wiki-page .tab-item { border: 1px solid var(--site-line); border-radius: 8px; padding: 10px 18px; }
+.studio-page.wiki-page .tab-item.active { background: var(--site-accent); color: var(--site-on-accent); border-color: var(--site-accent); }
+.studio-page.wiki-page :is(.wiki-search input,.view-option,.tag-button,.pagination-button,.refresh-button) { background: var(--site-raised); border-color: var(--site-line); color: var(--site-accent); }
+.studio-page.wiki-page :is(.tag-filter-container,.section-header,.calendar-header,.motors-guide-link,.tag-filter-header,.tag-pill,.tag-count,.tag-filter-action) { background: var(--site-surface); color: var(--site-text); border-color: var(--site-line); }
+.studio-page.wiki-page :is(.tag-pill.active,.tag-pill:hover,.section-header:hover,.tag-filter-header:hover) { background: var(--site-raised); color: var(--site-accent); }
+.studio-page.wiki-page .content-section { margin-bottom: 16px; background: var(--site-surface); box-shadow: none; }
+.studio-page.wiki-page .content-section:hover { transform: none; box-shadow: none; }
+.studio-page.wiki-page .category-icon { background: var(--site-accent); color: var(--site-on-accent); border-radius: 50%; }
+.studio-page.wiki-page .section-header h3, .studio-page.wiki-page .motors-guide-title { color: var(--site-text); }
+.studio-page.wiki-page .section-content.expanded { max-height: none; overflow: visible; }
+.studio-page.wiki-page .section-content { transition: none; }
+.studio-page.wiki-page .content-block { color: var(--site-text); overflow-wrap: anywhere; }
+.studio-page.wiki-page .content-block :is(h3,h4) { scroll-margin-top: 24px; }
+.studio-page.wiki-page .content-block img { display: block; max-width: 100%; height: auto; margin: 24px 0; }
+.studio-page.wiki-page .content-block :is(code,pre,table th,blockquote) { background: var(--site-raised); color: var(--site-text); }
+.studio-page.wiki-page .content-block pre code { background: transparent; }
+.studio-page.wiki-page .content-block table { display: block; max-width: 100%; overflow-x: auto; }
+.studio-page.wiki-page .content-block table tr:nth-child(odd) { background: var(--site-raised); }
+.studio-page.wiki-page .error-message { background: #412828; color: #ffb2a8; border-color: #ad6155; }
+.wiki-topics { display: block; margin: 24px 0; padding: 18px; border: 1px solid var(--site-line); background: var(--site-bg); border-radius: 10px; text-align: left; }
+.wiki-topics strong { display: block; font-size: .8rem; margin-bottom: 12px; }
+.wiki-topics > div { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.wiki-topics button { font: inherit; font-size: .75rem; cursor: pointer; background: var(--site-surface); color: var(--site-text); border: 1px solid var(--site-line); border-radius: 6px; padding: 7px 10px; }
+.wiki-topics button:hover { border-color: var(--site-accent); color: var(--site-accent); }
+.wiki-topics > button { margin-right: 8px; color: var(--site-accent); }
+/* Fitness uses its own tokens, including dark text on lime primary actions. */
+.studio-page .fitness-app { --fit-bg: var(--site-bg); --fit-surface: var(--site-surface); --fit-text: var(--site-text); --fit-muted: var(--site-muted); --fit-soft: var(--site-raised); --fit-border: var(--site-line); --fit-accent: var(--site-accent); --fit-accent-text: var(--site-on-accent); color-scheme: dark; border: 1px solid var(--site-line); font-family: var(--site-font); }
+.studio-page .fitness-app .fit-hero { background: var(--site-green-surface); }
+.studio-page .fitness-app .fit-hero-image span { background: var(--site-green-surface); }
+.studio-page .fitness-app .fit-primary { color: var(--site-on-accent); }
+/* Guide body text, search, bilingual UI and print remain owned by guide.css. */
+.studio-page.guide-page { --bg: var(--site-bg); --panel: var(--site-surface); --ink: var(--site-text); --muted: var(--site-muted); --accent: var(--site-accent); --line: var(--site-line); font-size: 16px; }
+.studio-page.guide-page > main { max-width: none; padding: 0 40px; }
+.studio-page.guide-page .language-bar { max-width: none; padding-inline: 40px; }
+.studio-page.guide-page .hero-slogan { font-family: inherit; font-size: clamp(2.5rem,4vw,3.5rem); font-weight: 750; letter-spacing: -.055em; }
+.studio-page.guide-page .model-panel { background: var(--site-green-surface); }
+.studio-page.guide-page .safety-note { background: var(--site-amber-surface); color: #f3d0b3; border-color: #8b603d; }
+.studio-page.guide-page .safety-note strong { color: #f3d0b3; }
+.studio-page.guide-page :is(.job-grid a:hover,.guide-card summary:hover,.table-scroll th,.procedure-note,blockquote) { background: var(--site-raised); color: var(--site-text); }
+.studio-page.guide-page :is(.language-bar a[aria-current],.language-bar button[aria-pressed='true'],.button.primary) { color: var(--site-on-accent); }
+.studio-page.guide-page .search-field input { border-color: var(--site-line); }
+.studio-page.programming-page .studio-challenge { max-width: 900px; padding: 40px 0; }
+.studio-page.programming-page h1 { font-size: clamp(2rem,4vw,3rem); }
+.studio-page.programming-page pre { margin: 26px 0; padding: 24px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: 12px; overflow-x: auto; }
+.studio-page.programming-page .kw { color: var(--site-teal); }
+.studio-page.programming-page .num { color: var(--site-amber); }
+.studio-page.programming-page .challenge-note { color: var(--site-muted); }
+.studio-page.matrix-page { --bg: var(--site-bg); --panel: var(--site-surface); --text: var(--site-text); --muted: var(--site-muted); --line: var(--site-line); --green: var(--site-accent); }
+.studio-page.matrix-page > main { max-width: none; padding: 32px 40px; }
+.studio-page.matrix-page .intro h1 { font-family: inherit; font-weight: 750; }
+@media (max-width: 1100px) {
+ .studio-page.guide-page .guide-layout { display: block; }
+ .studio-page.guide-page .guide-sidebar { position: static; }
+ .studio-page.guide-page > main, .studio-page.guide-page .language-bar, .studio-page.matrix-page > main { padding-inline: 28px; }
+}
+@media (max-width: 760px) {
+ .studio-page.about-page .hero, .studio-page.wiki-page .hero { flex-direction: column; align-items: stretch; text-align: left; }
+ .studio-page.about-page :is(.philosophy-grid,.contact-options) { grid-template-columns: 1fr; }
+ .studio-page .hero-image { max-width: none; width: 100%; }
+ .studio-page.wiki-page .wiki-container { padding: 16px; }
+ .studio-page.guide-page > main, .studio-page.guide-page .language-bar, .studio-page.matrix-page > main { padding-inline: 20px; }
+}
+@media print {
+ .studio-page.guide-page { --bg: #fff; --panel: #fff; --ink: #111; --muted: #222; --accent: #111; --line: #aaa; font: 11pt/1.5 sans-serif; }
+ .studio-page.guide-page > main { padding: 0; }
+ .studio-page.wiki-page .section-content { max-height: none; overflow: visible; }
+ .wiki-topics { display: none; }
+}

@@ -1,0 +1,669 @@
+// Tab initialization
+        document.addEventListener("DOMContentLoaded", function () {
+            // Preserve published bookmarks while Fitness has its own destination.
+            if (window.location.hash === "#fitness") { window.location.replace("fitness.html"); return; }
+            // Global storage for tags and categories
+            window.wikiData = {
+                currentTab: 'wisdom',
+                tags: new Set(),
+                categories: new Set(),
+                activeFilters: {
+                    wisdom: new Set(),
+                    resources: new Set(),
+                    motors: new Set()
+                },
+                tagCounts: {
+                    wisdom: {},
+                    resources: {},
+                    motors: {}
+                }
+            };
+
+            // Initialize tab functionality
+            initTabs();
+
+            // Initialize tag filter
+            initTagFilter();
+
+            // Load the active tab
+            loadActiveTab();
+        });
+
+        // Shared tab activation handles direct links, keyboard input and browser history.
+        function initTabs() {
+            const tabs = [...document.querySelectorAll('.tab-item')];
+            for (const [index, tab] of tabs.entries()) {
+                tab.addEventListener('click', () => {
+                    const hash = '#' + tab.dataset.tab;
+                    if (window.location.hash === hash) loadActiveTab();
+                    else window.location.hash = hash;
+                });
+                tab.addEventListener('keydown', event => {
+                    let next;
+                    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+                    else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = tabs.length - 1;
+                    else return;
+                    event.preventDefault();
+                    tabs[next].focus();
+                    tabs[next].click();
+                });
+            }
+            window.addEventListener('hashchange', loadActiveTab);
+        }
+
+        function loadActiveTab() {
+            const requested = window.location.hash.slice(1);
+            if (requested === 'fitness') { window.location.replace('fitness.html'); return; }
+            const validTabs = ['wisdom', 'resources', 'motors'];
+            const tabId = validTabs.includes(requested) ? requested : 'wisdom';
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                const active = tab.dataset.tab === tabId;
+                tab.classList.toggle('active', active);
+                tab.setAttribute('aria-selected', String(active));
+                tab.tabIndex = active ? 0 : -1;
+            });
+            document.querySelectorAll('.tab-content').forEach(panel => {
+                panel.classList.toggle('active', panel.id === tabId);
+            });
+            window.wikiData.currentTab = tabId;
+            window.wikiData.tags = new Set();
+            window.wikiData.categories = new Set();
+            loadWikiContent(tabId);
+        }
+
+        // Function to load wiki content
+        function loadWikiContent(contentType) {
+            const contentElement = document.getElementById(`${contentType}-content`);
+            const updatedElement = document.getElementById(`${contentType}-updated`);
+            const refreshButton = document.getElementById(`refresh-${contentType}`);
+
+            contentElement.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading ${contentType}...`;
+
+            // Show the refresh button
+            if (refreshButton) {
+                refreshButton.style.display = 'inline-flex';
+            }
+
+            // Storage key names
+            const storageKeyContent = `wiki-v2-${contentType}Content`;
+            const storageKeyTimestamp = `wiki-v2-${contentType}Timestamp`;
+
+            // Function to format date
+            function formatDate(timestamp) {
+                const date = new Date(parseInt(timestamp));
+                return date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            // Check cache first
+            let cachedContent, cachedTimestamp;
+            try {
+                cachedContent = localStorage.getItem(storageKeyContent);
+                cachedTimestamp = localStorage.getItem(storageKeyTimestamp);
+            } catch { /* Rendering remains available when browser storage is disabled. */ }
+
+            if (cachedContent && cachedTimestamp && (Date.now() - cachedTimestamp < 24 * 60 * 60 * 1000)) {
+                // Use cached content
+                try {
+                    // Process the cached markdown content
+                    processMarkdownContent(cachedContent, contentType, contentElement);
+
+                    // Update timestamp display
+                    updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                        ` <button id="refresh-${contentType}" class="refresh-button">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>`;
+
+                    // Add event listener to refresh button
+                    document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                        fetchMarkdown(contentType);
+                    });
+                } catch (error) {
+                    console.error(`Error parsing cached content: ${error}`);
+                    // Fetch fresh content on error
+                    fetchMarkdown(contentType);
+                }
+            } else {
+                // Fetch fresh content
+                fetchMarkdown(contentType);
+            }
+
+            // Function to fetch markdown from GitHub
+            function fetchMarkdown(contentType) {
+                // GitHub wiki URL - capitalize first letter of content type for correct file name
+                const githubWikiUrl = `https://raw.githubusercontent.com/wiki/romitagl/www/${contentType.charAt(0).toUpperCase() + contentType.slice(1)}.md`;
+
+                fetch(githubWikiUrl, {cache: 'no-cache'})
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.text();
+                    })
+                    .then(markdown => {
+                        try {
+                            // Process the markdown content
+                            processMarkdownContent(markdown, contentType, contentElement);
+
+                            // Cache the content
+                            const now = Date.now();
+                            try {
+                                localStorage.setItem(storageKeyContent, markdown);
+                                localStorage.setItem(storageKeyTimestamp, now);
+                            } catch { /* Storage is optional. */ }
+
+                            // Update timestamp
+                            updatedElement.innerHTML = 'Last updated: ' + formatDate(now) +
+                                ` <button id="refresh-${contentType}" class="refresh-button">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>`;
+
+                            // Add event listener to refresh button
+                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                                fetchMarkdown(contentType);
+                            });
+                        } catch (error) {
+                            console.error(`Error processing markdown: ${error}`);
+                            contentElement.innerHTML = `<p>Error parsing content. Please try again later.</p>`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching markdown: ${error}`);
+
+                        // Try to use cached content as fallback
+                        if (cachedContent) {
+                            processMarkdownContent(cachedContent, contentType, contentElement);
+                            updatedElement.innerHTML = 'Last updated: ' + formatDate(cachedTimestamp) +
+                                ' <span style="color: #e74c3c;">(Offline mode)</span>' +
+                                ` <button id="refresh-${contentType}" class="refresh-button">
+                                <i class="fas fa-sync-alt"></i> Retry
+                            </button>`;
+
+                            // Add event listener to refresh button
+                            document.getElementById(`refresh-${contentType}`).addEventListener('click', function () {
+                                fetchMarkdown(contentType);
+                            });
+                        } else {
+                            contentElement.innerHTML = `<p>Failed to load content. Please check your connection.</p>`;
+                        }
+                    });
+            }
+        }
+
+        // Process markdown content
+        function processMarkdownContent(markdown, contentType, contentElement) {
+            // A slow response from a previous tab must not replace the active tab's filters.
+            if (window.wikiData.currentTab !== contentType) return;
+            // Parse the markdown into sections
+            const sections = parseMarkdownToSections(markdown);
+
+            // Reset tags and categories for this content type
+            window.wikiData.tags = new Set();
+            window.wikiData.categories = new Set();
+
+            // Create HTML for sections
+            let contentHtml = '';
+
+            sections.forEach((section, index) => {
+                // Add section title to categories
+                if (section.title) {
+                    window.wikiData.categories.add(section.title);
+                }
+
+                // Format content with proper HTML and image handling
+                const formattedContent = formatContentWithImagesAndTags(section.content);
+
+                // Create collapsible section
+                const isFirstSection = index === 0;
+                contentHtml += `
+            <div class="content-section">
+                <div class="section-header" data-section="${index}">
+                    <h3>
+                        <span class="category-icon">${escapeWikiText(section.title ? section.title.charAt(0) : 'X')}</span>
+                        ${escapeWikiText(section.title || 'Uncategorized')}
+                    </h3>
+                    <button class="toggle-section" aria-expanded="${isFirstSection}" aria-controls="section-${contentType}-${index}" aria-label="Toggle ${escapeWikiText(section.title)}"><i class="fas fa-chevron-${isFirstSection ? 'up' : 'down'}"></i></button>
+                </div>
+                <div class="section-content ${isFirstSection ? 'expanded' : ''}" id="section-${contentType}-${index}">
+                    <div class="content-block">
+                        ${formattedContent}
+                    </div>
+                </div>
+            </div>`;
+            });
+
+            // Update content element
+            contentElement.classList.remove('content-loading');
+            const topics = sections.flatMap((section, index) => {
+                const headings = marked.lexer(section.content).filter(token => token.type === 'heading');
+                return [{label: section.title, index}, ...headings.map(token => ({label: token.text, index}))];
+            });
+            contentHtml = `<nav class="wiki-topics" aria-label="Topics in ${contentType}"><strong>In this collection</strong><div>${topics.map(topic => `<button type="button" data-topic-section="${topic.index}">${escapeWikiText(topic.label)}</button>`).join('')}</div><button type="button" data-expand-all>Expand all</button><button type="button" data-collapse-all>Collapse all</button></nav>` + contentHtml;
+            contentElement.innerHTML = contentHtml || `<p>No ${contentType} content available.</p>`;
+
+            // Initialize section toggles after content is loaded
+            initSectionToggles(contentElement);
+            contentElement.querySelectorAll('[data-topic-section]').forEach(button => button.addEventListener('click', () => {
+                const panel = document.getElementById(`section-${contentType}-${button.dataset.topicSection}`);
+                setSectionExpanded(panel, true);
+                const heading = [...panel.querySelectorAll('h1,h2,h3,h4,h5,h6')].find(item => item.textContent === button.textContent);
+                (heading || panel.parentElement).scrollIntoView({block: 'start'});
+            }));
+            for (const [selector, expanded] of [['[data-expand-all]', true], ['[data-collapse-all]', false]]) {
+                contentElement.querySelector(selector).addEventListener('click', () => contentElement.querySelectorAll('.section-content').forEach(panel => setSectionExpanded(panel, expanded)));
+            }
+
+            // Count tag occurrences and update tag filter
+            countTagOccurrences();
+            renderTagFilter();
+
+            // Apply any existing filters for this tab
+            if (window.wikiData.activeFilters[contentType].size > 0) {
+                applyTagFilters();
+            }
+        }
+
+        // Split only real level-two Markdown headings, preserving the introduction.
+        function parseMarkdownToSections(markdown) {
+            const sections = [];
+            let title = 'Introduction';
+            let content = '';
+            for (const token of marked.lexer(markdown)) {
+                if (token.type === 'heading' && token.depth === 2) {
+                    if (content.trim()) sections.push({ title, content: content.trim() });
+                    title = token.text;
+                    content = '';
+                } else content += token.raw;
+            }
+            if (content.trim()) sections.push({ title, content: content.trim() });
+            return sections;
+        }
+
+        function escapeWikiText(text) {
+            return text.replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+        }
+
+        function formatContentWithImagesAndTags(content) {
+            content = content.replace(/\[\[([^\]]+)\]\]/g, (_, target) => {
+                const anchors = {'Maintenance':'maintenance', 'Workshop-Manual':'manual', 'Diagnostics':'diagnostics', 'Preservation':'preservation', 'Carburetion':'carburetion', 'Ignition':'ignition', 'Originality-Checks':'originality', 'Buying-Inspection':'buying', 'Parts-and-Tooling':'tooling'};
+                const suffix = target.replace(/^FIAT-500-L-?/, '');
+                const href = target === 'FIAT-500-L' ? 'fiat500l-wiki.html' : anchors[suffix] ? `fiat500l-wiki.html#${anchors[suffix]}` : `https://github.com/romitagl/www/wiki/${encodeURIComponent(target)}`;
+                return `[${target.replace(/-/g, ' ')}](${href})`;
+            });
+            const template = document.createElement('template');
+            template.innerHTML = marked.parse(content, { gfm: true });
+            const allowed = new Set('P BR HR H1 H2 H3 H4 H5 H6 UL OL LI BLOCKQUOTE PRE CODE STRONG EM DEL A IMG TABLE THEAD TBODY TR TH TD INPUT'.split(' '));
+            for (const element of [...template.content.querySelectorAll('*')]) {
+                if (!allowed.has(element.tagName)) { element.remove(); continue; }
+                for (const attribute of [...element.attributes]) {
+                    if (!['href','src','alt','title','start','colspan','rowspan','align','type','checked','disabled'].includes(attribute.name)) element.removeAttribute(attribute.name);
+                }
+                for (const name of ['href', 'src']) {
+                    if (!element.hasAttribute(name)) continue;
+                    try {
+                        const url = new URL(element.getAttribute(name), 'https://romitagl.com/wiki.html');
+                        if (!['https:', 'http:', 'mailto:'].includes(url.protocol)) element.removeAttribute(name);
+                    } catch { element.removeAttribute(name); }
+                }
+                if (element.tagName === 'INPUT') { element.type = 'checkbox'; element.disabled = true; }
+                if (element.tagName === 'IMG') { element.className = 'wiki-image'; element.loading = 'lazy'; }
+                if (element.tagName === 'A' && element.href.startsWith('http')) { element.target = '_blank'; element.rel = 'noopener noreferrer'; }
+            }
+            // Work only on text nodes so #anchors, image URLs and code remain untouched.
+            const walker = document.createTreeWalker(template.content, NodeFilter.SHOW_TEXT);
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            for (const node of nodes) {
+                if (node.parentElement?.closest('a,code,pre')) continue;
+                const text = node.textContent;
+                const pattern = /(^|\s)#([a-zA-Z0-9_-]+)/g;
+                let match, offset = 0;
+                const fragment = document.createDocumentFragment();
+                while ((match = pattern.exec(text))) {
+                    fragment.append(text.slice(offset, match.index) + match[1]);
+                    const tag = match[2].toLowerCase();
+                    const link = document.createElement('a');
+                    link.className = 'content-tag'; link.href = '#'; link.dataset.tag = tag; link.textContent = '#' + match[2];
+                    window.wikiData.tags.add(tag); fragment.append(link); offset = pattern.lastIndex;
+                }
+                if (offset) { fragment.append(text.slice(offset)); node.replaceWith(fragment); }
+            }
+            for (const link of [...template.content.querySelectorAll('a[href]')]) {
+                const url = new URL(link.getAttribute('href'), 'https://romitagl.com');
+                if (url.hostname !== 'calendar.google.com' || url.pathname !== '/calendar/embed') continue;
+                const calendar = document.createElement('div'); calendar.className = 'calendar-container';
+                const frame = document.createElement('iframe'); frame.src = url.href; frame.title = link.textContent; frame.loading = 'lazy'; frame.className = 'google-calendar';
+                const header = document.createElement('div'); header.className = 'calendar-header'; header.append(link.cloneNode(true));
+                calendar.append(header, frame); link.replaceWith(calendar);
+            }
+            return template.innerHTML;
+        }
+
+        // Initialize section toggle functionality
+        function initSectionToggles(root) {
+            root.querySelectorAll('.section-header').forEach(header => {
+                header.addEventListener('click', function (e) {
+                    // Skip if toggle button was clicked directly (it has its own handler)
+                    if (e.target.closest('.toggle-section')) {
+                        return;
+                    }
+
+                    toggleSection(this);
+                });
+
+                // Add toggle button handler
+                const toggleButton = header.querySelector('.toggle-section');
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', function (e) {
+                        e.stopPropagation(); // Prevent triggering parent click event
+                        toggleSection(header);
+                    });
+                }
+            });
+
+            // Add click handlers to content tags
+            root.querySelectorAll('.content-tag').forEach(tag => {
+                tag.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const tagName = this.getAttribute('data-tag');
+                    toggleTagFilter(tagName);
+                });
+            });
+        }
+
+        // Toggle section expanded/collapsed state
+        function toggleSection(header) {
+            const sectionId = header.getAttribute('data-section');
+            const tabId = window.wikiData.currentTab;
+            const contentDiv = document.getElementById(`section-${tabId}-${sectionId}`);
+            if (contentDiv) setSectionExpanded(contentDiv, !contentDiv.classList.contains('expanded'));
+        }
+
+        function setSectionExpanded(panel, expanded) {
+            panel.classList.toggle('expanded', expanded);
+            const button = panel.previousElementSibling.querySelector('.toggle-section');
+            button.setAttribute('aria-expanded', String(expanded));
+            button.querySelector('i').className = `fas fa-chevron-${expanded ? 'up' : 'down'}`;
+        }
+
+        // -- Tag Filter Functionality -- //
+
+        // Function to initialize the tag filter
+        function initTagFilter() {
+            // Make sure tag container exists
+            const containerExists = document.getElementById('tag-filter-container');
+            if (!containerExists) {
+                // Insert tag filter container after the tab navigation but before the tab content
+                const tabsContainer = document.querySelector('.tabs-container');
+                const tabContent = document.querySelector('.tab-content');
+
+                if (tabsContainer && tabContent) {
+                    const filterContainer = document.createElement('div');
+                    filterContainer.innerHTML = `
+<div class="tag-filter-container" id="tag-filter-container" style="display:none;">
+<div class="tag-filter-header" id="tag-filter-header">
+    <h4>Filter by Tags <span class="tag-filter-collapse">(<span id="filter-tag-count">0</span> tags)</span></h4>
+    <div class="tag-filter-actions">
+        <button class="tag-filter-action" id="clear-tag-filters">Clear Filters</button>
+        <i class="fas fa-chevron-down" id="filter-toggle-icon" style="color: var(--primary-color);"></i>
+    </div>
+</div>
+<div class="tag-filter-content">
+    <div class="tag-list" id="tag-list">
+        <!-- Tags will be dynamically inserted here -->
+    </div>
+    <div class="filter-info" id="filter-info"></div>
+</div>
+</div>`;
+
+                    // Insert before the first tab content
+                    tabContent.parentNode.insertBefore(filterContainer.firstElementChild, tabContent);
+
+                    // Add event listener for the clear filters button
+                    document.getElementById('clear-tag-filters').addEventListener('click', function (e) {
+                        e.stopPropagation(); // Prevent toggling the container
+                        clearTagFilters();
+                    });
+
+                    // Add event listener for toggling the filter container
+                    document.getElementById('tag-filter-header').addEventListener('click', toggleTagFilterContainer);
+                }
+            }
+        }
+
+        // Toggle the tag filter container visibility
+        function toggleTagFilterContainer() {
+            const container = document.getElementById('tag-filter-container');
+            const toggleIcon = document.getElementById('filter-toggle-icon');
+
+            if (container) {
+                container.classList.toggle('expanded');
+
+                // Update the icon
+                if (container.classList.contains('expanded')) {
+                    toggleIcon.className = 'fas fa-chevron-up';
+                } else {
+                    toggleIcon.className = 'fas fa-chevron-down';
+                }
+            }
+        }
+
+        // Function to clear all active tag filters
+        function clearTagFilters() {
+            const currentTab = window.wikiData.currentTab;
+            window.wikiData.activeFilters[currentTab].clear();
+            renderTagFilter();
+            applyTagFilters();
+        }
+
+        // Function to build and display tag filter
+        function renderTagFilter() {
+            const currentTab = window.wikiData.currentTab;
+            const tagList = document.getElementById('tag-list');
+            const filterContainer = document.getElementById('tag-filter-container');
+            const filterInfo = document.getElementById('filter-info');
+            const tagCountElement = document.getElementById('filter-tag-count');
+            const tagFilterCollapse = document.querySelector('.tag-filter-collapse');
+
+            // No tags to show
+            if (!window.wikiData.tags || window.wikiData.tags.size === 0) {
+                filterContainer.style.display = 'none';
+                return;
+            }
+
+            // Show the filter container
+            filterContainer.style.display = 'block';
+
+            // Clear existing tags
+            tagList.innerHTML = '';
+
+            // Get the active filters for the current tab
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+
+            // Sort tags alphabetically
+            const sortedTags = Array.from(window.wikiData.tags).sort();
+
+            // Count valid tags (those with occurrences)
+            let validTagCount = 0;
+
+            // Create tag pills
+            sortedTags.forEach(tag => {
+                // Get tag count
+                const count = window.wikiData.tagCounts[currentTab][tag] || 0;
+                if (count === 0) return; // Skip tags with no occurrences
+
+                validTagCount++;
+
+                const tagPill = document.createElement('div');
+                tagPill.className = 'tag-pill';
+                if (activeFilters.has(tag)) {
+                    tagPill.classList.add('active');
+                }
+
+                tagPill.innerHTML = `#${tag} <span class="tag-count">${count}</span>`;
+                tagPill.setAttribute('data-tag', tag);
+
+                // Add click event for filtering
+                tagPill.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent event bubbling up to container toggle
+                    toggleTagFilter(tag);
+                });
+
+                tagList.appendChild(tagPill);
+            });
+
+            // Update tag count
+            if (tagCountElement) {
+                tagCountElement.textContent = validTagCount;
+
+                // Show the tag count and collapse indicator
+                if (validTagCount > 0) {
+                    tagFilterCollapse.style.display = 'inline';
+                } else {
+                    tagFilterCollapse.style.display = 'none';
+                }
+            }
+
+            // Update filter info text
+            if (activeFilters.size > 0) {
+                filterInfo.textContent = `Showing content with tags: ${Array.from(activeFilters).map(t => '#' + t).join(', ')}`;
+
+                // Auto-expand the container when filters are active
+                const filterContainer = document.getElementById('tag-filter-container');
+                if (filterContainer && !filterContainer.classList.contains('expanded')) {
+                    toggleTagFilterContainer();
+                }
+            } else {
+                filterInfo.textContent = 'Click on tags to filter content';
+            }
+        }
+
+        // Toggle a tag in the filter
+        function toggleTagFilter(tag) {
+            const currentTab = window.wikiData.currentTab;
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+
+            if (activeFilters.has(tag)) {
+                activeFilters.delete(tag);
+            } else {
+                activeFilters.add(tag);
+            }
+
+            renderTagFilter();
+            applyTagFilters();
+        }
+
+        // Apply the active filters to the content
+        function applyTagFilters() {
+            const currentTab = window.wikiData.currentTab;
+            const activeFilters = window.wikiData.activeFilters[currentTab];
+            const contentSections = document.querySelectorAll(`#${currentTab} .content-section`);
+
+            // If no active filters, show all sections
+            if (activeFilters.size === 0) {
+                document.getElementById(`no-results-${currentTab}`)?.remove();
+                contentSections.forEach(section => {
+                    section.classList.remove('filtered-out');
+
+                    // Remove any highlight styling
+                    const highlightedTags = section.querySelectorAll('.highlighted-tag');
+                    highlightedTags.forEach(el => {
+                        // Replace with the original tag content
+                        el.outerHTML = el.innerHTML;
+                    });
+                });
+                return;
+            }
+
+            // Check each section for matches
+            let matchFound = false;
+
+            contentSections.forEach(section => {
+                const sectionContent = section.querySelector('.section-content');
+                const contentText = sectionContent.textContent.toLowerCase();
+                let keepSection = false;
+
+                // Check if section contains any active tags
+                for (let tag of activeFilters) {
+                    if (contentText.includes('#' + tag.toLowerCase())) {
+                        keepSection = true;
+                        break; // One match is enough to keep the section
+                    }
+                }
+
+                // Set visibility based on filter match
+                if (keepSection) {
+                    section.classList.remove('filtered-out');
+                    matchFound = true;
+                    setSectionExpanded(sectionContent, true);
+
+                    // Highlight the matching tags
+                    highlightMatchingTags(sectionContent, activeFilters);
+                } else {
+                    section.classList.add('filtered-out');
+                }
+            });
+
+            // Show "no results" message if needed
+            const noResultsEl = document.getElementById(`no-results-${currentTab}`);
+
+            if (!matchFound) {
+                if (!noResultsEl) {
+                    const contentElement = document.getElementById(`${currentTab}-content`);
+                    const noResults = document.createElement('div');
+                    noResults.id = `no-results-${currentTab}`;
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No content matches the selected tags. Try selecting different tags or clearing filters.';
+                    contentElement.appendChild(noResults);
+                } else {
+                    noResultsEl.style.display = 'block';
+                }
+            } else if (noResultsEl) {
+                noResultsEl.style.display = 'none';
+            }
+        }
+
+        // Highlight matching tags in the content
+        function highlightMatchingTags(container, activeFilters) {
+            // First, remove any existing highlights
+            container.querySelectorAll('.content-tag').forEach(link => {
+                // Remove highlight class from all tag links
+                link.classList.remove('tag-highlighted');
+            });
+
+            // Find and highlight tags in the content
+            const tagLinks = container.querySelectorAll('a.content-tag');
+            tagLinks.forEach(link => {
+                const tagName = link.getAttribute('data-tag');
+                if (activeFilters.has(tagName)) {
+                    // Add a class to the link itself
+                    link.classList.add('tag-highlighted');
+                }
+            });
+        }
+
+        // Count occurrences of each tag in the content
+        function countTagOccurrences() {
+            const currentTab = window.wikiData.currentTab;
+            const tagCounts = {};
+
+            // Find all tag links in the current tab content
+            const tagLinks = document.querySelectorAll(`#${currentTab} a.content-tag`);
+
+            tagLinks.forEach(link => {
+                const tag = link.getAttribute('data-tag');
+                if (tag) {
+                    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+                }
+            });
+
+            // Store the counts
+            window.wikiData.tagCounts[currentTab] = tagCounts;
+        }

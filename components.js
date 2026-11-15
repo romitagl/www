@@ -37,7 +37,7 @@
     const bilingual = currentPage.startsWith('fiat500l-wiki');
     const uiLanguage = document.documentElement?.dataset?.uiLanguage || 'en';
     const italian = {
-      'Tools': 'Strumenti', 'Learn & play': 'Impara e gioca', 'Local': 'Esperienze',
+      'Home': 'Home', 'Personal corner of the web': 'Il mio angolo del web', 'Software, useful ideas, and life in Italy.': 'Software, idee utili e vita in Italia.', 'Tools': 'Strumenti', 'Learn & play': 'Impara e gioca', 'Local': 'Esperienze',
       'Wiki & guides': 'Wiki e guide', 'About': 'Chi sono', 'All Web Tools': 'Tutti gli strumenti',
       'PDF & Image Merger': 'Unisci PDF e immagini', 'PDF Compressor': 'Comprimi PDF',
       'Animated GIF Maker': 'Crea GIF animate', 'Video Speed Controller': 'Velocità video',
@@ -61,12 +61,15 @@
     };
     const navigation = `
       <nav class="site-nav" aria-label="${bilingual && uiLanguage === 'it' ? 'Navigazione principale' : 'Main navigation'}" data-aria-label-en="Main navigation" data-aria-label-it="Navigazione principale">
-        <a href="/" class="logo"><span class="site-logo-mark" aria-hidden="true">r.</span>romitagl.com</a>
+        <a href="/" class="site-profile"><span class="site-avatar" aria-hidden="true">GR</span><strong>Gian Luigi Romita</strong><span class="site-profile-copy">${copy('Software, useful ideas, and life in Italy.')}</span></a>
+        <span class="site-status"><span aria-hidden="true">●</span> ${copy('Personal corner of the web')}</span>
+        <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" aria-controls="site-nav-links" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
         <ul class="nav-links" id="site-nav-links">
+          <li><a href="index.html"${isHome ? ' class="active" aria-current="page"' : ''}>⌂ <span>${copy('Home')}</span></a></li>
           ${groups.map(group => `<li class="site-nav-group"><details><summary>${copy(group.label)}<span aria-hidden="true">⌄</span></summary><ul class="site-nav-dropdown"><li><a href="${isHome ? '' : '/'}#${group.section}" data-section="${group.section}">${copy(`Explore ${group.label.toLowerCase()} →`)}</a></li>${group.links.map(item => `<li>${link(item)}</li>`).join('')}</ul></details></li>`).join('')}
           <li>${link(['About', 'about.html'])}</li>
         </ul>
-        <button class="mobile-menu-btn" type="button" aria-label="Toggle navigation" aria-controls="site-nav-links" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div class="site-sidebar-bottom"><span>Alessandria, Italy</span><a class="logo" href="/">romitagl.com</a><a href="https://github.com/romitagl">GitHub ↗</a>${link(['Privacy', 'privacy.html'])}</div>
       </nav>`;
     const footer = `<footer class="site-footer"><div class="site-footer-directory">${groups.map(group => `<section><h3>${copy(group.label)}</h3><ul>${group.links.map(item => `<li>${link(item)}</li>`).join('')}</ul></section>`).join('')}</div><div class="site-footer-bottom"><p>© ${new Date().getFullYear()} romitagl.com · ${copy('Built with curiosity.')}</p><div><a href="about.html">${copy('About & contact')}</a><a href="privacy.html">${copy('Privacy')}</a><a href="https://github.com/romitagl">GitHub</a><a href="https://github.com/sponsors/romitagl">${copy('Support the projects')}</a></div></div></footer>`;
     document.querySelectorAll('[data-component]').forEach(element => {
@@ -103,7 +106,10 @@
       });
       window.matchMedia('(min-width: 951px)').addEventListener('change', close);
       const activeLink = nav.querySelector('[aria-current="page"]');
-      if (activeLink) activeLink.closest('details')?.querySelector('summary').classList.add('active');
+      if (activeLink) {
+        const group = activeLink.closest('details');
+        if (group) { group.open = true; group.querySelector('summary').classList.add('active'); }
+      }
       if (currentPage === 'fitness.html') nav.querySelector('[data-section="fitness"]')?.closest('details')?.querySelector('summary').classList.add('active');
       if (isHome && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(entries => {
