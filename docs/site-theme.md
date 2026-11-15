@@ -1,61 +1,39 @@
-# Shared www visual theme
+# Shared personal workspace theme
 
-The approved home-page direction is now shared by About, Privacy, Wiki, Rider Fit, the English and Italian FIAT owner guides, the programming challenge, and the experimental Matrix lab.
+The local candidate ports the reviewed A sidebar/layout, B headline and PDF tool spotlight, and charcoal/lime palette to romitagl.com and Web Tools. Teal and amber replace the prototype's purple. Nothing is published automatically; the owner reviews locally before authorizing an upstream push.
 
-`css/studio.css` provides the textured warm-gray paper background, slate surfaces, blue accents, typography, focus outlines, shared navigation/footer, and feature-specific color adaptations. Pages opt in with `class="studio-page"` and load this stylesheet after their original feature styles. `css/home.css` keeps the accepted home-page composition. Existing functional stylesheets and scripts remain in place.
+## Ownership and modules
 
-## Protected standalone FIAT experience
+- `css/theme-tokens.css` is the canonical palette, typography, and sidebar width. `node scripts/sync-theme.mjs` copies the tokens into `../web-tools/src/css/theme-tokens.css`, which is committed with that independent repository. `--check` verifies parity when both repositories are available. Neither production site depends on runtime requests to the other for styling.
+- `css/studio.css` is a small entry point. `site-shell.css` owns shared sidebar, mobile navigation, footer, focus behavior, and the legacy token aliases used by existing feature styles. `site-content.css` adapts Wiki, About, Privacy, Fitness, guides, and experimental pages.
+- `components.js` owns the main site's navigation/footer directory and bilingual navigation copy. Page content remains static and all established URLs and section hashes remain stable.
+- `css/home.css` and `assets/js/home.js` own homepage presentation and progressive search/category filtering. All nine tool links work without JavaScript.
+- `assets/js/wiki.js` owns the previously inline Wiki renderer, tabs, filters, caching, and section controls. Marked, URL handling, sanitization, SAE topic navigation, and unrestricted expanded section height are retained.
+- `fiat500L.html` is protected and restored byte-for-byte to its original standalone version. It must never be changed by whole-site redesigns, shared themes, navigation migrations, refactors, or preview-time rewriting. Only an explicit request naming this page authorizes changes. Its SHA-256 is `9091a32fbe1acae0a4d023d6e479d14a49104318e8c0d7f708b89dc1736b2cd4`.
+- The guide source remains `fiat500l-wiki.html`; never hand-edit its generated Italian counterpart. Both retain 114 sections, translated navigation, search, print controls, internal links, and locale metadata.
+- Web Tools keeps its React catalog and processing code. `src/components/SiteNavigation.jsx` owns its sidebar; `Layout.jsx` owns every tool workspace header/footer. `src/css/site-shell.css` owns their geometry; `theme-adapters.css` handles shared surfaces/contrast. White QR output surfaces and actual media content retain their functional colors.
 
-`fiat500L.html` is intentionally excluded. It does not load `studio.css`, `components.js`, or the adapted SVG illustrations. Its existing independent layout, original photographs, contact links, metadata, and business-card URL remain intact. Its SHA-256 before and after this work is:
+Experimental Matrix files were already local/untracked and remain unpromoted. They inherit the shared shell; they are not newly linked from the public navigation.
 
-```
-9091a32fbe1acae0a4d023d6e479d14a49104318e8c0d7f708b89dc1736b2cd4
-```
-
-Do not opt that page into the shared theme as part of routine site maintenance.
-
-## Navigation and feature boundaries
-
-- Fitness is now a dedicated top-level destination with its own home feature, menu, and footer group. `fitness.html` and all workout hashes remain stable. Legacy `wiki.html#fitness` bookmarks redirect to Rider Fit. The Wiki no longer contains a Fitness tab.
-- The two FIAT owner guides share the same site navigation while retaining their language bar, all 114 sections, search, accordion controls, internal links, and print rules. English/Italian labels in the shared menus switch with the guide’s language controls.
-- Rider Fit retains circuits, exercise images, motion demos, timers, journal, and storage behavior; only presentation and the navigation hierarchy changed.
-- Matrix Lab keeps its dark green rain/terminal demonstration inside a page matching the rest of the site. It and the programming challenge remain unlisted experimental pages, pending their separate release review.
-- Original SVG assets are preserved. About and Wiki use palette-adjusted sibling assets (`contact-studio.svg` and `wiki-studio.svg`). No external image dependency was added.
-
-## Verification
-
-Run from `www`:
+## Local review
 
 ```sh
-node --check components.js
+# In ../web-tools:
+npm ci
+npm test
+npm run build
+
+# In www:
+npm ci --prefix tests/wiki
+node --test tests/wiki/*.test.cjs tests/fitness/*.test.mjs
 node scripts/check-fitness.mjs
-node --test tests/fitness/*.test.mjs
 node scripts/build-fiat500l-locales.mjs --check
 node scripts/check-fiat500l-seo.mjs
-python3 scripts/check-site-links.py --external
+node scripts/sync-theme.mjs --check
+python3 scripts/check-site-links.py --report /tmp/site-link-audit.json
+python3 scripts/preview-site.py
 ```
 
-The fitness integration check executes the legacy redirect on initial load and subsequent hash navigation. The local audit validates candidate-release files and anchors. Existing external URLs remain unchanged by the theme work; the release workflow retains the live link audit and its documented limits.
+Open `http://127.0.0.1:8766/__review/` for the review directory. The main site is on port 8766 and built Web Tools on 8767. The preview server binds only to loopback. Its injected, preview-only script routes links between these two domains to localhost and serves local `www-wiki` Markdown snapshots. Production source URLs and canonical metadata are untouched. Third-party links and the Website Scraper still use the internet. Rebuild Web Tools after editing its source; the main site serves directly from the checkout.
 
-Release scope: shared www theme and navigation, dedicated Fitness, and verified links. Matrix Lab files remain local and are excluded from this release.
-
-## Paper texture refinement
-
-The shared paper base is now `#dcdcd8` with `#e8e8e4` surfaces. The static monochrome SVG grain uses a 0.65 noise frequency and 0.18 alpha slope, making the texture more visible without placing an overlay over text or images. The standalone FIAT page remains excluded.
-
-## November 2026 warmth and Wiki rendering update
-
-The shared theme now uses ivory paper, forest-green ink and feature panels, terracotta actions, and amber highlights. The home and Wiki heroes use editorial serif type; the Wiki cover is built in HTML/CSS. The grain background has been removed. The standalone `fiat500L.html` remains excluded and retains the checksum above.
-
-Wiki Markdown now uses the bundled Marked parser, with an HTML allowlist and text-node hashtag decoration. This preserves nested lists, tables, fenced code, image URLs, and URL fragments. Level-two section splitting uses Markdown tokens, so introductions and code fences are preserved. Expanded sections have no height cap: the previous 5,000px cap could clip the Cars section before the SAE oil material. Topic shortcuts open the relevant section and scroll to a heading. Expand/collapse controls expose their state to assistive technology. New cache keys retire previously cached content; disabled browser storage does not prevent rendering.
-
-Run Wiki regressions with Node 24 or newer:
-
-```sh
-npm ci --prefix tests/wiki --no-audit --no-fund
-node --test tests/wiki/rendering.test.cjs
-```
-
-The deployment runs these tests, the existing guide and Fitness checks, and the mandatory local link audit. The external link audit runs separately and its JSON report is retained as a workflow artifact. External failures are advisory: a supplier timeout or third-party bot protection should not prevent publishing first-party repairs. In this session, 36 of 40 external destinations returned HTTP 200; two returned HTTP 429, Gates returned HTTP 403, and D’Angelo timed out. These are recorded as verification limits, not treated as successful checks.
-
-Browser preview was unavailable in the editing session. DOM regression checks cover Markdown rendering, SAE navigation, repeated loads, filters, section controls, URL handling, and unsafe HTML removal; visual layout still needs human review.
+DOM tests exercise the actual shared components, homepage filtering, responsive-menu controls, active links, both guide locales, and an exact checksum guard for the protected FIAT experience page. Existing Wiki/Fitness checks and the Web Tools build remain required. Browser automation was unavailable in the editing session; responsive visual layout and real browser media/camera/file workflows need the owner's local review. The existing Web Tools browser suite is updated for the new navigation and can be run with `npm run test:e2e` where browser testing is available.

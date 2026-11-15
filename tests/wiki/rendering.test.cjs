@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const {JSDOM} = require('jsdom');
 const html = fs.readFileSync('wiki.html', 'utf8');
-const script = html.match(/    <script>([\s\S]*?)    <\/script>/)[1];
+const script = fs.readFileSync('assets/js/wiki.js', 'utf8');
 function setup() {
     const dom = new JSDOM(html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, ''), {url: 'https://romitagl.com/wiki.html#motors', runScripts: 'outside-only'});
     const win = dom.window;
@@ -64,6 +64,6 @@ test('removes executable Wiki HTML and unsafe URLs while retaining calendar embe
     win.close();
 });
 test('expanded sections have no fixed height cap', () => {
-    const css = fs.readFileSync('css/studio.css', 'utf8');
+    const css = fs.readFileSync('css/site-content.css', 'utf8');
     assert.match(css, /\.section-content\.expanded\s*\{\s*max-height: none; overflow: visible;/);
 });

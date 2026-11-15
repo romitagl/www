@@ -8,7 +8,8 @@ for (const name of readdirSync(new URL('../assets/js/fitness/', import.meta.url)
   if (name.endsWith('.mjs')) execFileSync(process.execPath, ['--check', `${root}assets/js/fitness/${name}`]);
 }
 const read = file => readFileSync(`${root}${file}`, 'utf8');
-// The Wiki tab controller is inline; include it in syntax checks as well.
+// Wiki behavior is modular and must remain syntax-valid.
+new Script(read('assets/js/wiki.js'), { filename: 'assets/js/wiki.js' });
 for (const [, attributes, source] of read('wiki.html').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
   if (!/\bsrc\s*=/.test(attributes)) new Script(source, { filename: 'wiki.html' });
 }
@@ -40,9 +41,7 @@ const context = {
   window: { location: { hash: '#fitness', replace: target => redirects.push(target) } },
   document: { addEventListener: (event, callback) => callbacks.push(callback) },
 };
-for (const [, attributes, source] of read('wiki.html').matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-  if (!/\bsrc\s*=/.test(attributes)) new Script(source).runInNewContext(context);
-}
+new Script(read('assets/js/wiki.js')).runInNewContext(context);
 callbacks[0]();
 assert.deepEqual(redirects, ['fitness.html']);
 redirects.length = 0;

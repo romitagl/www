@@ -34,7 +34,7 @@ jobs:
       - name: Validate Wiki rendering and navigation
         run: |
           npm ci --prefix tests/wiki --no-audit --no-fund
-          node --test tests/wiki/rendering.test.cjs
+          node --test tests/wiki/*.test.cjs
 
       - name: Validate Fiat guide language pages and SEO
         run: |
