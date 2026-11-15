@@ -42,3 +42,20 @@ Release scope: shared www theme and navigation, dedicated Fitness, and verified 
 ## Paper texture refinement
 
 The shared paper base is now `#dcdcd8` with `#e8e8e4` surfaces. The static monochrome SVG grain uses a 0.65 noise frequency and 0.18 alpha slope, making the texture more visible without placing an overlay over text or images. The standalone FIAT page remains excluded.
+
+## November 2026 warmth and Wiki rendering update
+
+The shared theme now uses ivory paper, forest-green ink and feature panels, terracotta actions, and amber highlights. The home and Wiki heroes use editorial serif type; the Wiki cover is built in HTML/CSS. The grain background has been removed. The standalone `fiat500L.html` remains excluded and retains the checksum above.
+
+Wiki Markdown now uses the bundled Marked parser, with an HTML allowlist and text-node hashtag decoration. This preserves nested lists, tables, fenced code, image URLs, and URL fragments. Level-two section splitting uses Markdown tokens, so introductions and code fences are preserved. Expanded sections have no height cap: the previous 5,000px cap could clip the Cars section before the SAE oil material. Topic shortcuts open the relevant section and scroll to a heading. Expand/collapse controls expose their state to assistive technology. New cache keys retire previously cached content; disabled browser storage does not prevent rendering.
+
+Run Wiki regressions with Node 24 or newer:
+
+```sh
+npm ci --prefix tests/wiki --no-audit --no-fund
+node --test tests/wiki/rendering.test.cjs
+```
+
+The deployment runs these tests, the existing guide and Fitness checks, and the mandatory local link audit. The external link audit runs separately and its JSON report is retained as a workflow artifact. External failures are advisory: a supplier timeout or third-party bot protection should not prevent publishing first-party repairs. In this session, 36 of 40 external destinations returned HTTP 200; two returned HTTP 429, Gates returned HTTP 403, and D’Angelo timed out. These are recorded as verification limits, not treated as successful checks.
+
+Browser preview was unavailable in the editing session. DOM regression checks cover Markdown rendering, SAE navigation, repeated loads, filters, section controls, URL handling, and unsafe HTML removal; visual layout still needs human review.

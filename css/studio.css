@@ -1,14 +1,14 @@
 /* Shared approved studio theme. Only pages that opt into .studio-page use it. */
 .studio-page {
-  --studio-paper: #dcdcd8;
-  --studio-surface: #e8e8e4;
-  --studio-ink: #17191d;
-  --studio-muted: #545b66;
-  --studio-blue: #244fe5;
-  --studio-blue-hover: #2045d9;
-  --studio-line: #ccd0d8;
+  --studio-paper: #faf5eb;
+  --studio-surface: #fffdf8;
+  --studio-ink: #182d28;
+  --studio-muted: #59635b;
+  --studio-blue: #a43d24;
+  --studio-blue-hover: #7e2c19;
+  --studio-line: #d9d3c4;
   --primary-color: var(--studio-blue);
-  --primary-color-rgb: 36, 79, 229;
+  --primary-color-rgb: 164, 61, 36;
   --primary-hover: var(--studio-blue-hover);
   --hover-color: var(--studio-blue-hover);
   --bg-dark: var(--studio-paper);
@@ -18,10 +18,7 @@
   --border-color: var(--studio-line);
   color-scheme: light;
   background-color: var(--studio-paper);
-  /* Visible, static paper grain paints behind content, without overlays or network assets. */
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%3E%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.65%22%20numOctaves%3D%223%22%20seed%3D%228%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%22linear%22%20slope%3D%220.18%22%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23grain%29%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: repeat;
-  background-size: 180px 180px;
+  background-image: none;
   color: var(--studio-ink);
   font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +37,7 @@
 .studio-page .site-nav summary, .studio-page .site-nav .nav-links > li > a { color: var(--studio-ink); font-weight: 650; }
 .studio-page .site-nav summary span { color: var(--studio-muted); }
 .studio-page .site-nav summary.active, .studio-page .site-nav summary:hover, .studio-page .site-nav .nav-links > li > a:hover { color: var(--studio-blue); }
-.studio-page .site-nav-dropdown { background: var(--studio-surface); border-color: var(--studio-line); border-radius: 6px; box-shadow: 0 12px 30px #17191d12; }
+.studio-page .site-nav-dropdown { background: var(--studio-surface); border-color: var(--studio-line); border-radius: 6px; box-shadow: 0 12px 30px #182d2812; }
 .studio-page .site-nav .site-nav-dropdown a { color: var(--studio-ink); }
 .studio-page .site-nav .site-nav-dropdown a:hover, .studio-page .site-nav .site-nav-dropdown a.active { color: var(--studio-blue); background: #eef1ff; }
 .studio-page .site-nav .site-nav-dropdown li:first-child a { color: var(--studio-blue); border-color: var(--studio-line); }
@@ -105,7 +102,7 @@
 .studio-page:not(.hub-page) :is(input,select,textarea,summary):focus-visible { outline: 3px solid var(--studio-blue); outline-offset: 4px; }
 .studio-page .hero h1 { color: var(--studio-ink); background: none; -webkit-text-fill-color: currentColor; animation: none; text-shadow: none; max-width: none; }
 .studio-page .hero-image { transform: none; }
-.studio-page .hero-image img { box-shadow: none; border: 1px solid var(--studio-line); border-radius: 16px; background: #cbd7e8; }
+.studio-page .hero-image img { box-shadow: none; border: 1px solid var(--studio-line); border-radius: 16px; background: #e7ddc9; }
 .studio-page.about-page .hero, .studio-page.wiki-page .hero { padding: 48px 0 32px; gap: 36px; }
 .studio-page.about-page .hero-content, .studio-page.wiki-page .hero-content { padding-right: 0; flex: 1.15; }
 .studio-page.about-page .hero-image, .studio-page.wiki-page .hero-image { flex: 1; max-width: 440px; }
@@ -139,26 +136,26 @@
 .studio-page.wiki-page .tabs-nav { border: 0; gap: 8px; margin-bottom: 20px; }
 .studio-page.wiki-page .tab-item { border: 1px solid var(--studio-line); border-radius: 7px; padding: 10px 20px; }
 .studio-page.wiki-page .tab-item.active { border-color: var(--studio-blue); background: var(--studio-blue); color: #fff; }
-.studio-page.wiki-page :is(.wiki-search input,.view-option,.tag-button,.pagination-button) { background: #e1e6ef; border-color: var(--studio-line); }
-.studio-page.wiki-page :is(.tag-filter-container,.section-header,.calendar-header,.category-icon,.motors-guide-link) { background: #d3ddec; }
-.studio-page.wiki-page :is(.view-option.active,.tag-button.active,.pagination-button.current) { color: var(--studio-blue); background: #c5d3ef; border-color: #91a6d3; }
+.studio-page.wiki-page :is(.wiki-search input,.view-option,.tag-button,.pagination-button) { background: #fffdf8; border-color: var(--studio-line); }
+.studio-page.wiki-page :is(.tag-filter-container,.section-header,.calendar-header,.category-icon,.motors-guide-link) { background: #f1e8d6; }
+.studio-page.wiki-page :is(.view-option.active,.tag-button.active,.pagination-button.current) { color: var(--studio-blue); background: #edcfb8; border-color: #bf805b; }
 .studio-page.wiki-page .content-section { background: var(--studio-surface); box-shadow: none; }
 .studio-page.wiki-page .content-section:hover { transform: none; box-shadow: none; }
-.studio-page.wiki-page .section-header:hover { background: #c7d3e6; }
-.studio-page.wiki-page :is(.content-block blockquote,.quote-block,.calendar-container) { background: #dce3ee; color: var(--studio-ink); }
-.studio-page.wiki-page .refresh-button { color: var(--studio-blue); border-color: var(--studio-line); background: #dce3ee; }
+.studio-page.wiki-page .section-header:hover { background: #e9ddc4; }
+.studio-page.wiki-page :is(.content-block blockquote,.quote-block,.calendar-container) { background: #f3eddf; color: var(--studio-ink); }
+.studio-page.wiki-page .refresh-button { color: var(--studio-blue); border-color: var(--studio-line); background: #f3eddf; }
 .studio-page.wiki-page .motors-guide-title { color: var(--studio-ink); }
 .studio-page.wiki-page .motors-guide-action { color: var(--studio-blue); }
 
 .studio-page .site-nav .nav-links > li > a.active { color: var(--studio-blue); }
-.studio-page.wiki-page :is(.tag-filter-header,.tag-pill,.tag-count,.tag-filter-action) { background: #d8e0ed; border-color: #bdc8db; color: var(--studio-ink); }
+.studio-page.wiki-page :is(.tag-filter-header,.tag-pill,.tag-count,.tag-filter-action) { background: #ede5d6; border-color: #d1c7b4; color: var(--studio-ink); }
 .studio-page.wiki-page .tag-filter-header h4 { color: var(--studio-ink); }
-.studio-page.wiki-page :is(.tag-filter-header:hover,.tag-pill:hover,.tag-filter-action:hover) { background: #c8d5e9; }
-.studio-page.wiki-page .tag-pill.active { color: var(--studio-blue); background: #c5d3ef; border-color: #91a6d3; }
+.studio-page.wiki-page :is(.tag-filter-header:hover,.tag-pill:hover,.tag-filter-action:hover) { background: #e4d8c0; }
+.studio-page.wiki-page .tag-pill.active { color: var(--studio-blue); background: #edcfb8; border-color: #bf805b; }
 .studio-page.wiki-page :is(.filter-info,.no-results) { color: var(--studio-muted); }
-.studio-page.wiki-page .content-block :is(code,pre,table th) { background: #d5ddeb; color: #244172; }
+.studio-page.wiki-page .content-block :is(code,pre,table th) { background: #ece5d6; color: #3b5141; }
 .studio-page.wiki-page .content-block pre code { background: transparent; }
-.studio-page.wiki-page .content-block table tr:nth-child(odd) { background: #e0e5ee; }
+.studio-page.wiki-page .content-block table tr:nth-child(odd) { background: #f3edde; }
 .studio-page.wiki-page .error-message { color: #8a2929; background: #edd7d7; border-color: #a84141; }
 
 .studio-page .site-footer a { color: var(--studio-muted); }
@@ -167,18 +164,18 @@
 /* Rider Fit: keep every state, timer, exercise image, and stored session intact. */
 .studio-page .fitness-app {
  --fit-bg: var(--studio-surface); --fit-surface: #e6eaf2; --fit-text: var(--studio-ink);
- --fit-muted: var(--studio-muted); --fit-soft: #d0daed; --fit-border: #bdc8db;
+ --fit-muted: var(--studio-muted); --fit-soft: #d0daed; --fit-border: #d1c7b4;
  --fit-accent: var(--studio-blue); --fit-accent-text: #fff;
  color-scheme: light; border: 1px solid var(--studio-line); font-family: inherit;
 }
-.studio-page .fit-hero { background: #223ca4; color: #fff; }
-.studio-page .fit-hero .fit-eyebrow, .studio-page .fit-hero p:not(.fit-eyebrow) { color: #e1e7ff; }
-.studio-page .fit-hero-image span { background: #223ca4; color: #e1e7ff; }
+.studio-page .fit-hero { background: #193e34; color: #fff; }
+.studio-page .fit-hero .fit-eyebrow, .studio-page .fit-hero p:not(.fit-eyebrow) { color: #f1efd8; }
+.studio-page .fit-hero-image span { background: #193e34; color: #f1efd8; }
 .studio-page .fitness-app .fit-primary { color: #fff; }
 .studio-page .fitness-app .fit-primary:hover { background: var(--studio-blue-hover); }
 .studio-page .fitness-app .fit-mark { color: #fff; }
 .studio-page .fitness-app :is(h1,h2) { font-weight: 800; }
-.studio-page .fitness-app .fit-hero .fit-primary { background: #e1e7ff; color: #173185; border-color: transparent; }
+.studio-page .fitness-app .fit-hero .fit-primary { background: #f1efd8; color: #173185; border-color: transparent; }
 .studio-page .fitness-skip { background: var(--studio-blue); color: #fff; }
 
 /* Bilingual owner guide: palette and typography change, structure stays intact. */
@@ -203,7 +200,7 @@
 .studio-page.programming-page .studio-challenge { max-width: 900px; padding: 42px 0; }
 .studio-page.programming-page h1 { font-size: clamp(2rem,4vw,3rem); line-height: 1.12; }
 .studio-page.programming-page pre { margin: 26px 0; padding: 26px; background: var(--studio-surface); border: 1px solid var(--studio-line); border-radius: 12px; }
-.studio-page.programming-page .kw { color: #244fe5; }
+.studio-page.programming-page .kw { color: #a43d24; }
 .studio-page.programming-page .num { color: #93401f; }
 .studio-page.programming-page .challenge-note { color: var(--studio-muted); font-size: .85rem; }
 .studio-page.matrix-page { --bg: var(--studio-paper); --panel: var(--studio-surface); --text: var(--studio-ink); --muted: var(--studio-muted); --line: var(--studio-line); --green: var(--studio-blue); }
@@ -213,8 +210,8 @@
 .studio-page.matrix-page :is(.eyebrow,.number,.panel-bar > span) { color: var(--studio-blue); }
 .studio-page.matrix-page .controls button { border-color: #9aaecb; color: var(--studio-ink); }
 .studio-page.matrix-page .controls button:first-child { background: var(--studio-blue); color: #fff; }
-.studio-page.matrix-page pre { background: #d5ddeb; border-color: var(--studio-line); }
-.studio-page.matrix-page .implementation code { color: #244fe5; }
+.studio-page.matrix-page pre { background: #ece5d6; border-color: var(--studio-line); }
+.studio-page.matrix-page .implementation code { color: #a43d24; }
 .studio-page.matrix-page .terminal-panel { --green: #9cf8ab; --text: #e5f0e8; }
 .studio-page.matrix-page .lab-note { color: var(--studio-muted); font-size: .8rem; margin: 28px 0; }
 
@@ -246,4 +243,42 @@
  .studio-page.guide-page .hero-slogan { font-size: 30pt; }
  .studio-page.guide-page .safety-note { background: #fff; color: #111; border-color: #888; }
  .studio-page.guide-page .safety-note strong { color: #111; }
+}
+
+/* Warm editorial identity: cream paper, forest ink, terracotta accents. */
+.studio-page .site-nav { border-bottom: 2px solid var(--studio-ink); }
+.studio-page .site-nav .logo::before { content: ''; width: 12px; height: 12px; margin-right: 10px; border-radius: 50%; background: var(--studio-blue); }
+.studio-page .hero h1, .studio-page .hub-hero h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -.055em; }
+.studio-page .site-footer { border-top: 2px solid var(--studio-ink); }
+.studio-page.wiki-page .hero { align-items: stretch; padding: 38px 0 24px; gap: 32px; }
+.studio-page.wiki-page .hero-content { align-self: center; }
+.studio-page.wiki-page .hero h1 { font-size: clamp(2.8rem,5.5vw,4.8rem); line-height: 1.02; margin: 16px 0 22px; }
+.studio-page.wiki-page .wiki-eyebrow { font-size: .65rem; color: var(--studio-blue); font-weight: 750; letter-spacing: .12em; }
+.wiki-cover { flex: 0.75; min-width: 0; padding: 28px; background: #193e34; color: #faf5eb; border-radius: 4px 30px 4px 4px; display: flex; flex-direction: column; justify-content: space-between; border-bottom: 8px solid #dba34c; }
+.wiki-cover > span { font-size: .65rem; letter-spacing: .12em; }
+.wiki-cover strong { display: block; font: 500 clamp(2rem,3.5vw,3.3rem)/1.08 Georgia,serif; padding: 26px 0 18px; color: #f0c87c; }
+.wiki-cover p { font-size: .82rem; padding-bottom: 24px; color: #e0e6d5; }
+.studio-page.wiki-page .wiki-container { padding: 28px; border-top: 4px solid #193e34; border-radius: 4px; }
+.studio-page.wiki-page .section-header { border-bottom: 1px solid var(--studio-line); }
+.studio-page.wiki-page .section-header h3 { color: var(--studio-ink); }
+.studio-page.wiki-page .category-icon { background: #193e34; color: #fff8e8; border-radius: 50%; }
+.studio-page.wiki-page .section-content.expanded { max-height: none; overflow: visible; }
+.studio-page.wiki-page .section-content { transition: none; }
+.studio-page.wiki-page .content-block { color: var(--studio-ink); overflow-wrap: anywhere; }
+.studio-page.wiki-page .content-block :is(h3,h4) { scroll-margin-top: 24px; }
+.studio-page.wiki-page .content-block img { display: block; max-width: 100%; height: auto; margin: 24px 0; }
+.studio-page.wiki-page .content-block table { display: block; max-width: 100%; overflow-x: auto; }
+.wiki-topics { margin: 24px 0; padding: 20px; border: 1px solid var(--studio-line); background: #f6f0e3; border-radius: 8px; text-align: left; }
+.wiki-topics strong { display: block; font-size: .8rem; margin-bottom: 12px; }
+.wiki-topics > div { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.wiki-topics button { font: inherit; font-size: .78rem; cursor: pointer; background: #fffdf8; color: #193e34; border: 1px solid #c8c4b4; border-radius: 4px; padding: 7px 11px; }
+.wiki-topics button:hover { border-color: #a43d24; color: #a43d24; }
+.wiki-topics > button { margin-right: 8px; background: #193e34; color: #fffdf8; }
+.studio-page.wiki-page .content-section { margin-bottom: 16px; }
+@media (max-width: 700px) {
+ .studio-page.wiki-page .wiki-container { padding: 18px; }
+ .studio-page.wiki-page .hero { padding-top: 28px; }
+ .wiki-cover { padding: 24px; }
+ .wiki-cover strong { font-size: 2.5rem; }
+ .wiki-topics { padding: 14px; }
 }

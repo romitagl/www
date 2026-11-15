@@ -27,6 +27,15 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Validate Wiki rendering and navigation
+        run: |
+          npm ci --prefix tests/wiki --no-audit --no-fund
+          node --test tests/wiki/rendering.test.cjs
+
       - name: Validate Fiat guide language pages and SEO
         run: |
           node scripts/build-fiat500l-locales.mjs --check
@@ -38,8 +47,21 @@ jobs:
           node --test tests/fitness/*.test.mjs
           node scripts/check-fitness.mjs
 
-      - name: Verify site links before deployment
+      - name: Verify local site links before deployment
+        run: python3 scripts/check-site-links.py --report /tmp/site-local-link-audit.json
+
+      # Third-party outages and bot protection must not block first-party fixes.
+      # Local links above remain mandatory; external failures remain visible in the run.
+      - name: Audit external destinations
+        continue-on-error: true
         run: python3 scripts/check-site-links.py --external --report /tmp/site-link-audit.json
+
+      - name: Retain external link audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-link-audit
+          path: /tmp/site-link-audit.json
 
       - name: Create deployment directory 📁
         run: |
