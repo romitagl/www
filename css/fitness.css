@@ -157,3 +157,16 @@
 @media (max-width: 390px) { .fit-step-board { grid-template-columns: 1fr; } }
 
 .fit-model-canvas canvas { display: block; width: 100%; height: 100%; }
+
+/* Opt-in animated pose guides. Static posters and original steps remain available. */
+.fit-gif-shell { border: 1px solid var(--fit-border); border-radius: 12px; overflow: hidden; background: var(--fit-surface); }
+.fit-gif-shell > img { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; background: #191c23; }
+.fit-gif-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; padding: 16px 16px 8px; }
+.fitness-app .fit-gif-controls button { color: var(--fit-accent-text); background: var(--fit-accent); border-color: transparent; font-weight: 650; }
+.fit-gif-controls a { font-size: .8rem; text-underline-offset: 4px; }
+.fit-gif-shell > p { padding-inline: 16px; }
+.fit-gif-badge { display: inline-flex; font-size: .72rem; color: var(--fit-accent); margin-top: 8px; }
+.fit-model-guide { margin-top: 16px; }
+.fit-model-guide > summary { padding: 12px 0; cursor: pointer; font-weight: 650; }
+.fit-gif-step-controls { display: flex; flex-wrap: wrap; gap: 10px; padding: 8px 16px; }
+.fit-gif-step-note { border-left: 3px solid var(--fit-accent); margin: 12px 16px !important; padding: 10px 12px !important; background: var(--fit-soft); font-size: .9rem; }

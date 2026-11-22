@@ -1,6 +1,7 @@
 import { circuits, exercises, circuitById, exerciseById, circuitHash, resolveCircuitId } from './catalog.mjs';
 import { MAX_ROUNDS, MIN_ROUNDS, formatTime, sessionPosition } from './session.mjs';
 import { amrapScore } from './amrap-core.mjs';
+import { demoGifs } from './demo-gifs.mjs';
 import { demoVideos, approvedDemoVideo } from './demo-videos.mjs';
 import { demoModels, approvedDemoModel } from './demo-models.mjs';
 
@@ -11,20 +12,34 @@ const link = (href, text, primary = false) => `<a class="fit-button${primary ? '
 const roundCount = (store, circuit) => store.rounds[circuit.id] ?? circuit.defaultRounds;
 
 export function demo(exercise) {
+  const gif = demoGifs[exercise.id];
   const model = approvedDemoModel(demoModels[exercise.id]);
   const video = model ? null : approvedDemoVideo(demoVideos[exercise.id]);
   const columns = exercise.columns || 2;
   const rows = exercise.rows || 1;
   const steps = exercise.steps || exercise.frames.map((title, frame) => ({ title, frame }));
   const picture = index => `<div class="fit-demo-stage fit-step-image" style="--pose-columns:${columns};--pose-rows:${rows};--pose-x:${-(index % columns) * 100 / columns}%;--pose-y:${-Math.floor(index / columns) * 100 / rows}%;aspect-ratio:${exercise.imageWidth / columns}/${exercise.imageHeight / rows}"><img src="${e(exercise.image)}" width="${exercise.imageWidth}" height="${exercise.imageHeight}" alt="${e(exercise.frames[index])}" decoding="async"></div>`;
+  const hasPlayer = gif || model || video;
+  const stills = gif?.framePosters?.map((src, index) => ({ src, alt: exercise.name + ': ' + exercise.frames[index], text: `${index + 1} / ${gif.frames}. ${steps[index].title}. ${steps[index].text || ''}` }));
   return `<figure class="fit-demo" data-demo>
-    ${model ? `<div class="fit-model-shell"><p class="fit-eyebrow">3D movement demo · drag to rotate</p><div class="fit-model-canvas" data-demo-model data-model-src="${e(model.src)}" role="img" aria-label="${e(exercise.name)} 3D demo. Drag or use left and right arrow keys to rotate." tabindex="0"></div><div class="fit-model-controls"><button type="button" data-model-play disabled>Loading animation…</button><label>Speed <select data-model-speed aria-label="3D animation speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><button type="button" data-model-reset>Reset view</button></div></div><p class="fit-small fit-muted">${e(model.publisher)} · <a href="${e(model.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a> · <a href="${e(model.license.url)}" target="_blank" rel="noopener noreferrer">CC0</a></p><details class="fit-picture-guide"><summary>Picture guide & numbered steps</summary>` : ''}
-    ${video ? `<div class="fit-video-shell"><video data-demo-video controls loop muted playsinline preload="none" aria-label="${e(exercise.name)} demonstration"><source src="${e(video.src)}" type="video/mp4">Your browser cannot play this demo.</video></div><div class="fit-video-source fit-small"><label>Demo speed <select data-video-speed aria-label="Demo playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><span>Demo by ${e(video.publisher)} · <a href="${e(video.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a> · <a href="${e(video.license.url)}" target="_blank" rel="noopener noreferrer">${e(video.license.id)}</a></span></div>${video.note ? `<p class="fit-small fit-muted">${e(video.note)}</p>` : ''}<details class="fit-picture-guide"><summary>Picture guide & numbered steps</summary>` : ''}
+    ${gif ? `<div class="fit-gif-shell">
+      <img data-gif-image src="${e(gif.poster)}" width="${gif.width}" height="${gif.height}" alt="${e(exercise.name + ': ' + exercise.frames[0])}"
+        data-gif-src="${e(gif.src)}" data-gif-poster="${e(gif.poster)}" data-gif-end-poster="${e(gif.endPoster)}"
+        data-gif-loop="${gif.loop}" data-gif-duration="${gif.durationMs}"${stills ? ` data-gif-stills="${e(JSON.stringify(stills))}"` : ''}
+        data-gif-alt="${e(exercise.name)} illustrated pose sequence" data-gif-poster-alt="${e(exercise.name + ': ' + exercise.frames[0])}" data-gif-end-alt="${e(exercise.name + ': ' + exercise.frames.at(-1))}" decoding="async">
+      <div class="fit-gif-controls"><button type="button" data-gif-play aria-pressed="false">${gif.loop ? 'Play animated guide' : 'Play setup guide'}</button><a href="${e(gif.src)}" download>Download GIF</a></div>
+      ${stills ? `<div class="fit-gif-step-controls" role="group" aria-label="View individual poses"><button type="button" data-gif-previous disabled>← Previous pose</button><button type="button" data-gif-next>Next pose →</button></div><p class="fit-gif-step-note" data-gif-step-note aria-live="polite">${e(stills[0].text)}</p>` : ''}
+      <p class="fit-small fit-muted" data-gif-status role="status">${gif.loop ? 'Select Play to see the illustrated positions in sequence.' : 'Static hold: the setup guide plays once, then stays still.'}</p>
+      <p class="fit-small fit-muted">Pose-by-pose guide from the existing AI-generated images. Use the written technique cues for the movement between positions.</p>
+    </div>` : ''}
+    ${model ? `<details data-model-details class="fit-model-guide"><summary>Optional 3D movement demo</summary><div class="fit-model-shell"><p class="fit-eyebrow">3D movement demo · drag to rotate</p><div class="fit-model-canvas" data-demo-model data-model-src="${e(model.src)}" role="img" aria-label="${e(exercise.name)} 3D demo. Drag or use left and right arrow keys to rotate." tabindex="0"></div><div class="fit-model-controls"><button type="button" data-model-play disabled>Loading animation…</button><label>Speed <select data-model-speed aria-label="3D animation speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><button type="button" data-model-reset>Reset view</button></div></div><p class="fit-small fit-muted">${e(model.publisher)} · <a href="${e(model.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a> · <a href="${e(model.license.url)}" target="_blank" rel="noopener noreferrer">CC0</a></p></details>` : ''}
+    ${video ? `<div class="fit-video-shell"><video data-demo-video controls loop muted playsinline preload="none" aria-label="${e(exercise.name)} demonstration"><source src="${e(video.src)}" type="video/mp4">Your browser cannot play this demo.</video></div><div class="fit-video-source fit-small"><label>Demo speed <select data-video-speed aria-label="Demo playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label><span>Demo by ${e(video.publisher)} · <a href="${e(video.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a> · <a href="${e(video.license.url)}" target="_blank" rel="noopener noreferrer">${e(video.license.id)}</a></span></div>${video.note ? `<p class="fit-small fit-muted">${e(video.note)}</p>` : ''}` : ''}
+    ${hasPlayer ? '<details class="fit-picture-guide"><summary>Picture guide & numbered steps</summary>' : ''}
     <ol class="fit-step-board" aria-label="${e(exercise.name)} illustrated steps">${steps.map((step, index) => `<li>${picture(step.frame)}<div class="fit-step-copy"><strong>${index + 1}. ${e(step.title)}</strong>${step.text ? `<p>${e(step.text)}</p>` : ''}</div></li>`).join('')}</ol>
     <p class="fit-small fit-muted">Illustrated positions · AI-generated images</p>
-    ${video || model ? '</details>' : ''}
+    ${hasPlayer ? '</details>' : ''}
     <p class="fit-media-error" data-media-error role="status" hidden>The demo could not load. Use the written technique cues.</p>
-    ${exercise.mediaMode === 'hold' ? '<p class="fit-hold-note"><strong>Hold still.</strong> The pictures show setup or the two sides, not a repeated lifting movement.</p>' : ''}
+    ${exercise.mediaMode === 'hold' || gif?.loop === false ? '<p class="fit-hold-note"><strong>Hold still.</strong> The pictures show setup or the two sides, not a repeated lifting movement.</p>' : ''}
     ${exercise.sides ? '<p class="fit-small fit-muted">Complete both sides as prescribed.</p>' : ''}
   </figure>`;
 }
@@ -65,7 +80,7 @@ export function stationList(circuit) {
 }
 
 export function libraryView() {
-  return `<section class="fit-intro"><p class="fit-eyebrow">The movement manual</p><h1>Exercise wiki</h1><p>${exercises.length} exercises for strength, stability and conditioning. Open a card for a movement demo, technique cues and variations.</p></section><div class="fit-library-grid">${exercises.map(exercise => `<a class="fit-exercise-card" href="#exercise/${exercise.id}"><div class="fit-thumbnail"><img src="${e(exercise.image)}" width="${exercise.imageWidth}" height="${exercise.imageHeight}" alt="${e(exercise.alt)}" loading="lazy" decoding="async"></div><div><span class="fit-eyebrow">${e(exercise.type)}</span><h2>${e(exercise.name)}</h2><p class="fit-small fit-muted">${e(exercise.equipment)}</p></div></a>`).join('')}</div>`;
+  return `<section class="fit-intro"><p class="fit-eyebrow">The movement manual</p><h1>Exercise wiki</h1><p>${exercises.length} exercises for strength, stability and conditioning. Open a card for a movement demo, technique cues and variations.</p></section><div class="fit-library-grid">${exercises.map(exercise => `<a class="fit-exercise-card" href="#exercise/${exercise.id}"><div class="fit-thumbnail"><img src="${e(exercise.image)}" width="${exercise.imageWidth}" height="${exercise.imageHeight}" alt="${e(exercise.alt)}" loading="lazy" decoding="async"></div><div><span class="fit-eyebrow">${e(exercise.type)}</span><h2>${e(exercise.name)}</h2><p class="fit-small fit-muted">${e(exercise.equipment)}</p>${demoGifs[exercise.id] ? '<span class="fit-gif-badge">▷ Animated guide</span>' : ''}</div></a>`).join('')}</div>`;
 }
 
 export function exerciseView(exercise, from) {
