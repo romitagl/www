@@ -131,5 +131,79 @@ export const demoGuides = {
     "imageWidth": 1280,
     "imageHeight": 1169,
     "alt": "step jacks shown in 4 numbered instruction pictures."
+  },
+  "single-leg-squat-hold": {
+    "image": "assets/images/fitness/single-leg-squat-hold-v2.png",
+    "imageWidth": 1774,
+    "imageHeight": 887,
+    "columns": 4,
+    "rows": 2,
+    "mediaMode": "hold",
+    "frames": [
+      "Stand: feet hip-width, arms relaxed",
+      "Left: balance; right foot just off floor",
+      "Left: hips back; bend knee slightly",
+      "Left: hold 30 sec; keep heel down",
+      "Reset: stand up, put both feet down",
+      "Right: balance; left foot just off floor",
+      "Right: hips back; knee follows toes",
+      "Right: hold 30 sec; keep hips level"
+    ],
+    "gifFrameDurationsMs": [
+      2200,
+      2800,
+      3200,
+      4500,
+      2400,
+      2800,
+      3200,
+      4500
+    ],
+    "gifManualSteps": true,
+    "repGuide": "Set up and hold 30 seconds on the left leg. Stand up and put both feet down, then set up and hold 30 seconds on the right. The animation demonstrates setup; its playback time is not the hold timer.",
+    "cue": "Use a shallow knee bend with hips back. Keep the standing heel grounded, knee following the toes, hips level and chest lifted. The other foot hovers just clear of the floor.",
+    "steps": [
+      {
+        "frame": 0,
+        "title": "Start with both feet down",
+        "text": "Stand tall with feet hip-width apart. Orange identifies the left ankle; blue identifies the right. The bands are visual labels, not equipment you need."
+      },
+      {
+        "frame": 1,
+        "title": "Balance on your left leg",
+        "text": "Move your weight onto the orange-marked left foot (on the right of the picture). Lift the other foot only slightly in front. Keep the standing heel down."
+      },
+      {
+        "frame": 2,
+        "title": "Lower a little, with control",
+        "text": "Send your hips gently backward and bend the standing knee through a shallow, comfortable range. Reach your arms forward for balance; keep the knee following the middle toes."
+      },
+      {
+        "frame": 3,
+        "title": "Hold the left side still",
+        "text": "Stop lowering and hold this shallow position for the prescribed 30 seconds. Keep your whole standing foot grounded, hips level and chest lifted. Breathe normally. This is a hold, not repeated squats."
+      },
+      {
+        "frame": 4,
+        "title": "Stand up and reset safely",
+        "text": "Straighten the standing leg with control and place both feet on the floor. Regain a stable stance before changing legs."
+      },
+      {
+        "frame": 5,
+        "title": "Balance on your right leg",
+        "text": "Move your weight onto the blue-marked right foot (on the left of the picture). Lift the left foot slightly in front. Keep your hips level."
+      },
+      {
+        "frame": 6,
+        "title": "Lower a little on the right",
+        "text": "Move your hips back and bend the right knee gently. Keep the right heel down and the knee following the toes. Stay shallow; the lifted foot need only clear the floor."
+      },
+      {
+        "frame": 7,
+        "title": "Hold the right side still",
+        "text": "Hold this shallow position for the prescribed 30 seconds, with hips level and the standing foot flat. Finish by standing up and putting both feet down. Use fingertip support and less bend if needed."
+      }
+    ],
+    "alt": "Eight stages of a shallow single-leg squat hold: stance, balance, lower and hold on the orange-marked left leg; reset, then repeat on the blue-marked right leg."
   }
 };

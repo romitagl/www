@@ -212,3 +212,40 @@ Use case: scientific-educational. Asset type: exercise demonstration two-frame s
 Output: `assets/images/fitness/step-jacks.jpg`
 
 Use case: scientific-educational. Asset type: exercise demonstration two-frame sprite sheet for a home workout website. EXACTLY TWO equally wide panels side-by-side with split at exactly 50% width, no gap, no border. Same full-body adult fitness instructor in BOTH panels: short dark hair, muted sage green fitted t-shirt, charcoal shorts, gray training shoes. Photorealistic studio photography style on pale warm gray seamless floor and background, soft even light. Camera fixed, same distance and subject scale and floor level in both panels. ENTIRE body, all hands and feet visible with generous margins and no cropping in EACH panel. Realistic correct anatomy and proportions, no extra limbs. No text, labels, numbers, logos, watermark, arrows. Only equipment explicitly requested. Front view. LEFT: upright start stance, feet together, both arms down at sides. RIGHT: low-impact step jack, right foot stepped to side toward viewer left, both soles remain grounded, both arms lifted into a comfortable wide V overhead, elbows soft, trunk upright. No jumping, full body visible including overhead fingers. No equipment.
+
+
+## Local animated GIF conversion
+
+All 28 current exercise sheets now have locally generated pose-by-pose GIF companions in `assets/images/fitness/animated/`. Original source images remain unchanged. `manifest.json` records source/output SHA-256 hashes, frame counts, dimensions, timing, loop mode, and byte sizes. `assets/js/fitness/demo-gifs.mjs` is the generated runtime catalog.
+
+These are ordered key-position sequences made from the existing images; no intermediate body motion is synthesized. They must not be described as continuous-motion recordings. Caption bands identify each pose. Every GIF is 480 pixels wide and below 3 MiB; the 28 GIFs total approximately 7.8 MiB after expanding the single-leg squat hold. Only the selected exercise GIF loads after Play; the library retains static thumbnails.
+
+Movement guides repeat their existing pose order at 1.1 seconds per pose. Six isometric guides (side plank, suitcase hold, forearm plank, squat hold, single-leg balance, and single-leg squat hold) play once at 2.4 seconds per pose, then display the final still image. This display duration is not an exercise timer or prescribed hold duration. Stop restores the opening still; GIFs cannot be paused at an arbitrary frame by a native browser image element. Navigation/disposal and hidden tabs stop playback. Motion never starts automatically, including for users who prefer reduced motion. Original numbered guides remain available; failed media opens them.
+
+Generate/check using Python with the pinned Pillow dependency installed:
+
+```sh
+python3 -m pip install -r scripts/requirements-fitness-gifs.txt
+python3 scripts/build-fitness-gifs.py
+python3 scripts/build-fitness-gifs.py --check
+node --test tests/fitness/*.test.mjs
+```
+
+The converter uses the effective exercise catalog (including guide overrides), reads the actual image dimensions, crops each grid cell, resizes without changing its aspect ratio, and applies one palette per GIF. Labels use Arial on macOS, DejaVu Sans on Linux, or Pillow's bundled fallback. Source and artifact hashes catch stale or changed files. No network or image-generation service is involved. The optional existing push-up 3D demo remains available under a separate disclosure and loads only when opened.
+
+
+## Expanded single-leg squat hold
+
+Source: `assets/images/fitness/single-leg-squat-hold-v2.png`, generated using the built-in image-generation tool with the original two-pose image as a character/style reference. The original source remains intact. The new guide has eight poses in a 4-column, 2-row sheet: stand, balance on left, lower shallowly, hold left, reset with both feet down, balance on right, lower shallowly, hold right. Orange identifies the left ankle; blue identifies the right, with the same frontal camera throughout.
+
+Generation brief: Create one eight-frame photorealistic instructional sprite sheet with four columns and two rows. Match the original instructor (sage shirt, charcoal shorts, gray shoes) and warm-gray studio. Show the whole body at a consistent scale. Demonstrate a shallow single-leg squat hold with the supporting heel flat, knee following the middle toes, hips level, and the other foot just clear of the floor. Show the gradual setup on the left leg, both-feet-down reset, and the same stages on the right. Use consistent orange-left and blue-right ankle markers. No deep pistol squat, jumps, equipment, text, borders, or invented extra limbs.
+
+The GIF plays the eight setup poses once over 25.6 seconds, with longer pauses on the hold illustrations. This is demonstration time; the prescribed workout remains 30 seconds per leg. Detailed numbered cues cover foot placement, shallow lowering, knee tracking, heel contact, level hips, controlled reset, and fingertip support as an easier variation. Next/Previous pose controls show stills with those cues for self-paced review; they are disabled while the GIF is playing.
+
+Regenerate just this exercise with:
+
+```sh
+python3 scripts/build-fitness-gifs.py --exercise single-leg-squat-hold
+```
+
+The converter emits eight separate still frames for manual navigation and preserves the other exercises' assets. `gifFrameDurationsMs` and `gifManualSteps` are guide metadata; exercise IDs, hold duration, workout timing and saved sessions are unchanged.

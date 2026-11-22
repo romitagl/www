@@ -71,3 +71,8 @@ The feature is prepared in this working tree. Publishing remains part of the rep
 ## Release review — 2026-10-26
 
 Safari desktop and 390 × 844 responsive checks covered the Wiki entry point, 3D playback, mobile navigation, three-round selection (18 sets) and refresh restoring the timer paused. Automated regressions cover inherited storage keys, invalid types and phase-specific timer limits, model-library failure fallback and navigation before the viewer loads. Deployment includes the source audit and vendor license. Continuous animation coverage remains one of 28 exercises; the remaining exercises retain their picture guides.
+
+
+## Animated sample guides
+
+Every exercise detail now includes an opt-in GIF sequence generated from its existing pose sheet. `demo-gifs.mjs` is generated asset metadata; `gif-demo.mjs` owns playback, still-image fallback, visibility/disposal cleanup, and finite hold sequences. GIF playback is independent of sessions, scores, and timers. Original numbered pictures and written cues remain available. See `docs/fitness-media.md` for generation, fidelity limits, asset budgets, and verification.

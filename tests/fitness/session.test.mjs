@@ -100,7 +100,7 @@ test('all exercise images are local, nonempty, and referenced by the library', (
     const path = fileURLToPath(new URL(`../../${exercise.image}`, import.meta.url));
     assert.ok(existsSync(path), path);
     assert.ok(readFileSync(path).length > 10000);
-    assert.ok([2, 4].includes(exercise.frames.length));
+    assert.ok(Number.isInteger(exercise.frames.length) && exercise.frames.length >= 2);
     assert.equal((exercise.columns || 2) * (exercise.rows || 1), exercise.frames.length);
     assert.ok(exercise.imageWidth > 0 && exercise.imageHeight > 0);
   }
